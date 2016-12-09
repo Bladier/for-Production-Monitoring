@@ -28,7 +28,7 @@ Friend Module databasePOS
         Try
             conPOS.Open()
         Catch ex As Exception
-            con.Dispose()
+            conPOS.Dispose()
             'MsgBox(language(0) + vbCrLf + ex.Message.ToString, vbCritical, "Connecting Error")
             'Log_Report(ex.Message.ToString)
             'Log_Report(String.Format("User: {0}", fbUser))
@@ -41,7 +41,7 @@ Friend Module databasePOS
     ''' This method is for closing after database was open here is the close.
     ''' </summary>
     ''' <remarks></remarks>
-    Public Sub dbClose()
+    Public Sub dbClosePOS()
         conPOS.Close()
     End Sub
     ''' <summary>
@@ -93,12 +93,12 @@ Friend Module databasePOS
                 Console.WriteLine("ModifySQL: " & mySql)
             End If
 
-            da = New OdbcDataAdapter(mySql, con)
+            da = New OdbcDataAdapter(mySql, conPOS)
             Dim cb As New OdbcCommandBuilder(da) 'Required in Saving/Update to Database
             da.Update(ds, fillData)
         Next
 
-        dbClose()
+        dbClosePOS()
         Return True
     End Function
 
@@ -154,7 +154,7 @@ Friend Module databasePOS
         Dim da As OdbcDataAdapter
         Dim ds As New DataSet, fillData As String = tblName
         Try
-            da = New OdbcDataAdapter(mySql, con)
+            da = New OdbcDataAdapter(mySql, conPOS)
             da.Fill(ds, fillData)
         Catch ex As Exception
             Console.WriteLine(">>>>>" & mySql)

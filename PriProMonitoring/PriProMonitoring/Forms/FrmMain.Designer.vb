@@ -22,15 +22,17 @@ Partial Class FrmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuLogin = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuInitialization = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoadMagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoadIMDToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusDateandTime = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.LoadMagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LoadIMDToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TmpTimer = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -54,7 +56,7 @@ Partial Class FrmMain
         'menuLogin
         '
         Me.menuLogin.Name = "menuLogin"
-        Me.menuLogin.Size = New System.Drawing.Size(152, 22)
+        Me.menuLogin.Size = New System.Drawing.Size(104, 22)
         Me.menuLogin.Text = "&Login"
         '
         'menuInitialization
@@ -63,6 +65,18 @@ Partial Class FrmMain
         Me.menuInitialization.Name = "menuInitialization"
         Me.menuInitialization.Size = New System.Drawing.Size(83, 20)
         Me.menuInitialization.Text = "Initialization"
+        '
+        'LoadMagazineToolStripMenuItem
+        '
+        Me.LoadMagazineToolStripMenuItem.Name = "LoadMagazineToolStripMenuItem"
+        Me.LoadMagazineToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.LoadMagazineToolStripMenuItem.Text = "&Load Magazine"
+        '
+        'LoadIMDToolStripMenuItem
+        '
+        Me.LoadIMDToolStripMenuItem.Name = "LoadIMDToolStripMenuItem"
+        Me.LoadIMDToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.LoadIMDToolStripMenuItem.Text = "Load &IMD"
         '
         'StatusStrip1
         '
@@ -77,8 +91,8 @@ Partial Class FrmMain
         '
         Me.statusDateandTime.BackColor = System.Drawing.SystemColors.ControlLight
         Me.statusDateandTime.Name = "statusDateandTime"
-        Me.statusDateandTime.Size = New System.Drawing.Size(78, 17)
-        Me.statusDateandTime.Text = "DateandTime"
+        Me.statusDateandTime.Size = New System.Drawing.Size(73, 17)
+        Me.statusDateandTime.Text = "Date Not Set"
         '
         'statusUser
         '
@@ -87,17 +101,9 @@ Partial Class FrmMain
         Me.statusUser.Size = New System.Drawing.Size(30, 17)
         Me.statusUser.Text = "User"
         '
-        'LoadMagazineToolStripMenuItem
+        'TmpTimer
         '
-        Me.LoadMagazineToolStripMenuItem.Name = "LoadMagazineToolStripMenuItem"
-        Me.LoadMagazineToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
-        Me.LoadMagazineToolStripMenuItem.Text = "&Load Magazine"
-        '
-        'LoadIMDToolStripMenuItem
-        '
-        Me.LoadIMDToolStripMenuItem.Name = "LoadIMDToolStripMenuItem"
-        Me.LoadIMDToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
-        Me.LoadIMDToolStripMenuItem.Text = "Load &IMD"
+        Me.TmpTimer.Enabled = True
         '
         'FrmMain
         '
@@ -111,6 +117,7 @@ Partial Class FrmMain
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "FrmMain"
         Me.Text = "FrmMain"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
@@ -128,4 +135,5 @@ Partial Class FrmMain
     Friend WithEvents menuInitialization As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LoadMagazineToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LoadIMDToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TmpTimer As System.Windows.Forms.Timer
 End Class

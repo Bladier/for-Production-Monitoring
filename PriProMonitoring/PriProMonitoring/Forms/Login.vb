@@ -24,11 +24,12 @@
 
         Dim NAME As String = loginUser.lOGINUSERNAME(user)
         FrmMain.statusUser.Text = NAME
-        Dim USERID As String = loginUser.Loadcodename(user)
-        MsgBox("Welcome " & user)
+        MsgBox("Welcome " & NAME)
+
 
         FrmMain.Show()
         FrmMain.NotYetLogin(False)
+        Me.Close()
         ' FrmMain.CheckStoreStatus()
     End Sub
 End Class

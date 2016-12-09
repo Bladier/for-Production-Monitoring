@@ -86,14 +86,14 @@ Public Class ComputerUser
     End Sub
 
     Public Function LoginUser(ByVal user As String, ByVal password As String) As Boolean
-        mySql = "SELECT CODE, LOWER(USERID),PASSWD FROM " & fillData
+        mySql = "SELECT  COdE,LOWER(USERID),PASSWD FROM " & fillData
         mySql &= vbCrLf & String.Format(" WHERE LOWER(USERID) = LOWER('{0}') AND PasswD = '{1}'", user, password)
         Dim ds As DataSet
 
-        ds = LoadSQLPOS(mySql)
+        ds = LoadSQLPOS(mySql, fillData)
         If ds.Tables(0).Rows.Count = 0 Then Return False
 
-        LoadUser(ds.Tables(0).Rows(0).Item("CODE"))
+        '  LoadUser(ds.Tables(0).Rows(0).Item("CODE"))
 
         Return True
     End Function
