@@ -72,7 +72,7 @@
         For Each dr As DataRow In ds.Tables(SubTable).Rows
             Console.WriteLine(dr.Item("SpecsName"))
             Dim tmpPapCut As New PaperCut
-            tmpPapCut.LoadPapcutbyrow(dr)
+            tmpPapCut.lOAD_PaperCut_row(dr)
 
             'Load Item Specification
 
@@ -99,9 +99,9 @@
         ds = LoadSQL(mySql, MainTable)
         _MagID = ds.Tables(MainTable).Rows(0).Item("Mag_ID")
 
-        For Each papercut As PaperCut In PaperCuts
-            papercut.mag_IDP = _MagID
-            papercut.Save_papercut()
+        For Each paPcutS As PaperCut In PaperCuts
+            paPcutS.mag_IDP = _MagID
+            paPcutS.Save_Papercut()
         Next
     End Sub
 
@@ -115,7 +115,7 @@
 
         End With
         ' Load paperuct
-        mySql = String.Format("SELECT * FROM {0} WHERE ItemID = {1} ORDER BY papcut_ID", SubTable, _MagID)
+        mySql = String.Format("SELECT * FROM {0} WHERE mag_IDP = {1} ORDER BY papercut_ID", SubTable, _MagID)
         ds.Clear()
         ds = LoadSQL(mySql, SubTable)
 
@@ -123,7 +123,7 @@
         For Each dr In ds.Tables(SubTable).Rows
             Console.WriteLine(dr.Item("papcut_description"))
             Dim tmppapcut As New PaperCut
-            tmppapcut.LoadPapcutbyrow(dr)
+            tmppapcut.lOAD_PaperCut_row(dr)
 
             'Load paperuct
             _PaperCuts.Add(tmppapcut)

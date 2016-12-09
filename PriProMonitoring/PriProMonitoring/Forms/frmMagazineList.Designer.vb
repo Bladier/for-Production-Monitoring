@@ -22,32 +22,48 @@ Partial Class frmMagazineList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.lvItem = New System.Windows.Forms.ListView()
+        Me.lvmagazine = New System.Windows.Forms.ListView()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnSelect = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.LBLID = New System.Windows.Forms.Label()
         Me.txtSearch = New PriProMonitoring.watermark()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'lvItem
+        'lvmagazine
         '
-        Me.lvItem.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader6, Me.ColumnHeader9})
-        Me.lvItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lvItem.FullRowSelect = True
-        Me.lvItem.GridLines = True
-        Me.lvItem.Location = New System.Drawing.Point(12, 69)
-        Me.lvItem.Name = "lvItem"
-        Me.lvItem.Size = New System.Drawing.Size(456, 270)
-        Me.lvItem.TabIndex = 5
-        Me.lvItem.UseCompatibleStateImageBehavior = False
-        Me.lvItem.View = System.Windows.Forms.View.Details
+        Me.lvmagazine.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader6, Me.ColumnHeader9})
+        Me.lvmagazine.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lvmagazine.FullRowSelect = True
+        Me.lvmagazine.GridLines = True
+        Me.lvmagazine.Location = New System.Drawing.Point(12, 69)
+        Me.lvmagazine.Name = "lvmagazine"
+        Me.lvmagazine.Size = New System.Drawing.Size(456, 270)
+        Me.lvmagazine.TabIndex = 5
+        Me.lvmagazine.UseCompatibleStateImageBehavior = False
+        Me.lvmagazine.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "ID"
+        Me.ColumnHeader1.Width = 0
+        '
+        'ColumnHeader6
+        '
+        Me.ColumnHeader6.Text = "ItemCode"
+        Me.ColumnHeader6.Width = 173
+        '
+        'ColumnHeader9
+        '
+        Me.ColumnHeader9.Text = "Description"
+        Me.ColumnHeader9.Width = 278
         '
         'GroupBox1
         '
@@ -115,20 +131,14 @@ Partial Class frmMagazineList
         Me.btnClose.Text = "&Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
-        'ColumnHeader1
+        'LBLID
         '
-        Me.ColumnHeader1.Text = "ID"
-        Me.ColumnHeader1.Width = 0
-        '
-        'ColumnHeader6
-        '
-        Me.ColumnHeader6.Text = "ItemCode"
-        Me.ColumnHeader6.Width = 173
-        '
-        'ColumnHeader9
-        '
-        Me.ColumnHeader9.Text = "Description"
-        Me.ColumnHeader9.Width = 278
+        Me.LBLID.AutoSize = True
+        Me.LBLID.Location = New System.Drawing.Point(12, 363)
+        Me.LBLID.Name = "LBLID"
+        Me.LBLID.Size = New System.Drawing.Size(18, 13)
+        Me.LBLID.TabIndex = 10
+        Me.LBLID.Text = "ID"
         '
         'txtSearch
         '
@@ -145,7 +155,8 @@ Partial Class frmMagazineList
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(479, 385)
-        Me.Controls.Add(Me.lvItem)
+        Me.Controls.Add(Me.LBLID)
+        Me.Controls.Add(Me.lvmagazine)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.Label1)
@@ -158,7 +169,7 @@ Partial Class frmMagazineList
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents lvItem As System.Windows.Forms.ListView
+    Friend WithEvents lvmagazine As System.Windows.Forms.ListView
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader6 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader9 As System.Windows.Forms.ColumnHeader
@@ -169,4 +180,5 @@ Partial Class frmMagazineList
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnSelect As System.Windows.Forms.Button
     Friend WithEvents btnClose As System.Windows.Forms.Button
+    Friend WithEvents LBLID As System.Windows.Forms.Label
 End Class

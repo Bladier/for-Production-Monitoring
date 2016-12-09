@@ -6,10 +6,10 @@
 
     End Enum
 
-    Friend Sub ReloadFormFromSearch1(ByVal gotoForm As FormName, ByVal mg As Magazine)
+    Friend Sub ReloadFormFromSearch(ByVal gotoForm As FormName, ByVal mg As Magazine)
         Select Case gotoForm
             Case FormName.frmmagazine
-                ' frmMagazine.LoadCurrencyall(mg)
+                frmMagazine.LoadMagazine(mg)
         End Select
     End Sub
 

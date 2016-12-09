@@ -1,11 +1,12 @@
-﻿Public Class frmMagazine
-    Private SelectedPaperuct As PaperCut
-
+﻿Imports System.Data.Odbc
+Public Class frmMagazine
+    Private SelectedMAG As Magazine
+    Private SAVEPAPERCUT As PaperCut
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
         If btnSave.Text = "&Save" Then
             SaveItems()
         Else
-            '  ModifyItems()
+            ModifyItems()
         End If
 
     End Sub
@@ -23,73 +24,82 @@
         Dim ans As DialogResult = MsgBox("Do you want to save this magazine?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
         If ans = Windows.Forms.DialogResult.No Then Exit Sub
 
-        Dim MagazineSave As New magazine
-        Dim Colpapcutss As New CollectionPaperCut
-        With MagazineSave
+        Dim MAGAZINESAVE As New Magazine
+        Dim ColIPAPERCUT As New CollectionPaperCut
+
+        With MAGAZINESAVE
             .MagItemcode = txtItemCode.Text
             .MagDescription = txtDescription.Text
+
         End With
 
-        Dim savePapcut As New PaperCut
         For Each row As DataGridViewRow In dgPCCUT.Rows
-            With savePapcut
+            SAVEPAPERCUT = New PaperCut
+            With SAVEPAPERCUT
                 .PapCutITemcode = row.Cells(1).Value
                 .papcutDescription = row.Cells(2).Value
                 .papcut = row.Cells(3).Value
 
+                If row.Cells(1).Value = "" And row.Cells(2).Value = "" Then
+                    Exit For
+                End If
             End With
-            Colpapcutss.Add(savePapcut)
+            ColIPAPERCUT.Add(SAVEPAPERCUT)
         Next
-        MagazineSave.PaperCuts = Colpapcutss
-        MagazineSave.Save_Magazine()
+        MAGAZINESAVE.PaperCuts = ColIPAPERCUT
+        MAGAZINESAVE.Save_Magazine()
 
         MsgBox("Magazine saved", MsgBoxStyle.Information)
         txtItemCode.Focus()
         clearfields()
+        ReadOnlyFalse()
     End Sub
 
-    'Private Sub ModifyItems()
-    '    If Not isValid() Then Exit Sub
+    Private Sub ModifyItems()
+        If Not isValid() Then Exit Sub
 
-    '    ReadOnlyFalse()
-    '    txtItemCode.Enabled = False
+        ReadOnlyFalse()
+        txtItemCode.Enabled = False
 
-    '    Dim ans As DialogResult = MsgBox("Do you want to Update Magazine?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
-    '    If ans = Windows.Forms.DialogResult.No Then Exit Sub
+        Dim ans As DialogResult = MsgBox("Do you want to Update Magazine?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
+        If ans = Windows.Forms.DialogResult.No Then Exit Sub
 
-    '    Dim Colpapercut As New CollectionPaperCut
-    '    Dim Magazinemodify As New Magazine
-    '    With Magazinemodify
-    '        .magitemcode = txtClassification.Text
-    '        .Category = txtCategory.Text
-    '        .Description = txtDescription.Text
-    '        .ID = SelectedItem.ID
-    '    End With
+        Dim Colpapercut As New CollectionPaperCut
+        Dim Magazinemodify As New Magazine
+        With Magazinemodify
+            .MagItemcode = txtItemCode.Text
+            .MagDescription = txtDescription.Text
+            .MagID = frmMagazineList.LBLID.Text
+        End With
 
-    '    Dim PapercutModify As New PaperCut
-    '    For Each row As DataGridViewRow In dgPCCUT.Rows
+        Dim PapercutModify As New PaperCut
+        For Each row As DataGridViewRow In dgPCCUT.Rows
 
-    '        With PapercutModify
-    '            .SpecID = row.Cells(0).Value
-    '            .ShortCode = row.Cells(1).Value
-    '            .SpecName = row.Cells(2).Value
-    '            .SpecType = row.Cells(3).Value
-    '            .SpecLayout = row.Cells(4).Value
-    '            .UnitOfMeasure = row.Cells(5).Value
-    '            .isRequired = row.Cells(6).Value
+            With PapercutModify
+                .PapcutID = row.Cells(0).Value
+                .PapCutITemcode = row.Cells(1).Value
+                .papcutDescription = row.Cells(2).Value
+                .papcut = row.Cells(3).Value
 
-    '        End With
-    '        PapercutModify.mag_IDP = SelectedPaperuct.PapcutID
-    '        SpecModify.UpdateSpecs()
-    '    Next
-    '    Magazinemodify.UpdateMagazine()
+                If row.Cells(1).Value = "" And row.Cells(2).Value = "" Then
+                    Exit For
+                End If
 
-    '    MsgBox("Magazine Updated", MsgBoxStyle.Information)
+            End With
+            PapercutModify.mag_IDP = frmMagazineList.LBLID.Text
+            PapercutModify.Update()
+        Next
+        Magazinemodify.UpdateMagazine()
 
-    '    btnSave.Enabled = True
-    '    btnUpdate.Text = "&Edit"
-    '    btnSave.Text = "&Save"
-    'End Sub
+        MsgBox("Magazine Updated", MsgBoxStyle.Information)
+
+        btnSave.Enabled = True
+        btnUpdate.Text = "&Edit"
+        btnSave.Text = "&Save"
+        clearfields()
+        ReadOnlyFalse()
+        txtItemCode.Enabled = True
+    End Sub
 
     Private Sub btnUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUpdate.Click
         If btnUpdate.Text = "&Edit" Then
@@ -105,7 +115,9 @@
             btnUpdate.Text = "&Edit"
             btnSave.Enabled = False
             btnSave.Text = "&Save"
-            ReadOnlyTrue()
+            ReadOnlyFalse()
+            txtItemCode.Enabled = True
+            clearfields()
         End If
     End Sub
 
@@ -143,14 +155,14 @@
         txtDescription.Text = ""
         txtItemCode.Text = ""
         txtSEarch.Text = ""
-
+        dgPCCUT.Rows.Clear()
     End Sub
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         Dim secured_str As String = txtSEarch.Text
         secured_str = DreadKnight(secured_str)
-        ' frmMagazineList.SearchSelect(secured_str, FormName.frmPawningV2_SpecsValue)
-        'frmMagazineList.Show()
+        frmMagazineList.SearchSelect(secured_str, FormName.frmmagazine)
+        frmMagazineList.Show()
     End Sub
 
 
@@ -160,9 +172,45 @@
         txtItemCode.Text = mg.MagItemcode
         txtDescription.Text = mg.MagDescription
 
+        LoadPAPCUT(mg.MagID)
         ReadOnlyTrue()
         btnSave.Enabled = False
         btnUpdate.Enabled = True
         txtItemCode.Enabled = False
+
+    End Sub
+
+    Friend Sub LoadPAPCUT(ByVal ID As Integer)
+        Dim da As New OdbcDataAdapter
+        Dim mySql As String = "SELECT * FROM TBLPAPERCUT WHERE MAG_IDP = '" & ID & "'"
+        Console.WriteLine("SQL: " & mySql)
+        Dim ds As DataSet = LoadSQL(mySql)
+        Dim dr As DataRow
+
+        dgPCCUT.Rows.Clear()
+        For Each dr In ds.Tables(0).Rows
+            AddItemPAPCUT(dr)
+        Next
+        ReadOnlyTrue()
+        For a As Integer = 0 To dgPCCUT.Rows.Count - 1
+            dgPCCUT.Rows(a).ReadOnly = True
+        Next
+        btnSave.Enabled = False
+    End Sub
+
+    Private Sub AddItemPAPCUT(ByVal PAP As DataRow)
+        Dim TMPPAPER As New PaperCut
+        TMPPAPER.lOAD_PaperCut_row(PAP)
+        dgPCCUT.Rows.Add(TMPPAPER.PapcutID, TMPPAPER.PapCutITemcode, TMPPAPER.papcutDescription, TMPPAPER.papcut)
+    End Sub
+
+    Private Sub txtSEarch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSEarch.KeyPress
+        If isEnter(e) Then
+            btnSearch.PerformClick()
+        End If
+    End Sub
+
+    Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
+        Me.Close()
     End Sub
 End Class
