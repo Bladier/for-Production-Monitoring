@@ -161,7 +161,7 @@
             .Item("Total_Length") = _TotalLength
             '.Item("Addedby") = 
             .Item("Created_at") = Now
-
+            .Item("status") = 0
         End With
         ds.Tables(0).Rows.Add(dsNewRow)
         database.SaveEntry(ds)

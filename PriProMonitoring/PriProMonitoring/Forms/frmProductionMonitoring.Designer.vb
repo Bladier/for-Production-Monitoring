@@ -27,13 +27,13 @@ Partial Class frmProductionMonitoring
         Me.txtSEarch = New PriProMonitoring.watermark()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Watermark1 = New PriProMonitoring.watermark()
-        Me.btnLoad = New System.Windows.Forms.Button()
         Me.lvItem = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.btnLoad = New System.Windows.Forms.Button()
+        Me.Watermark1 = New PriProMonitoring.watermark()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -90,26 +90,6 @@ Partial Class frmProductionMonitoring
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Magazine"
         '
-        'Watermark1
-        '
-        Me.Watermark1.Location = New System.Drawing.Point(10, 17)
-        Me.Watermark1.Name = "Watermark1"
-        Me.Watermark1.Size = New System.Drawing.Size(459, 20)
-        Me.Watermark1.TabIndex = 0
-        Me.Watermark1.WatermarkColor = System.Drawing.Color.Gray
-        Me.Watermark1.WatermarkText = "Search . . ."
-        '
-        'btnLoad
-        '
-        Me.btnLoad.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLoad.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnLoad.Location = New System.Drawing.Point(157, 246)
-        Me.btnLoad.Name = "btnLoad"
-        Me.btnLoad.Size = New System.Drawing.Size(182, 27)
-        Me.btnLoad.TabIndex = 2
-        Me.btnLoad.Text = "Load Sales"
-        Me.btnLoad.UseVisualStyleBackColor = True
-        '
         'lvItem
         '
         Me.lvItem.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader6, Me.ColumnHeader9})
@@ -128,6 +108,11 @@ Partial Class frmProductionMonitoring
         Me.ColumnHeader1.Text = "ID"
         Me.ColumnHeader1.Width = 0
         '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Paper Cut"
+        Me.ColumnHeader2.Width = 0
+        '
         'ColumnHeader6
         '
         Me.ColumnHeader6.Text = "ItemCode"
@@ -138,10 +123,25 @@ Partial Class frmProductionMonitoring
         Me.ColumnHeader9.Text = "Description"
         Me.ColumnHeader9.Width = 278
         '
-        'ColumnHeader2
+        'btnLoad
         '
-        Me.ColumnHeader2.Text = "Paper Cut"
-        Me.ColumnHeader2.Width = 0
+        Me.btnLoad.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLoad.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.btnLoad.Location = New System.Drawing.Point(157, 246)
+        Me.btnLoad.Name = "btnLoad"
+        Me.btnLoad.Size = New System.Drawing.Size(182, 27)
+        Me.btnLoad.TabIndex = 2
+        Me.btnLoad.Text = "Load Sales"
+        Me.btnLoad.UseVisualStyleBackColor = True
+        '
+        'Watermark1
+        '
+        Me.Watermark1.Location = New System.Drawing.Point(10, 17)
+        Me.Watermark1.Name = "Watermark1"
+        Me.Watermark1.Size = New System.Drawing.Size(459, 20)
+        Me.Watermark1.TabIndex = 0
+        Me.Watermark1.WatermarkColor = System.Drawing.Color.Gray
+        Me.Watermark1.WatermarkText = "Search . . ."
         '
         'frmProductionMonitoring
         '

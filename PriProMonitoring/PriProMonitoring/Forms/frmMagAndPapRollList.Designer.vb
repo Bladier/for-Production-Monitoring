@@ -22,9 +22,11 @@ Partial Class frmMagAndPapRollList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.lvItem = New System.Windows.Forms.ListView()
+        Me.LVPAPROLL = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txtSearch = New PriProMonitoring.watermark()
         Me.btnSearch = New System.Windows.Forms.Button()
@@ -32,23 +34,21 @@ Partial Class frmMagAndPapRollList
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnSelect = New System.Windows.Forms.Button()
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'lvItem
+        'LVPAPROLL
         '
-        Me.lvItem.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader6, Me.ColumnHeader2, Me.ColumnHeader3})
-        Me.lvItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lvItem.FullRowSelect = True
-        Me.lvItem.GridLines = True
-        Me.lvItem.Location = New System.Drawing.Point(6, 63)
-        Me.lvItem.Name = "lvItem"
-        Me.lvItem.Size = New System.Drawing.Size(456, 270)
-        Me.lvItem.TabIndex = 10
-        Me.lvItem.UseCompatibleStateImageBehavior = False
-        Me.lvItem.View = System.Windows.Forms.View.Details
+        Me.LVPAPROLL.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader6, Me.ColumnHeader2, Me.ColumnHeader3})
+        Me.LVPAPROLL.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LVPAPROLL.FullRowSelect = True
+        Me.LVPAPROLL.GridLines = True
+        Me.LVPAPROLL.Location = New System.Drawing.Point(6, 63)
+        Me.LVPAPROLL.Name = "LVPAPROLL"
+        Me.LVPAPROLL.Size = New System.Drawing.Size(456, 270)
+        Me.LVPAPROLL.TabIndex = 10
+        Me.LVPAPROLL.UseCompatibleStateImageBehavior = False
+        Me.LVPAPROLL.View = System.Windows.Forms.View.Details
         '
         'ColumnHeader1
         '
@@ -59,6 +59,16 @@ Partial Class frmMagAndPapRollList
         '
         Me.ColumnHeader6.Text = "MagID"
         Me.ColumnHeader6.Width = 0
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Paper Roll"
+        Me.ColumnHeader2.Width = 120
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Magazine"
+        Me.ColumnHeader3.Width = 328
         '
         'GroupBox1
         '
@@ -135,23 +145,13 @@ Partial Class frmMagAndPapRollList
         Me.btnSelect.Text = "&Select"
         Me.btnSelect.UseVisualStyleBackColor = True
         '
-        'ColumnHeader2
-        '
-        Me.ColumnHeader2.Text = "Paper Roll"
-        Me.ColumnHeader2.Width = 120
-        '
-        'ColumnHeader3
-        '
-        Me.ColumnHeader3.Text = "Magazine"
-        Me.ColumnHeader3.Width = 328
-        '
         'frmMagAndPapRollList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(468, 372)
-        Me.Controls.Add(Me.lvItem)
+        Me.Controls.Add(Me.LVPAPROLL)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.Label1)
@@ -164,7 +164,7 @@ Partial Class frmMagAndPapRollList
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents lvItem As System.Windows.Forms.ListView
+    Friend WithEvents LVPAPROLL As System.Windows.Forms.ListView
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader6 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
