@@ -161,6 +161,7 @@
     <Compile Include="CLASS\ComputerUser.vb" />
     <Compile Include="MODULE\databasePOS.vb" />
     <Compile Include="MODULE\database.vb" />
+    <Compile Include="MODULE\formSwitch.vb" />
     <Compile Include="MODULE\mod_system.vb" />
     <Compile Include="MODULE\security.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
