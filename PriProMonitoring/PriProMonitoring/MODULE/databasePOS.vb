@@ -4,14 +4,14 @@
 ''' 
 ''' </summary>
 ''' <remarks></remarks>
-Friend Module database
-    Public con As OdbcConnection
-    Public ReaderCon As OdbcConnection
-    Friend dbName As String = "PRIPRO.FDB" 'Final
-    Friend fbUser As String = "SYSDBA"
-    Friend fbPass As String = "masterkey"
+Friend Module databasePOS
+    Public conPOS As OdbcConnection
+    Public ReaderConPOS As OdbcConnection
+    Friend dbNamePOS As String = "ANOISIM.FDB" 'Final
+    Friend fbUserPOS As String = "SYSDBA"
+    Friend fbPassPOS As String = "masterkey"
     Friend fbDataSet As New DataSet
-    Friend conStr As String = String.Empty
+    Friend conStrPOS As String = String.Empty
 
     Private DBversion As String = "1.0.0.0" 'Database version.
     Private language() As String = _
@@ -21,12 +21,12 @@ Friend Module database
     ''' Also here we open the database.
     ''' </summary>
     ''' <remarks></remarks>
-    Public Sub dbOpen()
-        conStr = "DRIVER=Firebird/InterBase(r) driver;User=" & fbUser & ";Password=" & fbPass & ";Database=" & dbName & ";"
+    Public Sub dbOpenPOS()
+        conStrPOS = "DRIVER=Firebird/InterBase(r) driver;User=" & fbUserPOS & ";Password=" & fbPassPOS & ";Database=" & dbNamePOS & ";"
 
-        con = New OdbcConnection(conStr)
+        conPOS = New OdbcConnection(conStrPOS)
         Try
-            con.Open()
+            conPOS.Open()
         Catch ex As Exception
             con.Dispose()
             'MsgBox(language(0) + vbCrLf + ex.Message.ToString, vbCritical, "Connecting Error")
@@ -42,7 +42,7 @@ Friend Module database
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub dbClose()
-        con.Close()
+        conPOS.Close()
     End Sub
     ''' <summary>
     ''' The database is ready to open.
@@ -52,7 +52,7 @@ Friend Module database
     Friend Function isReady() As Boolean
         Dim ready As Boolean = False
         Try
-            dbOpen()
+            dbOpenPOS()
             ready = True
         Catch ex As Exception
             Console.WriteLine("[ERROR] " & ex.Message.ToString)
@@ -70,12 +70,12 @@ Friend Module database
     ''' <returns>Boolean: Success Result</returns>
     ''' <remarks></remarks>
 
-    Friend Function SaveEntry(ByVal dsEntry As DataSet, Optional ByVal isNew As Boolean = True) As Boolean
+    Friend Function SaveEntryPOS(ByVal dsEntry As DataSet, Optional ByVal isNew As Boolean = True) As Boolean
         If dsEntry Is Nothing Then
             Return False
         End If
 
-        dbOpen()
+        dbOpenPOS()
 
         Dim da As OdbcDataAdapter
         Dim ds As New DataSet, mySql As String, fillData As String
@@ -103,16 +103,16 @@ Friend Module database
     End Function
 
     Friend Sub SQLCommand(ByVal sql As String)
-        conStr = "DRIVER=Firebird/InterBase(r) driver;User=" & fbUser & ";Password=" & fbPass & ";Database=" & dbName & ";"
-        con = New OdbcConnection(conStr)
+        conStrPOS = "DRIVER=Firebird/InterBase(r) driver;User=" & fbUser & ";Password=" & fbPass & ";Database=" & dbName & ";"
+        conPOS = New OdbcConnection(conStr)
 
         Dim cmd As OdbcCommand
         cmd = New OdbcCommand(sql, con)
 
         Try
-            con.Open()
+            conPOS.Open()
             cmd.ExecuteNonQuery()
-            con.Close()
+            conPOS.Close()
         Catch ex As Exception
             MsgBox(ex.ToString, MsgBoxStyle.Critical)
             Log_Report(String.Format("[{0}] - ", sql) & ex.ToString)
@@ -148,8 +148,8 @@ Friend Module database
     ''' <param name="tblName">tblName here is a variable that hold the data.</param>
     ''' <returns>return ds after reading the mysql data.</returns>
     ''' <remarks></remarks>
-    Friend Function LoadSQL(ByVal mySql As String, Optional ByVal tblName As String = "QuickSQL") As DataSet
-        dbOpen() 'open the database.
+    Friend Function LoadSQLPOS(ByVal mySql As String, Optional ByVal tblName As String = "QuickSQL") As DataSet
+        dbOpenPOS() 'open the database.
 
         Dim da As OdbcDataAdapter
         Dim ds As New DataSet, fillData As String = tblName
@@ -185,13 +185,13 @@ Friend Module database
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub dbReaderOpen()
-        conStr = "DRIVER=Firebird/InterBase(r) driver;User=" & fbUser & ";Password=" & fbPass & ";Database=" & dbName & ";"
+        conStrPOS = "DRIVER=Firebird/InterBase(r) driver;User=" & fbUser & ";Password=" & fbPass & ";Database=" & dbName & ";"
 
-        ReaderCon = New OdbcConnection(conStr)
+        ReaderConPOS = New OdbcConnection(conStr)
         Try
             ReaderCon.Open() 'open the database.
         Catch ex As Exception
-            ReaderCon.Dispose()
+            ReaderConPOS.Dispose()
             MsgBox(language(0) + vbCrLf + ex.Message.ToString, vbCritical, "Connecting Error")
             Log_Report(ex.Message.ToString)
             Exit Sub
@@ -202,54 +202,7 @@ Friend Module database
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub dbReaderClose()
-        ReaderCon.Close()
+        ReaderConPOS.Close()
     End Sub
 
-    ''' <summary>
-    ''' This function select all data from tblmaintenance.
-    ''' </summary>
-    ''' <param name="keys">keys is the parameter </param>
-    ''' <returns>return ret after reading the dataset.</returns>
-    ''' <remarks></remarks>
-    Friend Function GetOption(ByVal keys As String) As String
-        Dim mySql As String = "SELECT * FROM tblmaintenance WHERE opt_keys = '" & keys & "'"
-        Dim ret As String
-        Try
-            Dim ds As DataSet = LoadSQL(mySql)
-            ret = ds.Tables(0).Rows(0).Item("opt_values")
-        Catch ex As Exception
-            ret = 0
-        End Try
-
-        Return ret
-    End Function
-   
-
-    ''' <summary>
-    ''' This module where select all data from tblmaintenance.
-    ''' </summary>
-    ''' <param name="key">the key is parameter only data will be read if what is the opt_keys shows in key.</param>
-    ''' <param name="value">The value here hold the data from the opt_values.</param>
-    ''' <remarks></remarks>
-    Friend Sub UpdateOptions(ByVal key As String, ByVal value As String)
-        Dim mySql As String = "SELECT * FROM tblMaintenance WHERE opt_keys = '" & key & "'"
-        Dim fillData As String = "tblMaintenance"
-        Dim ds As DataSet = LoadSQL(mySql, fillData)
-
-        If ds.Tables(fillData).Rows.Count = 0 Then
-            Dim dsNewRow As DataRow
-            dsNewRow = ds.Tables(fillData).NewRow
-            With dsNewRow
-                .Item("opt_keys") = key
-                .Item("opt_values") = value
-            End With
-            ds.Tables(fillData).Rows.Add(dsNewRow)
-            SaveEntry(ds)
-        Else
-            ds.Tables(0).Rows(0).Item("opt_values") = value
-            SaveEntry(ds, False)
-        End If
-    End Sub
-
-  
 End Module

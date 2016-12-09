@@ -110,12 +110,6 @@
     <Compile Include="Forms\frmLoadMagazine.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmLogin.Designer.vb">
-      <DependentUpon>frmLogin.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmLogin.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Forms\frmMagAndPapRollList.Designer.vb">
       <DependentUpon>frmMagAndPapRollList.vb</DependentUpon>
     </Compile>
@@ -163,6 +157,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CLASS\ComputerUser.vb" />
+    <Compile Include="MODULE\databasePOS.vb" />
     <Compile Include="MODULE\database.vb" />
     <Compile Include="MODULE\mod_system.vb" />
     <Compile Include="MODULE\security.vb" />
@@ -191,9 +186,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLoadMagazine.resx">
       <DependentUpon>frmLoadMagazine.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLogin.resx">
-      <DependentUpon>frmLogin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMagAndPapRollList.resx">
       <DependentUpon>frmMagAndPapRollList.vb</DependentUpon>
