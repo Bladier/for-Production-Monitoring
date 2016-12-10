@@ -28,12 +28,11 @@ Partial Class frmMagAndPapRollList
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtSearch = New PriProMonitoring.watermark()
         Me.btnSearch = New System.Windows.Forms.Button()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnSelect = New System.Windows.Forms.Button()
-        Me.txtSearch = New PriProMonitoring.watermark()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -43,9 +42,9 @@ Partial Class frmMagAndPapRollList
         Me.LVPAPROLL.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LVPAPROLL.FullRowSelect = True
         Me.LVPAPROLL.GridLines = True
-        Me.LVPAPROLL.Location = New System.Drawing.Point(6, 63)
+        Me.LVPAPROLL.Location = New System.Drawing.Point(11, 63)
         Me.LVPAPROLL.Name = "LVPAPROLL"
-        Me.LVPAPROLL.Size = New System.Drawing.Size(456, 270)
+        Me.LVPAPROLL.Size = New System.Drawing.Size(473, 317)
         Me.LVPAPROLL.TabIndex = 1
         Me.LVPAPROLL.UseCompatibleStateImageBehavior = False
         Me.LVPAPROLL.View = System.Windows.Forms.View.Details
@@ -74,42 +73,40 @@ Partial Class frmMagAndPapRollList
         '
         Me.GroupBox1.Controls.Add(Me.txtSearch)
         Me.GroupBox1.Controls.Add(Me.btnSearch)
-        Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.GroupBox1.Location = New System.Drawing.Point(6, 3)
+        Me.GroupBox1.Location = New System.Drawing.Point(11, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(456, 54)
+        Me.GroupBox1.Size = New System.Drawing.Size(479, 54)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Location = New System.Drawing.Point(18, 19)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(359, 22)
+        Me.txtSearch.TabIndex = 0
+        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSearch.WatermarkText = "Search . . ."
         '
         'btnSearch
         '
         Me.btnSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSearch.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnSearch.Location = New System.Drawing.Point(352, 12)
+        Me.btnSearch.Location = New System.Drawing.Point(383, 14)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(90, 34)
         Me.btnSearch.TabIndex = 1
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(15, 21)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(51, 16)
-        Me.Label8.TabIndex = 13
-        Me.Label8.Text = "Search"
-        '
         'btnClose
         '
         Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnClose.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnClose.Location = New System.Drawing.Point(387, 339)
+        Me.btnClose.Location = New System.Drawing.Point(410, 385)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 31)
         Me.btnClose.TabIndex = 3
@@ -119,7 +116,7 @@ Partial Class frmMagAndPapRollList
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(44, 15)
+        Me.Label1.Location = New System.Drawing.Point(49, 15)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(41, 13)
         Me.Label1.TabIndex = 12
@@ -129,34 +126,27 @@ Partial Class frmMagAndPapRollList
         '
         Me.btnSelect.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSelect.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSelect.Location = New System.Drawing.Point(306, 339)
+        Me.btnSelect.Location = New System.Drawing.Point(329, 385)
         Me.btnSelect.Name = "btnSelect"
         Me.btnSelect.Size = New System.Drawing.Size(75, 31)
         Me.btnSelect.TabIndex = 2
         Me.btnSelect.Text = "&Select"
         Me.btnSelect.UseVisualStyleBackColor = True
         '
-        'txtSearch
-        '
-        Me.txtSearch.Location = New System.Drawing.Point(72, 19)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(274, 22)
-        Me.txtSearch.TabIndex = 0
-        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSearch.WatermarkText = "Search . . ."
-        '
         'frmMagAndPapRollList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(468, 372)
+        Me.ClientSize = New System.Drawing.Size(497, 428)
         Me.Controls.Add(Me.LVPAPROLL)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnSelect)
+        Me.Location = New System.Drawing.Point(850, 150)
         Me.Name = "frmMagAndPapRollList"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Paper Roll List"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
@@ -172,7 +162,6 @@ Partial Class frmMagAndPapRollList
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents txtSearch As PriProMonitoring.watermark
     Friend WithEvents btnSearch As System.Windows.Forms.Button
-    Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnSelect As System.Windows.Forms.Button

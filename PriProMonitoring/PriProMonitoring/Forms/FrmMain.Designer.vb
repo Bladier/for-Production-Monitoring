@@ -32,18 +32,18 @@ Partial Class FrmMain
         Me.MagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddMagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddPaperRollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TransactionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusDateandTime = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TmpTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.ProductionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.menuInitialization, Me.MagazineToolStripMenuItem, Me.ProductionToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.menuInitialization, Me.MagazineToolStripMenuItem, Me.TransactionToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1003, 24)
@@ -101,6 +101,12 @@ Partial Class FrmMain
         Me.AddPaperRollToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.AddPaperRollToolStripMenuItem.Text = "Add &Paper Roll"
         '
+        'TransactionToolStripMenuItem
+        '
+        Me.TransactionToolStripMenuItem.Name = "TransactionToolStripMenuItem"
+        Me.TransactionToolStripMenuItem.Size = New System.Drawing.Size(81, 20)
+        Me.TransactionToolStripMenuItem.Text = "Transaction"
+        '
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusDateandTime, Me.statusUser})
@@ -127,12 +133,6 @@ Partial Class FrmMain
         'TmpTimer
         '
         Me.TmpTimer.Enabled = True
-        '
-        'ProductionToolStripMenuItem
-        '
-        Me.ProductionToolStripMenuItem.Name = "ProductionToolStripMenuItem"
-        Me.ProductionToolStripMenuItem.Size = New System.Drawing.Size(78, 20)
-        Me.ProductionToolStripMenuItem.Text = "Production"
         '
         'FrmMain
         '
@@ -168,5 +168,5 @@ Partial Class FrmMain
     Friend WithEvents MagazineToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddMagazineToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddPaperRollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ProductionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TransactionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

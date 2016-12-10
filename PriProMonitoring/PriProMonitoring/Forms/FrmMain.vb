@@ -1,9 +1,14 @@
 ﻿Public Class FrmMain
+    Private locked As Boolean = IIf(GetOption("Locked") = "YES", True, False)
+    Private MagazineStatus As Boolean = IIf(GetOption("Magazine") = "YES", True, False)
 
     Friend Sub NotYetLogin(Optional ByVal st As Boolean = True)
+
         LoadMagazineToolStripMenuItem.Enabled = Not st
+
         AddMagazineToolStripMenuItem.Enabled = Not st
         AddPaperRollToolStripMenuItem.Enabled = Not st
+        TransactionToolStripMenuItem.Enabled = Not st
 
         If Not st Then
             menuLogin.Text = "&Log Out"
@@ -11,8 +16,6 @@
             menuLogin.Text = "&Login"
         End If
     End Sub
-
-
 
     Private Sub LoginToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles menuLogin.Click
         If menuLogin.Text = "&Login" Then
@@ -27,11 +30,8 @@
     End Sub
 
     Private Sub FrmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        NotYetLogin()
-       
-    End Sub
 
-    Private Sub FileToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FileToolStripMenuItem.Click
+        NotYetLogin()
 
     End Sub
 
@@ -50,22 +50,28 @@
     End Sub
 
     Private Sub AddMagazineToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddMagazineToolStripMenuItem.Click
-        Dim child As New frmMagazine
-        child.MdiParent = Me
-        child.Show()
+        frmMagazine.Show()
     End Sub
 
     Private Sub AddPaperRollToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddPaperRollToolStripMenuItem.Click
-        Dim child As New frmPaperRoll
-        child.MdiParent = Me
-        child.Show()
+        frmPaperRoll.Show()
     End Sub
 
     Private Sub MenuStrip1_ItemClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
 
     End Sub
 
-    Private Sub ProductionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductionToolStripMenuItem.Click
-        frmProductionMonitoring.Show()
+    Private Sub TransactionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TransactionToolStripMenuItem.Click
+        If Not MagazineStatus Then
+            MsgBox("You need to initialize first before to begin.", MsgBoxStyle.Exclamation, "Production")
+            Exit Sub
+        Else
+            frmProductionMonitoring.Show()
+        End If
+
+    End Sub
+
+    Private Sub LoadMagazineToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadMagazineToolStripMenuItem.Click
+        frmLoadMagazine.Show()
     End Sub
 End Class

@@ -159,7 +159,7 @@
             .Item("thickness") = _Thickness
             .Item("spool_diameter") = _SpoolDiameter
             .Item("Total_Length") = _TotalLength
-            '.Item("Addedby") = 
+            .Item("Addedby") = FrmMain.statusUser.Text
             .Item("Created_at") = Now
             .Item("status") = 0
         End With
@@ -169,6 +169,7 @@
     End Sub
 
     Public Sub LoadByRow(ByVal dr As DataRow)
+
         With dr
 
             _PaprollID = .Item("Paproll_ID")
@@ -185,30 +186,23 @@
 
     End Sub
 
-    'Public Sub Update()
-    '    Dim mySql As String = String.Format("SELECT * FROM {0} WHERE ItemID = {1}", MainTable, _itemID)
-    '    Dim ds As DataSet = LoadSQL(mySql, MainTable)
+    Public Sub Updatepaper()
+        Dim mySql As String = String.Format("SELECT * FROM {0} WHERE status <> {1}", MainTable, _status)
+        Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
-    '    If ds.Tables(0).Rows.Count <> 1 Then
-    '        MsgBox("Unable to update record", MsgBoxStyle.Critical)
-    '        Exit Sub
-    '    End If
+        Dim TotLength As Double = ds.Tables(0).Rows(0).Item("Total_Length")
 
-    '    With ds.Tables(MainTable).Rows(0)
-    '        '.Item("ItemClass") = _itemClassName
-    '        .Item("ItemCategory") = _category
-    '        .Item("Description") = _desc
-    '        .Item("isRenew") = If(_isRenew, 1, 0)
-    '        .Item("onHold") = If(_onHold, 1, 0)
-    '        .Item("Print_Layout") = _printLayout
-    '        .Item("Renewal_Cnt") = _Count
-    '        .Item("Updated_At") = Now
+        If ds.Tables(0).Rows.Count <> 1 Then
+            MsgBox("Unable to update record", MsgBoxStyle.Critical)
+            Exit Sub
+        End If
 
-    '        .Item("Scheme_ID") = _interestScheme.SchemeID
-
-    '    End With
-    '    database.SaveEntry(ds, False)
-    'End Sub
+        With ds.Tables(MainTable).Rows(0)
+            .Item("Total_Length") = TotLength - _TotalLength
+            .Item("Updated_at") = Now
+        End With
+        database.SaveEntry(ds, False)
+    End Sub
 
 #End Region
 End Class

@@ -1,6 +1,7 @@
 ﻿Public Class Login
-
+    Private locked As Boolean = IIf(GetOption("Locked") = "YES", True, False)
     Private Sub btnLogin_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLogin.Click
+        If Not locked Then MsgBox("Database not setup", MsgBoxStyle.Exclamation) : Exit Sub
         databasePOS.dbNamePOS = GetOption("DatabasePOS")
 
         Static wrongLogin As Integer
@@ -42,6 +43,23 @@
     Private Sub txtpassword_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtpassword.KeyPress
         If isEnter(e) Then
             btnLogin.PerformClick()
+        End If
+    End Sub
+
+    Private Sub btnExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExit.Click
+        If btnExit.Text = "&Close" Then
+            FrmMain.Show() : Me.Close()
+        Else
+            End
+        End If
+
+    End Sub
+
+    Private Sub Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        If Not locked Then
+            btnExit.Text = "&Close"
+        Else
+            btnExit.Text = "&Exit"
         End If
     End Sub
 End Class

@@ -40,7 +40,7 @@ Partial Class frmLoadIMD
         '
         'btnLoad
         '
-        Me.btnLoad.Location = New System.Drawing.Point(400, 60)
+        Me.btnLoad.Location = New System.Drawing.Point(401, 50)
         Me.btnLoad.Name = "btnLoad"
         Me.btnLoad.Size = New System.Drawing.Size(75, 23)
         Me.btnLoad.TabIndex = 1
@@ -74,7 +74,7 @@ Partial Class frmLoadIMD
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(487, 97)
+        Me.ClientSize = New System.Drawing.Size(490, 87)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtpath)
         Me.Controls.Add(Me.btnLoad)

@@ -35,7 +35,7 @@ Partial Class Login
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(75, 28)
         Me.btnLogin.TabIndex = 2
-        Me.btnLogin.Text = "Login"
+        Me.btnLogin.Text = "&Login"
         Me.btnLogin.UseVisualStyleBackColor = True
         '
         'btnExit
@@ -45,7 +45,7 @@ Partial Class Login
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(75, 28)
         Me.btnExit.TabIndex = 3
-        Me.btnExit.Text = "Exit"
+        Me.btnExit.Text = "&Exit"
         Me.btnExit.UseVisualStyleBackColor = True
         '
         'txtpassword

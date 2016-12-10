@@ -1,5 +1,5 @@
 ﻿Public Class frmMagAndPapRollList
-
+    Private MagazineStatus As Boolean = IIf(GetOption("Magazine") = "YES", True, False)
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         loadPapRollBYSEARCH()
     End Sub
@@ -28,12 +28,12 @@
     Private Sub loadPapRollBYSEARCH()
         Dim mysql As String = "SELECT PAPROLL_ID,MAG_IDS,PAPROLL_SERIAL, MAGDESCRIPTION" & _
                                      " FROM TBLPAPERROLL P INNER JOIN TBLMAGAZINE M ON M.MAG_ID = P.MAG_IDS"
-        mysql &= String.Format(" WHERE (UPPER (PAPROLL_SERIAL) LIKE UPPER('%{0}%') OR UPPER (MAGDESCRIPTION) LIKE UPPER('%{0}%')) ", txtSearch.Text)
+        mysql &= String.Format(" WHERE (UPPER (PAPROLL_SERIAL) = '{0}' OR UPPER (MAGDESCRIPTION) LIKE UPPER('%{0}%')) ", txtSearch.Text)
         mysql &= "ORDER BY PAPROLL_ID ASC"
         Dim DS As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
         LVPAPROLL.Items.Clear()
         Console.WriteLine("SQL: " & mysql)
-        Dim MaxRow As Integer = ds.Tables(0).Rows.Count
+        Dim MaxRow As Integer = DS.Tables(0).Rows.Count
 
         LVPAPROLL.Items.Clear()
 
@@ -45,7 +45,7 @@
         End If
 
         MsgBox(MaxRow & " result found", MsgBoxStyle.Information, "Search paper roll")
-        For Each dr As DataRow In ds.Tables(0).Rows
+        For Each dr As DataRow In DS.Tables(0).Rows
 
             Dim lv As ListViewItem = LVPAPROLL.Items.Add(dr(0))
             lv.SubItems.Add(dr(1))
@@ -67,13 +67,33 @@
         If LVPAPROLL.SelectedItems.Count = 0 Then
             LVPAPROLL.Items(0).Focused = True
         End If
-
         Dim PAPSERIAL As String = LVPAPROLL.SelectedItems(0).SubItems(2).Text
-        frmProductionMonitoring.txtmagazine.Text = LVPAPROLL.SelectedItems(0).SubItems(3).Text
-        RollstatInactive(LoadActiveRoll, "0") 'update last load to 0
-        UpdateRollstatus(PAPSERIAL, "1") ' update new load to 1
-        frmProductionMonitoring.Show()
-        Me.Hide()
+
+        If Not MagazineStatus Then
+            UpdateOptions("Magazine", "YES") 'Set magazine load
+            UpdateRollstatus(PAPSERIAL, "1") ' Initialized magazine
+            MsgBox("Magazine has been initialized", MsgBoxStyle.Information, "Magazine")
+            Me.Close()
+        Else
+
+            RollstatInactive(LoadActiveRoll, "0") 'update last load to 0
+            UpdateRollstatus(PAPSERIAL, "1") ' update new load to 1
+
+            frmProductionMonitoring.txtmagazine.Text = LVPAPROLL.SelectedItems(0).SubItems(3).Text
+
+            savePapLog(LVPAPROLL.SelectedItems(0).SubItems(0).Text) 'save paper log
+
+
+            frmProductionMonitoring.Show()
+            Me.Close()
+        End If
+    End Sub
+
+    Private Sub savePapLog(ByVal PaperRollID As Integer)
+        Dim savelog As New PaperLoadLog
+        savelog.PaprollID = PaperRollID
+        savelog.loaded_by = FrmMain.statusUser.Text
+        savelog.SaveRoll()
     End Sub
 
     Friend Sub RollstatInactive(ByVal serial As String, ByVal status As Integer)
@@ -110,6 +130,7 @@
 
         Return DS.Tables(0).Rows(0).Item("PapRoll_serial")
     End Function
+
     Private Sub txtSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
         If isEnter(e) Then
             btnSearch.PerformClick()

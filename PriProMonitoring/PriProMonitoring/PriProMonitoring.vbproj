@@ -88,6 +88,7 @@
     <Compile Include="CLASS\CollectionPaperCut.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="CLASS\PaperLoadLog.vb" />
     <Compile Include="CLASS\IMD.vb" />
     <Compile Include="CLASS\Magazine.vb" />
     <Compile Include="CLASS\PaperCut.vb" />
