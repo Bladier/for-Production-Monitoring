@@ -93,7 +93,7 @@ Partial Class frmPaperRoll
         Me.txtSerial.Location = New System.Drawing.Point(117, 48)
         Me.txtSerial.Name = "txtSerial"
         Me.txtSerial.Size = New System.Drawing.Size(173, 21)
-        Me.txtSerial.TabIndex = 8
+        Me.txtSerial.TabIndex = 1
         Me.txtSerial.WatermarkColor = System.Drawing.Color.Gray
         Me.txtSerial.WatermarkText = "Serial"
         '
@@ -102,7 +102,7 @@ Partial Class frmPaperRoll
         Me.txtOuterDiameter.Location = New System.Drawing.Point(117, 76)
         Me.txtOuterDiameter.Name = "txtOuterDiameter"
         Me.txtOuterDiameter.Size = New System.Drawing.Size(173, 21)
-        Me.txtOuterDiameter.TabIndex = 9
+        Me.txtOuterDiameter.TabIndex = 2
         Me.txtOuterDiameter.WatermarkColor = System.Drawing.Color.Gray
         Me.txtOuterDiameter.WatermarkText = "OUter Diameter"
         '
@@ -111,7 +111,8 @@ Partial Class frmPaperRoll
         Me.txtSpoolDiameter.Location = New System.Drawing.Point(117, 104)
         Me.txtSpoolDiameter.Name = "txtSpoolDiameter"
         Me.txtSpoolDiameter.Size = New System.Drawing.Size(173, 21)
-        Me.txtSpoolDiameter.TabIndex = 10
+        Me.txtSpoolDiameter.TabIndex = 3
+        Me.txtSpoolDiameter.Text = "8.5"
         Me.txtSpoolDiameter.WatermarkColor = System.Drawing.Color.Gray
         Me.txtSpoolDiameter.WatermarkText = "Spool Diameter"
         '
@@ -120,7 +121,7 @@ Partial Class frmPaperRoll
         Me.txtPaperThickness.Location = New System.Drawing.Point(117, 133)
         Me.txtPaperThickness.Name = "txtPaperThickness"
         Me.txtPaperThickness.Size = New System.Drawing.Size(173, 21)
-        Me.txtPaperThickness.TabIndex = 11
+        Me.txtPaperThickness.TabIndex = 4
         Me.txtPaperThickness.WatermarkColor = System.Drawing.Color.Gray
         Me.txtPaperThickness.WatermarkText = "Paper Thickness"
         '
@@ -129,7 +130,7 @@ Partial Class frmPaperRoll
         Me.btnsave.Location = New System.Drawing.Point(164, 169)
         Me.btnsave.Name = "btnsave"
         Me.btnsave.Size = New System.Drawing.Size(75, 24)
-        Me.btnsave.TabIndex = 12
+        Me.btnsave.TabIndex = 5
         Me.btnsave.Text = "&Save"
         Me.btnsave.UseVisualStyleBackColor = True
         '
@@ -138,7 +139,7 @@ Partial Class frmPaperRoll
         Me.btnClose.Location = New System.Drawing.Point(245, 169)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 24)
-        Me.btnClose.TabIndex = 13
+        Me.btnClose.TabIndex = 6
         Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
@@ -209,6 +210,7 @@ Partial Class frmPaperRoll
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmPaperRoll"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Paper Roll"
         Me.ResumeLayout(False)
         Me.PerformLayout()

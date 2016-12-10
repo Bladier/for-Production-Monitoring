@@ -29,17 +29,21 @@ Partial Class FrmMain
         Me.menuInitialization = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoadMagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoadIMDToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AddMagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AddPaperRollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusDateandTime = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TmpTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.ProductionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.menuInitialization})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.menuInitialization, Me.MagazineToolStripMenuItem, Me.ProductionToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1003, 24)
@@ -78,6 +82,25 @@ Partial Class FrmMain
         Me.LoadIMDToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
         Me.LoadIMDToolStripMenuItem.Text = "Load &IMD"
         '
+        'MagazineToolStripMenuItem
+        '
+        Me.MagazineToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddMagazineToolStripMenuItem, Me.AddPaperRollToolStripMenuItem})
+        Me.MagazineToolStripMenuItem.Name = "MagazineToolStripMenuItem"
+        Me.MagazineToolStripMenuItem.Size = New System.Drawing.Size(70, 20)
+        Me.MagazineToolStripMenuItem.Text = "Magazine"
+        '
+        'AddMagazineToolStripMenuItem
+        '
+        Me.AddMagazineToolStripMenuItem.Name = "AddMagazineToolStripMenuItem"
+        Me.AddMagazineToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AddMagazineToolStripMenuItem.Text = "A&dd Magazine"
+        '
+        'AddPaperRollToolStripMenuItem
+        '
+        Me.AddPaperRollToolStripMenuItem.Name = "AddPaperRollToolStripMenuItem"
+        Me.AddPaperRollToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AddPaperRollToolStripMenuItem.Text = "Add &Paper Roll"
+        '
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusDateandTime, Me.statusUser})
@@ -104,6 +127,12 @@ Partial Class FrmMain
         'TmpTimer
         '
         Me.TmpTimer.Enabled = True
+        '
+        'ProductionToolStripMenuItem
+        '
+        Me.ProductionToolStripMenuItem.Name = "ProductionToolStripMenuItem"
+        Me.ProductionToolStripMenuItem.Size = New System.Drawing.Size(78, 20)
+        Me.ProductionToolStripMenuItem.Text = "Production"
         '
         'FrmMain
         '
@@ -136,4 +165,8 @@ Partial Class FrmMain
     Friend WithEvents LoadMagazineToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LoadIMDToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TmpTimer As System.Windows.Forms.Timer
+    Friend WithEvents MagazineToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AddMagazineToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AddPaperRollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProductionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

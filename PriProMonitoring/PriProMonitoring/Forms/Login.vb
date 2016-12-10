@@ -6,7 +6,6 @@
         Static wrongLogin As Integer
 
         Dim user As String = DreadKnight(txtusername.Text)
-        'Dim user As String = txtUser.Text
         Dim pass As String = txtpassword.Text
 
         Dim loginUser As New ComputerUser
@@ -32,4 +31,6 @@
         Me.Close()
         ' FrmMain.CheckStoreStatus()
     End Sub
+
+   
 End Class

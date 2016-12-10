@@ -24,18 +24,22 @@ Partial Class frmProductionMonitoring
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnSearch = New System.Windows.Forms.Button()
-        Me.txtSEarch = New PriProMonitoring.watermark()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.lvItem = New System.Windows.Forms.ListView()
+        Me.lvpapercuts = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnLoad = New System.Windows.Forms.Button()
-        Me.Watermark1 = New PriProMonitoring.watermark()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.txtmagazine = New PriProMonitoring.watermark()
+        Me.txtSEarch = New PriProMonitoring.watermark()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -58,15 +62,6 @@ Partial Class frmProductionMonitoring
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
-        'txtSEarch
-        '
-        Me.txtSEarch.Location = New System.Drawing.Point(72, 15)
-        Me.txtSEarch.Name = "txtSEarch"
-        Me.txtSEarch.Size = New System.Drawing.Size(303, 20)
-        Me.txtSEarch.TabIndex = 0
-        Me.txtSEarch.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSEarch.WatermarkText = "Search . . ."
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -79,9 +74,9 @@ Partial Class frmProductionMonitoring
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.lvItem)
+        Me.GroupBox2.Controls.Add(Me.lvpapercuts)
         Me.GroupBox2.Controls.Add(Me.btnLoad)
-        Me.GroupBox2.Controls.Add(Me.Watermark1)
+        Me.GroupBox2.Controls.Add(Me.txtmagazine)
         Me.GroupBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.GroupBox2.Location = New System.Drawing.Point(12, 67)
         Me.GroupBox2.Name = "GroupBox2"
@@ -90,18 +85,18 @@ Partial Class frmProductionMonitoring
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Magazine"
         '
-        'lvItem
+        'lvpapercuts
         '
-        Me.lvItem.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader6, Me.ColumnHeader9})
-        Me.lvItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lvItem.FullRowSelect = True
-        Me.lvItem.GridLines = True
-        Me.lvItem.Location = New System.Drawing.Point(11, 43)
-        Me.lvItem.Name = "lvItem"
-        Me.lvItem.Size = New System.Drawing.Size(456, 197)
-        Me.lvItem.TabIndex = 6
-        Me.lvItem.UseCompatibleStateImageBehavior = False
-        Me.lvItem.View = System.Windows.Forms.View.Details
+        Me.lvpapercuts.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader6, Me.ColumnHeader9})
+        Me.lvpapercuts.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lvpapercuts.FullRowSelect = True
+        Me.lvpapercuts.GridLines = True
+        Me.lvpapercuts.Location = New System.Drawing.Point(11, 43)
+        Me.lvpapercuts.Name = "lvpapercuts"
+        Me.lvpapercuts.Size = New System.Drawing.Size(456, 197)
+        Me.lvpapercuts.TabIndex = 6
+        Me.lvpapercuts.UseCompatibleStateImageBehavior = False
+        Me.lvpapercuts.View = System.Windows.Forms.View.Details
         '
         'ColumnHeader1
         '
@@ -112,6 +107,11 @@ Partial Class frmProductionMonitoring
         '
         Me.ColumnHeader2.Text = "Paper Cut"
         Me.ColumnHeader2.Width = 0
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "PAPERCUT"
+        Me.ColumnHeader3.Width = 0
         '
         'ColumnHeader6
         '
@@ -134,30 +134,63 @@ Partial Class frmProductionMonitoring
         Me.btnLoad.Text = "Load Sales"
         Me.btnLoad.UseVisualStyleBackColor = True
         '
-        'Watermark1
+        'ToolStrip1
         '
-        Me.Watermark1.Location = New System.Drawing.Point(10, 17)
-        Me.Watermark1.Name = "Watermark1"
-        Me.Watermark1.Size = New System.Drawing.Size(459, 20)
-        Me.Watermark1.TabIndex = 0
-        Me.Watermark1.WatermarkColor = System.Drawing.Color.Gray
-        Me.Watermark1.WatermarkText = "Search . . ."
+        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 404)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(497, 25)
+        Me.ToolStrip1.TabIndex = 7
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(68, 22)
+        Me.ToolStripButton1.Text = "Remaining"
+        '
+        'txtmagazine
+        '
+        Me.txtmagazine.Location = New System.Drawing.Point(10, 17)
+        Me.txtmagazine.Name = "txtmagazine"
+        Me.txtmagazine.ReadOnly = True
+        Me.txtmagazine.Size = New System.Drawing.Size(459, 20)
+        Me.txtmagazine.TabIndex = 0
+        Me.txtmagazine.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtmagazine.WatermarkText = "Magazine"
+        '
+        'txtSEarch
+        '
+        Me.txtSEarch.Location = New System.Drawing.Point(72, 15)
+        Me.txtSEarch.Name = "txtSEarch"
+        Me.txtSEarch.Size = New System.Drawing.Size(303, 20)
+        Me.txtSEarch.TabIndex = 0
+        Me.txtSEarch.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSEarch.WatermarkText = "Search . . ."
         '
         'frmProductionMonitoring
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(494, 358)
+        Me.ClientSize = New System.Drawing.Size(497, 429)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Location = New System.Drawing.Point(850, 150)
         Me.Name = "frmProductionMonitoring"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Production Monitoring"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
@@ -166,10 +199,13 @@ Partial Class frmProductionMonitoring
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents btnLoad As System.Windows.Forms.Button
-    Friend WithEvents Watermark1 As PriProMonitoring.watermark
-    Friend WithEvents lvItem As System.Windows.Forms.ListView
+    Friend WithEvents txtmagazine As PriProMonitoring.watermark
+    Friend WithEvents lvpapercuts As System.Windows.Forms.ListView
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader6 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader9 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
+    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
 End Class

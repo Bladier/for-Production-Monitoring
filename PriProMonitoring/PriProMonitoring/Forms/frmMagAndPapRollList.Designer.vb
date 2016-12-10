@@ -28,12 +28,12 @@ Partial Class frmMagAndPapRollList
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.txtSearch = New PriProMonitoring.watermark()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnSelect = New System.Windows.Forms.Button()
+        Me.txtSearch = New PriProMonitoring.watermark()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -46,7 +46,7 @@ Partial Class frmMagAndPapRollList
         Me.LVPAPROLL.Location = New System.Drawing.Point(6, 63)
         Me.LVPAPROLL.Name = "LVPAPROLL"
         Me.LVPAPROLL.Size = New System.Drawing.Size(456, 270)
-        Me.LVPAPROLL.TabIndex = 10
+        Me.LVPAPROLL.TabIndex = 1
         Me.LVPAPROLL.UseCompatibleStateImageBehavior = False
         Me.LVPAPROLL.View = System.Windows.Forms.View.Details
         '
@@ -80,17 +80,8 @@ Partial Class frmMagAndPapRollList
         Me.GroupBox1.Location = New System.Drawing.Point(6, 3)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(456, 54)
-        Me.GroupBox1.TabIndex = 11
+        Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
-        '
-        'txtSearch
-        '
-        Me.txtSearch.Location = New System.Drawing.Point(72, 19)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(274, 22)
-        Me.txtSearch.TabIndex = 14
-        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSearch.WatermarkText = "Search . . ."
         '
         'btnSearch
         '
@@ -99,7 +90,7 @@ Partial Class frmMagAndPapRollList
         Me.btnSearch.Location = New System.Drawing.Point(352, 12)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(90, 34)
-        Me.btnSearch.TabIndex = 12
+        Me.btnSearch.TabIndex = 1
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
@@ -121,7 +112,7 @@ Partial Class frmMagAndPapRollList
         Me.btnClose.Location = New System.Drawing.Point(387, 339)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 31)
-        Me.btnClose.TabIndex = 14
+        Me.btnClose.TabIndex = 3
         Me.btnClose.Text = "&Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
@@ -141,9 +132,18 @@ Partial Class frmMagAndPapRollList
         Me.btnSelect.Location = New System.Drawing.Point(306, 339)
         Me.btnSelect.Name = "btnSelect"
         Me.btnSelect.Size = New System.Drawing.Size(75, 31)
-        Me.btnSelect.TabIndex = 13
+        Me.btnSelect.TabIndex = 2
         Me.btnSelect.Text = "&Select"
         Me.btnSelect.UseVisualStyleBackColor = True
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Location = New System.Drawing.Point(72, 19)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(274, 22)
+        Me.txtSearch.TabIndex = 0
+        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSearch.WatermarkText = "Search . . ."
         '
         'frmMagAndPapRollList
         '
