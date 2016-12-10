@@ -55,6 +55,7 @@ Partial Class Login
         Me.txtpassword.Name = "txtpassword"
         Me.txtpassword.Size = New System.Drawing.Size(173, 22)
         Me.txtpassword.TabIndex = 1
+        Me.txtpassword.UseSystemPasswordChar = True
         Me.txtpassword.WatermarkColor = System.Drawing.Color.Gray
         Me.txtpassword.WatermarkText = "Password"
         '

@@ -1,7 +1,7 @@
 ﻿Public Class frmProductionMonitoring
 
     Private Sub btnLoad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLoad.Click
-        MsgBox(LOADMAGID(txtmagazine.Text))
+
     End Sub
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
@@ -38,11 +38,21 @@
     End Function
 
     Private Sub frmProductionMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-        'If FrmMain.statusDateandTime.Text = "Date Not Set" Then
-        '    Me.Enabled = False
-        'Else
-        '    Me.Enabled = True
-        'End If
+        ToolRemaining.Text = "Remaining: " & LoadRemaining()
+        txtmagazine.Text = GetMag()
     End Sub
+
+    Private Function LoadRemaining() As Double
+        Dim mysql As String = "SELECT * FROM tblpaperRoll WHERE status = '1'"
+        Dim DS As DataSet = LoadSQL(mysql, "tblpaperRoll")
+        Return DS.Tables(0).Rows(0).Item("TOTAL_LENGTH")
+    End Function
+
+
+    Private Function GetMag() As String
+        Dim mysql As String = " SELECT * FROM TBLMAGAZINE M INNER JOIN TBLPAPERROLL P ON M.MAG_ID=P.MAG_IDS" _
+                              & " WHERE STATUS <> 1 "
+        Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERCUT")
+        Return ds.Tables(0).Rows(0).Item("MAGDESCRIPTION")
+    End Function
 End Class

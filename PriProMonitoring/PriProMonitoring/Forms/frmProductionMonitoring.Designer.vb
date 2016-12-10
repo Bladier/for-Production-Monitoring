@@ -33,13 +33,13 @@ Partial Class frmProductionMonitoring
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnLoad = New System.Windows.Forms.Button()
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolRemaining = New System.Windows.Forms.ToolStripStatusLabel()
         Me.txtmagazine = New PriProMonitoring.watermark()
         Me.txtSEarch = New PriProMonitoring.watermark()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        Me.ToolStrip1.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -134,22 +134,21 @@ Partial Class frmProductionMonitoring
         Me.btnLoad.Text = "Load Sales"
         Me.btnLoad.UseVisualStyleBackColor = True
         '
-        'ToolStrip1
+        'StatusStrip1
         '
-        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 404)
-        Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(497, 25)
-        Me.ToolStrip1.TabIndex = 7
-        Me.ToolStrip1.Text = "ToolStrip1"
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolRemaining})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 407)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
+        Me.StatusStrip1.Size = New System.Drawing.Size(497, 22)
+        Me.StatusStrip1.TabIndex = 7
+        Me.StatusStrip1.Text = "StatusStrip1"
         '
-        'ToolStripButton1
+        'ToolRemaining
         '
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(68, 22)
-        Me.ToolStripButton1.Text = "Remaining"
+        Me.ToolRemaining.Name = "ToolRemaining"
+        Me.ToolRemaining.Size = New System.Drawing.Size(64, 17)
+        Me.ToolRemaining.Text = "Remaining"
         '
         'txtmagazine
         '
@@ -176,7 +175,7 @@ Partial Class frmProductionMonitoring
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(497, 429)
-        Me.Controls.Add(Me.ToolStrip1)
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Location = New System.Drawing.Point(850, 150)
@@ -187,8 +186,8 @@ Partial Class frmProductionMonitoring
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        Me.ToolStrip1.ResumeLayout(False)
-        Me.ToolStrip1.PerformLayout()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -206,6 +205,6 @@ Partial Class frmProductionMonitoring
     Friend WithEvents ColumnHeader9 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
-    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
+    Friend WithEvents ToolRemaining As System.Windows.Forms.ToolStripStatusLabel
 End Class

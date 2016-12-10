@@ -145,7 +145,7 @@ Partial Class FrmMain
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "FrmMain"
-        Me.Text = "FrmMain"
+        Me.Text = "Monitoring System"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()

@@ -33,4 +33,15 @@
     End Sub
 
    
+    Private Sub txtusername_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtusername.KeyPress
+        If isEnter(e) Then
+            txtpassword.Focus()
+        End If
+    End Sub
+
+    Private Sub txtpassword_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtpassword.KeyPress
+        If isEnter(e) Then
+            btnLogin.PerformClick()
+        End If
+    End Sub
 End Class
