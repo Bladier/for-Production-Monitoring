@@ -17,20 +17,22 @@
                 End
             End If
             MsgBox("Invalid Username and password", MsgBoxStyle.Critical)
+            txtusername.Text = ""
+            txtpassword.Text = ""
+            txtusername.Focus()
             Exit Sub
         End If
 
         ' Success!
 
-        Dim NAME As String = loginUser.lOGINUSERNAME(user)
-        FrmMain.statusUser.Text = NAME
-        MsgBox("Welcome " & NAME)
+        FrmMain.statusUser.Text = loginUser.NAME
+        MsgBox("Welcome " & loginUser.CODE)
 
 
         FrmMain.Show()
         FrmMain.NotYetLogin(False)
         Me.Close()
-        ' FrmMain.CheckStoreStatus()
+
     End Sub
 
    

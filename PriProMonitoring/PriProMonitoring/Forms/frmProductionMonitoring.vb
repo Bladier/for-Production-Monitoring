@@ -9,35 +9,80 @@
         databasePOS.dbNamePOS = GetOption("DatabasePOS")
         For Each item As ListViewItem In lvpapercuts.Items
 
-            Dim MYSQLSALES As String = "SELECT * FROM POSITEM WHERE PAPCUT_ITEMCODE '" & item.SubItems(5).Text & "' """
+            Dim MYSQLSALES As String = "SELECT  FIRST 20 I.ID,I.ITEMNO,M.ITEMNAME AS DESCRIPTION,I.QTY,I.PAPCUT_ITEMCODE,E.TRANSDATE FROM POSITEM I " & _
+                                        " INNER JOIN POSENTRY E ON I.POSENTRYID = E.ID " & _
+                                        " INNER JOIN ITEMMASTER M ON I.ITEMNO = M.ITEMNO WHERE PAPCUT_ITEMCODE ='" & item.SubItems(6).Text & "' "
             Dim DSSLES As DataSet = LoadSQLPOS(MYSQLSALES, "TBLPOSITEM")
+
             For Each drSales As DataRow In DSSLES.Tables(0).Rows
-                saveSales = New production
-                With saveSales
+                If drSales.Item("ID") = "" Then Exit For
 
-                End With
+                Dim mysqlPro As String = "SELECT * FROM TBLPRODUCTION where sales_ID = '" & drSales.Item("ID") & "'"
+                Dim dsPRo As DataSet = LoadSQL(mysqlPro, "tblProduction")
+
+                If dsPRo.Tables(0).Rows.Count = 1 Then
+                    With dsPRo.Tables(0).Rows(0)
+                        .Item("ItemCode") = drSales.Item("ItemNo")
+                        .Item("Description") = drSales.Item("Description")
+                        .Item("Quantity") = drSales.Item("QTY")
+                        .Item("created_at") = Now
+                        .Item("status") = 0
+                        .Item("papcut_itemcode") = drSales.Item("Papcut_itemcode")
+                    End With
+                    database.SaveEntry(dsPRo, False)
+
+                Else
+                    Dim dsNewRow As DataRow
+                    dsNewRow = dsPRo.Tables(0).NewRow
+                    With dsNewRow
+                        .Item("ItemCode") = drSales.Item("ItemNo")
+                        .Item("Description") = drSales.Item("Description")
+                        .Item("Quantity") = drSales.Item("QTY")
+                        .Item("created_at") = Now
+                        .Item("status") = 0
+                        .Item("papcut_itemcode") = drSales.Item("Papcut_itemcode")
+                        .Item("Sales_ID") = drSales.Item("ID")
+                    End With
+                    dsPRo.Tables(0).Rows.Add(dsNewRow)
+                    database.SaveEntry(dsPRo)
+                End If
             Next
+            'Next
 
-            Dim mysql As String = "SELECT * FROM TBLPRODUCTION WHERE ITEMCODE = '" & item.SubItems(6).Text & "'"
-            ds = LoadSQL(mysql, "tblProduction")
+            'Dim DSSLES As DataSet = LoadSQLPOS(MYSQLSALES, "TBLPOSITEM")
+            'For Each drSales As DataRow In DSSLES.Tables(0).Rows
+            '    saveSales = New production
+            '    With saveSales
+            '        .itemcode = drSales.Item("ITEMNO")
+            '        .DESCRIPTION = drSales.Item("DESCRIPTION")
+            '        .QTY = drSales.Item("QTY")
+            '        .papcut_Itemcode = drSales.Item("PAPCUT_ITEMCODE")
+            '        .SALES_id = drSales.Item("ID")
+            '    End With
+            '    saveSales.saveProduction()
+            'Next
+            ' For Each item As ListViewItem In lvpapercuts.Items
+                Dim mysql As String = "SELECT * FROM TBLPRODUCTION WHERE papcut_itemcode = '" & item.SubItems(6).Text & "'"
+                ds = LoadSQL(mysql, "tblProduction")
 
-            Dim SubTotal As Double = (ds.Tables(0).Rows(0).Item(5) * item.SubItems(5).Text)
+                For Each dr As DataRow In ds.Tables(0).Rows
 
-            For Each dr As DataRow In ds.Tables(0).Rows
+                    Dim SubTotal As Double = (ds.Tables(0).Rows(0).Item(5) * item.SubItems(5).Text)
 
-                dr.Item("MAG_ID") = item.SubItems(1).Text
-                dr("Paproll_SERIAL") = item.SubItems(2).Text
-                dr.Item("Papercut") = item.SubItems(5).Text
-                dr.Item("Papcut_Description") = item.SubItems(7).Text
-                dr.Item("SubTotal_Length") = SubTotal
-                database.SaveEntry(ds, False)
+                    dr.Item("MAG_ID") = item.SubItems(1).Text
+                    dr("Paproll_SERIAL") = item.SubItems(2).Text
+                    dr.Item("Papercut") = item.SubItems(5).Text
+                    dr.Item("Papcut_Description") = item.SubItems(7).Text
+                    dr.Item("SubTotal_Length") = SubTotal
+                    database.SaveEntry(ds, False)
 
 
-                SelectedPaPRoll = New PaperRoll
-                SelectedPaPRoll.TotalLength = SubTotal * meter
-                SelectedPaPRoll.Updatepaper()
-            Next
+                    SelectedPaPRoll = New PaperRoll
+                    SelectedPaPRoll.TotalLength = SubTotal * meter
+                    SelectedPaPRoll.Updatepaper()
+                Next
         Next
+        MsgBox("Sales loaded. . .", MsgBoxStyle.Information)
     End Sub
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
@@ -81,7 +126,6 @@
 
     Private Sub frmProductionMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         txtmagazine.Text = GetMag()
-
     End Sub
 
     Private Function GetMag() As String

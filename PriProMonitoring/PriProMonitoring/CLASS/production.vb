@@ -112,6 +112,27 @@
             _status = value
         End Set
     End Property
+
+    Private _papcut_itemcode As String
+    Public Property papcut_Itemcode() As String
+        Get
+            Return _papcut_itemcode
+        End Get
+        Set(ByVal value As String)
+            _papcut_itemcode = value
+        End Set
+    End Property
+
+    Private _SALES_id As String
+    Public Property SALES_id() As String
+        Get
+            Return _SALES_id
+        End Get
+        Set(ByVal value As String)
+            _SALES_id = value
+        End Set
+    End Property
+
 #End Region
 
 #Region "Fuctions"
@@ -122,9 +143,37 @@
 
     End Sub
 
+    Friend Sub saveProduction()
+        Dim mysql As String = "SELECT * FROM TBLPRODUCTION where sales_ID = '" & _SALES_id & "'"
+        Dim ds As DataSet = LoadSQL(mysql, "tblProduction")
 
-    Private Sub saveProduction()
+        If ds.Tables(0).Rows.Count = 1 Then
+            With ds.Tables(0).Rows(0)
+                .Item("ItemCode") = _itemcode
+                .Item("Description") = _DESCRIPTION
+                .Item("Quantity") = _QTY
+                .Item("created_at") = Now
+                .Item("status") = 0
+                .Item("papcut_itemcode") = _papcut_itemcode
+            End With
+            database.SaveEntry(ds, False)
 
+        Else
+            Dim dsNewRow As DataRow
+            dsNewRow = ds.Tables(0).NewRow
+            With dsNewRow
+                .Item("ItemCode") = _itemcode
+                .Item("Description") = _DESCRIPTION
+                .Item("Quantity") = _QTY
+                .Item("created_at") = Now
+                .Item("status") = 0
+                .Item("papcut_itemcode") = _papcut_itemcode
+                .Item("Sales_ID") = _SALES_id
+            End With
+            ds.Tables(0).Rows.Add(dsNewRow)
+            database.SaveEntry(ds)
+        End If
+        
     End Sub
 #End Region
 

@@ -25,7 +25,8 @@ Module mod_system
 
     Public CurrentDate As Date = Now
     Public POSuser As New ComputerUser
-    Public UserID As Integer = POSuser.UserID
+
+    ' Public codename As String = GetCodename(FrmMain.statusUser.Text)
     'Public BranchCode As String = GetOption("BranchCode")
     'Public branchName As String = GetOption("BranchName")
     'Public AREACODE As String = GetOption("BranchArea")
@@ -248,11 +249,7 @@ Module mod_system
     '    Return Nothing
     'End Function
 
-    ''' <summary>
-    ''' Function use to input only numbers
-    ''' </summary>
-    ''' <param name="e">Keypress Event</param>
-    ''' <remarks>Use the Keypress Event when calling this function</remarks>
+  
     Friend Function DigitOnly(ByVal e As System.Windows.Forms.KeyPressEventArgs, Optional isWhole As Boolean = False)
         Console.WriteLine("char: " & e.KeyChar & " -" & Char.IsDigit(e.KeyChar))
         If e.KeyChar <> ControlChars.Back Then
@@ -359,6 +356,19 @@ Module mod_system
         Console.WriteLine("SAP Account Changed")
     End Sub
 
+    Public Function GetCodename(ByVal Name As String)
+
+        databasePOS.dbNamePOS = GetOption("DatabasePOS")
+        Dim mysql As String = "SELECT * FROM SYSworkgroup where name ='" & Name & "'"
+        Dim ds As DataSet = LoadSQLPOS(mysql, "SYSWORKGROUP")
+
+        If ds.Tables("SYSWORKGROUP").Rows.Count <= 0 Then
+            Return Nothing
+        End If
+
+        Return ds.Tables(0).Rows(0).Item("Code")
+    End Function
+
     ' ''' <summary>
     ' ''' Extract Data from the database
     ' ''' </summary>
@@ -448,7 +458,7 @@ Module mod_system
 
 
     ' HASHTABLE FUNCTIONS
-    Public Function GetIDbyName(name As String, ht As Hashtable) As Integer
+    Public Function GetIDbyName(ByVal name As String, ByVal ht As Hashtable) As Integer
         For Each dt As DictionaryEntry In ht
             If dt.Value = name Then
                 Return dt.Key
@@ -458,7 +468,7 @@ Module mod_system
         Return 0
     End Function
 
-    Public Function GetNameByID(id As Integer, ht As Hashtable) As String
+    Public Function GetNameByID(ByVal id As Integer, ByVal ht As Hashtable) As String
         For Each dt As DictionaryEntry In ht
             If dt.Key = id Then
                 Return dt.Value
@@ -467,15 +477,6 @@ Module mod_system
 
         Return "ES" & "KIE GWA" & "PO"
     End Function
-    ' END - HASHTABLE FUNCTIONS
-
-    'Public Function CheckOTP() As Boolean
-    '    diagOTP.Show()
-    '    diagOTP.TopMost = True
-    '    'Return False
-    '    Return True
-    'End Function
-
 
 #Region "Log Module"
     Const LOG_FILE As String = "syslog.txt"

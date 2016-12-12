@@ -140,7 +140,6 @@
         End If
 
         With ds.Tables(MainTable).Rows(0)
-            '.Item("ItemClass") = _itemClassName
             .Item("MagItemcode") = _MagItemcode
             .Item("Magdescription") = _MagDescription
         End With
