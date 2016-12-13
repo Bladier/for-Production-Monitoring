@@ -66,6 +66,7 @@
 
         If LVPAPROLL.SelectedItems.Count = 0 Then
             LVPAPROLL.Items(0).Focused = True
+            Exit Sub
         End If
         Dim PAPSERIAL As String = LVPAPROLL.SelectedItems(0).SubItems(2).Text
 

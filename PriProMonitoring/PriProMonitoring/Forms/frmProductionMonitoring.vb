@@ -10,13 +10,13 @@
         databasePOS.dbNamePOS = GetOption("DatabasePOS")
 
         If Not CompareSalesRowToPRoduction() Then
-            MsgBox("No new data in sales", MsgBoxStyle.Information, "Production")
+            MsgBox("No new data in sales", MsgBoxStyle.Exclamation, "Production")
             Exit Sub
         End If
 
         For Each item As ListViewItem In lvpapercuts.Items
 
-            Dim MYSQLSALES As String = "SELECT  FIRST 20 I.ID,I.ITEMNO,M.ITEMNAME AS DESCRIPTION,I.QTY,I.PAPCUT_ITEMCODE,E.TRANSDATE FROM POSITEM I " & _
+            Dim MYSQLSALES As String = "SELECT  FIRST 30 I.ID,I.ITEMNO,M.ITEMNAME AS DESCRIPTION,I.QTY,I.PAPCUT_ITEMCODE,E.TRANSDATE FROM POSITEM I " & _
                                         " INNER JOIN POSENTRY E ON I.POSENTRYID = E.ID " & _
                                         " INNER JOIN ITEMMASTER M ON I.ITEMNO = M.ITEMNO WHERE PAPCUT_ITEMCODE ='" & item.SubItems(6).Text & "' "
             Dim DSSLES As DataSet = LoadSQLPOS(MYSQLSALES, "TBLPOSITEM")
@@ -56,9 +56,14 @@
                 SelectedPaPRoll.TotalLength = SubTotal * meter
                 SelectedPaPRoll.Updatepaper()
             Next
+
+            tpProgressBar.Value = tpProgressBar.Value + 1
+            Application.DoEvents()
+            Label1.Text = String.Format("{0}%", ((tpProgressBar.Value / tpProgressBar.Maximum) * 100).ToString("F2"))
         Next
 
-        MsgBox("Sales loaded. . .", MsgBoxStyle.Information, "Production")
+        If MsgBox("Sales loaded. . .", MsgBoxStyle.Information, "Production" & _
+            "Migrating...") = MsgBoxResult.Ok Then tpProgressBar.Minimum = 0 : tpProgressBar.Value = 0 : Label1.Text = "0.00%"
     End Sub
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
@@ -143,4 +148,8 @@
 
         Return False
     End Function
+
+    Private Sub tpProgressBar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tpProgressBar.Click
+
+    End Sub
 End Class

@@ -38,11 +38,14 @@ Partial Class frmProductionMonitoring
         Me.btnLoad = New System.Windows.Forms.Button()
         Me.txtmagazine = New PriProMonitoring.watermark()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.tpProgressBar = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolRemaining = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -79,12 +82,11 @@ Partial Class frmProductionMonitoring
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.lvpapercuts)
-        Me.GroupBox2.Controls.Add(Me.btnLoad)
         Me.GroupBox2.Controls.Add(Me.txtmagazine)
         Me.GroupBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.GroupBox2.Location = New System.Drawing.Point(12, 67)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(475, 279)
+        Me.GroupBox2.Size = New System.Drawing.Size(475, 331)
         Me.GroupBox2.TabIndex = 6
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Magazine"
@@ -95,9 +97,9 @@ Partial Class frmProductionMonitoring
         Me.lvpapercuts.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvpapercuts.FullRowSelect = True
         Me.lvpapercuts.GridLines = True
-        Me.lvpapercuts.Location = New System.Drawing.Point(11, 43)
+        Me.lvpapercuts.Location = New System.Drawing.Point(9, 43)
         Me.lvpapercuts.Name = "lvpapercuts"
-        Me.lvpapercuts.Size = New System.Drawing.Size(456, 197)
+        Me.lvpapercuts.Size = New System.Drawing.Size(456, 282)
         Me.lvpapercuts.TabIndex = 6
         Me.lvpapercuts.UseCompatibleStateImageBehavior = False
         Me.lvpapercuts.View = System.Windows.Forms.View.Details
@@ -135,7 +137,7 @@ Partial Class frmProductionMonitoring
         'ColumnHeader4
         '
         Me.ColumnHeader4.Text = "ItemCode"
-        Me.ColumnHeader4.Width = 160
+        Me.ColumnHeader4.Width = 0
         '
         'ColumnHeader5
         '
@@ -146,7 +148,7 @@ Partial Class frmProductionMonitoring
         '
         Me.btnLoad.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnLoad.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnLoad.Location = New System.Drawing.Point(157, 244)
+        Me.btnLoad.Location = New System.Drawing.Point(9, 13)
         Me.btnLoad.Name = "btnLoad"
         Me.btnLoad.Size = New System.Drawing.Size(182, 27)
         Me.btnLoad.TabIndex = 2
@@ -155,7 +157,7 @@ Partial Class frmProductionMonitoring
         '
         'txtmagazine
         '
-        Me.txtmagazine.Location = New System.Drawing.Point(10, 17)
+        Me.txtmagazine.Location = New System.Drawing.Point(7, 17)
         Me.txtmagazine.Name = "txtmagazine"
         Me.txtmagazine.ReadOnly = True
         Me.txtmagazine.Size = New System.Drawing.Size(459, 20)
@@ -165,13 +167,19 @@ Partial Class frmProductionMonitoring
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripProgressBar1, Me.ToolRemaining})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 407)
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tpProgressBar, Me.ToolRemaining})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 401)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode
-        Me.StatusStrip1.Size = New System.Drawing.Size(497, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(720, 26)
         Me.StatusStrip1.TabIndex = 7
         Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'tpProgressBar
+        '
+        Me.tpProgressBar.Maximum = 20
+        Me.tpProgressBar.Name = "tpProgressBar"
+        Me.tpProgressBar.Size = New System.Drawing.Size(100, 20)
         '
         'ToolRemaining
         '
@@ -180,23 +188,41 @@ Partial Class frmProductionMonitoring
         Me.ToolRemaining.Size = New System.Drawing.Size(64, 17)
         Me.ToolRemaining.Text = "Remaining"
         '
-        'ToolStripProgressBar1
+        'Label1
         '
-        Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
-        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(100, 16)
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.White
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.Label1.Location = New System.Drawing.Point(431, 409)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(39, 13)
+        Me.Label1.TabIndex = 7
+        Me.Label1.Text = "Label1"
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.btnLoad)
+        Me.GroupBox3.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.GroupBox3.Location = New System.Drawing.Point(493, 168)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(202, 48)
+        Me.GroupBox3.TabIndex = 6
+        Me.GroupBox3.TabStop = False
         '
         'frmProductionMonitoring
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(497, 429)
+        Me.ClientSize = New System.Drawing.Size(720, 427)
+        Me.Controls.Add(Me.GroupBox3)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Location = New System.Drawing.Point(850, 150)
+        Me.Location = New System.Drawing.Point(600, 150)
         Me.Name = "frmProductionMonitoring"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Production Monitoring"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
@@ -204,6 +230,7 @@ Partial Class frmProductionMonitoring
         Me.GroupBox2.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -225,5 +252,7 @@ Partial Class frmProductionMonitoring
     Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader7 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ToolStripProgressBar1 As System.Windows.Forms.ToolStripProgressBar
+    Friend WithEvents tpProgressBar As System.Windows.Forms.ToolStripProgressBar
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
 End Class

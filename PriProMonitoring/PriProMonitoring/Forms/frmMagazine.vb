@@ -214,4 +214,5 @@ Public Class frmMagazine
         Me.Close()
     End Sub
    
+  
 End Class
