@@ -136,12 +136,41 @@
 #End Region
 
 #Region "Fuctions"
-    Private Sub loadPRoduction(ByVal id As Integer)
-        Dim mysql As String = "SELECT * FROM TBL"
+    Friend Sub loadPRoduction(ByVal PapItemcode As String)
+        Dim mysql As String = "SELECT * FROM TBLPRODUCTION WHERE PRODUCTION_ID = '" & PapItemcode & "'"
+        Dim ds As DataSet = LoadSQL(mysql, "tblPRoduction")
+        If ds.Tables(0).Rows.Count <= 0 Then
+            MsgBox("Unable to load production", MsgBoxStyle.Information)
+        End If
 
-
+        For Each dr As DataRow In ds.Tables(0).Rows
+            loadProductionByrow(dr)
+        Next
 
     End Sub
+
+    Public Sub loadProductionByrow(ByVal dr As DataRow)
+        With dr
+            _ID = .Item("Production_ID")
+            _MagID = .Item("Mag_ID")
+            _Paproll_serial = .Item("Paproll_serial")
+            _itemcode = .Item("Itemcode")
+            _DESCRIPTION = .Item("Description")
+            QTY = .Item("Quantity")
+            _Papercut = .Item("Papercut")
+            _PapercutDesc = .Item("Papcut_description")
+            _Subtotal_lngth = .Item("Subtotal_length")
+            _Created_at = .Item("Created_at")
+            _status = .Item("Status")
+            _papcut_itemcode = .Item("Papcut_itemcode")
+            _SALES_id = .Item("Sales_ID")
+        End With
+    End Sub
+
+    Public Sub loadProductionrow(ByVal dr As DataRow)
+        loadProductionByrow(dr)
+    End Sub
+
 
     Friend Sub saveProduction()
         Dim mysql As String = "SELECT * FROM TBLPRODUCTION where sales_ID = '" & _SALES_id & "'"
@@ -153,11 +182,9 @@
                 .Item("Description") = _DESCRIPTION
                 .Item("Quantity") = _QTY
                 .Item("created_at") = Now
-                .Item("status") = 0
                 .Item("papcut_itemcode") = _papcut_itemcode
             End With
             database.SaveEntry(ds, False)
-
         Else
             Dim dsNewRow As DataRow
             dsNewRow = ds.Tables(0).NewRow
@@ -173,8 +200,9 @@
             ds.Tables(0).Rows.Add(dsNewRow)
             database.SaveEntry(ds)
         End If
-        
+
     End Sub
+
 #End Region
 
 End Class

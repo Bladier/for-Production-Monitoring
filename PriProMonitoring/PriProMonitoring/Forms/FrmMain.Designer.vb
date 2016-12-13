@@ -119,15 +119,17 @@ Partial Class FrmMain
         'statusDateandTime
         '
         Me.statusDateandTime.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.statusDateandTime.Margin = New System.Windows.Forms.Padding(0, 0, 0, 2)
         Me.statusDateandTime.Name = "statusDateandTime"
-        Me.statusDateandTime.Size = New System.Drawing.Size(73, 17)
+        Me.statusDateandTime.Size = New System.Drawing.Size(73, 20)
         Me.statusDateandTime.Text = "Date Not Set"
         '
         'statusUser
         '
         Me.statusUser.BackColor = System.Drawing.Color.OrangeRed
+        Me.statusUser.Margin = New System.Windows.Forms.Padding(0, 0, 0, 2)
         Me.statusUser.Name = "statusUser"
-        Me.statusUser.Size = New System.Drawing.Size(30, 17)
+        Me.statusUser.Size = New System.Drawing.Size(30, 20)
         Me.statusUser.Text = "User"
         '
         'TmpTimer

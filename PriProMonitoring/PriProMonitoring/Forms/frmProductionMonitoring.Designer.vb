@@ -31,14 +31,15 @@ Partial Class frmProductionMonitoring
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnLoad = New System.Windows.Forms.Button()
         Me.txtmagazine = New PriProMonitoring.watermark()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolRemaining = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -121,16 +122,31 @@ Partial Class frmProductionMonitoring
         Me.ColumnHeader6.Text = "ROLLSTATUS"
         Me.ColumnHeader6.Width = 0
         '
+        'ColumnHeader7
+        '
+        Me.ColumnHeader7.Text = "Total_length"
+        Me.ColumnHeader7.Width = 0
+        '
         'ColumnHeader9
         '
         Me.ColumnHeader9.Text = "PAPERCUT"
         Me.ColumnHeader9.Width = 0
         '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "ItemCode"
+        Me.ColumnHeader4.Width = 160
+        '
+        'ColumnHeader5
+        '
+        Me.ColumnHeader5.Text = "Description"
+        Me.ColumnHeader5.Width = 291
+        '
         'btnLoad
         '
         Me.btnLoad.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnLoad.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnLoad.Location = New System.Drawing.Point(157, 246)
+        Me.btnLoad.Location = New System.Drawing.Point(157, 244)
         Me.btnLoad.Name = "btnLoad"
         Me.btnLoad.Size = New System.Drawing.Size(182, 27)
         Me.btnLoad.TabIndex = 2
@@ -149,7 +165,7 @@ Partial Class frmProductionMonitoring
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolRemaining})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripProgressBar1, Me.ToolRemaining})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 407)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode
@@ -164,20 +180,10 @@ Partial Class frmProductionMonitoring
         Me.ToolRemaining.Size = New System.Drawing.Size(64, 17)
         Me.ToolRemaining.Text = "Remaining"
         '
-        'ColumnHeader4
+        'ToolStripProgressBar1
         '
-        Me.ColumnHeader4.Text = "ItemCode"
-        Me.ColumnHeader4.Width = 160
-        '
-        'ColumnHeader5
-        '
-        Me.ColumnHeader5.Text = "Description"
-        Me.ColumnHeader5.Width = 291
-        '
-        'ColumnHeader7
-        '
-        Me.ColumnHeader7.Text = "Total_length"
-        Me.ColumnHeader7.Width = 0
+        Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
+        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(100, 16)
         '
         'frmProductionMonitoring
         '
@@ -219,4 +225,5 @@ Partial Class frmProductionMonitoring
     Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader7 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ToolStripProgressBar1 As System.Windows.Forms.ToolStripProgressBar
 End Class

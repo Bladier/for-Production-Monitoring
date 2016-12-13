@@ -1,12 +1,19 @@
 ﻿Public Class frmProductionMonitoring
-    Const meter As Double = 0.0254
+    Const meter As Double = 0.0254 '1 inch = 0.0254 meter
     Dim ds As New DataSet
     Dim SelectedPaPRoll As PaperRoll
     Dim saveSales As production
 
+
     Private Sub btnLoad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLoad.Click
         If lvpapercuts.Items.Count <= 0 Then Exit Sub
         databasePOS.dbNamePOS = GetOption("DatabasePOS")
+
+        If Not CompareSalesRowToPRoduction() Then
+            MsgBox("No new data in sales", MsgBoxStyle.Information, "Production")
+            Exit Sub
+        End If
+
         For Each item As ListViewItem In lvpapercuts.Items
 
             Dim MYSQLSALES As String = "SELECT  FIRST 20 I.ID,I.ITEMNO,M.ITEMNAME AS DESCRIPTION,I.QTY,I.PAPCUT_ITEMCODE,E.TRANSDATE FROM POSITEM I " & _
@@ -17,72 +24,41 @@
             For Each drSales As DataRow In DSSLES.Tables(0).Rows
                 If drSales.Item("ID") = "" Then Exit For
 
-                Dim mysqlPro As String = "SELECT * FROM TBLPRODUCTION where sales_ID = '" & drSales.Item("ID") & "'"
-                Dim dsPRo As DataSet = LoadSQL(mysqlPro, "tblProduction")
-
-                If dsPRo.Tables(0).Rows.Count = 1 Then
-                    With dsPRo.Tables(0).Rows(0)
-                        .Item("ItemCode") = drSales.Item("ItemNo")
-                        .Item("Description") = drSales.Item("Description")
-                        .Item("Quantity") = drSales.Item("QTY")
-                        .Item("created_at") = Now
-                        .Item("status") = 0
-                        .Item("papcut_itemcode") = drSales.Item("Papcut_itemcode")
-                    End With
-                    database.SaveEntry(dsPRo, False)
-
-                Else
-                    Dim dsNewRow As DataRow
-                    dsNewRow = dsPRo.Tables(0).NewRow
-                    With dsNewRow
-                        .Item("ItemCode") = drSales.Item("ItemNo")
-                        .Item("Description") = drSales.Item("Description")
-                        .Item("Quantity") = drSales.Item("QTY")
-                        .Item("created_at") = Now
-                        .Item("status") = 0
-                        .Item("papcut_itemcode") = drSales.Item("Papcut_itemcode")
-                        .Item("Sales_ID") = drSales.Item("ID")
-                    End With
-                    dsPRo.Tables(0).Rows.Add(dsNewRow)
-                    database.SaveEntry(dsPRo)
-                End If
+                saveSales = New production
+                With saveSales
+                    .itemcode = drSales.Item("ITEMNO")
+                    .DESCRIPTION = drSales.Item("DESCRIPTION")
+                    .QTY = drSales.Item("QTY")
+                    .papcut_Itemcode = drSales.Item("PAPCUT_ITEMCODE")
+                    .SALES_id = drSales.Item("ID")
+                End With
+                saveSales.saveProduction()
             Next
-            'Next
-
-            'Dim DSSLES As DataSet = LoadSQLPOS(MYSQLSALES, "TBLPOSITEM")
-            'For Each drSales As DataRow In DSSLES.Tables(0).Rows
-            '    saveSales = New production
-            '    With saveSales
-            '        .itemcode = drSales.Item("ITEMNO")
-            '        .DESCRIPTION = drSales.Item("DESCRIPTION")
-            '        .QTY = drSales.Item("QTY")
-            '        .papcut_Itemcode = drSales.Item("PAPCUT_ITEMCODE")
-            '        .SALES_id = drSales.Item("ID")
-            '    End With
-            '    saveSales.saveProduction()
-            'Next
-            ' For Each item As ListViewItem In lvpapercuts.Items
-                Dim mysql As String = "SELECT * FROM TBLPRODUCTION WHERE papcut_itemcode = '" & item.SubItems(6).Text & "'"
-                ds = LoadSQL(mysql, "tblProduction")
-
-                For Each dr As DataRow In ds.Tables(0).Rows
-
-                    Dim SubTotal As Double = (ds.Tables(0).Rows(0).Item(5) * item.SubItems(5).Text)
-
-                    dr.Item("MAG_ID") = item.SubItems(1).Text
-                    dr("Paproll_SERIAL") = item.SubItems(2).Text
-                    dr.Item("Papercut") = item.SubItems(5).Text
-                    dr.Item("Papcut_Description") = item.SubItems(7).Text
-                    dr.Item("SubTotal_Length") = SubTotal
-                    database.SaveEntry(ds, False)
 
 
-                    SelectedPaPRoll = New PaperRoll
-                    SelectedPaPRoll.TotalLength = SubTotal * meter
-                    SelectedPaPRoll.Updatepaper()
-                Next
+            Dim mysql As String = "SELECT * FROM TBLPRODUCTION WHERE papcut_itemcode = '" & item.SubItems(6).Text & "'" & _
+                                    " and status <> 1"
+            ds = LoadSQL(mysql, "tblProduction")
+
+            For Each dr As DataRow In ds.Tables(0).Rows
+
+                Dim SubTotal As Double = (ds.Tables(0).Rows(0).Item(5) * item.SubItems(5).Text)
+
+                dr.Item("MAG_ID") = item.SubItems(1).Text
+                dr("Paproll_SERIAL") = item.SubItems(2).Text
+                dr.Item("Papercut") = item.SubItems(5).Text
+                dr.Item("Papcut_Description") = item.SubItems(7).Text
+                dr.Item("status") = 1
+                dr.Item("SubTotal_Length") = SubTotal
+                database.SaveEntry(ds, False)
+
+                SelectedPaPRoll = New PaperRoll
+                SelectedPaPRoll.TotalLength = SubTotal * meter
+                SelectedPaPRoll.Updatepaper()
+            Next
         Next
-        MsgBox("Sales loaded. . .", MsgBoxStyle.Information)
+
+        MsgBox("Sales loaded. . .", MsgBoxStyle.Information, "Production")
     End Sub
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
@@ -135,4 +111,36 @@
         Return ds.Tables(0).Rows(0).Item("MAGDESCRIPTION")
     End Function
 
+    ''' <summary>
+    ''' 
+    ''' </summary>Compare Row in Sales table to Production table
+    ''' <returns>Return false if No new Data in sales</returns>
+    ''' <remarks></remarks>
+    Private Function CompareSalesRowToPRoduction() As Boolean
+        Dim MaxRowSales As Integer = 0
+        Dim MaxRowPRo As Integer = 0
+        For Each itm As ListViewItem In lvpapercuts.Items
+            Dim MYSQLSALES As String = "SELECT  FIRST 20 I.ID,I.ITEMNO,M.ITEMNAME AS DESCRIPTION,I.QTY,I.PAPCUT_ITEMCODE,E.TRANSDATE FROM POSITEM I " & _
+                                     " INNER JOIN POSENTRY E ON I.POSENTRYID = E.ID " & _
+                                     " INNER JOIN ITEMMASTER M ON I.ITEMNO = M.ITEMNO WHERE PAPCUT_ITEMCODE ='" & itm.SubItems(6).Text & "' "
+            Dim DSSLES As DataSet = LoadSQLPOS(MYSQLSALES, "TBLPOSITEM")
+            MaxRowSales = DSSLES.Tables(0).Rows.Count
+      
+
+            Dim mysql As String = "SELECT * FROM TBLPRODUCTION WHERE papcut_itemcode = '" & itm.SubItems(6).Text & "'" & _
+                                    " and status =1"
+            ds = LoadSQL(mysql, "tblProduction")
+            MaxRowPRo = ds.Tables(0).Rows.Count
+
+
+            If MaxRowSales > MaxRowPRo Then
+                Return True
+            End If
+
+            Console.WriteLine("MaxSales: " & MaxRowSales)
+            Console.WriteLine("MaxSales: " & MaxRowPRo)
+        Next
+
+        Return False
+    End Function
 End Class

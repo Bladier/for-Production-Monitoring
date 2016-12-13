@@ -1,6 +1,5 @@
 ﻿Public Class FrmMain
     Private locked As Boolean = IIf(GetOption("Locked") = "YES", True, False)
-    Private MagazineStatus As Boolean = IIf(GetOption("Magazine") = "YES", True, False)
 
     Friend Sub NotYetLogin(Optional ByVal st As Boolean = True)
 
@@ -30,9 +29,7 @@
     End Sub
 
     Private Sub FrmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
         NotYetLogin()
-
     End Sub
 
     Private Sub LoadIMDToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadIMDToolStripMenuItem.Click
@@ -62,13 +59,13 @@
     End Sub
 
     Private Sub TransactionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TransactionToolStripMenuItem.Click
+        Dim MagazineStatus As Boolean = IIf(GetOption("Magazine") = "YES", True, False)
         If Not MagazineStatus Then
             MsgBox("You need to initialize first before to begin.", MsgBoxStyle.Exclamation, "Production")
+            Me.Refresh()
             Exit Sub
-        Else
-            frmProductionMonitoring.Show()
         End If
-
+        frmProductionMonitoring.Show()
     End Sub
 
     Private Sub LoadMagazineToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadMagazineToolStripMenuItem.Click

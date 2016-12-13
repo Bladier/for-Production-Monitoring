@@ -80,6 +80,7 @@ Partial Class frmLoadIMD
         Me.Controls.Add(Me.btnLoad)
         Me.Controls.Add(Me.btnbrowse)
         Me.Name = "frmLoadIMD"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Load IMD"
         Me.ResumeLayout(False)
         Me.PerformLayout()
