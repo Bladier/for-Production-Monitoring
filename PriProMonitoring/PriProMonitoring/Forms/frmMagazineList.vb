@@ -67,8 +67,9 @@
         End If
 
         Dim idx As Integer
-        LBLID.Text = idx
+
         idx = CInt(lvmagazine.FocusedItem.Text)
+        LBLID.Text = idx
         Dim selected_magazine As New Magazine
         For Each dt As DictionaryEntry In MAG
             If dt.Key = idx Then

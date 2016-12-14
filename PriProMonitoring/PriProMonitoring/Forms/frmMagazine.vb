@@ -66,6 +66,7 @@ Public Class frmMagazine
 
         Dim Colpapercut As New CollectionPaperCut
         Dim Magazinemodify As New Magazine
+
         With Magazinemodify
             .MagItemcode = txtItemCode.Text
             .MagDescription = txtDescription.Text
