@@ -71,4 +71,5 @@
     Private Sub LoadMagazineToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadMagazineToolStripMenuItem.Click
         frmLoadMagazine.Show()
     End Sub
+
 End Class

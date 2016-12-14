@@ -35,8 +35,8 @@ Partial Class frmProductionMonitoring
         Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.btnLoad = New System.Windows.Forms.Button()
         Me.txtmagazine = New PriProMonitoring.watermark()
+        Me.btnLoad = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.tpProgressBar = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolRemaining = New System.Windows.Forms.ToolStripStatusLabel()
@@ -97,6 +97,7 @@ Partial Class frmProductionMonitoring
         Me.lvpapercuts.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvpapercuts.FullRowSelect = True
         Me.lvpapercuts.GridLines = True
+        Me.lvpapercuts.HoverSelection = True
         Me.lvpapercuts.Location = New System.Drawing.Point(9, 43)
         Me.lvpapercuts.Name = "lvpapercuts"
         Me.lvpapercuts.Size = New System.Drawing.Size(456, 282)
@@ -144,6 +145,17 @@ Partial Class frmProductionMonitoring
         Me.ColumnHeader5.Text = "Description"
         Me.ColumnHeader5.Width = 291
         '
+        'txtmagazine
+        '
+        Me.txtmagazine.Location = New System.Drawing.Point(7, 17)
+        Me.txtmagazine.Name = "txtmagazine"
+        Me.txtmagazine.ReadOnly = True
+        Me.txtmagazine.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.txtmagazine.Size = New System.Drawing.Size(459, 20)
+        Me.txtmagazine.TabIndex = 0
+        Me.txtmagazine.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtmagazine.WatermarkText = "Magazine"
+        '
         'btnLoad
         '
         Me.btnLoad.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -154,16 +166,6 @@ Partial Class frmProductionMonitoring
         Me.btnLoad.TabIndex = 2
         Me.btnLoad.Text = "Load Sales"
         Me.btnLoad.UseVisualStyleBackColor = True
-        '
-        'txtmagazine
-        '
-        Me.txtmagazine.Location = New System.Drawing.Point(7, 17)
-        Me.txtmagazine.Name = "txtmagazine"
-        Me.txtmagazine.ReadOnly = True
-        Me.txtmagazine.Size = New System.Drawing.Size(459, 20)
-        Me.txtmagazine.TabIndex = 0
-        Me.txtmagazine.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtmagazine.WatermarkText = "Magazine"
         '
         'StatusStrip1
         '
@@ -185,7 +187,7 @@ Partial Class frmProductionMonitoring
         '
         Me.ToolRemaining.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolRemaining.Name = "ToolRemaining"
-        Me.ToolRemaining.Size = New System.Drawing.Size(64, 17)
+        Me.ToolRemaining.Size = New System.Drawing.Size(64, 21)
         Me.ToolRemaining.Text = "Remaining"
         '
         'Label1
