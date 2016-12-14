@@ -1,6 +1,7 @@
 ﻿Public Class frmLoadIMD
     Dim frmmain As New FrmMain
     Private locked As Boolean = IIf(GetOption("Locked") = "YES", True, False)
+
     Private Sub btnbrowse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnbrowse.Click
         OFD.ShowDialog()
     End Sub
@@ -31,4 +32,6 @@
         frmmain.NotYetLogin(False)
         Me.Close()
     End Sub
+
+
 End Class

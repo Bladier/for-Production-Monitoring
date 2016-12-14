@@ -16,7 +16,7 @@
 
         For Each item As ListViewItem In lvpapercuts.Items
 
-            Dim MYSQLSALES As String = "SELECT  FIRST 30 I.ID,I.ITEMNO,M.ITEMNAME AS DESCRIPTION,I.QTY,I.PAPCUT_ITEMCODE,E.TRANSDATE FROM POSITEM I " & _
+            Dim MYSQLSALES As String = "SELECT  FIRST 50 I.ID,I.ITEMNO,M.ITEMNAME AS DESCRIPTION,I.QTY,I.PAPCUT_ITEMCODE,E.TRANSDATE FROM POSITEM I " & _
                                         " INNER JOIN POSENTRY E ON I.POSENTRYID = E.ID " & _
                                         " INNER JOIN ITEMMASTER M ON I.ITEMNO = M.ITEMNO WHERE PAPCUT_ITEMCODE ='" & item.SubItems(6).Text & "' "
             Dim DSSLES As DataSet = LoadSQLPOS(MYSQLSALES, "TBLPOSITEM")

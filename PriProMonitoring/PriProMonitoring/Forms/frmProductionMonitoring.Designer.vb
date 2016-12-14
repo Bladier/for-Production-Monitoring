@@ -179,7 +179,7 @@ Partial Class frmProductionMonitoring
         '
         'tpProgressBar
         '
-        Me.tpProgressBar.Maximum = 20
+        Me.tpProgressBar.Maximum = 5
         Me.tpProgressBar.Name = "tpProgressBar"
         Me.tpProgressBar.Size = New System.Drawing.Size(100, 20)
         '
