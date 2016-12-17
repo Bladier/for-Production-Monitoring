@@ -111,14 +111,14 @@ Partial Class frmItemLookUp
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(832, 439)
+        Me.ClientSize = New System.Drawing.Size(832, 437)
         Me.Controls.Add(Me.lvItemLookUp)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnSelect)
         Me.Controls.Add(Me.txtSearch)
         Me.Controls.Add(Me.btnSearch)
         Me.Name = "frmItemLookUp"
-        Me.Text = "frmItemLookUp"
+        Me.Text = "Item LookUp"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

@@ -1,5 +1,7 @@
 ﻿Public Class frmItemLookUp
     Dim itemLine As Hashtable
+    Dim fromOtherForm As Boolean = False
+    Private frmOrig As formSwitch.FormName
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         Dim secured_str As String = txtSearch.Text
@@ -46,5 +48,34 @@
             LoadItem()
         End If
 
+    End Sub
+
+    Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
+        If lvItemLookUp.Items.Count = 0 Then Exit Sub
+        If lvItemLookUp.SelectedItems.Count = 0 Then
+            lvItemLookUp.Items(0).Focused = True
+        End If
+
+        Dim idx As Integer
+        idx = CInt(lvItemLookUp.FocusedItem.Text)
+
+        Dim selectedItem As New item
+        For Each dt As DictionaryEntry In itemLine
+            If dt.Key = idx Then
+
+                selectedItem = dt.Value
+                formSwitch.ReloadFormFromItemList(frmOrig, selectedItem)
+                Me.Close()
+                Exit Sub
+            End If
+        Next
+
+        MsgBox("Error loading hash table", MsgBoxStyle.Critical, "CRITICAL")
+    End Sub
+
+    Friend Sub SearchSelect(ByVal src As String, ByVal frmOrigin As formSwitch.FormName)
+        fromOtherForm = True
+        txtSearch.Text = src
+        frmOrig = frmOrigin
     End Sub
 End Class

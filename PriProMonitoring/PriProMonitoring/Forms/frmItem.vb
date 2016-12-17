@@ -1,6 +1,22 @@
 ﻿Public Class frmItem
     Dim saveitem As item
     Dim saveitemLine As ItemLine
+    Dim selectedItm As item
+
+
+    Friend Sub Loaditm(ByVal itm As item)
+        If itm.ItemCode = "" Then Exit Sub
+
+        txtCode.Text = itm.ItemCode
+        txtDescription.Text = itm.Descrition
+        txtRemarks.Text = itm.Remarks
+
+        selectedItm = itm
+
+        ReadOnlyTrue()
+        btnSave.Enabled = False
+        btnUpdate.Enabled = True
+    End Sub
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         frmChannel.txtSearch.Text = txtSearch.Text
@@ -177,4 +193,14 @@
         dgPapercuts.Rows.Clear()
     End Sub
 
+    Private Sub btnSearchIMD_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearchIMD.Click
+
+        Dim secured_str As String = txtSearchIMD.Text
+        secured_str = DreadKnight(secured_str)
+        frmItemLookUp.txtSearch.Text = Me.txtSearchIMD.Text.ToString
+        frmItemLookUp.btnSearch.PerformClick()
+
+        frmItemLookUp.SearchSelect(secured_str, FormName.frmitem)
+        frmItemLookUp.Show()
+    End Sub
 End Class
