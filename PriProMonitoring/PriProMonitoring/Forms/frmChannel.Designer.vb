@@ -24,12 +24,12 @@ Partial Class frmChannel
     Private Sub InitializeComponent()
         Me.LVPapercut = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtSearch = New PriProMonitoring.watermark()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.btnSelect = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SuspendLayout()
         '
         'LVPapercut
@@ -41,7 +41,7 @@ Partial Class frmChannel
         Me.LVPapercut.Location = New System.Drawing.Point(15, 54)
         Me.LVPapercut.Name = "LVPapercut"
         Me.LVPapercut.Size = New System.Drawing.Size(466, 334)
-        Me.LVPapercut.TabIndex = 28
+        Me.LVPapercut.TabIndex = 2
         Me.LVPapercut.UseCompatibleStateImageBehavior = False
         Me.LVPapercut.View = System.Windows.Forms.View.Details
         '
@@ -49,6 +49,11 @@ Partial Class frmChannel
         '
         Me.ColumnHeader1.Text = "ID"
         Me.ColumnHeader1.Width = 0
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Paper Cut ItemCode"
+        Me.ColumnHeader3.Width = 0
         '
         'ColumnHeader2
         '
@@ -61,9 +66,9 @@ Partial Class frmChannel
         Me.txtSearch.Location = New System.Drawing.Point(14, 15)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(353, 21)
-        Me.txtSearch.TabIndex = 27
-        Me.txtSearch.WatermarkColor = System.Drawing.Color.Black
-        Me.txtSearch.WatermarkText = "Search magazine . . ."
+        Me.txtSearch.TabIndex = 0
+        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSearch.WatermarkText = "Search itemcode or description . . ."
         '
         'btnSearch
         '
@@ -71,7 +76,7 @@ Partial Class frmChannel
         Me.btnSearch.Location = New System.Drawing.Point(373, 9)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(108, 33)
-        Me.btnSearch.TabIndex = 26
+        Me.btnSearch.TabIndex = 1
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
@@ -81,7 +86,7 @@ Partial Class frmChannel
         Me.btnSelect.Location = New System.Drawing.Point(259, 394)
         Me.btnSelect.Name = "btnSelect"
         Me.btnSelect.Size = New System.Drawing.Size(108, 35)
-        Me.btnSelect.TabIndex = 29
+        Me.btnSelect.TabIndex = 3
         Me.btnSelect.Text = "&Select"
         Me.btnSelect.UseVisualStyleBackColor = True
         '
@@ -91,14 +96,9 @@ Partial Class frmChannel
         Me.btnCancel.Location = New System.Drawing.Point(373, 394)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(108, 35)
-        Me.btnCancel.TabIndex = 30
+        Me.btnCancel.TabIndex = 4
         Me.btnCancel.Text = "&Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
-        '
-        'ColumnHeader3
-        '
-        Me.ColumnHeader3.Text = "Paper Cut ItemCode"
-        Me.ColumnHeader3.Width = 0
         '
         'frmChannel
         '

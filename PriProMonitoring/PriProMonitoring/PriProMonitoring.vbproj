@@ -88,6 +88,11 @@
     <Compile Include="CLASS\CollectionPaperCut.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="CLASS\CollenctionItemLine.vb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="CLASS\ItemLine.vb" />
+    <Compile Include="CLASS\item.vb" />
     <Compile Include="CLASS\PaperLoadLog.vb" />
     <Compile Include="CLASS\IMD.vb" />
     <Compile Include="CLASS\Magazine.vb" />
@@ -113,10 +118,16 @@
     <Compile Include="Forms\frmItem.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmLoadIMD.Designer.vb">
-      <DependentUpon>frmLoadIMD.vb</DependentUpon>
+    <Compile Include="Forms\frmImportIMD.Designer.vb">
+      <DependentUpon>frmImportIMD.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmLoadIMD.vb">
+    <Compile Include="Forms\frmImportIMD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmItemLookUp.Designer.vb">
+      <DependentUpon>frmItemLookUp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmItemLookUp.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmLoadMagazine.Designer.vb">
@@ -203,8 +214,11 @@
     <EmbeddedResource Include="Forms\frmItem.resx">
       <DependentUpon>frmItem.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLoadIMD.resx">
-      <DependentUpon>frmLoadIMD.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\frmImportIMD.resx">
+      <DependentUpon>frmImportIMD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmItemLookUp.resx">
+      <DependentUpon>frmItemLookUp.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLoadMagazine.resx">
       <DependentUpon>frmLoadMagazine.vb</DependentUpon>

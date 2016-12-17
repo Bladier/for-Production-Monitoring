@@ -60,7 +60,7 @@ Partial Class FrmMain
         'menuLogin
         '
         Me.menuLogin.Name = "menuLogin"
-        Me.menuLogin.Size = New System.Drawing.Size(104, 22)
+        Me.menuLogin.Size = New System.Drawing.Size(152, 22)
         Me.menuLogin.Text = "&Login"
         '
         'menuInitialization
@@ -80,7 +80,7 @@ Partial Class FrmMain
         '
         Me.LoadIMDToolStripMenuItem.Name = "LoadIMDToolStripMenuItem"
         Me.LoadIMDToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
-        Me.LoadIMDToolStripMenuItem.Text = "Load &IMD"
+        Me.LoadIMDToolStripMenuItem.Text = "Import &IMD"
         '
         'MagazineToolStripMenuItem
         '

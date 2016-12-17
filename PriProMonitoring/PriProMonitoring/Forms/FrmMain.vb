@@ -33,7 +33,7 @@
     End Sub
 
     Private Sub LoadIMDToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadIMDToolStripMenuItem.Click
-        Dim child As New frmLoadIMD
+        Dim child As New frmImportIMD
         child.MdiParent = Me
         child.Show()
     End Sub

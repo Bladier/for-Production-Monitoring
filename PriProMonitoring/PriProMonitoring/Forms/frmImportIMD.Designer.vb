@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmLoadIMD
+Partial Class frmImportIMD
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -44,7 +44,7 @@ Partial Class frmLoadIMD
         Me.btnLoad.Name = "btnLoad"
         Me.btnLoad.Size = New System.Drawing.Size(75, 23)
         Me.btnLoad.TabIndex = 1
-        Me.btnLoad.Text = "Load"
+        Me.btnLoad.Text = "Setup"
         Me.btnLoad.UseVisualStyleBackColor = True
         '
         'txtpath
@@ -74,14 +74,14 @@ Partial Class frmLoadIMD
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(490, 87)
+        Me.ClientSize = New System.Drawing.Size(490, 84)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtpath)
         Me.Controls.Add(Me.btnLoad)
         Me.Controls.Add(Me.btnbrowse)
         Me.Name = "frmLoadIMD"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Load IMD"
+        Me.Text = "Import IMD"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

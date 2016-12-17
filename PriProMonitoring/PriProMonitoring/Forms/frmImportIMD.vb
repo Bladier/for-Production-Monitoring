@@ -1,4 +1,4 @@
-﻿Public Class frmLoadIMD
+﻿Public Class frmImportIMD
     Dim frmmain As New FrmMain
     Private locked As Boolean = IIf(GetOption("Locked") = "YES", True, False)
 
@@ -34,4 +34,7 @@
     End Sub
 
 
+    Private Sub frmLoadIMD_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.Text = "Import IMD | Active Form"
+    End Sub
 End Class

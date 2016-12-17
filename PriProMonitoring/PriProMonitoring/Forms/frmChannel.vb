@@ -8,7 +8,7 @@
     Private Sub loadPapercut()
         Dim mysql As String = " SELECT * FROM TBLPAPERCUT P INNER JOIN TBLMAGAZINE M " & _
                              "ON P.MAG_IDP = M.MAG_ID "
-        mysql &= String.Format("WHERE (UPPER (MAGITEMCODE) LIKE UPPER('%{0}%') OR UPPER (MAGDESCRIPTION) LIKE UPPER('%{0}%'))", txtSearch.Text)
+        mysql &= String.Format("WHERE (UPPER (PAPCUT_ITEMCODE) LIKE UPPER('%{0}%') OR UPPER (PAPCUT_DESCRIPTION) LIKE UPPER('%{0}%'))", txtSearch.Text)
 
         Dim ds As DataSet = LoadSQL(mysql, "tblpapercut")
 
@@ -61,17 +61,26 @@
 
         selectedPap = New PaperCut
         selectedPap.Load_PaperCUts(LVPapercut.SelectedItems(0).Text)
-        Dim lv As ListViewItem = frmItem.lvppcut.Items.Add(selectedPap.PapcutID)
-        lv.SubItems.Add(selectedPap.PapCutITemcode)
-        lv.SubItems.Add(selectedPap.papcutDescription)
+
+        frmItem.dgPapercuts.Rows.Add(selectedPap.PapcutID, selectedPap.PapCutITemcode, selectedPap.papcutDescription)
 
         frmItem.Show()
-
+        Me.Close()
     End Sub
 
     Private Sub txtSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
         If isEnter(e) Then
             btnSearch.PerformClick()
+        End If
+    End Sub
+
+    Private Sub LVPapercut_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LVPapercut.DoubleClick
+        btnSelect.PerformClick()
+    End Sub
+
+    Private Sub LVPapercut_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles LVPapercut.KeyPress
+        If isEnter(e) Then
+            btnSelect.PerformClick()
         End If
     End Sub
 End Class

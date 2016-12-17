@@ -1,7 +1,180 @@
 ﻿Public Class frmItem
+    Dim saveitem As item
+    Dim saveitemLine As ItemLine
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
-        frmMagazineList.SearchSelect(txtSearch.Text, FormName.frmmagazine)
-        frmMagazineList.Show()
+        frmChannel.txtSearch.Text = txtSearch.Text
+        frmChannel.Show()
+
+        txtSearch.Text = ""
     End Sub
+
+    Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        If btnSave.Text = "&Save" Then
+            SaveItemsssss()
+        Else
+            ModifyItems()
+        End If
+
+    End Sub
+
+    Private Sub SaveItemsssss()
+        If Not isValid() Then Exit Sub
+
+        Dim mysql As String = "SELECT * FROM ITEM WHERE ITEMCODE = '" & txtCode.Text & "'"
+        Dim ds As DataSet = LoadSQL(mysql, "ITEM")
+
+        If ds.Tables(0).Rows.Count >= 1 Then
+            MsgBox("This item already existed", MsgBoxStyle.Critical, "Item")
+        End If
+
+        Dim ans As DialogResult = MsgBox("Do you want to save this item?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
+        If ans = Windows.Forms.DialogResult.No Then Exit Sub
+
+        saveitem = New item
+        Dim CollItemLine As New CollectionItemLine
+
+        With saveitem
+            .ItemCode = txtCode.Text
+            .Descrition = txtDescription.Text
+            .Remarks = txtRemarks.text
+        End With
+
+        For Each row As DataGridViewRow In dgPapercuts.Rows
+            saveitemLine = New ItemLine
+            With saveitemLine
+                .PaperCut_ID = row.Cells(0).Value
+                .QTY = row.Cells(3).Value
+                .Created_at = Now
+
+                If row.Cells(1).Value = "" _
+                    And row.Cells(2).Value = "" And row.Cells(3).Value = "" Then
+                    Exit For
+                End If
+            End With
+            CollItemLine.Add(saveitemLine)
+        Next
+        saveitem.itemLines = CollItemLine
+        saveitem.SaveItem()
+
+        MsgBox("Item saved", MsgBoxStyle.Information)
+        txtCode.Focus()
+        clearfields()
+        ReadOnlyFalse()
+    End Sub
+
+    Private Sub ModifyItems()
+        If Not isValid() Then Exit Sub
+
+        ReadOnlyFalse()
+        txtCode.Enabled = False
+
+        Dim ans As DialogResult = MsgBox("Do you want to Update item?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
+        If ans = Windows.Forms.DialogResult.No Then Exit Sub
+
+        Dim CollItemLine As New CollectionItemLine
+        Dim itemModify As New item
+
+        With itemModify
+            .ItemCode = txtCode.Text
+            .Descrition = txtDescription.Text
+            .Remarks = txtRemarks.Text
+            .ID = frmMagazineList.LBLID.Text
+        End With
+
+        Dim ItemLineModidy As New ItemLine
+        For Each row As DataGridViewRow In dgPapercuts.Rows
+
+            With ItemLineModidy
+                .itemLineID = row.Cells(0).Value
+                .PaperCut_ID = row.Cells(1).Value
+                .QTY = row.Cells(2).Value
+
+                If row.Cells(1).Value = "" And row.Cells(2).Value = "" Then
+                    Exit For
+                End If
+
+            End With
+            ItemLineModidy.Item_ID = frmMagazineList.LBLID.Text
+            ItemLineModidy.Update_ItemLine()
+        Next
+        itemModify.UpdateITEM()
+
+        MsgBox("Item Updated", MsgBoxStyle.Information)
+
+        btnSave.Enabled = True
+        btnUpdate.Text = "&Update"
+        btnSave.Text = "&Save"
+        clearfields()
+        ReadOnlyFalse()
+        txtCode.Enabled = True
+    End Sub
+
+
+    Private Sub ReadOnlyTrue()
+        txtDescription.ReadOnly = True
+        For a As Integer = 0 To dgPapercuts.Rows.Count - 1
+            dgPapercuts.Rows(a).ReadOnly = True
+        Next
+    End Sub
+
+    Friend Sub ReadOnlyFalse()
+        txtDescription.ReadOnly = False
+        txtCode.ReadOnly = False
+        For a As Integer = 0 To dgPapercuts.Rows.Count - 1
+            dgPapercuts.Rows(a).ReadOnly = False
+        Next
+
+    End Sub
+
+    Private Sub frmItem_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        txtCode.Text = ""
+        txtDescription.Text = ""
+    End Sub
+
+    Private Function isValid() As Boolean
+        If txtCode.Text = "" Then txtCode.Focus() : Return False
+        If txtDescription.Text = "" Then txtDescription.Focus() : Return False
+        If dgPapercuts.Rows.Count <= 0 Then dgPapercuts.Focus() : Return False
+        Return True
+    End Function
+
+    Private Sub txtSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
+        If isEnter(e) Then
+            btnSearch.PerformClick()
+        End If
+    End Sub
+
+    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        Me.Close()
+    End Sub
+
+    Private Sub btnUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUpdate.Click
+        If btnUpdate.Text = "&Update" Then
+            btnUpdate.Text = "&Cancel"
+            btnSave.Enabled = True
+            btnSave.Text = "&Update"
+
+            ReadOnlyFalse()
+            txtCode.Enabled = False
+        Else
+            Dim ans As DialogResult = MsgBox("Do you want Cancel?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
+            If ans = Windows.Forms.DialogResult.No Then Exit Sub
+            btnUpdate.Text = "&Update"
+            btnSave.Enabled = False
+            btnSave.Text = "&Save"
+            ReadOnlyFalse()
+            txtCode.Enabled = True
+            clearfields()
+        End If
+    End Sub
+
+
+    Private Sub clearfields()
+        txtCode.Text = ""
+        txtDescription.Text = ""
+        txtRemarks.Text = ""
+        dgPapercuts.Rows.Clear()
+    End Sub
+
 End Class
