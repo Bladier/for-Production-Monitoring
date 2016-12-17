@@ -11,6 +11,8 @@
             Case FormName.frmmagazine
                 frmMagazine.LoadMagazine(mg)
         End Select
+
+
     End Sub
 
   

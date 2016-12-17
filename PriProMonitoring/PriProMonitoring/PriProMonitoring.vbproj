@@ -101,6 +101,18 @@
     <Compile Include="Forms\frmAdjustment.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frmChannel.Designer.vb">
+      <DependentUpon>frmChannel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmChannel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmItem.Designer.vb">
+      <DependentUpon>frmItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmItem.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmLoadIMD.Designer.vb">
       <DependentUpon>frmLoadIMD.vb</DependentUpon>
     </Compile>
@@ -184,6 +196,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\frmAdjustment.resx">
       <DependentUpon>frmAdjustment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmChannel.resx">
+      <DependentUpon>frmChannel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmItem.resx">
+      <DependentUpon>frmItem.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLoadIMD.resx">
       <DependentUpon>frmLoadIMD.vb</DependentUpon>
