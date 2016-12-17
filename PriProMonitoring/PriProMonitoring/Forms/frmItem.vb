@@ -138,6 +138,7 @@
         clearfields()
         ReadOnlyFalse()
         txtCode.Enabled = True
+        btnUpdate.Enabled = False
     End Sub
 
 
@@ -160,6 +161,7 @@
     Private Sub frmItem_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         txtCode.Text = ""
         txtDescription.Text = ""
+        btnUpdate.Enabled = False
     End Sub
 
     Private Function isValid() As Boolean
@@ -216,5 +218,12 @@
 
         frmItemLookUp.SearchSelect(secured_str, FormName.frmitem)
         frmItemLookUp.Show()
+        txtSearchIMD.Text = ""
+    End Sub
+
+    Private Sub txtSearchIMD_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearchIMD.KeyPress
+        If isEnter(e) Then
+            btnSearchIMD.PerformClick()
+        End If
     End Sub
 End Class

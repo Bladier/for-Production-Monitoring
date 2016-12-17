@@ -37,6 +37,7 @@ Partial Class FrmMain
         Me.statusDateandTime = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TmpTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.AddItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -60,7 +61,7 @@ Partial Class FrmMain
         'menuLogin
         '
         Me.menuLogin.Name = "menuLogin"
-        Me.menuLogin.Size = New System.Drawing.Size(152, 22)
+        Me.menuLogin.Size = New System.Drawing.Size(104, 22)
         Me.menuLogin.Text = "&Login"
         '
         'menuInitialization
@@ -84,7 +85,7 @@ Partial Class FrmMain
         '
         'MagazineToolStripMenuItem
         '
-        Me.MagazineToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddMagazineToolStripMenuItem, Me.AddPaperRollToolStripMenuItem})
+        Me.MagazineToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddMagazineToolStripMenuItem, Me.AddPaperRollToolStripMenuItem, Me.AddItemToolStripMenuItem})
         Me.MagazineToolStripMenuItem.Name = "MagazineToolStripMenuItem"
         Me.MagazineToolStripMenuItem.Size = New System.Drawing.Size(70, 20)
         Me.MagazineToolStripMenuItem.Text = "Magazine"
@@ -136,6 +137,12 @@ Partial Class FrmMain
         '
         Me.TmpTimer.Enabled = True
         '
+        'AddItemToolStripMenuItem
+        '
+        Me.AddItemToolStripMenuItem.Name = "AddItemToolStripMenuItem"
+        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AddItemToolStripMenuItem.Text = "Add &Item"
+        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -171,4 +178,5 @@ Partial Class FrmMain
     Friend WithEvents AddMagazineToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddPaperRollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TransactionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AddItemToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

@@ -8,6 +8,7 @@
         AddMagazineToolStripMenuItem.Enabled = Not st
         AddPaperRollToolStripMenuItem.Enabled = Not st
         TransactionToolStripMenuItem.Enabled = Not st
+        AddItemToolStripMenuItem.Enabled = Not st
 
         If Not st Then
             menuLogin.Text = "&Log Out"
@@ -72,4 +73,7 @@
         frmLoadMagazine.Show()
     End Sub
 
+    Private Sub AddItemToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddItemToolStripMenuItem.Click
+        frmItem.Show()
+    End Sub
 End Class

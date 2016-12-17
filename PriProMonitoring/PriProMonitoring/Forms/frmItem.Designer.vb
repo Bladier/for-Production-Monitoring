@@ -36,10 +36,10 @@ Partial Class frmItem
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtSearch = New PriProMonitoring.watermark()
         Me.btnSearchIMD = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.txtSearchIMD = New PriProMonitoring.watermark()
-        Me.txtSearch = New PriProMonitoring.watermark()
         Me.txtRemarks = New PriProMonitoring.watermark()
         Me.txtDescription = New PriProMonitoring.watermark()
         Me.txtCode = New PriProMonitoring.watermark()
@@ -178,6 +178,16 @@ Partial Class frmItem
         Me.GroupBox1.TabIndex = 3
         Me.GroupBox1.TabStop = False
         '
+        'txtSearch
+        '
+        Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSearch.Location = New System.Drawing.Point(5, 18)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(396, 21)
+        Me.txtSearch.TabIndex = 0
+        Me.txtSearch.WatermarkColor = System.Drawing.Color.DimGray
+        Me.txtSearch.WatermarkText = "Search Paper Cut or Description . . ."
+        '
         'btnSearchIMD
         '
         Me.btnSearchIMD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -207,16 +217,6 @@ Partial Class frmItem
         Me.txtSearchIMD.TabIndex = 0
         Me.txtSearchIMD.WatermarkColor = System.Drawing.Color.Gray
         Me.txtSearchIMD.WatermarkText = "Search itemcode from IMD . . ."
-        '
-        'txtSearch
-        '
-        Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch.Location = New System.Drawing.Point(5, 18)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(396, 21)
-        Me.txtSearch.TabIndex = 0
-        Me.txtSearch.WatermarkColor = System.Drawing.Color.DimGray
-        Me.txtSearch.WatermarkText = "Search Paper Cut or Description . . ."
         '
         'txtRemarks
         '
