@@ -16,6 +16,20 @@
         ReadOnlyTrue()
         btnSave.Enabled = False
         btnUpdate.Enabled = True
+
+
+        Dim mysql As String = "SELECT P.PAPERCUT_ID,P.PAPCUT_ITEMCODE,P.PAPCUT_DESCRIPTION,L.QTY " & _
+                               "FROM TBLITEM_LINE L LEFT JOIN TBLPAPERCUT P ON L.PAPERCUT_ID = P.PAPERCUT_ID " & _
+                               " WHERE ITEM_ID = '" & itm.ID & "'"
+        Dim ds As DataSet = LoadSQL(mysql, "TBLITEM_LINE")
+
+        dgPapercuts.Rows.Clear()
+        For Each dr As DataRow In ds.Tables(0).Rows
+            With dr
+                dgPapercuts.Rows.Add(.Item(0), .Item(1), .Item(2), .Item(3))
+            End With
+        Next
+
     End Sub
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
@@ -53,7 +67,7 @@
         With saveitem
             .ItemCode = txtCode.Text
             .Descrition = txtDescription.Text
-            .Remarks = txtRemarks.text
+            .Remarks = txtRemarks.Text
         End With
 
         For Each row As DataGridViewRow In dgPapercuts.Rows
@@ -95,23 +109,23 @@
             .ItemCode = txtCode.Text
             .Descrition = txtDescription.Text
             .Remarks = txtRemarks.Text
-            .ID = frmMagazineList.LBLID.Text
+            .ID = frmItemLookUp.Label1.Text
         End With
 
         Dim ItemLineModidy As New ItemLine
         For Each row As DataGridViewRow In dgPapercuts.Rows
 
             With ItemLineModidy
-                .itemLineID = row.Cells(0).Value
-                .PaperCut_ID = row.Cells(1).Value
-                .QTY = row.Cells(2).Value
+                .PaperCut_ID = row.Cells(0).Value
+                .QTY = row.Cells(3).Value
+                .Updated_at = Now
 
                 If row.Cells(1).Value = "" And row.Cells(2).Value = "" Then
                     Exit For
                 End If
 
             End With
-            ItemLineModidy.Item_ID = frmMagazineList.LBLID.Text
+            ItemLineModidy.Item_ID = frmItemLookUp.Label1.Text
             ItemLineModidy.Update_ItemLine()
         Next
         itemModify.UpdateITEM()

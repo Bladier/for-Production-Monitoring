@@ -26,11 +26,12 @@ Partial Class frmItemLookUp
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnSelect = New System.Windows.Forms.Button()
-        Me.txtSearch = New PriProMonitoring.watermark()
         Me.btnSearch = New System.Windows.Forms.Button()
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtSearch = New PriProMonitoring.watermark()
         Me.SuspendLayout()
         '
         'lvItemLookUp
@@ -42,7 +43,7 @@ Partial Class frmItemLookUp
         Me.lvItemLookUp.Location = New System.Drawing.Point(12, 54)
         Me.lvItemLookUp.Name = "lvItemLookUp"
         Me.lvItemLookUp.Size = New System.Drawing.Size(808, 334)
-        Me.lvItemLookUp.TabIndex = 7
+        Me.lvItemLookUp.TabIndex = 2
         Me.lvItemLookUp.UseCompatibleStateImageBehavior = False
         Me.lvItemLookUp.View = System.Windows.Forms.View.Details
         '
@@ -61,13 +62,18 @@ Partial Class frmItemLookUp
         Me.ColumnHeader2.Text = "Description"
         Me.ColumnHeader2.Width = 253
         '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "Remarks"
+        Me.ColumnHeader4.Width = 301
+        '
         'btnCancel
         '
         Me.btnCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancel.Location = New System.Drawing.Point(712, 394)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(108, 35)
-        Me.btnCancel.TabIndex = 9
+        Me.btnCancel.TabIndex = 4
         Me.btnCancel.Text = "&Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
@@ -77,19 +83,9 @@ Partial Class frmItemLookUp
         Me.btnSelect.Location = New System.Drawing.Point(598, 394)
         Me.btnSelect.Name = "btnSelect"
         Me.btnSelect.Size = New System.Drawing.Size(108, 35)
-        Me.btnSelect.TabIndex = 8
+        Me.btnSelect.TabIndex = 3
         Me.btnSelect.Text = "&Select"
         Me.btnSelect.UseVisualStyleBackColor = True
-        '
-        'txtSearch
-        '
-        Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch.Location = New System.Drawing.Point(11, 19)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(695, 21)
-        Me.txtSearch.TabIndex = 5
-        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSearch.WatermarkText = "Search Itemcode . . ."
         '
         'btnSearch
         '
@@ -97,14 +93,28 @@ Partial Class frmItemLookUp
         Me.btnSearch.Location = New System.Drawing.Point(712, 15)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(108, 33)
-        Me.btnSearch.TabIndex = 6
+        Me.btnSearch.TabIndex = 1
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
-        'ColumnHeader4
+        'Label1
         '
-        Me.ColumnHeader4.Text = "Remarks"
-        Me.ColumnHeader4.Width = 301
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(22, 406)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(18, 13)
+        Me.Label1.TabIndex = 10
+        Me.Label1.Text = "ID"
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSearch.Location = New System.Drawing.Point(11, 19)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(695, 21)
+        Me.txtSearch.TabIndex = 0
+        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSearch.WatermarkText = "Search Itemcode . . ."
         '
         'frmItemLookUp
         '
@@ -112,6 +122,7 @@ Partial Class frmItemLookUp
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(832, 437)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lvItemLookUp)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnSelect)
@@ -132,4 +143,5 @@ Partial Class frmItemLookUp
     Friend WithEvents txtSearch As PriProMonitoring.watermark
     Friend WithEvents btnSearch As System.Windows.Forms.Button
     Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class

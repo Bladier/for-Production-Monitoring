@@ -109,24 +109,26 @@
     End Sub
 
     Public Sub Update_ItemLine()
-        Dim mySql As String = String.Format("SELECT * FROM {0} WHERE {1}= {2} ", MainTable, "ITemLine_ID", _itemLineID)
+        Dim mySql As String = String.Format("SELECT * FROM {0} WHERE {1}= {2} ", MainTable, "itemLine_ID", _PaperCut_ID)
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
         If ds.Tables(0).Rows.Count = 1 Then
             With ds.Tables(MainTable).Rows(0)
                 .Item("PaperCut_ID") = _PaperCut_ID
                 .Item("QTY") = _QTY
-                .Item("Updated_at") = _Created_at
+                .Item("Updated_at") = _Updated_at
             End With
-        Else
             database.SaveEntry(ds, False)
+
+        Else
+
             Dim dsNewRow As DataRow
             dsNewRow = ds.Tables(0).NewRow
             With dsNewRow
                 .Item("Item_ID") = _Item_ID
                 .Item("PaperCut_ID") = _PaperCut_ID
                 .Item("QTY") = _QTY
-                .Item("_created_at") = _Created_at
+                .Item("created_at") = _Created_at
             End With
             ds.Tables(0).Rows.Add(dsNewRow)
             database.SaveEntry(ds)

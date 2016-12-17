@@ -2,7 +2,7 @@
     Dim itemLine As Hashtable
     Dim fromOtherForm As Boolean = False
     Private frmOrig As formSwitch.FormName
-
+    Dim tmpitem As item
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         Dim secured_str As String = txtSearch.Text
         secured_str = DreadKnight(secured_str)
@@ -51,31 +51,42 @@
     End Sub
 
     Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
-        If lvItemLookUp.Items.Count = 0 Then Exit Sub
+        If lvItemLookUp.SelectedItems.Count <= 0 Then Exit Sub
+
         If lvItemLookUp.SelectedItems.Count = 0 Then
             lvItemLookUp.Items(0).Focused = True
         End If
+      
+        Dim itmID As Integer
+        itmID = lvItemLookUp.FocusedItem.Text
+        Console.WriteLine("ItemID: " & itmID)
 
-        Dim idx As Integer
-        idx = CInt(lvItemLookUp.FocusedItem.Text)
+        tmpitem = New item
+        tmpitem.lOadItem(itmID)
 
-        Dim selectedItem As New item
-        For Each dt As DictionaryEntry In itemLine
-            If dt.Key = idx Then
+        Label1.Text = tmpitem.ID
 
-                selectedItem = dt.Value
-                formSwitch.ReloadFormFromItemList(frmOrig, selectedItem)
-                Me.Close()
-                Exit Sub
-            End If
-        Next
-
-        MsgBox("Error loading hash table", MsgBoxStyle.Critical, "CRITICAL")
+        frmItem.Loaditm(tmpitem)
+        frmItem.Show()
+        Me.Hide()
     End Sub
+
+
 
     Friend Sub SearchSelect(ByVal src As String, ByVal frmOrigin As formSwitch.FormName)
         fromOtherForm = True
         txtSearch.Text = src
         frmOrig = frmOrigin
+    End Sub
+
+
+    Private Sub lvItemLookUp_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvItemLookUp.DoubleClick
+        btnSelect.PerformClick()
+    End Sub
+
+    Private Sub lvItemLookUp_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles lvItemLookUp.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            btnSelect.PerformClick()
+        End If
     End Sub
 End Class

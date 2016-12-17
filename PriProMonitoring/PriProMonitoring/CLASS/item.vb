@@ -62,7 +62,7 @@
         mysql = "SELECT * FROM ITEM WHERE ITEM_ID =" & ID
         Dim ds As DataSet = LoadSQL(mysql, "Item")
 
-        If ds.Tables(0).Rows.Count Then
+        If ds.Tables(0).Rows.Count <= 0 Then
             MsgBox("Unable to load item", MsgBoxStyle.Information)
             Exit Sub
         End If
