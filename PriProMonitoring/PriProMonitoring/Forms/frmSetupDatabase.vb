@@ -1,4 +1,4 @@
-﻿Public Class frmImportIMD
+﻿Public Class frmSetupDatabase
     Dim frmmain As New FrmMain
     Private locked As Boolean = IIf(GetOption("Locked") = "YES", True, False)
 

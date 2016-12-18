@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmImportIMD
+Partial Class frmSetupDatabase
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -69,7 +69,7 @@ Partial Class frmImportIMD
         '
         Me.OFD.FileName = "OpenFileDialog1"
         '
-        'frmLoadIMD
+        'frmSetupDatabase
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -79,9 +79,9 @@ Partial Class frmImportIMD
         Me.Controls.Add(Me.txtpath)
         Me.Controls.Add(Me.btnLoad)
         Me.Controls.Add(Me.btnbrowse)
-        Me.Name = "frmLoadIMD"
+        Me.Name = "frmSetupDatabase"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Import IMD"
+        Me.Text = "Setup"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
