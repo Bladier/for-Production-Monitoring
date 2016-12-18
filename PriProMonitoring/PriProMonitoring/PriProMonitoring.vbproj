@@ -85,6 +85,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CLASS\ItemData.vb" />
     <Compile Include="CLASS\CollectionPaperCut.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
@@ -112,16 +113,16 @@
     <Compile Include="Forms\frmChannel.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frmImportIMDD.Designer.vb">
+      <DependentUpon>frmImportIMDD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmImportIMDD.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmItem.Designer.vb">
       <DependentUpon>frmItem.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmItem.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmImportIMD.Designer.vb">
-      <DependentUpon>frmImportIMD.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmImportIMD.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmItemLookUp.Designer.vb">
@@ -166,6 +167,12 @@
     <Compile Include="Forms\frmProductionMonitoring.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frmSetupDatabase.Designer.vb">
+      <DependentUpon>frmSetupDatabase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSetupDatabase.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Login.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +210,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="sales\cItem.vb" />
+    <Compile Include="sales\cItemData.vb" />
+    <Compile Include="sales\frmImport_IMD.Designer.vb">
+      <DependentUpon>frmImport_IMD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="sales\frmImport_IMD.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\frmAdjustment.resx">
@@ -211,11 +226,11 @@
     <EmbeddedResource Include="Forms\frmChannel.resx">
       <DependentUpon>frmChannel.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmImportIMDD.resx">
+      <DependentUpon>frmImportIMDD.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmItem.resx">
       <DependentUpon>frmItem.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmImportIMD.resx">
-      <DependentUpon>frmImportIMD.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmItemLookUp.resx">
       <DependentUpon>frmItemLookUp.vb</DependentUpon>
@@ -241,6 +256,9 @@
     <EmbeddedResource Include="Forms\frmProductionMonitoring.resx">
       <DependentUpon>frmProductionMonitoring.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSetupDatabase.resx">
+      <DependentUpon>frmSetupDatabase.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.vb</DependentUpon>
     </EmbeddedResource>
@@ -250,8 +268,12 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="sales\frmImport_IMD.resx">
+      <DependentUpon>frmImport_IMD.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -261,9 +283,16 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\x86\Debug\PriProMonitoring.vbprojResolveAssemblyReference.cache" />
     <None Include="PRIPRO.FDB">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="obj\x86\Debug\PriProMonitoring.vbproj.FileListAbsolute.txt" />
+    <Content Include="obj\x86\Debug\TempPE\My Project.Resources.Designer.vb.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
