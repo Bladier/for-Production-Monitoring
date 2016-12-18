@@ -210,14 +210,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="sales\cItem.vb" />
-    <Compile Include="sales\cItemData.vb" />
-    <Compile Include="sales\frmImport_IMD.Designer.vb">
-      <DependentUpon>frmImport_IMD.vb</DependentUpon>
-    </Compile>
-    <Compile Include="sales\frmImport_IMD.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\frmAdjustment.resx">
@@ -268,12 +260,10 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="sales\frmImport_IMD.resx">
-      <DependentUpon>frmImport_IMD.vb</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\PriProMonitoring.exe.config" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -291,8 +281,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\PriProMonitoring.exe" />
+    <Content Include="bin\Debug\PriProMonitoring.pdb" />
     <Content Include="obj\x86\Debug\PriProMonitoring.vbproj.FileListAbsolute.txt" />
     <Content Include="obj\x86\Debug\TempPE\My Project.Resources.Designer.vb.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
