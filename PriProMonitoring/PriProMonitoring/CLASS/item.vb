@@ -83,7 +83,7 @@
             _ItemID = .Item("Item_ID")
             _ItemCode = .Item("ItemCode")
             _Description = .Item("Description")
-            _remarks = .Item("Remarks")
+            _remarks = IIf(IsDBNull(.Item("Remarks")), "", .Item("Remarks"))
         End With
     End Sub
 
@@ -93,7 +93,7 @@
             _ItemID = .Item("Item_ID")
             _ItemCode = .Item("ItemCode")
             _Description = .Item("Description")
-            _remarks = .Item("Remarks")
+            _remarks = IIf(IsDBNull(.Item("FirstName")), "", .Item("FirstName"))
         End With
         ' Load Item Specification
         mySql = String.Format("SELECT * FROM {0} WHERE Item_ID = {1} ORDER BY itemLine_ID", subtable, _ItemID)
@@ -115,33 +115,77 @@
         mysql = "SELECT * FROM ITEM WHERE Item_ID = " & _ItemID
         Dim ds As DataSet = LoadSQL(mysql, "Item")
 
-        If ds.Tables(0).Rows.Count >= 1 Then
-            MsgBox("Unable to save this item", MsgBoxStyle.Critical)
+        If ds.Tables(0).Rows.Count <= 0 Then
+
+
+            Dim dsNewRow As DataRow
+            dsNewRow = ds.Tables(0).NewRow
+            With dsNewRow
+                .Item("ItemCode") = _ItemCode
+                .Item("Description") = _Description
+                .Item("Remarks") = _remarks
+            End With
+
+            ds.Tables(0).Rows.Add(dsNewRow)
+            database.SaveEntry(ds)
+        Else
+            With ds.Tables(filldata).Rows(0)
+                .Item("ITemcode") = _ItemCode
+                .Item("Description") = _Description
+                .Item("Remarks") = _remarks
+            End With
+            database.SaveEntry(ds, False)
         End If
 
-        Dim dsNewRow As DataRow
-        dsNewRow = ds.Tables(0).NewRow
-        With dsNewRow
-            .Item("ItemCode") = _ItemCode
-            .Item("Description") = _Description
-            .Item("Remarks") = _remarks
-        End With
-
-        ds.Tables(0).Rows.Add(dsNewRow)
-        database.SaveEntry(ds)
 
 
+        'mysql = "SELECT * FROM " & filldata & " ORDER BY Item_ID DESC ROWS 1"
+        'ds = LoadSQL(mysql, filldata)
+        '_ItemID = ds.Tables(filldata).Rows(0).Item("Item_ID")
 
-        mysql = "SELECT * FROM " & filldata & " ORDER BY Item_ID DESC ROWS 1"
-        ds = LoadSQL(mysql, filldata)
-        _ItemID = ds.Tables(filldata).Rows(0).Item("Item_ID")
-
-        For Each ItemLine As ItemLine In _itemLines
-            ItemLine.Item_ID = _ItemID
-            ItemLine.Save_itemLine()
-        Next
+        'For Each ItemLine As ItemLine In _itemLines
+        '    ItemLine.Item_ID = _ItemID
+        '    ItemLine.Save_itemLine()
+        'Next
     End Sub
 
+    Friend Sub SaveItemLine()
+        mysql = "SELECT * FROM ITEM WHERE Item_ID = " & _ItemID
+        Dim ds As DataSet = LoadSQL(mysql, "Item")
+
+        If ds.Tables(0).Rows.Count >= 1 Then
+
+
+            Dim dsNewRow As DataRow
+            dsNewRow = ds.Tables(0).NewRow
+            With dsNewRow
+                .Item("ItemCode") = _ItemCode
+                .Item("Description") = _Description
+                .Item("Remarks") = _remarks
+            End With
+
+            ds.Tables(0).Rows.Add(dsNewRow)
+            database.SaveEntry(ds)
+        Else
+            With ds.Tables(filldata).Rows(0)
+                .Item("ITemcode") = _ItemCode
+                .Item("Description") = _Description
+                .Item("Remarks") = _remarks
+            End With
+            database.SaveEntry(ds, False)
+        End If
+
+
+
+        'mysql = "SELECT * FROM " & filldata & " ORDER BY Item_ID DESC ROWS 1"
+        'ds = LoadSQL(mysql, filldata)
+        '_ItemID = ds.Tables(filldata).Rows(0).Item("Item_ID")
+
+        'For Each ItemLine As ItemLine In _itemLines
+        '    ItemLine.Item_ID = _ItemID
+        '    ItemLine.Save_itemLine()
+        'Next
+    End Sub
 
     Public Sub UpdateITEM()
         Dim mySql As String = String.Format("SELECT * FROM {0} WHERE IteM_ID = {1}", filldata, _ItemID)
@@ -159,5 +203,23 @@
         End With
         database.SaveEntry(ds, False)
     End Sub
+
+
+    Public Sub Load_ItemCode()
+        mysql = String.Format("SELECT * FROM ITEM WHERE ITEMCODE = '{0}'", _ItemCode)
+        Dim ds As DataSet = New DataSet
+        ds = LoadSQL(mySql)
+
+        If ds.Tables(0).Rows.Count <> 1 Then
+            'MsgBox("Failed to load ItemCode", MsgBoxStyle.Critical)
+            Console.WriteLine("Failed to load ItemCode " & _itemCode)
+            Exit Sub
+        End If
+
+        LoaditemsByRow(ds.Tables(0).Rows(0))
+    End Sub
+
+
+
 #End Region
 End Class

@@ -77,35 +77,56 @@
         End With
     End Sub
 
-    Public Sub Load_PaperCUts(ByVal id As Integer)
-        Dim mySql As String = String.Format("SELECT * FROM {0} WHERE ItemLine_Id = {1}", MainTable, id)
+    Friend Sub LoadItemrow(ByVal id As Integer)
+        Dim mySql As String = String.Format("SELECT * FROM tblitem_line WHERE itemLine_ID = {0}", id)
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
-        If ds.Tables(MainTable).Rows.Count <> 1 Then
-            MsgBox("Unable to load Item Line", MsgBoxStyle.Critical)
-            Exit Sub
-        End If
+        'If ds.Tables(0).Rows.Count <= 0 Then
+        '    MsgBox("Failed to load Item", MsgBoxStyle.Critical)
+        '    Exit Sub
+        'End If
 
-        For Each dr As DataRow In ds.Tables(0).Rows
-            Load(dr)
-        Next
-
+        With ds.Tables(0).Rows(0)
+            _itemLineID = .Item("ITemLine_ID")
+            _Item_ID = .Item("Item_ID")
+            _PaperCut_ID = .Item("PaperCut_ID")
+            _QTY = .Item("QTY")
+            _Created_at = .Item("Created_at")
+            _Updated_at = .Item("Updated_at")
+        End With
     End Sub
 
     Public Sub Save_itemLine()
-        Dim mySql As String = String.Format("SELECT * FROM {0} ROWS 1", MainTable)
-        Dim ds As DataSet = LoadSQL(mySql, MainTable)
+        Dim isNew As Boolean = False
 
-        Dim dsNewRow As DataRow
-        dsNewRow = ds.Tables(MainTable).NewRow
-        With dsNewRow
-            .Item("Item_ID") = _Item_ID
-            .Item("PaperCut_ID") = _PaperCut_ID
-            .Item("QTY") = _QTY
-            .Item("created_at") = _Created_at
-        End With
-        ds.Tables(MainTable).Rows.Add(dsNewRow)
-        database.SaveEntry(ds)
+        Dim mySql As String = String.Format("SELECT * FROM {0} where {1} ", MainTable, "item_ID = " & _Item_ID)
+        mySql &= "and papercuT_ID = '" & PaperCut_ID & "'"
+
+        Dim ds As DataSet
+        ds = New DataSet
+        ds = LoadSQL(mySql, MainTable)
+
+        If ds.Tables(0).Rows.Count <= 0 Then
+            Dim dsNewRow As DataRow
+            dsNewRow = ds.Tables(MainTable).NewRow
+            With dsNewRow
+                .Item("Item_ID") = _Item_ID
+                .Item("PaperCut_ID") = _PaperCut_ID
+                .Item("QTY") = _QTY
+                .Item("created_at") = Now
+            End With
+            ds.Tables(MainTable).Rows.Add(dsNewRow)
+            database.SaveEntry(ds)
+            isNew = True
+        Else
+            With ds.Tables(MainTable).Rows(0)
+                .Item("PaperCut_ID") = _PaperCut_ID
+                .Item("QTY") = _QTY
+                .Item("Updated_at") = Now
+            End With
+            database.SaveEntry(ds, False)
+        End If
+
     End Sub
 
     Public Sub Update_ItemLine()
@@ -119,21 +140,36 @@
                 .Item("Updated_at") = _Updated_at
             End With
             database.SaveEntry(ds, False)
-
         Else
-
             Dim dsNewRow As DataRow
             dsNewRow = ds.Tables(0).NewRow
             With dsNewRow
                 .Item("Item_ID") = _Item_ID
                 .Item("PaperCut_ID") = _PaperCut_ID
                 .Item("QTY") = _QTY
-                .Item("created_at") = _Created_at
+                .Item("created_at") = Now
             End With
             ds.Tables(0).Rows.Add(dsNewRow)
             database.SaveEntry(ds)
         End If
     End Sub
+
+    Public Sub Load_Itmline(ByVal Desc As String)
+        Dim mysql = String.Format("SELECT * FROM tblItemLine WHERE papcut_Description = '{0}'", Desc)
+        Dim ds As DataSet = New DataSet
+        ds = LoadSQL(mysql)
+
+        If ds.Tables(0).Rows.Count <> 1 Then
+            'MsgBox("Failed to load ItemCode", MsgBoxStyle.Critical)
+            Console.WriteLine("Failed to load paper cut description " & Desc)
+            Exit Sub
+        End If
+
+        For Each dr As DataRow In ds.Tables(0).Rows
+            Load(dr)
+        Next
+    End Sub
+
 #End Region
 
 End Class

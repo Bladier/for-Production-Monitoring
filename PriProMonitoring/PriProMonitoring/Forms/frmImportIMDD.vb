@@ -1,15 +1,50 @@
 ﻿Imports Microsoft.Office.Interop
 Public Class frmImportIMDD
-    Dim ht_ImportedItems As New Hashtable
-    Private Sub btnBrowse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBrowse.Click
-        ofdIMD.ShowDialog()
 
+    Private Sub btnBrowse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLoadIMD.Click
+        databasePOS.dbNamePOS = GetOption("DatabasePOS")
+
+
+        Dim ans As DialogResult = MsgBox("Do you want to load IMD data?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
+        If ans = Windows.Forms.DialogResult.No Then Exit Sub
+
+        Me.Enabled = False
+        Dim mysql As String = "SELECT ITEMNO,ITEMNAME FROM ITEMMASTER"
+        Dim ds As DataSet = LoadSQLPOS(mysql, "ItemMaster")
+
+        For Each dr As DataRow In ds.Tables(0).Rows
+            Dim itmsave As New item
+            With itmsave
+                .ItemCode = dr.Item("ITEMNO")
+                .Descrition = dr.Item("ITEMNAME")
+                .SaveItem()
+            End With
+            pbProgressBar.Value = pbProgressBar.Value + 1
+            Application.DoEvents()
+            Label1.Text = String.Format("{0}%", ((pbProgressBar.Value / pbProgressBar.Maximum) * 100).ToString("F2"))
+        Next
+
+        If MsgBox("IMD Successfully loaded", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, _
+            "Loading...") = MsgBoxResult.Ok Then pbProgressBar.Minimum = 0 : pbProgressBar.Value = 0 : Label1.Text = "0.00%"
+        Me.Enabled = True
+    End Sub
+
+    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        Me.Close()
+    End Sub
+
+    Private Sub btnImport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnImport.Click
+   
+    End Sub
+
+    Private Sub btnBrowse_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBrowse.Click
+        ofdIMD.ShowDialog()
         Dim fileName As String = ofdIMD.FileName
         Dim isDone As Boolean = False
 
         If fileName = "" Then Exit Sub
-        lblFilename.Text = fileName
-        ClearFields()
+        txtPath.Text = fileName
+
 
         'Load Excel
         Dim oXL As New Excel.Application
@@ -21,32 +56,29 @@ Public Class frmImportIMDD
 
         Dim MaxColumn As Integer = oSheet.Cells(1, oSheet.Columns.Count).End(Excel.XlDirection.xlToLeft).column
         Dim MaxEntries As Integer = oSheet.Cells(oSheet.Rows.Count, 1).End(Excel.XlDirection.xlUp).row
-
-        Dim checkHeaders(MaxColumn) As String
-        For cnt As Integer = 0 To MaxColumn - 1
-            checkHeaders(cnt) = oSheet.Cells(1, cnt + 1).value
-        Next : checkHeaders(MaxColumn) = oWB.Worksheets(1).name
-
+      
 
         Me.Enabled = False
         For cnt = 2 To MaxEntries
-            Dim ImportedItem As New ItemData
+            Dim ImportedItem As New item
             With ImportedItem
                 .ItemCode = oSheet.Cells(cnt, 1).Value
-                .Load_ItemCode()
+                ImportedItem.Load_ItemCode()
 
-                .Description = oSheet.Cells(cnt, 2).Value
-                .Barcode = oSheet.Cells(cnt, 3).Value
-                .Category = oSheet.Cells(cnt, 4).Value
-                .SubCategory = oSheet.Cells(cnt, 5).Value
-                .UnitofMeasure = oSheet.Cells(cnt, 6).Value
-                .UnitPrice = If(Not IsNumeric(oSheet.Cells(cnt, 7).Value), 0, oSheet.Cells(cnt, 7).Value)
-                .SalePrice = If(Not IsNumeric(oSheet.Cells(cnt, 8).Value), 0, oSheet.Cells(cnt, 8).Value)
-                
+                Dim itmLineSave As New ItemLine
+                Dim tmpPaperCut As New PaperCut
 
+                tmpPaperCut.papcutDescription = oSheet.Cells(cnt, 2).Value
+                tmpPaperCut.Load_papercutssssss()
+                'itmLineSave.Load_Itmline()
+
+                itmLineSave.Item_ID = .ID
+                itmLineSave.PaperCut_ID = tmpPaperCut.PapcutID
+                itmLineSave.QTY = oSheet.Cells(cnt, 3).Value
+
+                itmLineSave.Save_itemLine()
             End With
 
-            'AddItems(ImportedItem)
         Next
         Me.Enabled = True
         isDone = True
@@ -61,11 +93,5 @@ unloadObj:
 
         fileName = ""
         If isDone Then MsgBox("Item Loaded", MsgBoxStyle.Information)
-    End Sub
-
-
-    Private Sub ClearFields()
-        ht_ImportedItems.Clear()
-        lvIMD.Items.Clear()
     End Sub
 End Class

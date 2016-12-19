@@ -76,4 +76,8 @@
     Private Sub AddItemToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddItemToolStripMenuItem.Click
         frmItem.Show()
     End Sub
+
+    Private Sub LoadIMDToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadIMDToolStripMenuItem1.Click
+        frmImportIMDD.Show()
+    End Sub
 End Class

@@ -53,6 +53,17 @@
         End Set
     End Property
 
+    Private _UOM As String
+    Public Property UOM() As String
+        Get
+            Return _UOM
+        End Get
+        Set(ByVal value As String)
+            _UOM = value
+        End Set
+    End Property
+
+
     Private _PaperCuts As CollectionPaperCut
     Public Property PaperCuts() As CollectionPaperCut
         Get
@@ -73,6 +84,7 @@
             _PapCutITemcode = .Item("papCUt_ITEMCODE")
             _papcutDescription = .Item("PAPCUT_DESCRIPTION")
             _papcut = .Item("PAPERCUT")
+            _UOM = .Item("UOM")
         End With
     End Sub
 
@@ -99,6 +111,7 @@
             .Item("PAPCUT_ITEMCODE") = _PapCutITemcode
             .Item("PAPCUT_DESCRIPTION") = _papcutDescription
             .Item("PAPERCUT") = _papcut
+            .Item("OUM") = "Inches"
         End With
         ds.Tables(MainTable).Rows.Add(dsNewRow)
         database.SaveEntry(ds)
@@ -113,6 +126,7 @@
                 .Item("PAPCUT_ITEMCODE") = _PapCutITemcode
                 .Item("PAPCUT_DESCRIPTION") = _papcutDescription
                 .Item("PAPerCUT") = _papcut
+                .Item("OUM") = "Inches"
             End With
             database.SaveEntry(ds, False)
         Else
@@ -122,12 +136,28 @@
                 .Item("MAG_IDP") = _mag_IDP
                 .Item("PAPCUT_ITEMCODE") = _PapCutITemcode
                 .Item("PAPCUT_DESCRIPTION") = _papcutDescription
-                .Item("PAPerCUT") = _papcut
+                .Item("OUM") = "Inches"
             End With
             ds.Tables(0).Rows.Add(dsNewRow)
             database.SaveEntry(ds)
         End If
     End Sub
+
+
+    Public Sub Load_papercutssssss()
+        Dim mysql = String.Format("SELECT * FROM tblpapercut WHERE papcut_Description = '{0}'", _papcutDescription)
+        Dim ds As DataSet = New DataSet
+        ds = LoadSQL(mysql)
+
+        If ds.Tables(0).Rows.Count <> 1 Then
+            'MsgBox("Failed to load ItemCode", MsgBoxStyle.Critical)
+            Console.WriteLine("Failed to load paper cut description " & _papcutDescription)
+            Exit Sub
+        End If
+
+        lOAD_PaperCut_row(ds.Tables(0).Rows(0))
+    End Sub
+
 #End Region
 
 End Class

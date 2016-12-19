@@ -32,12 +32,13 @@ Partial Class FrmMain
         Me.MagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddMagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddPaperRollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AddItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TransactionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusDateandTime = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TmpTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.AddItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoadIMDToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -66,7 +67,7 @@ Partial Class FrmMain
         '
         'menuInitialization
         '
-        Me.menuInitialization.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadMagazineToolStripMenuItem, Me.LoadIMDToolStripMenuItem})
+        Me.menuInitialization.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadMagazineToolStripMenuItem, Me.LoadIMDToolStripMenuItem, Me.LoadIMDToolStripMenuItem1})
         Me.menuInitialization.Name = "menuInitialization"
         Me.menuInitialization.Size = New System.Drawing.Size(83, 20)
         Me.menuInitialization.Text = "Initialization"
@@ -74,14 +75,14 @@ Partial Class FrmMain
         'LoadMagazineToolStripMenuItem
         '
         Me.LoadMagazineToolStripMenuItem.Name = "LoadMagazineToolStripMenuItem"
-        Me.LoadMagazineToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.LoadMagazineToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
         Me.LoadMagazineToolStripMenuItem.Text = "&Load Magazine"
         '
         'LoadIMDToolStripMenuItem
         '
         Me.LoadIMDToolStripMenuItem.Name = "LoadIMDToolStripMenuItem"
-        Me.LoadIMDToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
-        Me.LoadIMDToolStripMenuItem.Text = "Import &IMD"
+        Me.LoadIMDToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.LoadIMDToolStripMenuItem.Text = "Setup &Database"
         '
         'MagazineToolStripMenuItem
         '
@@ -101,6 +102,12 @@ Partial Class FrmMain
         Me.AddPaperRollToolStripMenuItem.Name = "AddPaperRollToolStripMenuItem"
         Me.AddPaperRollToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.AddPaperRollToolStripMenuItem.Text = "Add &Paper Roll"
+        '
+        'AddItemToolStripMenuItem
+        '
+        Me.AddItemToolStripMenuItem.Name = "AddItemToolStripMenuItem"
+        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AddItemToolStripMenuItem.Text = "Add &Item"
         '
         'TransactionToolStripMenuItem
         '
@@ -137,11 +144,11 @@ Partial Class FrmMain
         '
         Me.TmpTimer.Enabled = True
         '
-        'AddItemToolStripMenuItem
+        'LoadIMDToolStripMenuItem1
         '
-        Me.AddItemToolStripMenuItem.Name = "AddItemToolStripMenuItem"
-        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.AddItemToolStripMenuItem.Text = "Add &Item"
+        Me.LoadIMDToolStripMenuItem1.Name = "LoadIMDToolStripMenuItem1"
+        Me.LoadIMDToolStripMenuItem1.Size = New System.Drawing.Size(155, 22)
+        Me.LoadIMDToolStripMenuItem1.Text = "Lo&ad IMD"
         '
         'FrmMain
         '
@@ -179,4 +186,5 @@ Partial Class FrmMain
     Friend WithEvents AddPaperRollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TransactionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddItemToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents LoadIMDToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
 End Class

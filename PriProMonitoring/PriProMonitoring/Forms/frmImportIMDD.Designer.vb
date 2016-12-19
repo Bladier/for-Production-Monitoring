@@ -22,59 +22,51 @@ Partial Class frmImportIMDD
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.lvIMD = New System.Windows.Forms.ListView()
+        Me.btnLoadIMD = New System.Windows.Forms.Button()
+        Me.ofdIMD = New System.Windows.Forms.OpenFileDialog()
         Me.btnBrowse = New System.Windows.Forms.Button()
-        Me.lblFilename = New System.Windows.Forms.Label()
+        Me.txtPath = New System.Windows.Forms.TextBox()
         Me.btnImport = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
-        Me.ofdIMD = New System.Windows.Forms.OpenFileDialog()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.pbProgressBar = New System.Windows.Forms.ProgressBar()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'lvIMD
+        'btnLoadIMD
         '
-        Me.lvIMD.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lvIMD.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
-        Me.lvIMD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lvIMD.FullRowSelect = True
-        Me.lvIMD.GridLines = True
-        Me.lvIMD.Location = New System.Drawing.Point(12, 68)
-        Me.lvIMD.Name = "lvIMD"
-        Me.lvIMD.Size = New System.Drawing.Size(530, 364)
-        Me.lvIMD.TabIndex = 5
-        Me.lvIMD.UseCompatibleStateImageBehavior = False
-        Me.lvIMD.View = System.Windows.Forms.View.Details
+        Me.btnLoadIMD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLoadIMD.Location = New System.Drawing.Point(12, 12)
+        Me.btnLoadIMD.Name = "btnLoadIMD"
+        Me.btnLoadIMD.Size = New System.Drawing.Size(75, 31)
+        Me.btnLoadIMD.TabIndex = 4
+        Me.btnLoadIMD.Text = "Load IMD"
+        Me.btnLoadIMD.UseVisualStyleBackColor = True
+        '
+        'ofdIMD
+        '
+        Me.ofdIMD.Filter = "Excel 2003|*.xls|Excel 2007|*.xlsx"
         '
         'btnBrowse
         '
         Me.btnBrowse.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBrowse.Location = New System.Drawing.Point(12, 31)
+        Me.btnBrowse.Location = New System.Drawing.Point(354, 41)
         Me.btnBrowse.Name = "btnBrowse"
-        Me.btnBrowse.Size = New System.Drawing.Size(75, 31)
-        Me.btnBrowse.TabIndex = 4
-        Me.btnBrowse.Text = "Browse"
+        Me.btnBrowse.Size = New System.Drawing.Size(37, 31)
+        Me.btnBrowse.TabIndex = 5
+        Me.btnBrowse.Text = ". . ."
         Me.btnBrowse.UseVisualStyleBackColor = True
         '
-        'lblFilename
+        'txtPath
         '
-        Me.lblFilename.AutoSize = True
-        Me.lblFilename.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFilename.Location = New System.Drawing.Point(12, 12)
-        Me.lblFilename.Name = "lblFilename"
-        Me.lblFilename.Size = New System.Drawing.Size(64, 16)
-        Me.lblFilename.TabIndex = 6
-        Me.lblFilename.Text = "Filename"
+        Me.txtPath.Location = New System.Drawing.Point(12, 49)
+        Me.txtPath.Name = "txtPath"
+        Me.txtPath.Size = New System.Drawing.Size(336, 20)
+        Me.txtPath.TabIndex = 6
         '
         'btnImport
         '
-        Me.btnImport.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnImport.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnImport.Location = New System.Drawing.Point(386, 438)
+        Me.btnImport.Location = New System.Drawing.Point(183, 75)
         Me.btnImport.Name = "btnImport"
         Me.btnImport.Size = New System.Drawing.Size(75, 31)
         Me.btnImport.TabIndex = 7
@@ -83,63 +75,60 @@ Partial Class frmImportIMDD
         '
         'btnCancel
         '
-        Me.btnCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(467, 438)
+        Me.btnCancel.Location = New System.Drawing.Point(273, 75)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 31)
         Me.btnCancel.TabIndex = 8
         Me.btnCancel.Text = "&Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
-        'ofdIMD
+        'pbProgressBar
         '
-        Me.ofdIMD.Filter = "Excel 2003|*.xls|Excel 2007|*.xlsx"
+        Me.pbProgressBar.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.pbProgressBar.Location = New System.Drawing.Point(-4, 125)
+        Me.pbProgressBar.Maximum = 7000
+        Me.pbProgressBar.Name = "pbProgressBar"
+        Me.pbProgressBar.Size = New System.Drawing.Size(409, 23)
+        Me.pbProgressBar.TabIndex = 9
         '
-        'ColumnHeader1
+        'Label1
         '
-        Me.ColumnHeader1.Text = "ItemCode"
-        Me.ColumnHeader1.Width = 122
-        '
-        'ColumnHeader2
-        '
-        Me.ColumnHeader2.Text = "Description"
-        Me.ColumnHeader2.Width = 144
-        '
-        'ColumnHeader3
-        '
-        Me.ColumnHeader3.Text = "PaperCut"
-        Me.ColumnHeader3.Width = 134
-        '
-        'ColumnHeader4
-        '
-        Me.ColumnHeader4.Text = "QTY"
-        Me.ColumnHeader4.Width = 173
+        Me.Label1.AutoSize = True
+        Me.Label1.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.Label1.Location = New System.Drawing.Point(5, 109)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(36, 13)
+        Me.Label1.TabIndex = 10
+        Me.Label1.Text = "0.00%"
         '
         'frmImportIMDD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(549, 481)
-        Me.Controls.Add(Me.lvIMD)
-        Me.Controls.Add(Me.btnBrowse)
-        Me.Controls.Add(Me.lblFilename)
-        Me.Controls.Add(Me.btnImport)
+        Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.ClientSize = New System.Drawing.Size(405, 147)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.pbProgressBar)
         Me.Controls.Add(Me.btnCancel)
+        Me.Controls.Add(Me.btnImport)
+        Me.Controls.Add(Me.txtPath)
+        Me.Controls.Add(Me.btnBrowse)
+        Me.Controls.Add(Me.btnLoadIMD)
         Me.Name = "frmImportIMDD"
         Me.Text = "Import IMD"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents lvIMD As System.Windows.Forms.ListView
-    Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents btnLoadIMD As System.Windows.Forms.Button
+    Friend WithEvents ofdIMD As System.Windows.Forms.OpenFileDialog
     Friend WithEvents btnBrowse As System.Windows.Forms.Button
-    Friend WithEvents lblFilename As System.Windows.Forms.Label
+    Friend WithEvents txtPath As System.Windows.Forms.TextBox
     Friend WithEvents btnImport As System.Windows.Forms.Button
     Friend WithEvents btnCancel As System.Windows.Forms.Button
-    Friend WithEvents ofdIMD As System.Windows.Forms.OpenFileDialog
+    Friend WithEvents pbProgressBar As System.Windows.Forms.ProgressBar
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class
