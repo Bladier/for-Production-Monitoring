@@ -93,7 +93,7 @@
             _ItemID = .Item("Item_ID")
             _ItemCode = .Item("ItemCode")
             _Description = .Item("Description")
-            _remarks = IIf(IsDBNull(.Item("FirstName")), "", .Item("FirstName"))
+            _remarks = IIf(IsDBNull(.Item("Remarks")), "", .Item("Remarks"))
         End With
         ' Load Item Specification
         mySql = String.Format("SELECT * FROM {0} WHERE Item_ID = {1} ORDER BY itemLine_ID", subtable, _ItemID)
@@ -138,15 +138,14 @@
         End If
 
 
+        mysql = "SELECT * FROM " & filldata & " ORDER BY Item_ID DESC ROWS 1"
+        ds = LoadSQL(mysql, filldata)
+        _ItemID = ds.Tables(filldata).Rows(0).Item("Item_ID")
 
-        'mysql = "SELECT * FROM " & filldata & " ORDER BY Item_ID DESC ROWS 1"
-        'ds = LoadSQL(mysql, filldata)
-        '_ItemID = ds.Tables(filldata).Rows(0).Item("Item_ID")
-
-        'For Each ItemLine As ItemLine In _itemLines
-        '    ItemLine.Item_ID = _ItemID
-        '    ItemLine.Save_itemLine()
-        'Next
+        For Each ItemLine As ItemLine In _itemLines
+            ItemLine.Item_ID = _ItemID
+            ItemLine.Save_itemLine()
+        Next
     End Sub
 
     Friend Sub SaveItemLine()
@@ -175,16 +174,6 @@
             database.SaveEntry(ds, False)
         End If
 
-
-
-        'mysql = "SELECT * FROM " & filldata & " ORDER BY Item_ID DESC ROWS 1"
-        'ds = LoadSQL(mysql, filldata)
-        '_ItemID = ds.Tables(filldata).Rows(0).Item("Item_ID")
-
-        'For Each ItemLine As ItemLine In _itemLines
-        '    ItemLine.Item_ID = _ItemID
-        '    ItemLine.Save_itemLine()
-        'Next
     End Sub
 
     Public Sub UpdateITEM()
@@ -211,7 +200,6 @@
         ds = LoadSQL(mySql)
 
         If ds.Tables(0).Rows.Count <> 1 Then
-            'MsgBox("Failed to load ItemCode", MsgBoxStyle.Critical)
             Console.WriteLine("Failed to load ItemCode " & _itemCode)
             Exit Sub
         End If

@@ -66,7 +66,7 @@ Partial Class frmImportIMDD
         'btnImport
         '
         Me.btnImport.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnImport.Location = New System.Drawing.Point(183, 75)
+        Me.btnImport.Location = New System.Drawing.Point(192, 75)
         Me.btnImport.Name = "btnImport"
         Me.btnImport.Size = New System.Drawing.Size(75, 31)
         Me.btnImport.TabIndex = 7
@@ -118,6 +118,7 @@ Partial Class frmImportIMDD
         Me.Controls.Add(Me.btnBrowse)
         Me.Controls.Add(Me.btnLoadIMD)
         Me.Name = "frmImportIMDD"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Import IMD"
         Me.ResumeLayout(False)
         Me.PerformLayout()

@@ -3,6 +3,7 @@
     Dim fromOtherForm As Boolean = False
     Private frmOrig As formSwitch.FormName
     Dim tmpitem As item
+
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         Dim secured_str As String = txtSearch.Text
         secured_str = DreadKnight(secured_str)

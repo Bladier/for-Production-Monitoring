@@ -19,8 +19,8 @@
 
 
         Dim mysql As String = "SELECT P.PAPERCUT_ID,P.PAPCUT_ITEMCODE,P.PAPCUT_DESCRIPTION,L.QTY " & _
-                               "FROM TBLITEM_LINE L LEFT JOIN TBLPAPERCUT P ON L.PAPERCUT_ID = P.PAPERCUT_ID " & _
-                               " WHERE ITEM_ID = '" & itm.ID & "'"
+                               "FROM TBLITEM_LINE L LEFT JOIN TBLPAPERCUT P ON L.PAPERCUT_ID=P.PAPERCUT_ID " & _
+                               " WHERE L.ITEM_ID = '" & itm.ID & "'"
         Dim ds As DataSet = LoadSQL(mysql, "TBLITEM_LINE")
 
         dgPapercuts.Rows.Clear()
