@@ -126,7 +126,6 @@
                 .Item("PAPCUT_ITEMCODE") = _PapCutITemcode
                 .Item("PAPCUT_DESCRIPTION") = _papcutDescription
                 .Item("PAPerCUT") = _papcut
-                .Item("OUM") = "Inches"
             End With
             database.SaveEntry(ds, False)
         Else
