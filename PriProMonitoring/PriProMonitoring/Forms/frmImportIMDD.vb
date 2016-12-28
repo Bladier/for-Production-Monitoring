@@ -35,11 +35,6 @@ Public Class frmImportIMDD
     End Sub
 
     Private Sub btnImport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnImport.Click
-   
-    End Sub
-
-    Private Sub btnBrowse_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBrowse.Click
-        ofdIMD.ShowDialog()
         Dim fileName As String = ofdIMD.FileName
         Dim isDone As Boolean = False
 
@@ -57,7 +52,7 @@ Public Class frmImportIMDD
 
         Dim MaxColumn As Integer = oSheet.Cells(1, oSheet.Columns.Count).End(Excel.XlDirection.xlToLeft).column
         Dim MaxEntries As Integer = oSheet.Cells(oSheet.Rows.Count, 1).End(Excel.XlDirection.xlUp).row
-      
+
 
         Me.Enabled = False
         For cnt = 2 To MaxEntries
@@ -94,5 +89,11 @@ unloadObj:
 
         fileName = ""
         If isDone Then MsgBox("Item Loaded", MsgBoxStyle.Information)
+    End Sub
+
+    Private Sub btnBrowse_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBrowse.Click
+        ofdIMD.ShowDialog()
+        txtPath.Text = ofdIMD.FileName
+        
     End Sub
 End Class

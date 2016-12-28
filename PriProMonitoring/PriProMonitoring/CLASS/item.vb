@@ -138,14 +138,14 @@
         End If
 
 
-        mysql = "SELECT * FROM " & filldata & " ORDER BY Item_ID DESC ROWS 1"
-        ds = LoadSQL(mysql, filldata)
-        _ItemID = ds.Tables(filldata).Rows(0).Item("Item_ID")
+        'mysql = "SELECT * FROM " & filldata & " ORDER BY Item_ID DESC ROWS 1"
+        'ds = LoadSQL(mysql, filldata)
+        '_ItemID = ds.Tables(filldata).Rows(0).Item("Item_ID")
 
-        For Each ItemLine As ItemLine In _itemLines
-            ItemLine.Item_ID = _ItemID
-            ItemLine.Save_itemLine()
-        Next
+        'For Each ItemLine As ItemLine In _itemLines
+        '    ItemLine.Item_ID = _ItemID
+        '    ItemLine.Save_itemLine()
+        'Next
     End Sub
 
     Friend Sub SaveItemLine()
