@@ -1,7 +1,17 @@
 ﻿Public Class FrmMain
-    Private locked As Boolean = IIf(GetOption("Locked") = "YES", True, False)
+    Private locked As Boolean
+    Private MagazineStatus As Boolean
 
     Friend Sub NotYetLogin(Optional ByVal st As Boolean = True)
+        locked = IIf(GetOption("Locked") = "YES", True, False)
+
+        If Not locked Then
+            SetUpDatabaseToolStripMenuItem.Enabled = st
+            LoadIMDToolStripMenuItem1.Enabled = st
+        Else
+            SetUpDatabaseToolStripMenuItem.Enabled = Not st
+            LoadIMDToolStripMenuItem1.Enabled = Not st
+        End If
 
         LoadMagazineToolStripMenuItem.Enabled = Not st
 
@@ -23,7 +33,19 @@
         Else
             Dim ans As DialogResult = MsgBox("Do you want to LOGOUT?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information, "Logout")
             If ans = Windows.Forms.DialogResult.No Then Exit Sub
+
+            Dim formNames As New List(Of String)
+            For Each Form In My.Application.OpenForms
+                If Form.Name <> "FrmMain" Or Not Form.name <> "Login" Then
+                    formNames.Add(Form.Name)
+                End If
+            Next
+            For Each currentFormName As String In formNames
+                Application.OpenForms(currentFormName).Close()
+            Next
+
             MsgBox("Thank you!", MsgBoxStyle.Information)
+            locked = IIf(GetOption("Locked") = "YES", True, False)
             NotYetLogin()
             Login.Show()
         End If
@@ -33,7 +55,7 @@
         NotYetLogin()
     End Sub
 
-    Private Sub LoadIMDToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadIMDToolStripMenuItem.Click
+    Private Sub SetupDatabaseToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SetUpDatabaseToolStripMenuItem.Click
         Dim child As New frmSetupDatabase
         child.MdiParent = Me
         child.Show()
@@ -60,9 +82,9 @@
     End Sub
 
     Private Sub TransactionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TransactionToolStripMenuItem.Click
-        Dim MagazineStatus As Boolean = IIf(GetOption("Magazine") = "YES", True, False)
+        MagazineStatus = IIf(GetOption("Magazine") = "YES", True, False)
         If Not MagazineStatus Then
-            MsgBox("You need to initialize first before to begin.", MsgBoxStyle.Exclamation, "Production")
+            MsgBox("You need to initialize magazine before to begin.", MsgBoxStyle.Exclamation, "Production")
             Me.Refresh()
             Exit Sub
         End If

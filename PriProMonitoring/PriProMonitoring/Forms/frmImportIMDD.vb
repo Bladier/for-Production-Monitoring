@@ -1,9 +1,10 @@
 ﻿Imports Microsoft.Office.Interop
 Public Class frmImportIMDD
-
+    Private DbnAmePos As String
     Private Sub btnBrowse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLoadIMD.Click
         databasePOS.dbNamePOS = GetOption("DatabasePOS")
 
+        If databasePOS.dbNamePOS = "ANOISIM.FDB" Or databasePOS.dbNamePOS = "" Then Exit Sub
 
         Dim ans As DialogResult = MsgBox("Do you want to load IMD data?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
         If ans = Windows.Forms.DialogResult.No Then Exit Sub
