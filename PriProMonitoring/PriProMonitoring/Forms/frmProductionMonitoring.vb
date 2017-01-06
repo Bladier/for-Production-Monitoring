@@ -41,7 +41,6 @@
             ds = LoadSQL(mysql, "tblProduction")
 
             For Each dr As DataRow In ds.Tables(0).Rows
-
                 Dim SubTotal As Double = (ds.Tables(0).Rows(0).Item(5) * item.SubItems(5).Text)
 
                 dr.Item("MAG_ID") = item.SubItems(1).Text
@@ -106,7 +105,7 @@
     End Sub
 
     Private Sub frmProductionMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        txtmagazine.Text = GetMag()
+        'txtmagazine.Text = GetMag()
     End Sub
 
     Private Function GetMag() As String
@@ -130,7 +129,7 @@
                                      " INNER JOIN ITEMMASTER M ON I.ITEMNO = M.ITEMNO WHERE PAPCUT_ITEMCODE ='" & itm.SubItems(6).Text & "' "
             Dim DSSLES As DataSet = LoadSQLPOS(MYSQLSALES, "TBLPOSITEM")
             MaxRowSales = DSSLES.Tables(0).Rows.Count
-      
+
 
             Dim mysql As String = "SELECT * FROM TBLPRODUCTION WHERE papcut_itemcode = '" & itm.SubItems(6).Text & "'" & _
                                     " and status =1"
@@ -152,4 +151,48 @@
     Private Sub tpProgressBar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tpProgressBar.Click
 
     End Sub
+
+
+
+    Private Sub btnLoadALLsales_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLoadALLsales.Click
+        databasePOS.dbNamePOS = GetOption("DatabasePOS")
+        If Not CheckNewRowSales() Then _
+            MsgBox("There is no new sales to load", MsgBoxStyle.Information, "Sales") : Exit Sub
+
+        Dim SaveSales As New Sales
+        With SaveSales
+            Dim POSsales As String = "SELECT  I.ID,I.ITEMNO,M.ITEMNAME AS DESCRIPTION," & _
+                                    "I.QTY FROM POSITEM I " & _
+                                    "INNER JOIN POSENTRY E ON I.POSENTRYID = E.ID " & _
+                                    "INNER JOIN ITEMMASTER M ON I.ITEMNO = M.ITEMNO "
+
+            Dim ds As DataSet = LoadSQLPOS(POSsales, "POSITEM")
+
+            For Each dr As DataRow In ds.Tables(0).Rows
+                .ItemCode = dr.Item("ItemNo")
+                .Descrition = dr.Item("Description")
+                .SalesID = dr.Item("ID")
+                .QTY = dr.Item("QTY")
+                .SaveSales()
+            Next
+        End With
+
+        MsgBox("Success!!!")
+
+    End Sub
+
+    Private Function CheckNewRowSales() As Boolean
+        Dim mysqlSales As String = "SELECT  I.ID FROM POSITEM I "
+        Dim ds As DataSet = LoadSQLPOS(mysqlSales, "POSITEM")
+
+        For Each dr As DataRow In ds.Tables(0).Rows
+            Dim mysql As String = "SELECT SALESID FROM TBLPRO" & _
+                                " WHERE SALESID = '" & dr.Item("ID") & "'"
+            Dim dsPro As DataSet = LoadSQL(mysql, "TBLPRO")
+            If dsPro.Tables(0).Rows.Count >= 0 Then
+                Return False
+            End If
+        Next
+        Return True
+    End Function
 End Class

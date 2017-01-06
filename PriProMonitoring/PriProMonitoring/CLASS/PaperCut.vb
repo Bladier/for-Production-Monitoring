@@ -111,7 +111,7 @@
             .Item("PAPCUT_ITEMCODE") = _PapCutITemcode
             .Item("PAPCUT_DESCRIPTION") = _papcutDescription
             .Item("PAPERCUT") = _papcut
-            .Item("UOM") = "Inches"
+            .Item("UOM") = "Inch"
         End With
         ds.Tables(MainTable).Rows.Add(dsNewRow)
         database.SaveEntry(ds)
@@ -135,7 +135,7 @@
                 .Item("MAG_IDP") = _mag_IDP
                 .Item("PAPCUT_ITEMCODE") = _PapCutITemcode
                 .Item("PAPCUT_DESCRIPTION") = _papcutDescription
-                .Item("UOM") = "Inches"
+                .Item("UOM") = "Inch"
             End With
             ds.Tables(0).Rows.Add(dsNewRow)
             database.SaveEntry(ds)

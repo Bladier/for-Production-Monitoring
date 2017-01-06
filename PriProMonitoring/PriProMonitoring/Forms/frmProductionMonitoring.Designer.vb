@@ -42,6 +42,7 @@ Partial Class frmProductionMonitoring
         Me.ToolRemaining = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.btnLoadALLsales = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -211,12 +212,25 @@ Partial Class frmProductionMonitoring
         Me.GroupBox3.TabIndex = 6
         Me.GroupBox3.TabStop = False
         '
+        'btnLoadALLsales
+        '
+        Me.btnLoadALLsales.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.btnLoadALLsales.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLoadALLsales.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.btnLoadALLsales.Location = New System.Drawing.Point(493, 99)
+        Me.btnLoadALLsales.Name = "btnLoadALLsales"
+        Me.btnLoadALLsales.Size = New System.Drawing.Size(79, 27)
+        Me.btnLoadALLsales.TabIndex = 3
+        Me.btnLoadALLsales.Text = "Sales"
+        Me.btnLoadALLsales.UseVisualStyleBackColor = True
+        '
         'frmProductionMonitoring
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(720, 427)
+        Me.Controls.Add(Me.btnLoadALLsales)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.StatusStrip1)
@@ -257,4 +271,5 @@ Partial Class frmProductionMonitoring
     Friend WithEvents tpProgressBar As System.Windows.Forms.ToolStripProgressBar
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents btnLoadALLsales As System.Windows.Forms.Button
 End Class
