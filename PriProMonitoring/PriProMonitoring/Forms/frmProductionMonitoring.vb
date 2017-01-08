@@ -105,7 +105,7 @@
     End Sub
 
     Private Sub frmProductionMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'txtmagazine.Text = GetMag()
+        txtmagazine.Text = GetMag()
     End Sub
 
     Private Function GetMag() As String

@@ -137,15 +137,6 @@
             database.SaveEntry(ds, False)
         End If
 
-
-        'mysql = "SELECT * FROM " & filldata & " ORDER BY Item_ID DESC ROWS 1"
-        'ds = LoadSQL(mysql, filldata)
-        '_ItemID = ds.Tables(filldata).Rows(0).Item("Item_ID")
-
-        'For Each ItemLine As ItemLine In _itemLines
-        '    ItemLine.Item_ID = _ItemID
-        '    ItemLine.Save_itemLine()
-        'Next
     End Sub
 
     Friend Sub SaveItemLine()
@@ -193,7 +184,6 @@
         database.SaveEntry(ds, False)
     End Sub
 
-
     Public Sub Load_ItemCode()
         mysql = String.Format("SELECT * FROM ITEM WHERE ITEMCODE = '{0}'", _ItemCode)
         Dim ds As DataSet = New DataSet
@@ -206,8 +196,6 @@
 
         LoaditemsByRow(ds.Tables(0).Rows(0))
     End Sub
-
-
 
 #End Region
 End Class

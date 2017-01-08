@@ -10,11 +10,14 @@ Public Class frmImportIMDD
         If ans = Windows.Forms.DialogResult.No Then Exit Sub
 
         Me.Enabled = False
-        Dim mysql As String = "SELECT ITEMNO,ITEMNAME FROM ITEMMASTER"
+        Dim mysql As String = "SELECT ITEMNO,ITEMNAME FROM IMD"
         Dim ds As DataSet = LoadSQLPOS(mysql, "ItemMaster")
 
         For Each dr As DataRow In ds.Tables(0).Rows
             Dim itmsave As New item
+            itmsave.ItemCode = dr.Item("ITEMNO")
+            itmsave.Load_ItemCode()
+
             With itmsave
                 .ItemCode = dr.Item("ITEMNO")
                 .Descrition = dr.Item("ITEMNAME")
@@ -81,7 +84,7 @@ Public Class frmImportIMDD
 
 
 unloadObj:
-        'Memory Unload
+
         oSheet = Nothing
         oWB = Nothing
         oXL.Quit()

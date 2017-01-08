@@ -106,7 +106,7 @@
         ds = New DataSet
         ds = LoadSQL(mySql, MainTable)
 
-        If ds.Tables(0).Rows.Count <= 0 Then
+        If ds.Tables(MainTable).Rows.Count = 0 Then
             Dim dsNewRow As DataRow
             dsNewRow = ds.Tables(MainTable).NewRow
             With dsNewRow
