@@ -195,4 +195,43 @@
         Next
         Return True
     End Function
+
+    Private Sub btnDev_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDev.Click
+        Dim mysql As String = "SELECT * FROM TBLPRO WHERE STATUS = '0'"
+        Dim ds As DataSet = LoadSQL(mysql, "TBLPRO")
+        Console.WriteLine("TBLPRO count: " & ds.Tables(0).Rows.Count)
+
+        For Each dr As DataRow In ds.Tables(0).Rows
+            Dim mysqlitem As String = "SELECT * FROM ITEM WHERE ITEMCODE = '" & dr.Item("ITEMCODE") & "'"
+            Dim dsnew As DataSet = LoadSQL(mysqlitem, "ITEM")
+            Dim tmpID As Integer = dsnew.Tables(0).Rows(0).Item("ITEM_ID")
+
+            Dim mysqlitmLine As String = "SELECT * FROM TBLITEM_LINE where ITEM_ID = ' " & tmpID & "'"
+            Dim dsline As DataSet = LoadSQL(mysqlitmLine, "TBL_ITEMLINE")
+
+
+            Console.WriteLine("TBLITEM_LINE count: " & dsline.Tables(0).Rows.Count)
+            Console.WriteLine("PApcutID: " & dsline.Tables(0).Rows(0).Item("PAPERCUT_ID"))
+
+            For Each dr1 As DataRow In dsline.Tables(0).Rows
+                Dim tmpPapcut As New PaperCut
+                tmpPapcut.Load_PaperCUts(dr1.Item("PAPERCUT_ID"))
+
+
+                Dim SaveSL As New SalesLine
+                With SaveSL
+                    .ProductionID = dr.Item("Production_ID")
+                    .MagID = tmpPapcut.mag_IDP
+                    .Paproll_serial = ""
+                    .Quantity = dr.Item("QTY") * dsline.Tables(0).Rows(0).Item("QTY")
+                    .Papercuts = tmpPapcut.papcut
+                    .papcut_Desc = tmpPapcut.papcutDescription
+                    .SubTotal_Length = (dr.Item("QTY") * dsline.Tables(0).Rows(0).Item("QTY")) * tmpPapcut.papcut
+                    .Papcut_Code = tmpPapcut.PapCutITemcode
+                    .SaveSalesLine()
+                End With
+            Next
+        Next
+
+    End Sub
 End Class

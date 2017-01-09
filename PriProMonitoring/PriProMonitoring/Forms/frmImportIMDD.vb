@@ -1,6 +1,7 @@
 ﻿Imports Microsoft.Office.Interop
 Public Class frmImportIMDD
     Private DbnAmePos As String
+
     Private Sub btnBrowse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLoadIMD.Click
         databasePOS.dbNamePOS = GetOption("DatabasePOS")
 
@@ -97,6 +98,5 @@ unloadObj:
     Private Sub btnBrowse_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBrowse.Click
         ofdIMD.ShowDialog()
         txtPath.Text = ofdIMD.FileName
-        
     End Sub
 End Class

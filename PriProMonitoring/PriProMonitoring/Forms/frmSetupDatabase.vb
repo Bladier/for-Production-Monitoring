@@ -11,9 +11,17 @@
     End Sub
 
     Private Sub btnLoad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLoad.Click
-        If Not locked Then
-            UpdateSetting()
+        Dim str As String
+        str = txtpath.Text
+        If str.Contains(".FDB") = True Then
+            If Not locked Then
+                UpdateSetting()
+            End If
+        Else
+            MsgBox("The file type is not valid" & vbCrLf & "Please try again!", MsgBoxStyle.Critical)
+            Exit Sub
         End If
+
     End Sub
 
 
@@ -37,4 +45,6 @@
     Private Sub frmLoadIMD_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.Text = "Import IMD | Active Form"
     End Sub
+
+   
 End Class
