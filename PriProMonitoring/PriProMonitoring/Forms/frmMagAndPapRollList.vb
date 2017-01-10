@@ -77,8 +77,8 @@
             Me.Close()
         Else
 
-            RollstatInactive(LoadActiveRoll, "0") 'update last load to 0
-            UpdateRollstatus(PAPSERIAL, "1") ' update new load to 1
+            ' RollstatInactive(LoadActiveRoll, 0) 'update last load to 0
+            UpdateRollstatus(PAPSERIAL, 1) ' update new load to 1
 
             frmProductionMonitoring.txtmagazine.Text = LVPAPROLL.SelectedItems(0).SubItems(3).Text
 
@@ -98,13 +98,14 @@
     End Sub
 
     Friend Sub RollstatInactive(ByVal serial As String, ByVal status As Integer)
-        Dim mySql As String = "SELECT * FROM TBLPAPERROLL WHERE paproll_serial = '" & serial & "'"
+        Dim mySql1 As String = "SELECT * FROM TBLPAPERROLL WHERE paproll_serial = '" & serial & "'"
         Dim fillData As String = "TBLPAPERROLL"
-        Dim ds As DataSet = LoadSQL(mySql, fillData)
+        Dim ds As DataSet = LoadSQL(mySql1, fillData)
 
         If ds.Tables(fillData).Rows.Count = 1 Then
             With ds.Tables("TBLPAPERROLL").Rows(0)
                 .Item("Updated_at") = Now
+                .Item("AddedBy") = FrmMain.statusUser.Text
                 .Item("status") = status
             End With
             database.SaveEntry(ds, False)

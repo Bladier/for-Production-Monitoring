@@ -95,6 +95,16 @@
         End Set
     End Property
 
+    Private _status As Integer
+    Public Property status() As Integer
+        Get
+            Return _status
+        End Get
+        Set(ByVal value As Integer)
+            _status = value
+        End Set
+    End Property
+
     Private _created_at As Date
     Public Property created_at() As Date
         Get
@@ -108,55 +118,80 @@
 
 #Region "procedures and functions"
     Friend Sub lOadItem(ByVal ID As Integer)
-        mysql = "SELECT * FROM ITEM WHERE ITEM_ID =" & ID
+        mysql = "SELECT * FROM tblItem_line WHERE ID =" & ID
         Dim ds As DataSet = LoadSQL(mysql, "Item")
 
         If ds.Tables(0).Rows.Count <= 0 Then
-            MsgBox("Unable to load item", MsgBoxStyle.Information)
+            MsgBox("Unable to load sales line.", MsgBoxStyle.Information)
             Exit Sub
         End If
 
         For Each dr As DataRow In ds.Tables(0).Rows
-            ' lOadItemByrow(dr)
+            lOadItemByrow(dr)
         Next
 
     End Sub
 
-    'Private Sub lOadItemByrow(ByVal dr As DataRow)
-    '    LoaditemsByRow(dr)
-    'End Sub
+    Private Sub lOadItemByrow(ByVal dr As DataRow)
+        LoadsalesByRow(dr)
+    End Sub
 
-    'Private Sub LoaditemsByRow(ByVal dr As DataRow)
-    '    With dr
-    '        _ID = .Item("Production_ID")
-    '        _ItemCode = .Item("ItemCode")
-    '        _Description = .Item("Description")
-    '        _SalesID = .Item("SalesID")
-    '        _status = .Item("status")
-    '        _QTY = .Item("Quantity")
+    Private Sub LoadsalesByRow(ByVal dr As DataRow)
+        With dr
+            _ID = .Item("ID")
+            _ProductionID = .Item("Production_ID")
+            _MagID = .Item("MAG_ID")
+            _Paproll_serial = .Item("PAPROLL_SERIAL")
+            _Quantity = .Item("Quantity")
+            _Papercut = .Item("PAPERCUT")
+            _papcut_Desc = .Item("PAPCUT_DESC")
+            _SubTotal_Length = .Item("SUBTOTAL_LENGTH")
+            _Papcut_Code = .Item("PAPCUT_CODE")
+            _created_at = .Item("CREATED_AT")
+            _status = .Item("Status")
+        End With
+    End Sub
 
-    '    End With
-    'End Sub
     Friend Sub SaveSalesLine()
 
         mysql = "SELECT * FROM " & filldata & " where ID = '" & _ID & "'"
         Dim ds As DataSet = LoadSQL(mysql, filldata)
 
-        Dim dsNewRow As DataRow
-        dsNewRow = ds.Tables(filldata).NewRow
-        With dsNewRow
-            .Item("PRODUCTION_ID") = _ProductionID
-            .Item("MAG_ID") = _MagID
-            .Item("PAPROLL_SERIAL") = _Paproll_serial
-            .Item("Quantity") = _Quantity
-            .Item("PAPERCUT") = _Papercut
-            .Item("PAPCUT_DESC") = _papcut_Desc
-            .Item("SUBTOTAL_LENGTH") = _SubTotal_Length
-            .Item("PAPCUT_ITEMCODE") = _Papcut_Code
-            .Item("CREATED_AT") = Now
-        End With
-        ds.Tables(0).Rows.Add(dsNewRow)
-        database.SaveEntry(ds)
+        If ds.Tables(0).Rows.Count = 1 Then
+            With ds.Tables(0).Rows(0)
+                .Item("PRODUCTION_ID") = _ProductionID
+                .Item("MAG_ID") = _MagID
+                .Item("PAPROLL_SERIAL") = _Paproll_serial
+                .Item("Quantity") = _Quantity
+                .Item("PAPERCUT") = _Papercut
+                .Item("PAPCUT_DESC") = _papcut_Desc
+                .Item("SUBTOTAL_LENGTH") = _SubTotal_Length
+                .Item("PAPCUT_CODE") = _Papcut_Code
+                .Item("CREATED_AT") = Now
+                .Item("Status") = 0
+            End With
+            database.SaveEntry(ds, False)
+
+        Else
+            Dim dsNewRow As DataRow
+            dsNewRow = ds.Tables(filldata).NewRow
+            With dsNewRow
+                .Item("PRODUCTION_ID") = _ProductionID
+                .Item("MAG_ID") = _MagID
+                .Item("PAPROLL_SERIAL") = _Paproll_serial
+                .Item("Quantity") = _Quantity
+                .Item("PAPERCUT") = _Papercut
+                .Item("PAPCUT_DESC") = _papcut_Desc
+                .Item("SUBTOTAL_LENGTH") = _SubTotal_Length
+                .Item("PAPCUT_CODE") = _Papcut_Code
+                .Item("CREATED_AT") = Now
+                .Item("Status") = 0
+            End With
+            ds.Tables(0).Rows.Add(dsNewRow)
+            database.SaveEntry(ds)
+        End If
+
+      
     End Sub
 
 

@@ -228,10 +228,43 @@
                     .papcut_Desc = tmpPapcut.papcutDescription
                     .SubTotal_Length = (dr.Item("QTY") * dsline.Tables(0).Rows(0).Item("QTY")) * tmpPapcut.papcut
                     .Papcut_Code = tmpPapcut.PapCutITemcode
+
                     .SaveSalesLine()
                 End With
             Next
+
+
+            Dim mysql1 As String = "SELECT * FROM TBLPRO WHERE PRODUCTION_ID = '" & dr.Item("PRODUCTION_ID") & "'"
+            Dim ds1 As DataSet = LoadSQL(mysql1, "TBLPRO")
+
+            ds1.Tables(0).Rows(0).Item("Status") = 1
+
+            database.SaveEntry(ds1, False)
         Next
 
+
+        If lvpapercuts.Items.Count <= 0 Then Exit Sub
+
+        For Each itm As ListViewItem In lvpapercuts.Items
+            Dim newMysqlSalesLines As String = "SELECT * FROM TBL_PROLINE " & _
+                "WHERE PAPCUT_CODE = '" & itm.SubItems(6).Text & "' AND STATUS <> 1"
+            Dim MysqlSalesLines As DataSet = LoadSQL(newMysqlSalesLines, "TBL_PROLINE")
+
+            For Each dr As DataRow In MysqlSalesLines.Tables(0).Rows
+                Dim SubTotal As Double = (MysqlSalesLines.Tables(0).Rows(0).Item(5) * itm.SubItems(5).Text)
+
+                dr("Paproll_SERIAL") = itm.SubItems(2).Text
+                dr("Status") = 1
+
+                database.SaveEntry(MysqlSalesLines, False)
+
+                SelectedPaPRoll = New PaperRoll
+                SelectedPaPRoll.TotalLength = SubTotal * meter
+                SelectedPaPRoll.Updatepaper()
+            Next
+
+        Next
+
+        MsgBox("Updated New Sales", MsgBoxStyle.Information, "Production")
     End Sub
 End Class
