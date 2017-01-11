@@ -136,6 +136,7 @@
             Console.WriteLine("TBLITEM_LINE count: " & dsline.Tables(0).Rows.Count)
             Console.WriteLine("PApcutID: " & dsline.Tables(0).Rows(0).Item("PAPERCUT_ID"))
 
+
             For Each dr1 As DataRow In dsline.Tables(0).Rows
                 Dim tmpPapcut As New PaperCut
                 tmpPapcut.Load_PaperCUts(dr1.Item("PAPERCUT_ID"))

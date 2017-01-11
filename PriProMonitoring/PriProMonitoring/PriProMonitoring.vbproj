@@ -237,6 +237,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="sampleSales\frmSeed.Designer.vb">
+      <DependentUpon>frmSeed.vb</DependentUpon>
+    </Compile>
+    <Compile Include="sampleSales\frmSeed.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sampleSales\SalesSeed.vb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\Dev.resx">
@@ -289,6 +298,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sampleSales\frmSeed.resx">
+      <DependentUpon>frmSeed.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
