@@ -124,6 +124,8 @@
         Dim ds As DataSet = LoadSQL(mysql, "TBLPRO")
         Console.WriteLine("TBLPRO count: " & ds.Tables(0).Rows.Count)
 
+        If ds.Tables(0).Rows.Count = 0 Then GoTo ExitIfNoNewData
+
         For Each dr As DataRow In ds.Tables(0).Rows
             Dim mysqlitem As String = "SELECT * FROM ITEM WHERE ITEMCODE = '" & dr.Item("ITEMCODE") & "'"
             Dim dsnew As DataSet = LoadSQL(mysqlitem, "ITEM")
@@ -132,6 +134,8 @@
             Dim mysqlitmLine As String = "SELECT * FROM TBLITEM_LINE where ITEM_ID = ' " & tmpID & "'"
             Dim dsline As DataSet = LoadSQL(mysqlitmLine, "TBL_ITEMLINE")
 
+            If dsline.Tables(0).Rows.Count = 0 Then _
+                MsgBox("Please Update ItemLines", MsgBoxStyle.Critical) : GoTo ExitIfNoNewData
 
             Console.WriteLine("TBLITEM_LINE count: " & dsline.Tables(0).Rows.Count)
             Console.WriteLine("PApcutID: " & dsline.Tables(0).Rows(0).Item("PAPERCUT_ID"))
@@ -190,6 +194,9 @@
         Next
 
         MsgBox("Updated New Sales", MsgBoxStyle.Information, "Production")
+ExitIfNoNewData:
+        Exit Sub
+
     End Sub
 
   

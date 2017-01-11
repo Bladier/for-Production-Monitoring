@@ -1,7 +1,7 @@
 ﻿Public Class Login
     Private locked As Boolean = IIf(GetOption("Locked") = "YES", True, False)
     Private Sub btnLogin_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLogin.Click
-        If Not locked Then MsgBox("Database not setup", MsgBoxStyle.Exclamation) : Exit Sub
+        If Not locked Then MsgBox("Database not set.", MsgBoxStyle.Exclamation) : Exit Sub
         databasePOS.dbNamePOS = GetOption("DatabasePOS")
 
         Static wrongLogin As Integer
