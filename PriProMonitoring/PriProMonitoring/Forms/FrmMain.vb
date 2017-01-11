@@ -48,6 +48,7 @@
             locked = IIf(GetOption("Locked") = "YES", True, False)
             NotYetLogin()
             Login.Show()
+            statusUser.Text = "User"
         End If
     End Sub
 

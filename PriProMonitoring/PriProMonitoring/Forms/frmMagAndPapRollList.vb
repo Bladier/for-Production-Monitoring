@@ -54,12 +54,6 @@
         Next
     End Sub
 
-    Private Sub saveRollLog(ByVal rollID As Integer, ByVal loadedby As String)
-        Dim mysql As String = "SELEC * FROM TBLPAPERLOAD_LOAD"
-        Dim DS As DataSet = LoadSQL(mysql, "TBLPAPERLOAD_LOAD")
-
-    End Sub
-
     Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
 
         If LVPAPROLL.Items.Count <= 0 Then Exit Sub
@@ -77,7 +71,7 @@
             Me.Close()
         Else
 
-            ' RollstatInactive(LoadActiveRoll, 0) 'update last load to 0
+            RollstatInactive(LoadActiveRoll, 0) 'update last load to 0
             UpdateRollstatus(PAPSERIAL, 1) ' update new load to 1
 
             frmProductionMonitoring.txtmagazine.Text = LVPAPROLL.SelectedItems(0).SubItems(3).Text
@@ -120,6 +114,7 @@
         If ds.Tables(fillData).Rows.Count = 1 Then
             With ds.Tables("TBLPAPERROLL").Rows(0)
                 .Item("Updated_at") = Now
+                .Item("AddedBy") = FrmMain.statusUser.Text
                 .Item("status") = status
             End With
             database.SaveEntry(ds, False)

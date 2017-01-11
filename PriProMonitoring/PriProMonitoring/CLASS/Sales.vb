@@ -104,12 +104,13 @@
         mysql = "SELECT * FROM " & filldata & " where SalesID = '" & _SalesID & "'"
         Dim ds As DataSet = LoadSQL(mysql, filldata)
 
+
         If ds.Tables(filldata).Rows.Count = 1 Then
             With ds.Tables(filldata).Rows(0)
                 .Item("Itemcode") = _ItemCode
                 .Item("Description") = _Description
                 .Item("SalesID") = _SalesID
-                .Item("Quantity") = _QTY
+                .Item("QTY") = _QTY
             End With
             database.SaveEntry(ds, False)
 
@@ -121,7 +122,7 @@
                 .Item("Description") = _Description
                 .Item("SalesID") = _SalesID
                 .Item("Status") = 0
-                .Item("Quantity") = _QTY
+                .Item("QTY") = _QTY
             End With
             ds.Tables(0).Rows.Add(dsNewRow)
             database.SaveEntry(ds)

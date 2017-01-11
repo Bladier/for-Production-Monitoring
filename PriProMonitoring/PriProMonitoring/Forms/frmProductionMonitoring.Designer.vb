@@ -24,7 +24,6 @@ Partial Class frmProductionMonitoring
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnSearch = New System.Windows.Forms.Button()
-        Me.txtSEarch = New PriProMonitoring.watermark()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.lvpapercuts = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -35,15 +34,15 @@ Partial Class frmProductionMonitoring
         Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.txtmagazine = New PriProMonitoring.watermark()
         Me.btnLoad = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.tpProgressBar = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolRemaining = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.btnLoadALLsales = New System.Windows.Forms.Button()
-        Me.btnDev = New System.Windows.Forms.Button()
+        Me.btnProduction = New System.Windows.Forms.Button()
+        Me.txtmagazine = New PriProMonitoring.watermark()
+        Me.txtSEarch = New PriProMonitoring.watermark()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -71,15 +70,6 @@ Partial Class frmProductionMonitoring
         Me.btnSearch.TabIndex = 1
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
-        '
-        'txtSEarch
-        '
-        Me.txtSEarch.Location = New System.Drawing.Point(11, 15)
-        Me.txtSEarch.Name = "txtSEarch"
-        Me.txtSEarch.Size = New System.Drawing.Size(364, 20)
-        Me.txtSEarch.TabIndex = 0
-        Me.txtSEarch.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSEarch.WatermarkText = "Search . . ."
         '
         'GroupBox2
         '
@@ -147,17 +137,6 @@ Partial Class frmProductionMonitoring
         Me.ColumnHeader5.Text = "Description"
         Me.ColumnHeader5.Width = 291
         '
-        'txtmagazine
-        '
-        Me.txtmagazine.Location = New System.Drawing.Point(7, 17)
-        Me.txtmagazine.Name = "txtmagazine"
-        Me.txtmagazine.ReadOnly = True
-        Me.txtmagazine.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtmagazine.Size = New System.Drawing.Size(459, 20)
-        Me.txtmagazine.TabIndex = 0
-        Me.txtmagazine.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtmagazine.WatermarkText = "Magazine"
-        '
         'btnLoad
         '
         Me.btnLoad.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -171,6 +150,7 @@ Partial Class frmProductionMonitoring
         '
         'StatusStrip1
         '
+        Me.StatusStrip1.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tpProgressBar, Me.ToolRemaining})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 401)
         Me.StatusStrip1.Name = "StatusStrip1"
@@ -205,37 +185,46 @@ Partial Class frmProductionMonitoring
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.btnProduction)
         Me.GroupBox3.Controls.Add(Me.btnLoad)
         Me.GroupBox3.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.GroupBox3.Location = New System.Drawing.Point(493, 168)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(202, 48)
+        Me.GroupBox3.Size = New System.Drawing.Size(202, 88)
         Me.GroupBox3.TabIndex = 6
         Me.GroupBox3.TabStop = False
         '
-        'btnLoadALLsales
+        'btnProduction
         '
-        Me.btnLoadALLsales.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.btnLoadALLsales.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLoadALLsales.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnLoadALLsales.Location = New System.Drawing.Point(493, 99)
-        Me.btnLoadALLsales.Name = "btnLoadALLsales"
-        Me.btnLoadALLsales.Size = New System.Drawing.Size(79, 27)
-        Me.btnLoadALLsales.TabIndex = 3
-        Me.btnLoadALLsales.Text = "Sales"
-        Me.btnLoadALLsales.UseVisualStyleBackColor = True
+        Me.btnProduction.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.btnProduction.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnProduction.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.btnProduction.Location = New System.Drawing.Point(9, 46)
+        Me.btnProduction.Name = "btnProduction"
+        Me.btnProduction.Size = New System.Drawing.Size(182, 27)
+        Me.btnProduction.TabIndex = 8
+        Me.btnProduction.Text = "Production"
+        Me.btnProduction.UseVisualStyleBackColor = True
         '
-        'btnDev
+        'txtmagazine
         '
-        Me.btnDev.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.btnDev.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDev.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnDev.Location = New System.Drawing.Point(592, 99)
-        Me.btnDev.Name = "btnDev"
-        Me.btnDev.Size = New System.Drawing.Size(79, 27)
-        Me.btnDev.TabIndex = 8
-        Me.btnDev.Text = "DeV"
-        Me.btnDev.UseVisualStyleBackColor = True
+        Me.txtmagazine.Location = New System.Drawing.Point(7, 17)
+        Me.txtmagazine.Name = "txtmagazine"
+        Me.txtmagazine.ReadOnly = True
+        Me.txtmagazine.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.txtmagazine.Size = New System.Drawing.Size(459, 20)
+        Me.txtmagazine.TabIndex = 0
+        Me.txtmagazine.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtmagazine.WatermarkText = "Magazine"
+        '
+        'txtSEarch
+        '
+        Me.txtSEarch.Location = New System.Drawing.Point(11, 15)
+        Me.txtSEarch.Name = "txtSEarch"
+        Me.txtSEarch.Size = New System.Drawing.Size(364, 20)
+        Me.txtSEarch.TabIndex = 0
+        Me.txtSEarch.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSEarch.WatermarkText = "Search . . ."
         '
         'frmProductionMonitoring
         '
@@ -243,8 +232,6 @@ Partial Class frmProductionMonitoring
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(720, 427)
-        Me.Controls.Add(Me.btnDev)
-        Me.Controls.Add(Me.btnLoadALLsales)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.StatusStrip1)
@@ -285,6 +272,5 @@ Partial Class frmProductionMonitoring
     Friend WithEvents tpProgressBar As System.Windows.Forms.ToolStripProgressBar
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents btnLoadALLsales As System.Windows.Forms.Button
-    Friend WithEvents btnDev As System.Windows.Forms.Button
+    Friend WithEvents btnProduction As System.Windows.Forms.Button
 End Class
