@@ -1,36 +1,36 @@
-﻿Public Class item
+﻿Public Class adjustment
     Dim mysql As String = ""
-    Dim filldata As String = "adjustment"
+    Dim filldata As String = "tbladjustment"
     Dim subtable As String = "tblitem_line"
 
 #Region "Variables and Properties"
-    Private _ItemID As Integer
+    Private _ID As Integer
     Public Property ID() As Integer
         Get
-            Return _ItemID
+            Return _ID
         End Get
         Set(ByVal value As Integer)
-            _ItemID = value
+            _ID = value
         End Set
     End Property
 
-    Private _ItemCode As String
-    Public Property ItemCode() As String
+    Private _PaprollID As Integer
+    Public Property PaprollID() As Integer
         Get
-            Return _ItemCode
+            Return _PaprollID
         End Get
-        Set(ByVal value As String)
-            _ItemCode = value
+        Set(ByVal value As Integer)
+            _PaprollID = value
         End Set
     End Property
 
-    Private _Description As String
-    Public Property Descrition() As String
+    Private _PaprollSserial As String
+    Public Property PaprollSserial() As String
         Get
-            Return _Description
+            Return _PaprollSserial
         End Get
         Set(ByVal value As String)
-            _Description = value
+            _PaprollSserial = value
         End Set
     End Property
 
@@ -44,158 +44,163 @@
         End Set
     End Property
 
-
-
-    Private _itemLines As CollectionItemLine
-    Public Property itemLines() As CollectionItemLine
+    Private _adjustedBy As String
+    Public Property adjustedBy() As String
         Get
-            Return _itemLines
+            Return _adjustedBy
         End Get
-        Set(ByVal value As CollectionItemLine)
-            _itemLines = value
+        Set(ByVal value As String)
+            _adjustedBy = value
+        End Set
+    End Property
+
+    Private _CreatedAT As Date
+    Public Property CreatedAT() As Date
+        Get
+            Return _CreatedAT
+        End Get
+        Set(ByVal value As Date)
+            _CreatedAT = value
+        End Set
+    End Property
+
+    Private _UpdatedAT As Date
+    Public Property UpdatedAT() As Date
+        Get
+            Return _UpdatedAT
+        End Get
+        Set(ByVal value As Date)
+            _UpdatedAT = value
+        End Set
+    End Property
+
+    Private _TotalAdjustment As Double
+    Public Property TotalAdjustment() As Double
+        Get
+            Return _TotalAdjustment
+        End Get
+        Set(ByVal value As Double)
+            _TotalAdjustment = value
+        End Set
+    End Property
+
+    Private _AdjustmentLine As adjustmentCollection
+    Public Property AdjustmentLines() As adjustmentCollection
+        Get
+            Return _AdjustmentLine
+        End Get
+        Set(ByVal value As adjustmentCollection)
+            _AdjustmentLine = value
         End Set
     End Property
 #End Region
 
 #Region "procedures and functions"
-    Friend Sub lOadItem(ByVal ID As Integer)
-        mysql = "SELECT * FROM ITEM WHERE ITEM_ID =" & ID
-        Dim ds As DataSet = LoadSQL(mysql, "Item")
+    Friend Sub lOadAdjustment(ByVal ID As Integer)
+        mysql = "SELECT * FROM " & filldata & " WHERE ITEM_ID =" & ID
+        Dim ds As DataSet = LoadSQL(mysql, filldata)
 
         If ds.Tables(0).Rows.Count <= 0 Then
-            MsgBox("Unable to load item", MsgBoxStyle.Information)
+            MsgBox("Unable to load adjustment", MsgBoxStyle.Information)
             Exit Sub
         End If
 
         For Each dr As DataRow In ds.Tables(0).Rows
-            lOadItemByrow(dr)
+            lOadAdjustmentByrow(dr)
         Next
 
     End Sub
 
-    Private Sub lOadItemByrow(ByVal dr As DataRow)
-        LoaditemsByRow(dr)
+    Private Sub lOadAdjustmentByrow(ByVal dr As DataRow)
+        LoadAdjustsByRow(dr)
     End Sub
 
-    Private Sub LoaditemsByRow(ByVal dr As DataRow)
-
+    Private Sub LoadAdjustsByRow(ByVal dr As DataRow)
         With dr
-            _ItemID = .Item("Item_ID")
-            _ItemCode = .Item("ItemCode")
-            _Description = .Item("Description")
+            _ID = .Item("AdjustmentID")
+            _PaprollID = .Item("Paproll_ID")
+            _PaprollSserial = .Item("PapRoll_serial")
             _remarks = IIf(IsDBNull(.Item("Remarks")), "", .Item("Remarks"))
+            _adjustedBy = .Item("Adjusted_By")
+            _CreatedAT = .Item("Created_at")
+            _UpdatedAT = .Item("Updated_at")
+            _TotalAdjustment = .Item("Total_Adjustment")
         End With
     End Sub
 
     Public Sub LoadByRow(ByVal dr As DataRow)
         Dim mySql As String, ds As New DataSet
-          With dr
-            _ItemID = .Item("Item_ID")
-            _ItemCode = .Item("ItemCode")
-            _Description = .Item("Description")
+        With dr
+            _ID = .Item("AdjustmentID")
+            _PaprollID = .Item("Paproll_ID")
+            _PaprollSserial = .Item("PapRoll_serial")
             _remarks = IIf(IsDBNull(.Item("Remarks")), "", .Item("Remarks"))
+            _adjustedBy = .Item("Adjusted_By")
+            _CreatedAT = .Item("Created_at")
+            _UpdatedAT = .Item("Updated_at")
+            _TotalAdjustment = .Item("Total_Adjustment")
         End With
-        ' Load Item Specification
-        mySql = String.Format("SELECT * FROM {0} WHERE Item_ID = {1} ORDER BY itemLine_ID", subtable, _ItemID)
+        ' Load adjustment line
+        mySql = String.Format("SELECT * FROM {0} WHERE Adjustment_ID = {1} ORDER BY ID", subtable, _ID)
         ds.Clear()
-        ds = LoadSQL(mySql, SubTable)
+        ds = LoadSQL(mySql, subtable)
 
-        _itemLines = New CollectionItemLine
-        For Each dr In ds.Tables(SubTable).Rows
-            Console.WriteLine(dr.Item("Papercut_ID"))
-            Dim itmLine As New ItemLine
-            itmLine.Load(dr)
+        _AdjustmentLine = New adjustmentCollection
+        For Each dr In ds.Tables(subtable).Rows
+            Console.WriteLine(dr.Item("ID"))
+            Dim AdjLine As New adjustmentLine
+            AdjLine.Load(dr)
 
-            'Load Item Specification
-            _itemLines.Add(itmLine)
+            ' Load adjustment line
+            _AdjustmentLine.Add(AdjLine)
         Next
     End Sub
 
-    Friend Sub SaveItem()
-        mysql = "SELECT * FROM ITEM WHERE Item_ID = " & _ItemID
-        Dim ds As DataSet = LoadSQL(mysql, "Item")
-
-        If ds.Tables(0).Rows.Count <= 0 Then
-
-
-            Dim dsNewRow As DataRow
-            dsNewRow = ds.Tables(0).NewRow
-            With dsNewRow
-                .Item("ItemCode") = _ItemCode
-                .Item("Description") = _Description
-                .Item("Remarks") = _remarks
-            End With
-
-            ds.Tables(0).Rows.Add(dsNewRow)
-            database.SaveEntry(ds)
-        Else
-            With ds.Tables(filldata).Rows(0)
-                .Item("ITemcode") = _ItemCode
-                .Item("Description") = _Description
-                .Item("Remarks") = _remarks
-            End With
-            database.SaveEntry(ds, False)
-        End If
-
-    End Sub
-
-    Friend Sub SaveItemLine()
-        mysql = "SELECT * FROM ITEM WHERE Item_ID = " & _ItemID
-        Dim ds As DataSet = LoadSQL(mysql, "Item")
-
-        If ds.Tables(0).Rows.Count >= 1 Then
-
-
-            Dim dsNewRow As DataRow
-            dsNewRow = ds.Tables(0).NewRow
-            With dsNewRow
-                .Item("ItemCode") = _ItemCode
-                .Item("Description") = _Description
-                .Item("Remarks") = _remarks
-            End With
-
-            ds.Tables(0).Rows.Add(dsNewRow)
-            database.SaveEntry(ds)
-        Else
-            With ds.Tables(filldata).Rows(0)
-                .Item("ITemcode") = _ItemCode
-                .Item("Description") = _Description
-                .Item("Remarks") = _remarks
-            End With
-            database.SaveEntry(ds, False)
-        End If
-
-    End Sub
-
-    Public Sub UpdateITEM()
-        Dim mySql As String = String.Format("SELECT * FROM {0} WHERE IteM_ID = {1}", filldata, _ItemID)
+    Friend Sub SaveAdjustment()
+        Dim mySql As String = String.Format("SELECT * FROM " & filldata & " WHERE AdjustmentID = '{0}'", _ID)
         Dim ds As DataSet = LoadSQL(mySql, filldata)
 
-        If ds.Tables(0).Rows.Count <> 1 Then
-            MsgBox("Unable to update record", MsgBoxStyle.Critical)
-            Exit Sub
-        End If
-
-        With ds.Tables(filldata).Rows(0)
-            .Item("ITemcode") = _ItemCode
-            .Item("Description") = _Description
+        Dim dsNewRow As DataRow
+        dsNewRow = ds.Tables(0).NewRow
+        With dsNewRow
+            .Item("PapRoll_ID") = _PaprollID
+            .Item("Paproll_serial") = _PaprollSserial
             .Item("Remarks") = _remarks
+            .Item("Adjusted_By") = "ELLIE"
+            .Item("Created_at") = _CreatedAT
         End With
-        database.SaveEntry(ds, False)
+        ds.Tables(0).Rows.Add(dsNewRow)
+        database.SaveEntry(ds)
+
+        mySql = "SELECT * FROM " & filldata & " ORDER BY AdjustmentID DESC ROWS 1"
+        ds = LoadSQL(mySql, filldata)
+        _ID = ds.Tables(filldata).Rows(0).Item("AdjustmentID")
+
+        For Each tmpAdjstmentLne As adjustmentLine In AdjustmentLines
+            tmpAdjstmentLne.AdjustmentID = _ID
+            tmpAdjstmentLne.Save_AdjLine()
+        Next
+
     End Sub
 
-    Public Sub Load_ItemCode()
-        mysql = String.Format("SELECT * FROM ITEM WHERE ITEMCODE = '{0}'", _ItemCode)
-        Dim ds As DataSet = New DataSet
-        ds = LoadSQL(mySql)
 
-        If ds.Tables(0).Rows.Count <> 1 Then
-            Console.WriteLine("Failed to load ItemCode " & _itemCode)
-            Exit Sub
-        End If
 
-        LoaditemsByRow(ds.Tables(0).Rows(0))
-    End Sub
+    'Public Sub UpdateITEM()
+    '    Dim mySql As String = String.Format("SELECT * FROM {0} WHERE IteM_ID = {1}", filldata, _ItemID)
+    '    Dim ds As DataSet = LoadSQL(mySql, filldata)
+
+    '    If ds.Tables(0).Rows.Count <> 1 Then
+    '        MsgBox("Unable to update record", MsgBoxStyle.Critical)
+    '        Exit Sub
+    '    End If
+
+    '    With ds.Tables(filldata).Rows(0)
+    '        .Item("ITemcode") = _ItemCode
+    '        .Item("Description") = _Description
+    '        .Item("Remarks") = _remarks
+    '    End With
+    '    database.SaveEntry(ds, False)
+    'End Sub
 
 #End Region
 End Class

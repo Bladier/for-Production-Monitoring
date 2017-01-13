@@ -168,12 +168,22 @@
 
     End Sub
 
+    Friend Sub loadSerial(ByVal serial As String)
+        Dim mysql As String = "SELECT * FROM " & MainTable & " WHERE PAPROLL_SERIAL = " & serial
+        Dim ds As DataSet = LoadSQL(mysql, MainTable)
+
+        For Each dr As DataRow In ds.Tables(0).Rows
+            LoadByRow(dr)
+        Next
+    End Sub
+
     Public Sub LoadByRow(ByVal dr As DataRow)
 
         With dr
 
             _PaprollID = .Item("Paproll_ID")
             _MagID = .Item("Mag_IDS")
+            _PaperRollSErial = .Item("Paproll_Serial")
             _OuterDiameter = .Item("Outer_Diameter")
             _Thickness = .Item("Thickness")
             _SpoolDiameter = .Item("Spool_Diameter")

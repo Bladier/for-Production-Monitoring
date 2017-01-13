@@ -107,6 +107,8 @@
     <Compile Include="CLASS\Adjustment.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="CLASS\AdjustmentCollection.vb" />
+    <Compile Include="CLASS\AdjustmentLine.vb" />
     <Compile Include="CLASS\SalesLine.vb" />
     <Compile Include="CLASS\ItemData.vb" />
     <Compile Include="CLASS\CollectionPaperCut.vb">
