@@ -84,6 +84,36 @@
         End Set
     End Property
 
+    Private _Emulsion As Integer
+    Public Property Emulsion() As Integer
+        Get
+            Return _Emulsion
+        End Get
+        Set(ByVal value As Integer)
+            _Emulsion = value
+        End Set
+    End Property
+
+    Private _Advance As Integer
+    Public Property Advance() As Integer
+        Get
+            Return _Advance
+        End Get
+        Set(ByVal value As Integer)
+            _Advance = value
+        End Set
+    End Property
+
+    Private _Lastout As Double
+    Public Property Lastout() As Double
+        Get
+            Return _Lastout
+        End Get
+        Set(ByVal value As Double)
+            _Lastout = value
+        End Set
+    End Property
+
     Private _AdjustmentLine As adjustmentCollection
     Public Property AdjustmentLines() As adjustmentCollection
         Get
@@ -125,6 +155,9 @@
             _CreatedAT = .Item("Created_at")
             _UpdatedAT = .Item("Updated_at")
             _TotalAdjustment = .Item("Total_Adjustment")
+            _Emulsion = .Item("Emulsion")
+            _Advance = .Item("Advance")
+            _Lastout = .Item("lastout")
         End With
     End Sub
 
@@ -139,6 +172,9 @@
             _CreatedAT = .Item("Created_at")
             _UpdatedAT = .Item("Updated_at")
             _TotalAdjustment = .Item("Total_Adjustment")
+            _Emulsion = .Item("Emulsion")
+            _Advance = .Item("Advance")
+            _Lastout = .Item("lastout")
         End With
         ' Load adjustment line
         mySql = String.Format("SELECT * FROM {0} WHERE Adjustment_ID = {1} ORDER BY ID", subtable, _ID)
@@ -170,6 +206,9 @@
             .Item("Adjusted_By") = FrmMain.statusUser.Text
             .Item("Created_at") = _CreatedAT
             .Item("Total_adjustment") = _TotalAdjustment
+            .Item("Emulsion") = _Emulsion
+            .Item("Advance") = _Advance
+            .Item("lastout") = _Lastout
         End With
         ds.Tables(0).Rows.Add(dsNewRow)
         database.SaveEntry(ds)

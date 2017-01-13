@@ -44,15 +44,15 @@ Partial Class frmAdjustment
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.rbAdd = New System.Windows.Forms.RadioButton()
+        Me.rbDeduct = New System.Windows.Forms.RadioButton()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.txtRemarks = New PriProMonitoring.watermark()
         Me.txtLastout = New PriProMonitoring.watermark()
         Me.txtAdvance = New PriProMonitoring.watermark()
         Me.txtEmulsion = New PriProMonitoring.watermark()
         Me.txtSearch = New PriProMonitoring.watermark()
-        Me.rbAdd = New System.Windows.Forms.RadioButton()
-        Me.rbDeduct = New System.Windows.Forms.RadioButton()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -252,6 +252,51 @@ Partial Class frmAdjustment
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "Enter # of Advance"
         '
+        'rbAdd
+        '
+        Me.rbAdd.AutoSize = True
+        Me.rbAdd.Checked = True
+        Me.rbAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.rbAdd.Location = New System.Drawing.Point(136, 12)
+        Me.rbAdd.Name = "rbAdd"
+        Me.rbAdd.Size = New System.Drawing.Size(46, 19)
+        Me.rbAdd.TabIndex = 3
+        Me.rbAdd.TabStop = True
+        Me.rbAdd.Text = "Add"
+        Me.rbAdd.UseVisualStyleBackColor = True
+        '
+        'rbDeduct
+        '
+        Me.rbDeduct.AutoSize = True
+        Me.rbDeduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.rbDeduct.Location = New System.Drawing.Point(219, 13)
+        Me.rbDeduct.Name = "rbDeduct"
+        Me.rbDeduct.Size = New System.Drawing.Size(64, 19)
+        Me.rbDeduct.TabIndex = 4
+        Me.rbDeduct.Text = "Deduct"
+        Me.rbDeduct.UseVisualStyleBackColor = True
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label6.Location = New System.Drawing.Point(7, 13)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(97, 15)
+        Me.Label6.TabIndex = 5
+        Me.Label6.Text = "Adjustment Type"
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.Label6)
+        Me.GroupBox5.Controls.Add(Me.rbDeduct)
+        Me.GroupBox5.Controls.Add(Me.rbAdd)
+        Me.GroupBox5.Location = New System.Drawing.Point(12, 46)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(328, 38)
+        Me.GroupBox5.TabIndex = 3
+        Me.GroupBox5.TabStop = False
+        '
         'txtRemarks
         '
         Me.txtRemarks.Location = New System.Drawing.Point(117, 83)
@@ -297,52 +342,6 @@ Partial Class frmAdjustment
         Me.txtSearch.TabIndex = 0
         Me.txtSearch.WatermarkColor = System.Drawing.Color.DimGray
         Me.txtSearch.WatermarkText = "Search paper roll serial . . ."
-        '
-        'rbAdd
-        '
-        Me.rbAdd.AutoSize = True
-        Me.rbAdd.Checked = True
-        Me.rbAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.rbAdd.Location = New System.Drawing.Point(136, 12)
-        Me.rbAdd.Name = "rbAdd"
-        Me.rbAdd.Size = New System.Drawing.Size(46, 19)
-        Me.rbAdd.TabIndex = 3
-        Me.rbAdd.TabStop = True
-        Me.rbAdd.Text = "Add"
-        Me.rbAdd.UseVisualStyleBackColor = True
-        '
-        'rbDeduct
-        '
-        Me.rbDeduct.AutoSize = True
-        Me.rbDeduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.rbDeduct.Location = New System.Drawing.Point(219, 13)
-        Me.rbDeduct.Name = "rbDeduct"
-        Me.rbDeduct.Size = New System.Drawing.Size(64, 19)
-        Me.rbDeduct.TabIndex = 4
-        Me.rbDeduct.TabStop = True
-        Me.rbDeduct.Text = "Deduct"
-        Me.rbDeduct.UseVisualStyleBackColor = True
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label6.Location = New System.Drawing.Point(7, 13)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(97, 15)
-        Me.Label6.TabIndex = 5
-        Me.Label6.Text = "Adjustment Type"
-        '
-        'GroupBox5
-        '
-        Me.GroupBox5.Controls.Add(Me.Label6)
-        Me.GroupBox5.Controls.Add(Me.rbDeduct)
-        Me.GroupBox5.Controls.Add(Me.rbAdd)
-        Me.GroupBox5.Location = New System.Drawing.Point(12, 46)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(328, 38)
-        Me.GroupBox5.TabIndex = 3
-        Me.GroupBox5.TabStop = False
         '
         'frmAdjustment
         '

@@ -62,37 +62,6 @@
         End Set
     End Property
 
-    Private _Emulsion As Integer
-    Public Property Emulsion() As Integer
-        Get
-            Return _Emulsion
-        End Get
-        Set(ByVal value As Integer)
-            _Emulsion = value
-        End Set
-    End Property
-
-    Private _Advance As Integer
-    Public Property Advance() As Integer
-        Get
-            Return _Advance
-        End Get
-        Set(ByVal value As Integer)
-            _Advance = value
-        End Set
-    End Property
-
-    Private _Lastout As Double
-    Public Property Lastout() As Double
-        Get
-            Return _Lastout
-        End Get
-        Set(ByVal value As Double)
-            _Lastout = value
-        End Set
-    End Property
-
-
 #End Region
 
 #Region "Procedures and Functions"
@@ -104,9 +73,6 @@
             _PapcutCode = .Item("PapCut_code")
             _QTY = .Item("Quantity")
             _adjustType = .Item("Adjustment_Type")
-            _Emulsion = .Item("Emulsion")
-            _Advance = .Item("Advance")
-            _Lastout = .Item("lastout")
         End With
     End Sub
 
@@ -126,9 +92,6 @@
             _PapcutCode = .Item("PapCut_code")
             _QTY = .Item("Quantity")
             _adjustType = .Item("Adjustment_Type")
-            _Emulsion = .Item("Emulsion")
-            _Advance = .Item("Advance")
-            _Lastout = .Item("lastout")
         End With
     End Sub
 
@@ -152,9 +115,6 @@
             .Item("PapCut_code") = _PapcutCode
             .Item("Quantity") = _QTY
             .Item("Adjustment_Type") = _adjustType
-            .Item("Emulsion") = _Emulsion
-            .Item("Advance") = _Advance
-            .Item("lastout") = _Lastout
         End With
 
         ds.Tables(MainTable).Rows.Add(dsNewRow)
