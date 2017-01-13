@@ -1,8 +1,6 @@
 ﻿Public Class frmAdjustment
     Dim saveAdj As adjustment
     Dim saveAdjLine As adjustmentLine
-    Const EmuLsionP As Double = 12.0 '1 emulsion = 12 inches
-    Const advanceP As Double = 4.0 '1 advance  = 4 inches
     Const Meter As Double = 0.0254 ' 1 inch = 0.0254 m
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
@@ -73,7 +71,7 @@
         Dim tmppapSerial As New PaperRoll
         tmppapSerial.loadSerial(txtSearch.Text)
 
-        Dim TotalAdj As Double = CalcTOtal(CInt(txtEmulsion.Text), CInt(txtAdvance.Text), CDbl(txtLastout.Text))
+        Dim TotalAdj As Double = 0.0
         saveAdj = New adjustment
 
         With saveAdj
@@ -81,10 +79,17 @@
             .PaprollSserial = tmppapSerial.PaperRollSErial
             .Remarks = txtRemarks.Text
             .CreatedAT = Now
+
+            For Each itms As ListViewItem In lvpapercuts.Items
+                If itms.SubItems(8).Text = "" Then
+                    On Error Resume Next
+                Else
+                    TotalAdj = itms.SubItems(5).Text * CDbl(itms.SubItems(8).Text)
+                    saveAdj.TotalAdjustment += CDbl(TotalAdj)
+                End If
+            Next
+
             .TotalAdjustment = TotalAdj
-            .Emulsion = txtEmulsion.Text
-            .Advance = txtAdvance.Text
-            .Lastout = txtLastout.Text
         End With
 
         For Each itm As ListViewItem In lvpapercuts.Items
@@ -118,16 +123,13 @@
         End If
 
 
-        MsgBox("Success saved.", MsgBoxStyle.Information, "Adjustment")
+        MsgBox("Successfully saved.", MsgBoxStyle.Information, "Adjustment")
         clearFields()
-        frmAdjustment_Load(sender, e)
     End Sub
 
     Private Sub clearFields()
         txtSearch.Text = ""
         lvpapercuts.Items.Clear()
-        txtAdvance.Text = ""
-        txtEmulsion.Text = ""
         txtRemarks.Text = ""
     End Sub
 
@@ -151,7 +153,7 @@
             With ds.Tables(fillData).Rows(0)
                 .Item("Updated_at") = Now
                 .Item("AddedBy") = FrmMain.statusUser.Text
-                .Item("TOTAL_LENGTH") = OldLength - LengthP
+                .Item("TOTAL_LENGTH") = OldLength + LengthP
             End With
             database.SaveEntry(ds, False)
         End If
@@ -169,47 +171,45 @@
             With ds.Tables(fillData).Rows(0)
                 .Item("Updated_at") = Now
                 .Item("AddedBy") = FrmMain.statusUser.Text
-                .Item("TOTAL_LENGTH") = OldLength + LengthP
+                .Item("TOTAL_LENGTH") = OldLength - LengthP
             End With
             database.SaveEntry(ds, False)
         End If
     End Sub
 
-    Private Function CalcTOtal(Optional ByVal emulsion As Integer = 0, Optional ByVal advance As Integer = 0 _
-                               , Optional ByVal lastout As Double = 0.0) As Double
-        Dim tmpTotal As Double = 0.0 'papercuts
-        Dim tmpTotal1 As Double = 0.0 'emulsion, advance, lastout
-        saveAdj = New adjustment
+    'Private Function CalcTOtal(Optional ByVal emulsion As Integer = 0, Optional ByVal advance As Integer = 0 _
+    '                           , Optional ByVal lastout As Double = 0.0) As Double
+    '    Dim tmpTotal As Double = 0.0 'papercuts
+    '    Dim tmpTotal1 As Double = 0.0 'emulsion, advance, lastout
+    '    saveAdj = New adjustment
 
-        For Each itms As ListViewItem In lvpapercuts.Items
-            If itms.SubItems(8).Text = "" Then
-                On Error Resume Next
-            Else
-                tmpTotal = itms.SubItems(5).Text * CDbl(itms.SubItems(8).Text)
-                saveAdj.TotalAdjustment += CDbl(tmpTotal)
-            End If
-        Next
+    '    For Each itms As ListViewItem In lvpapercuts.Items
+    '        If itms.SubItems(8).Text = "" Then
+    '            On Error Resume Next
+    '        Else
+    '            tmpTotal = itms.SubItems(5).Text * CDbl(itms.SubItems(8).Text)
+    '            saveAdj.TotalAdjustment += CDbl(tmpTotal)
+    '        End If
+    '    Next
 
-        tmpTotal1 = CDbl(emulsion * EmuLsionP) + CDbl(advance * advanceP) + lastout
+    '    tmpTotal1 = CDbl(emulsion * EmuLsionP) + CDbl(advance * advanceP) + lastout
 
-        Return CDbl(saveAdj.TotalAdjustment + tmpTotal1)
-    End Function
+    '    Return CDbl(saveAdj.TotalAdjustment + tmpTotal1)
+    'End Function
 
-    Private Sub txtEmulsion_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtEmulsion.Leave
-        If txtEmulsion.Text = "" Then txtEmulsion.Text = 0
-    End Sub
+    'Private Sub txtEmulsion_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtEmulsion.Leave
+    '    If txtEmulsion.Text = "" Then txtEmulsion.Text = 0
+    'End Sub
 
-    Private Sub txtLastout_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtLastout.Leave
-        If txtLastout.Text = "" Then txtLastout.Text = 0
-    End Sub
+    'Private Sub txtLastout_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtLastout.Leave
+    '    If txtLastout.Text = "" Then txtLastout.Text = 0
+    'End Sub
 
-    Private Sub txtAdvance_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtAdvance.Leave
-        If txtAdvance.Text = "" Then txtAdvance.Text = 0
-    End Sub
+    'Private Sub txtAdvance_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtAdvance.Leave
+    '    If txtAdvance.Text = "" Then txtAdvance.Text = 0
+    'End Sub
 
-    Private Sub frmAdjustment_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        txtLastout.Text = 0
-        txtAdvance.Text = 0
-        txtEmulsion.Text = 0
+    Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
+
     End Sub
 End Class
