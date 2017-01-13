@@ -5,6 +5,9 @@
     Friend Sub NotYetLogin(Optional ByVal st As Boolean = True)
         locked = IIf(GetOption("Locked") = "YES", True, False)
 
+        'file
+        AdjustmentToolStripMenuItem.Enabled = Not st
+
         If Not locked Then
             SetUpDatabaseToolStripMenuItem.Enabled = st
             LoadIMDToolStripMenuItem1.Enabled = st
@@ -105,4 +108,7 @@
     End Sub
 
  
+    Private Sub AdjustmentToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AdjustmentToolStripMenuItem.Click
+        frmAdjustment.Show()
+    End Sub
 End Class

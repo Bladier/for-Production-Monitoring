@@ -78,7 +78,12 @@
             .PaprollSserial = tmppapSerial.PaperRollSErial
             .Remarks = txtRemarks.Text
             .CreatedAT = Now
-            ' .SaveAdjustment()
+
+            For Each itms As ListViewItem In lvpapercuts.Items
+                If itms.SubItems(8).Text = "" Then On Error Resume Next
+                .TotalAdjustment += CDbl(itms.SubItems(8).Text)
+            Next
+
         End With
 
         For Each itm As ListViewItem In lvpapercuts.Items
@@ -91,7 +96,11 @@
                 .PapcutCode = itm.SubItems(6).Text
                 .QTY = itm.SubItems(8).Text
 
-
+                If rbAdd.Checked = True Then
+                    .adjustType = rbAdd.Text
+                Else
+                    .adjustType = rbDeduct.Text
+                End If
 
             End With
             ColAdjLine.Add(saveAdjLine)

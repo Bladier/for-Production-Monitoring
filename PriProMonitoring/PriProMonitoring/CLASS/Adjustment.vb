@@ -157,6 +157,7 @@
     End Sub
 
     Friend Sub SaveAdjustment()
+        Dim NextLine As Boolean
         Dim mySql As String = String.Format("SELECT * FROM " & filldata & " WHERE AdjustmentID = '{0}'", _ID)
         Dim ds As DataSet = LoadSQL(mySql, filldata)
 
@@ -166,8 +167,9 @@
             .Item("PapRoll_ID") = _PaprollID
             .Item("Paproll_serial") = _PaprollSserial
             .Item("Remarks") = _remarks
-            .Item("Adjusted_By") = "ELLIE"
+            .Item("Adjusted_By") = FrmMain.statusUser.Text
             .Item("Created_at") = _CreatedAT
+            .Item("Total_adjustment") = _TotalAdjustment
         End With
         ds.Tables(0).Rows.Add(dsNewRow)
         database.SaveEntry(ds)
@@ -176,9 +178,15 @@
         ds = LoadSQL(mySql, filldata)
         _ID = ds.Tables(filldata).Rows(0).Item("AdjustmentID")
 
+
         For Each tmpAdjstmentLne As adjustmentLine In AdjustmentLines
             tmpAdjstmentLne.AdjustmentID = _ID
-            tmpAdjstmentLne.Save_AdjLine()
+
+            If tmpAdjstmentLne.QTY = 0 Then
+                On Error Resume Next
+            Else
+                tmpAdjstmentLne.Save_AdjLine()
+            End If
         Next
 
     End Sub

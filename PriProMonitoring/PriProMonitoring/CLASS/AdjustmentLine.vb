@@ -1,5 +1,5 @@
 ﻿Public Class adjustmentLine
-    Private MainTable As String = "tblITem_Line"
+    Private MainTable As String = "tblAdjustment_line"
 
 #Region "Properties"
     Private _ID As Integer
@@ -134,14 +134,15 @@
 
     Public Sub Save_AdjLine()
 
-        Dim mySql As String = String.Format("SELECT * FROM {0} where {1} ", MainTable, "Adjustment_ID = " & _AdjustmentID)
+        Dim mySql As String = String.Format("SELECT * FROM {0} where {1} ", MainTable, "ADJUSTMENT_ID = " & _AdjustmentID)
 
         Dim ds As DataSet
         ds = New DataSet
         ds = LoadSQL(mySql, MainTable)
 
-        If ds.Tables(0).Rows.Count <> 0 Then _
-            MsgBox("Failed to save this adjustment", MsgBoxStyle.Critical, "Adjustment") : Exit Sub
+
+        'If ds.Tables(0).Rows.Count >= 1 Then _
+        '    MsgBox("Failed to save this adjustment", MsgBoxStyle.Critical, "Adjustment") : Exit Sub
 
         Dim dsNewRow As DataRow
         dsNewRow = ds.Tables(MainTable).NewRow
@@ -155,6 +156,7 @@
             .Item("Advance") = _Advance
             .Item("lastout") = _Lastout
         End With
+
         ds.Tables(MainTable).Rows.Add(dsNewRow)
         database.SaveEntry(ds)
 
