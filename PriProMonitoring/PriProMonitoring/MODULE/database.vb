@@ -224,6 +224,18 @@ Friend Module database
         Return ret
     End Function
    
+    Friend Function GetRemarks(ByVal keys As String) As Date
+        Dim mySql As String = "SELECT * FROM tblmaintenance WHERE opt_keys = '" & keys & "'"
+        Dim ret As String
+        Try
+            Dim ds As DataSet = LoadSQL(mySql)
+            ret = ds.Tables(0).Rows(0).Item("Remarks")
+        Catch ex As Exception
+            ret = 0
+        End Try
+
+        Return ret
+    End Function
 
     ''' <summary>
     ''' This module where select all data from tblmaintenance.
@@ -251,5 +263,26 @@ Friend Module database
         End If
     End Sub
 
-  
+
+    Friend Sub UpdateOptionSales(ByVal key As String, ByVal value As String, ByVal transdate As Date)
+        Dim mySql As String = "SELECT * FROM tblMaintenance WHERE opt_keys = '" & key & "'"
+        Dim fillData As String = "tblMaintenance"
+        Dim ds As DataSet = LoadSQL(mySql, fillData)
+
+        If ds.Tables(fillData).Rows.Count = 0 Then
+            Dim dsNewRow As DataRow
+            dsNewRow = ds.Tables(fillData).NewRow
+            With dsNewRow
+                .Item("opt_keys") = key
+                .Item("opt_values") = value
+                .Item("Remarks") = String.Format(transdate.ToString("MM/dd/yyyy"))
+            End With
+            ds.Tables(fillData).Rows.Add(dsNewRow)
+            SaveEntry(ds)
+        Else
+            ds.Tables(0).Rows(0).Item("opt_values") = value
+            ds.Tables(0).Rows(0).Item("Remarks") = String.Format(transdate.ToString("MM/dd/yyyy"))
+            SaveEntry(ds, False)
+        End If
+    End Sub
 End Module
