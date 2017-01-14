@@ -26,6 +26,7 @@ Partial Class FrmMain
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuLogin = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AdjustmentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuInitialization = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoadMagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SetUpDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -39,7 +40,7 @@ Partial Class FrmMain
         Me.statusDateandTime = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TmpTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.AdjustmentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoadSalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -66,9 +67,15 @@ Partial Class FrmMain
         Me.menuLogin.Size = New System.Drawing.Size(152, 22)
         Me.menuLogin.Text = "&Login"
         '
+        'AdjustmentToolStripMenuItem
+        '
+        Me.AdjustmentToolStripMenuItem.Name = "AdjustmentToolStripMenuItem"
+        Me.AdjustmentToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AdjustmentToolStripMenuItem.Text = "Adjustment"
+        '
         'menuInitialization
         '
-        Me.menuInitialization.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadMagazineToolStripMenuItem, Me.SetUpDatabaseToolStripMenuItem, Me.LoadIMDToolStripMenuItem1})
+        Me.menuInitialization.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadMagazineToolStripMenuItem, Me.SetUpDatabaseToolStripMenuItem, Me.LoadIMDToolStripMenuItem1, Me.LoadSalesToolStripMenuItem})
         Me.menuInitialization.Name = "menuInitialization"
         Me.menuInitialization.Size = New System.Drawing.Size(83, 20)
         Me.menuInitialization.Text = "Initialization"
@@ -151,11 +158,11 @@ Partial Class FrmMain
         '
         Me.TmpTimer.Enabled = True
         '
-        'AdjustmentToolStripMenuItem
+        'LoadSalesToolStripMenuItem
         '
-        Me.AdjustmentToolStripMenuItem.Name = "AdjustmentToolStripMenuItem"
-        Me.AdjustmentToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.AdjustmentToolStripMenuItem.Text = "Adjustment"
+        Me.LoadSalesToolStripMenuItem.Name = "LoadSalesToolStripMenuItem"
+        Me.LoadSalesToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.LoadSalesToolStripMenuItem.Text = "Load &Sales"
         '
         'FrmMain
         '
@@ -195,4 +202,5 @@ Partial Class FrmMain
     Friend WithEvents AddItemToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LoadIMDToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AdjustmentToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents LoadSalesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

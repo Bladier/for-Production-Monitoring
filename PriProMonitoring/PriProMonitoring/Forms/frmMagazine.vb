@@ -14,7 +14,7 @@ Public Class frmMagazine
     Private Sub SaveItems()
         If Not isValid() Then Exit Sub
 
-        Dim mysql As String = "SELECT * FROM TBLMAGAZINE WHERE MAGITEMCODE= '" & txtItemCode.Text & "'"
+        Dim mysql As String = "SELECT * FROM TBLMAGAZINE WHERE MAGCODE= '" & txtItemCode.Text & "'"
         Dim DS As DataSet = LoadSQL(mysql, "TBLMAGAZINE")
         If DS.Tables(0).Rows.Count = 1 Then
             MsgBox("Magazine already existed", MsgBoxStyle.Critical)

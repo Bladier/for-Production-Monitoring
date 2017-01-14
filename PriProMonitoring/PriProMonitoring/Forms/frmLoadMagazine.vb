@@ -34,7 +34,7 @@
     Private Function GetMagazine(ByVal mag As String) As String
         Dim mysql As String = " SELECT * FROM tblmagazine m inner join tblpaperroll p " _
                               & "on m.mag_ID = p.mag_ids" _
-                              & String.Format(" WHERE paproll_serial = {0}", mag)
+                              & String.Format(" WHERE paproll_serial = '{0}'", mag)
         Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERCUT")
         If ds.Tables(0).Rows.Count <= 0 Then
             Return ""

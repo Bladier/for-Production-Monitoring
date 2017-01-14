@@ -28,7 +28,7 @@ Partial Class frmLoadMagazine
         '
         'btnsearch
         '
-        Me.btnsearch.Location = New System.Drawing.Point(315, 12)
+        Me.btnsearch.Location = New System.Drawing.Point(311, 12)
         Me.btnsearch.Name = "btnsearch"
         Me.btnsearch.Size = New System.Drawing.Size(75, 23)
         Me.btnsearch.TabIndex = 1
@@ -37,7 +37,7 @@ Partial Class frmLoadMagazine
         '
         'txtserial
         '
-        Me.txtserial.Location = New System.Drawing.Point(12, 13)
+        Me.txtserial.Location = New System.Drawing.Point(8, 13)
         Me.txtserial.Name = "txtserial"
         Me.txtserial.Size = New System.Drawing.Size(297, 20)
         Me.txtserial.TabIndex = 2
@@ -49,7 +49,7 @@ Partial Class frmLoadMagazine
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(411, 48)
+        Me.ClientSize = New System.Drawing.Size(395, 122)
         Me.Controls.Add(Me.txtserial)
         Me.Controls.Add(Me.btnsearch)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow

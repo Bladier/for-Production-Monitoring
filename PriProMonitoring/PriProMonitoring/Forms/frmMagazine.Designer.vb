@@ -102,7 +102,7 @@ Partial Class frmMagazine
         '
         'Column2
         '
-        Me.Column2.HeaderText = "ItemCode"
+        Me.Column2.HeaderText = "Code"
         Me.Column2.Name = "Column2"
         '
         'Column3
@@ -124,7 +124,7 @@ Partial Class frmMagazine
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Location = New System.Drawing.Point(12, 136)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(318, 114)
+        Me.GroupBox2.Size = New System.Drawing.Size(318, 111)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         '
@@ -149,9 +149,9 @@ Partial Class frmMagazine
         '
         'txtItemCode
         '
-        Me.txtItemCode.Location = New System.Drawing.Point(82, 19)
+        Me.txtItemCode.Location = New System.Drawing.Point(105, 19)
         Me.txtItemCode.Name = "txtItemCode"
-        Me.txtItemCode.Size = New System.Drawing.Size(226, 21)
+        Me.txtItemCode.Size = New System.Drawing.Size(203, 21)
         Me.txtItemCode.TabIndex = 0
         Me.txtItemCode.WatermarkColor = System.Drawing.Color.Gray
         Me.txtItemCode.WatermarkText = "ItemCode"
@@ -162,9 +162,9 @@ Partial Class frmMagazine
         Me.Label2.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.Label2.Location = New System.Drawing.Point(7, 23)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(58, 15)
+        Me.Label2.Size = New System.Drawing.Size(92, 15)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Itemcode"
+        Me.Label2.Text = "Magazine code"
         '
         'btnClose
         '
@@ -222,10 +222,6 @@ Partial Class frmMagazine
     Friend WithEvents txtSEarch As PriProMonitoring.watermark
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents dgPCCUT As System.Windows.Forms.DataGridView
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents txtDescription As PriProMonitoring.watermark
     Friend WithEvents Label3 As System.Windows.Forms.Label
@@ -234,4 +230,8 @@ Partial Class frmMagazine
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents btnUpdate As System.Windows.Forms.Button
+    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

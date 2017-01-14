@@ -198,6 +198,12 @@
     <Compile Include="Forms\frmProductionMonitoring.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frmSales.Designer.vb">
+      <DependentUpon>frmSales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSales.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmSetupDatabase.Designer.vb">
       <DependentUpon>frmSetupDatabase.vb</DependentUpon>
     </Compile>
@@ -291,6 +297,9 @@
     <EmbeddedResource Include="Forms\frmProductionMonitoring.resx">
       <DependentUpon>frmProductionMonitoring.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSales.resx">
+      <DependentUpon>frmSales.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSetupDatabase.resx">
       <DependentUpon>frmSetupDatabase.vb</DependentUpon>
     </EmbeddedResource>
@@ -310,6 +319,8 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="bin\Debug\PriProMonitoring.exe.config" />
+    <None Include="bin\Debug\PriProMonitoring.vshost.exe.config" />
+    <None Include="bin\Debug\PriProMonitoring.vshost.exe.manifest" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -328,12 +339,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\DeathCodez.dll" />
+    <Content Include="bin\Debug\eskey.dll" />
     <Content Include="bin\Debug\PriProMonitoring.exe" />
     <Content Include="bin\Debug\PriProMonitoring.pdb" />
+    <Content Include="bin\Debug\PriProMonitoring.vshost.exe" />
+    <Content Include="bin\Debug\syslog.txt" />
     <Content Include="obj\x86\Debug\PriProMonitoring.vbproj.FileListAbsolute.txt" />
     <Content Include="obj\x86\Debug\TempPE\My Project.Resources.Designer.vb.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Debug\sampleSales\" />
     <Folder Include="bin\Release\" />
   </ItemGroup>
   <ItemGroup>

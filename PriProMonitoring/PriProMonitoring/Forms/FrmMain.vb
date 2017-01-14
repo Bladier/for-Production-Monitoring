@@ -23,6 +23,8 @@
         TransactionToolStripMenuItem.Enabled = Not st
         AddItemToolStripMenuItem.Enabled = Not st
 
+        LoadSalesToolStripMenuItem.Enabled = Not st
+
         If Not st Then
             menuLogin.Text = "&Log Out"
         Else
@@ -110,5 +112,9 @@
  
     Private Sub AdjustmentToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AdjustmentToolStripMenuItem.Click
         frmAdjustment.Show()
+    End Sub
+
+    Private Sub LoadSalesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadSalesToolStripMenuItem.Click
+        frmSales.Show()
     End Sub
 End Class

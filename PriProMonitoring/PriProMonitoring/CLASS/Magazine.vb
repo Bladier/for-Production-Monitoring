@@ -58,7 +58,7 @@
 
         With ds.Tables(0).Rows(0)
             _MagID = .Item("MAG_ID")
-            _MagItemcode = .Item("MagItemcode")
+            _MagItemcode = .Item("Magcode")
             _MagDescription = .Item("MagDescription")
 
         End With
@@ -81,13 +81,13 @@
     End Sub
 
     Public Sub Save_Magazine()
-        Dim mySql As String = String.Format("SELECT * FROM " & MainTable & " WHERE magItemcode = '{0}'", _MagItemcode)
+        Dim mySql As String = String.Format("SELECT * FROM " & MainTable & " WHERE magcode = '{0}'", _MagItemcode)
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
         Dim dsNewRow As DataRow
         dsNewRow = ds.Tables(0).NewRow
         With dsNewRow
-            .Item("MagItemcode") = _MagItemcode
+            .Item("Magcode") = _MagItemcode
             .Item("MagDescription") = _MagDescription
 
         End With
@@ -110,7 +110,7 @@
         With dr
 
             _MagID = .Item("mag_ID")
-            _MagItemcode = .Item("MagItemcode")
+            _MagItemcode = .Item("Magcode")
             _MagDescription = .Item("MagDescription")
 
         End With
@@ -140,7 +140,7 @@
         End If
 
         With ds.Tables(MainTable).Rows(0)
-            .Item("MagItemcode") = _MagItemcode
+            .Item("Magcode") = _MagItemcode
             .Item("Magdescription") = _MagDescription
         End With
         database.SaveEntry(ds, False)
