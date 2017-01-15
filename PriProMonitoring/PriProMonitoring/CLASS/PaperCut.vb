@@ -81,7 +81,7 @@
         With dr
             _PapcutID = .Item("PAPerCUT_ID")
             _mag_IDP = .Item("MAG_IDP")
-            _PapCutITemcode = .Item("papCUt_ITEMCODE")
+            _PapCutITemcode = .Item("papCUt_CODE")
             _papcutDescription = .Item("PAPCUT_DESCRIPTION")
             _papcut = .Item("PAPERCUT")
             _UOM = .Item("UOM")
@@ -108,7 +108,7 @@
         dsNewRow = ds.Tables(MainTable).NewRow
         With dsNewRow
             .Item("MAG_IDP") = _mag_IDP
-            .Item("PAPCUT_ITEMCODE") = _PapCutITemcode
+            .Item("PAPCUT_CODE") = _PapCutITemcode
             .Item("PAPCUT_DESCRIPTION") = _papcutDescription
             .Item("PAPERCUT") = _papcut
             .Item("UOM") = "Inch"
@@ -123,7 +123,7 @@
 
         If ds.Tables(0).Rows.Count = 1 Then
             With ds.Tables(MainTable).Rows(0)
-                .Item("PAPCUT_ITEMCODE") = _PapCutITemcode
+                .Item("PAPCUT_CODE") = _PapCutITemcode
                 .Item("PAPCUT_DESCRIPTION") = _papcutDescription
                 .Item("PAPerCUT") = _papcut
             End With
@@ -133,7 +133,7 @@
             dsNewRow = ds.Tables(0).NewRow
             With dsNewRow
                 .Item("MAG_IDP") = _mag_IDP
-                .Item("PAPCUT_ITEMCODE") = _PapCutITemcode
+                .Item("PAPCUT_CODE") = _PapCutITemcode
                 .Item("PAPCUT_DESCRIPTION") = _papcutDescription
                 .Item("UOM") = "Inch"
             End With

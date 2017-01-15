@@ -1,7 +1,7 @@
 ﻿Public Class FrmMain
     Private locked As Boolean
     Private MagazineStatus As Boolean
-
+    Dim CheckLastID As String = ""
     Friend Sub NotYetLogin(Optional ByVal st As Boolean = True)
         locked = IIf(GetOption("Locked") = "YES", True, False)
 
@@ -58,6 +58,11 @@
     End Sub
 
     Private Sub FrmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+       
+            AddHandler TmpTimer.Tick, AddressOf TmpTimer_Tick
+            TmpTimer.Start()
+
+
         NotYetLogin()
     End Sub
 
@@ -73,6 +78,17 @@
         Else
             statusDateandTime.Text = CurrentDate.ToLongDateString & " " & Now.ToString("T")
         End If
+
+        CheckLastID = GetOption("LastSalesID")
+
+        If GetOption("LastSalesID").ToString = CheckLastID Then
+            Exit Sub
+        Else
+            If CheckLastID <> "" Then
+                frmSales.SalesLoad()
+            End If
+        End If
+
     End Sub
 
     Private Sub AddMagazineToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddMagazineToolStripMenuItem.Click
@@ -117,4 +133,6 @@
     Private Sub LoadSalesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadSalesToolStripMenuItem.Click
         frmSales.Show()
     End Sub
+
+   
 End Class

@@ -13,6 +13,7 @@ Public Class frmImportIMDD
         Me.Enabled = False
         Dim mysql As String = "SELECT ITEMNO,ITEMNAME FROM IMD"
         Dim ds As DataSet = LoadSQLPOS(mysql, "ItemMaster")
+        Dim maxEntries As String = ds.Tables(0).Rows.Count
 
         For Each dr As DataRow In ds.Tables(0).Rows
             Dim itmsave As New item
@@ -24,7 +25,9 @@ Public Class frmImportIMDD
                 .Descrition = dr.Item("ITEMNAME")
                 .SaveItem()
             End With
+
             pbProgressBar.Value = pbProgressBar.Value + 1
+            maxEntries = pbProgressBar.Maximum
             Application.DoEvents()
             Label1.Text = String.Format("{0}%", ((pbProgressBar.Value / pbProgressBar.Maximum) * 100).ToString("F2"))
         Next
@@ -61,6 +64,9 @@ Public Class frmImportIMDD
         Me.Enabled = False
         For cnt = 2 To MaxEntries
             Dim ImportedItem As New item
+
+            If Not ImportedItem.CHeckIMD Then GoTo NextToExit
+
             With ImportedItem
                 .ItemCode = oSheet.Cells(cnt, 1).Value
                 ImportedItem.Load_ItemCode()
@@ -92,7 +98,9 @@ unloadObj:
         oXL = Nothing
 
         fileName = ""
-        If isDone Then MsgBox("Item Loaded", MsgBoxStyle.Information)
+        If isDone Then MsgBox("Item Loaded", MsgBoxStyle.Information, "Import") : Exit Sub
+
+NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
     End Sub
 
     Private Sub btnBrowse_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBrowse.Click

@@ -31,6 +31,7 @@ Partial Class FrmMain
         Me.LoadMagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SetUpDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoadIMDToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoadSalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddMagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddPaperRollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -40,7 +41,6 @@ Partial Class FrmMain
         Me.statusDateandTime = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TmpTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.LoadSalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -64,13 +64,13 @@ Partial Class FrmMain
         'menuLogin
         '
         Me.menuLogin.Name = "menuLogin"
-        Me.menuLogin.Size = New System.Drawing.Size(152, 22)
+        Me.menuLogin.Size = New System.Drawing.Size(136, 22)
         Me.menuLogin.Text = "&Login"
         '
         'AdjustmentToolStripMenuItem
         '
         Me.AdjustmentToolStripMenuItem.Name = "AdjustmentToolStripMenuItem"
-        Me.AdjustmentToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AdjustmentToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
         Me.AdjustmentToolStripMenuItem.Text = "Adjustment"
         '
         'menuInitialization
@@ -97,6 +97,12 @@ Partial Class FrmMain
         Me.LoadIMDToolStripMenuItem1.Name = "LoadIMDToolStripMenuItem1"
         Me.LoadIMDToolStripMenuItem1.Size = New System.Drawing.Size(155, 22)
         Me.LoadIMDToolStripMenuItem1.Text = "Lo&ad IMD"
+        '
+        'LoadSalesToolStripMenuItem
+        '
+        Me.LoadSalesToolStripMenuItem.Name = "LoadSalesToolStripMenuItem"
+        Me.LoadSalesToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.LoadSalesToolStripMenuItem.Text = "Load &Sales"
         '
         'MagazineToolStripMenuItem
         '
@@ -157,12 +163,7 @@ Partial Class FrmMain
         'TmpTimer
         '
         Me.TmpTimer.Enabled = True
-        '
-        'LoadSalesToolStripMenuItem
-        '
-        Me.LoadSalesToolStripMenuItem.Name = "LoadSalesToolStripMenuItem"
-        Me.LoadSalesToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
-        Me.LoadSalesToolStripMenuItem.Text = "Load &Sales"
+        Me.TmpTimer.Interval = 2000
         '
         'FrmMain
         '

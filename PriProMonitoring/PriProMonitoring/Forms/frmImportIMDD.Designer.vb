@@ -89,7 +89,7 @@ Partial Class frmImportIMDD
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pbProgressBar.Location = New System.Drawing.Point(-4, 125)
-        Me.pbProgressBar.Maximum = 7000
+        Me.pbProgressBar.Maximum = 10
         Me.pbProgressBar.Name = "pbProgressBar"
         Me.pbProgressBar.Size = New System.Drawing.Size(409, 23)
         Me.pbProgressBar.TabIndex = 9

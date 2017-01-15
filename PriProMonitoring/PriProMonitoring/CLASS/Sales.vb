@@ -73,7 +73,7 @@
         Dim ds As DataSet = LoadSQL(mysql, "Item")
 
         If ds.Tables(0).Rows.Count <= 0 Then
-            MsgBox("Unable to load item", MsgBoxStyle.Information)
+            MsgBox("Unable to load sales", MsgBoxStyle.Information)
             Exit Sub
         End If
 

@@ -197,5 +197,18 @@
         LoaditemsByRow(ds.Tables(0).Rows(0))
     End Sub
 
+    Friend Function CHeckIMD() As Boolean
+        mysql = String.Format("SELECT * FROM ITEM")
+        Dim ds As DataSet = New DataSet
+        ds = LoadSQL(mysql)
+
+        If ds.Tables(0).Rows.Count <= 0 Then
+            Return False
+        End If
+
+        Return True
+    End Function
+
+
 #End Region
 End Class

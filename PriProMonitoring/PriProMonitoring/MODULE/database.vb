@@ -226,13 +226,14 @@ Friend Module database
    
     Friend Function GetRemarks(ByVal keys As String) As Date
         Dim mySql As String = "SELECT * FROM tblmaintenance WHERE opt_keys = '" & keys & "'"
-        Dim ret As String
-        Try
-            Dim ds As DataSet = LoadSQL(mySql)
-            ret = ds.Tables(0).Rows(0).Item("Remarks")
-        Catch ex As Exception
-            ret = 0
-        End Try
+        Dim ds As DataSet = LoadSQL(mySql, "tblmaintenance")
+        Dim ret As Date
+
+        If ds.Tables(0).Rows.Count <= 0 Then
+            Return nothing
+        End If
+
+        ret = ds.Tables(0).Rows(0).Item("Remarks")
 
         Return ret
     End Function
@@ -282,7 +283,27 @@ Friend Module database
         Else
             ds.Tables(0).Rows(0).Item("opt_values") = value
             ds.Tables(0).Rows(0).Item("Remarks") = String.Format(transdate.ToString("MM/dd/yyyy"))
+            'String.Format(transdate.ToString("MM/dd/yyyy"))
             SaveEntry(ds, False)
         End If
     End Sub
+
+    Friend Function CheckSalesIFNull() As Boolean
+        databasePOS.dbNamePOS = GetOption("DatabasePOS")
+        Dim tmpdate As Date = String.Format(DateTime.Now.AddDays(-1).ToString("MM/dd/yyyy")) '" & tmpdate & "
+
+        Dim mysql As String = "select I.ID,I.itemno,E.TRANSDATE,E.DATESTAMP from POSITEM I " & _
+                                "INNER JOIN POSENTRY E ON I.POSENTRYID = E.ID " & _
+                                "where E.TRANSDATE between '8/12/2016' and '" & DateTime.Now.ToString("MM/dd/yyyy") & "' " & _
+                                 "ORDER BY E.DATESTAMP DESC rows 1"
+
+        Dim ds As DataSet = LoadSQLPOS(mysql, "POSITEM")
+
+        If ds.Tables(0).Rows.Count > 0 Then
+            Return False
+        End If
+
+        Return True
+    End Function
+
 End Module
