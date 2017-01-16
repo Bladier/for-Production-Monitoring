@@ -41,6 +41,7 @@ Partial Class FrmMain
         Me.statusDateandTime = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TmpTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.SalesWatcher = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -163,7 +164,12 @@ Partial Class FrmMain
         'TmpTimer
         '
         Me.TmpTimer.Enabled = True
-        Me.TmpTimer.Interval = 2000
+        Me.TmpTimer.Interval = 10000
+        '
+        'SalesWatcher
+        '
+        Me.SalesWatcher.Enabled = True
+        Me.SalesWatcher.Interval = 7200000
         '
         'FrmMain
         '
@@ -204,4 +210,5 @@ Partial Class FrmMain
     Friend WithEvents LoadIMDToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AdjustmentToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LoadSalesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SalesWatcher As System.Windows.Forms.Timer
 End Class

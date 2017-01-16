@@ -288,6 +288,18 @@ Module mod_system
         Return str
     End Function
 
+    Friend Function ReplaceAMPM(ByVal str As String) As String
+        If str = "AM" Then
+
+        End If
+        str = str.Substring(Math.Max(0, str.Length - 2))
+
+        str = str.Replace("AM", "")
+        str = str.Replace("PM", "")
+
+        Return str
+    End Function
+
     ''' <summary>
     ''' Identify if the KeyPress is enter
     ''' </summary>

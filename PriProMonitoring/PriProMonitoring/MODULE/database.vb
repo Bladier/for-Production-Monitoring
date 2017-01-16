@@ -218,19 +218,22 @@ Friend Module database
             Dim ds As DataSet = LoadSQL(mySql)
             ret = ds.Tables(0).Rows(0).Item("opt_values")
         Catch ex As Exception
+            If keys = "LastSalesID" Then
+                Return ""
+            End If
             ret = 0
         End Try
 
         Return ret
     End Function
    
-    Friend Function GetRemarks(ByVal keys As String) As Date
+    Friend Function GetRemarks(ByVal keys As String) As String
         Dim mySql As String = "SELECT * FROM tblmaintenance WHERE opt_keys = '" & keys & "'"
         Dim ds As DataSet = LoadSQL(mySql, "tblmaintenance")
         Dim ret As Date
 
         If ds.Tables(0).Rows.Count <= 0 Then
-            Return nothing
+            Return Nothing
         End If
 
         ret = ds.Tables(0).Rows(0).Item("Remarks")
@@ -265,7 +268,7 @@ Friend Module database
     End Sub
 
 
-    Friend Sub UpdateOptionSales(ByVal key As String, ByVal value As String, ByVal transdate As Date)
+    Friend Sub UpdateOptionSales(ByVal key As String, ByVal value As String, ByVal transdate As String)
         Dim mySql As String = "SELECT * FROM tblMaintenance WHERE opt_keys = '" & key & "'"
         Dim fillData As String = "tblMaintenance"
         Dim ds As DataSet = LoadSQL(mySql, fillData)
@@ -276,13 +279,13 @@ Friend Module database
             With dsNewRow
                 .Item("opt_keys") = key
                 .Item("opt_values") = value
-                .Item("Remarks") = String.Format(transdate.ToString("MM/dd/yyyy"))
+                .Item("Remarks") = transdate
             End With
             ds.Tables(fillData).Rows.Add(dsNewRow)
             SaveEntry(ds)
         Else
             ds.Tables(0).Rows(0).Item("opt_values") = value
-            ds.Tables(0).Rows(0).Item("Remarks") = String.Format(transdate.ToString("MM/dd/yyyy"))
+            ds.Tables(0).Rows(0).Item("Remarks") = transdate
             'String.Format(transdate.ToString("MM/dd/yyyy"))
             SaveEntry(ds, False)
         End If
@@ -290,12 +293,10 @@ Friend Module database
 
     Friend Function CheckSalesIFNull() As Boolean
         databasePOS.dbNamePOS = GetOption("DatabasePOS")
-        Dim tmpdate As Date = String.Format(DateTime.Now.AddDays(-1).ToString("MM/dd/yyyy")) '" & tmpdate & "
 
         Dim mysql As String = "select I.ID,I.itemno,E.TRANSDATE,E.DATESTAMP from POSITEM I " & _
                                 "INNER JOIN POSENTRY E ON I.POSENTRYID = E.ID " & _
-                                "where E.TRANSDATE between '8/12/2016' and '" & DateTime.Now.ToString("MM/dd/yyyy") & "' " & _
-                                 "ORDER BY E.DATESTAMP DESC rows 1"
+                                "ORDER BY E.DATESTAMP DESC rows 1"
 
         Dim ds As DataSet = LoadSQLPOS(mysql, "POSITEM")
 

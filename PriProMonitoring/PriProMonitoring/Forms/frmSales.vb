@@ -11,6 +11,7 @@
     Friend Sub SalesLoad()
         databasePOS.dbNamePOS = GetOption("DatabasePOS")
         LastSaleID = GetOption("LastSalesID")
+
         If LastSaleID <> "" Then GoTo NextLineToDo
 
         If CheckSalesIFNull() Then ' if new install POS
@@ -29,10 +30,12 @@
             End If
 
 NextLineToDo:
-            Dim tmpRemarks As Date = GetRemarks("LastSalesID") 'Remarks here is date 
+            Dim tmpRemarks As String = GetRemarks("LastSalesID")
+           
+            tmpRemarks = tmpRemarks.Remove(tmpRemarks.Length - 2)
 
-            tmplastSalesID = GetLastSaledID(0)
-            tmpdate = GetLastSaledID(1)
+            tmplastSalesID = GetLastEntry(0)
+            tmpdate = GetLastEntry(1)
 
             If GetOption("LastSalesID").ToString = tmplastSalesID Then _
                 MsgBox("No new row data in sales", MsgBoxStyle.Information, "Sales") : Exit Sub
@@ -43,7 +46,7 @@ NextLineToDo:
                                          "I.QTY,E.DATESTAMP FROM POSITEM I " & _
                                         "INNER JOIN POSENTRY E ON I.POSENTRYID = E.ID " & _
                                         "INNER JOIN ITEMMASTER M ON I.ITEMNO = M.ITEMNO " & _
-                                        "where E.TRANSDATE between '" & tmpRemarks & "' and '" & DateTime.Now.ToString("MM/dd/yyyy") & "' " & _
+                                        "where E.DATESTAMP > '" & tmpRemarks & "'" & _
                                          "ORDER BY E.DATESTAMP ASC "
 
                 Dim ds As DataSet = LoadSQLPOS(POSsales, "POSITEM")
@@ -68,23 +71,47 @@ NextLineToDo:
 nextToExit:
     End Sub
 
+    ''' <summary>
+    ''' Get Last ID and Transdate Initialization
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Friend Function GetLastSaledID() As String()
 
         databasePOS.dbNamePOS = GetOption("DatabasePOS")
         Dim mysql As String = "select I.ID,I.itemno,E.TRANSDATE,E.DATESTAMP from POSITEM I " & _
                                 "INNER JOIN POSENTRY E ON I.POSENTRYID = E.ID " & _
-                                "where E.TRANSDATE between '8/12/2016' and '" & DateTime.Now.ToString("MM/dd/yyyy") & "' " & _
                                  "ORDER BY E.DATESTAMP DESC rows 1"
 
         Dim ds As DataSet = LoadSQLPOS(mysql, "POSITEM")
 
+        Dim tmpdate As Date = ds.Tables(0).Rows(0).Item("DATESTAMP")
+
         Console.WriteLine(ds.Tables(0).Rows(0).Item("ID"))
-        Dim ID As String() = {ds.Tables(0).Rows(0).Item("ID"), ds.Tables(0).Rows(0).Item("TRANSDATE")}
+        Dim ID As String() = {ds.Tables(0).Rows(0).Item("ID"), tmpdate}
 
         Return ID
     End Function
 
+    Friend Function GetLastEntry() As String()
+        Dim LastTimeStamp As String = GetRemarks("LastSalesID")
+        LastTimeStamp = LastTimeStamp.Remove(LastTimeStamp.Length - 2)
 
+        databasePOS.dbNamePOS = GetOption("DatabasePOS")
+        Dim mysql As String = "select I.ID,I.itemno,E.TRANSDATE,E.DATESTAMP from POSITEM I " & _
+                                "INNER JOIN POSENTRY E ON I.POSENTRYID = E.ID " & _
+                                 "where E.DATESTAMP > '" & LastTimeStamp & "' " & _
+                                 "ORDER BY E.DATESTAMP DESC rows 1"
+
+        Dim ds As DataSet = LoadSQLPOS(mysql, "POSITEM")
+
+        Dim tmpdate As Date = ds.Tables(0).Rows(0).Item("DATESTAMP")
+
+        Console.WriteLine(ds.Tables(0).Rows(0).Item("ID"))
+        Dim ID As String() = {ds.Tables(0).Rows(0).Item("ID"), tmpdate}
+
+        Return ID
+    End Function
 
     Private Sub frmSales_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 

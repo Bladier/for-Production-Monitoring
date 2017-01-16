@@ -59,9 +59,8 @@
 
     Private Sub FrmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
        
-            AddHandler TmpTimer.Tick, AddressOf TmpTimer_Tick
-            TmpTimer.Start()
-
+        AddHandler TmpTimer.Tick, AddressOf SalesWatcher_Tick
+        SalesWatcher.Start()
 
         NotYetLogin()
     End Sub
@@ -78,17 +77,6 @@
         Else
             statusDateandTime.Text = CurrentDate.ToLongDateString & " " & Now.ToString("T")
         End If
-
-        CheckLastID = GetOption("LastSalesID")
-
-        If GetOption("LastSalesID").ToString = CheckLastID Then
-            Exit Sub
-        Else
-            If CheckLastID <> "" Then
-                frmSales.SalesLoad()
-            End If
-        End If
-
     End Sub
 
     Private Sub AddMagazineToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddMagazineToolStripMenuItem.Click
@@ -135,4 +123,15 @@
     End Sub
 
    
+    Private Sub SalesWatcher_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SalesWatcher.Tick
+        CheckLastID = GetOption("LastSalesID")
+
+        If GetRemarks("LastSalesID") = frmSales.GetLastEntry(1) Then
+            Exit Sub
+        Else
+            If CheckLastID <> "" Then
+                frmSales.SalesLoad()
+            End If
+        End If
+    End Sub
 End Class
