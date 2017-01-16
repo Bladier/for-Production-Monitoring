@@ -4,6 +4,7 @@
     Dim tmplastSalesID As String
     Dim tmpdate As String
 
+
     Private Sub btnSales_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSales.Click
         SalesLoad()
     End Sub
@@ -37,7 +38,7 @@ NextLineToDo:
             tmplastSalesID = GetLastEntry(0)
             tmpdate = GetLastEntry(1)
 
-            If GetOption("LastSalesID").ToString = tmplastSalesID Then _
+            If tmplastSalesID = "" Then _
                 MsgBox("No new row data in sales", MsgBoxStyle.Information, "Sales") : Exit Sub
 
             Dim SaveSales As New Sales
@@ -50,7 +51,7 @@ NextLineToDo:
                                          "ORDER BY E.DATESTAMP ASC "
 
                 Dim ds As DataSet = LoadSQLPOS(POSsales, "POSITEM")
-                If ds.Tables(0).Rows.Count <= 0 Then GoTo nextToExit
+                If ds.Tables(0).Rows.Count <= 0 Then Exit Sub
 
                 Console.WriteLine("Count: " & ds.Tables(0).Rows.Count)
 
@@ -95,6 +96,9 @@ nextToExit:
 
     Friend Function GetLastEntry() As String()
         Dim LastTimeStamp As String = GetRemarks("LastSalesID")
+        If LastTimeStamp = "" Then Return Nothing
+        Dim ID As String()
+
         LastTimeStamp = LastTimeStamp.Remove(LastTimeStamp.Length - 2)
 
         databasePOS.dbNamePOS = GetOption("DatabasePOS")
@@ -105,10 +109,17 @@ nextToExit:
 
         Dim ds As DataSet = LoadSQLPOS(mysql, "POSITEM")
 
+
+        If ds.Tables(0).Rows.Count = 0 Then
+            ID = {"", ""}
+            Return ID
+        End If
+
         Dim tmpdate As Date = ds.Tables(0).Rows(0).Item("DATESTAMP")
 
         Console.WriteLine(ds.Tables(0).Rows(0).Item("ID"))
-        Dim ID As String() = {ds.Tables(0).Rows(0).Item("ID"), tmpdate}
+
+        ID = {ds.Tables(0).Rows(0).Item("ID"), tmpdate}
 
         Return ID
     End Function

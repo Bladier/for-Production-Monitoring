@@ -231,8 +231,10 @@ Friend Module database
         Dim mySql As String = "SELECT * FROM tblmaintenance WHERE opt_keys = '" & keys & "'"
         Dim ds As DataSet = LoadSQL(mySql, "tblmaintenance")
         Dim ret As Date
+        Dim tmpremarks As String = IIf(IsDBNull(ds.Tables(0).Rows(0).Item("Remarks")), "", ds.Tables(0).Rows(0).Item("Remarks"))
 
-        If ds.Tables(0).Rows.Count <= 0 Then
+
+        If tmpremarks = "" Then
             Return Nothing
         End If
 

@@ -42,6 +42,8 @@ Partial Class FrmMain
         Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TmpTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SalesWatcher = New System.Windows.Forms.Timer(Me.components)
+        Me.bgWorker = New System.ComponentModel.BackgroundWorker()
+        Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -138,7 +140,7 @@ Partial Class FrmMain
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusDateandTime, Me.statusUser})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusDateandTime, Me.statusUser, Me.ToolStripProgressBar1})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 554)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(1003, 22)
@@ -164,12 +166,20 @@ Partial Class FrmMain
         'TmpTimer
         '
         Me.TmpTimer.Enabled = True
-        Me.TmpTimer.Interval = 10000
         '
         'SalesWatcher
         '
         Me.SalesWatcher.Enabled = True
-        Me.SalesWatcher.Interval = 7200000
+        Me.SalesWatcher.Interval = 60000
+        '
+        'bgWorker
+        '
+        Me.bgWorker.WorkerReportsProgress = True
+        '
+        'ToolStripProgressBar1
+        '
+        Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
+        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(100, 16)
         '
         'FrmMain
         '
@@ -211,4 +221,6 @@ Partial Class FrmMain
     Friend WithEvents AdjustmentToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LoadSalesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SalesWatcher As System.Windows.Forms.Timer
+    Friend WithEvents bgWorker As System.ComponentModel.BackgroundWorker
+    Friend WithEvents ToolStripProgressBar1 As System.Windows.Forms.ToolStripProgressBar
 End Class

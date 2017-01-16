@@ -2,6 +2,8 @@
     Private locked As Boolean
     Private MagazineStatus As Boolean
     Dim CheckLastID As String = ""
+
+
     Friend Sub NotYetLogin(Optional ByVal st As Boolean = True)
         locked = IIf(GetOption("Locked") = "YES", True, False)
 
@@ -61,6 +63,7 @@
        
         AddHandler TmpTimer.Tick, AddressOf SalesWatcher_Tick
         SalesWatcher.Start()
+        frmCheckSales.Show()
 
         NotYetLogin()
     End Sub
@@ -122,9 +125,16 @@
         frmSales.Show()
     End Sub
 
-   
     Private Sub SalesWatcher_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SalesWatcher.Tick
+     
+    End Sub
+
+    Private Sub bgWorker_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles bgWorker.DoWork
         CheckLastID = GetOption("LastSalesID")
+        If CheckLastID = "" Then Exit Sub
+
+
+        If frmSales.GetLastEntry(1) = "" Or frmSales.GetLastEntry(0) = "" Then Exit Sub
 
         If GetRemarks("LastSalesID") = frmSales.GetLastEntry(1) Then
             Exit Sub
@@ -133,5 +143,9 @@
                 frmSales.SalesLoad()
             End If
         End If
+    End Sub
+
+    Private Sub bgWorker_ProgressChanged(ByVal sender As System.Object, ByVal e As System.ComponentModel.ProgressChangedEventArgs) Handles bgWorker.ProgressChanged
+        ToolStripProgressBar1.Value = e.ProgressPercentage
     End Sub
 End Class
