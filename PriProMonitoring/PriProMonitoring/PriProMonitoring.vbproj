@@ -198,6 +198,12 @@
     <Compile Include="Forms\frmPaperRoll.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frmPaperRolls.Designer.vb">
+      <DependentUpon>frmPaperRolls.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPaperRolls.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmProductionMonitoring.Designer.vb">
       <DependentUpon>frmProductionMonitoring.vb</DependentUpon>
     </Compile>
@@ -302,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPaperRoll.resx">
       <DependentUpon>frmPaperRoll.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPaperRolls.resx">
+      <DependentUpon>frmPaperRolls.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProductionMonitoring.resx">
       <DependentUpon>frmProductionMonitoring.vb</DependentUpon>

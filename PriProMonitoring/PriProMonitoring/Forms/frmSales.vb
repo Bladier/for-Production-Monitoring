@@ -72,6 +72,8 @@ NextLineToDo:
 nextToExit:
     End Sub
 
+  
+
     ''' <summary>
     ''' Get Last ID and Transdate Initialization
     ''' </summary>
@@ -123,6 +125,7 @@ nextToExit:
 
         Return ID
     End Function
+
 
     Private Sub frmSales_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 

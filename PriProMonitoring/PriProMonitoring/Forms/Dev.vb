@@ -74,8 +74,8 @@
                 tmplastSalesID = frmSales.GetLastEntry(0)
                 tmpdate = frmSales.GetLastEntry(1)
 
-                'If tmplastSalesID = "" Then _
-                '    MsgBox("No new row data in sales", MsgBoxStyle.Information, "Sales") : Exit Sub
+                If GetOption("LastSalesID") = tmplastSalesID Then _
+                    MsgBox("No new row data in sales", MsgBoxStyle.Information, "Sales") : Exit Sub
 
                 Dim SaveSales As New Sales
                 With SaveSales
@@ -90,33 +90,27 @@
                     If ds.Tables(0).Rows.Count <= 0 Then Exit Sub
 
                     Console.WriteLine("Count: " & ds.Tables(0).Rows.Count)
+                    Dim max As Integer = ds.Tables(0).Rows.Count
 
                     For Each dr As DataRow In ds.Tables(0).Rows
-                        Dim max As Integer = ds.Tables(0).Rows.Count
-                        For i = 0 To max
+                        .ItemCode = dr.Item("ItemNo")
+                        .Descrition = dr.Item("Description")
+                        .SalesID = dr.Item("ID")
+                        .QTY = dr.Item("QTY")
+                        .SaveSales()
 
-                            BackgroundWorker1.ReportProgress(i)
-                            ProgressBar1.Value = ProgressBar1.Value + 1
-                            Application.DoEvents()
-                            Label1.Text = String.Format("{0}%", ((ProgressBar1.Value / ProgressBar1.Maximum) * 100).ToString("F2"))
-                            System.Threading.Thread.Sleep(200)
-
-                            .ItemCode = dr.Item("ItemNo")
-                            .Descrition = dr.Item("Description")
-                            .SalesID = dr.Item("ID")
-                            .QTY = dr.Item("QTY")
-                            .SaveSales()
-                        Next
+                        ProgressBar1.Maximum = max
+                        ProgressBar1.Value = ProgressBar1.Value + 1
+                        Application.DoEvents()
+                        Label1.Text = String.Format("{0}%", ((ProgressBar1.Value / ProgressBar1.Maximum) * 100).ToString("F2"))
                     Next
-
-                  
+                    If MsgBox("Sales Updated.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, _
+        "Sales...") = MsgBoxResult.Ok Then ProgressBar1.Minimum = 0 : ProgressBar1.Value = 0 : Label1.Text = "0.00%"
 
                     UpdateOptionSales("LastSalesID", tmplastSalesID, tmpdate)
                 End With
-
-                MsgBox("Sales Updated.", MsgBoxStyle.Information, "Sales")
             End If
-            End If
+        End If
 
     End Sub
 
@@ -124,8 +118,8 @@
         ProgressBar1.Value = e.ProgressPercentage
     End Sub
 
-    Private Sub BackgroundWorker1_RunWorkerCompleted(ByVal sender As System.Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
-        MsgBox("Done")
-        Button2.Enabled = True
-    End Sub
+    'Private Sub BackgroundWorker1_RunWorkerCompleted(ByVal sender As System.Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
+    '    MsgBox("Done")
+    '    Button2.Enabled = True
+    'End Sub
 End Class

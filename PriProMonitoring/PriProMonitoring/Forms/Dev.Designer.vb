@@ -54,7 +54,6 @@ Partial Class Dev
         'ProgressBar1
         '
         Me.ProgressBar1.Location = New System.Drawing.Point(51, 140)
-        Me.ProgressBar1.Maximum = 500
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(262, 23)
         Me.ProgressBar1.TabIndex = 2

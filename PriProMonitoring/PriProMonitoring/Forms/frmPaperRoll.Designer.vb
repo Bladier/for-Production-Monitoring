@@ -62,7 +62,7 @@ Partial Class frmPaperRoll
         '
         Me.Label2.AutoSize = True
         Me.Label2.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label2.Location = New System.Drawing.Point(12, 76)
+        Me.Label2.Location = New System.Drawing.Point(12, 75)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(91, 15)
         Me.Label2.TabIndex = 3
@@ -72,7 +72,7 @@ Partial Class frmPaperRoll
         '
         Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label3.Location = New System.Drawing.Point(12, 107)
+        Me.Label3.Location = New System.Drawing.Point(12, 106)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(93, 15)
         Me.Label3.TabIndex = 5
@@ -82,7 +82,7 @@ Partial Class frmPaperRoll
         '
         Me.Label4.AutoSize = True
         Me.Label4.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label4.Location = New System.Drawing.Point(12, 136)
+        Me.Label4.Location = New System.Drawing.Point(12, 135)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(98, 15)
         Me.Label4.TabIndex = 7
@@ -99,47 +99,47 @@ Partial Class frmPaperRoll
         '
         'txtOuterDiameter
         '
-        Me.txtOuterDiameter.Location = New System.Drawing.Point(117, 76)
+        Me.txtOuterDiameter.Location = New System.Drawing.Point(117, 75)
         Me.txtOuterDiameter.Name = "txtOuterDiameter"
         Me.txtOuterDiameter.Size = New System.Drawing.Size(173, 21)
-        Me.txtOuterDiameter.TabIndex = 2
+        Me.txtOuterDiameter.TabIndex = 3
         Me.txtOuterDiameter.WatermarkColor = System.Drawing.Color.Gray
         Me.txtOuterDiameter.WatermarkText = "OUter Diameter"
         '
         'txtSpoolDiameter
         '
-        Me.txtSpoolDiameter.Location = New System.Drawing.Point(117, 104)
+        Me.txtSpoolDiameter.Location = New System.Drawing.Point(117, 103)
         Me.txtSpoolDiameter.Name = "txtSpoolDiameter"
         Me.txtSpoolDiameter.Size = New System.Drawing.Size(173, 21)
-        Me.txtSpoolDiameter.TabIndex = 3
+        Me.txtSpoolDiameter.TabIndex = 4
         Me.txtSpoolDiameter.Text = "8.5"
         Me.txtSpoolDiameter.WatermarkColor = System.Drawing.Color.Gray
         Me.txtSpoolDiameter.WatermarkText = "Spool Diameter"
         '
         'txtPaperThickness
         '
-        Me.txtPaperThickness.Location = New System.Drawing.Point(117, 133)
+        Me.txtPaperThickness.Location = New System.Drawing.Point(117, 132)
         Me.txtPaperThickness.Name = "txtPaperThickness"
         Me.txtPaperThickness.Size = New System.Drawing.Size(173, 21)
-        Me.txtPaperThickness.TabIndex = 4
+        Me.txtPaperThickness.TabIndex = 5
         Me.txtPaperThickness.WatermarkColor = System.Drawing.Color.Gray
         Me.txtPaperThickness.WatermarkText = "Paper Thickness"
         '
         'btnsave
         '
-        Me.btnsave.Location = New System.Drawing.Point(164, 169)
+        Me.btnsave.Location = New System.Drawing.Point(164, 158)
         Me.btnsave.Name = "btnsave"
         Me.btnsave.Size = New System.Drawing.Size(75, 24)
-        Me.btnsave.TabIndex = 5
+        Me.btnsave.TabIndex = 6
         Me.btnsave.Text = "&Save"
         Me.btnsave.UseVisualStyleBackColor = True
         '
         'btnClose
         '
-        Me.btnClose.Location = New System.Drawing.Point(245, 169)
+        Me.btnClose.Location = New System.Drawing.Point(245, 158)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 24)
-        Me.btnClose.TabIndex = 6
+        Me.btnClose.TabIndex = 7
         Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
@@ -158,7 +158,7 @@ Partial Class frmPaperRoll
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label6.Location = New System.Drawing.Point(293, 76)
+        Me.Label6.Location = New System.Drawing.Point(293, 75)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(29, 18)
         Me.Label6.TabIndex = 15
@@ -169,7 +169,7 @@ Partial Class frmPaperRoll
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label7.Location = New System.Drawing.Point(293, 134)
+        Me.Label7.Location = New System.Drawing.Point(293, 133)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(29, 18)
         Me.Label7.TabIndex = 16
@@ -180,7 +180,7 @@ Partial Class frmPaperRoll
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label8.Location = New System.Drawing.Point(292, 103)
+        Me.Label8.Location = New System.Drawing.Point(292, 102)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(34, 18)
         Me.Label8.TabIndex = 17
@@ -191,7 +191,7 @@ Partial Class frmPaperRoll
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(332, 203)
+        Me.ClientSize = New System.Drawing.Size(331, 190)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)

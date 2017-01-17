@@ -114,6 +114,8 @@
             _status = value
         End Set
     End Property
+
+
 #End Region
 
 #Region "Functions and Procedures"
@@ -137,6 +139,7 @@
             Created_at = .Item("Created_at")
             _Updated_at = .Item("Update_at")
             _status = .Item("Status")
+
         End With
     
     End Sub
@@ -162,6 +165,7 @@
             .Item("Addedby") = FrmMain.statusUser.Text
             .Item("Created_at") = Now
             .Item("status") = 0
+
         End With
         ds.Tables(0).Rows.Add(dsNewRow)
         database.SaveEntry(ds)
@@ -192,6 +196,7 @@
             _Created_at = .Item("Created_AT")
             _Updated_at = .Item("Updated_At")
             _status = .Item("Status")
+
         End With
 
     End Sub

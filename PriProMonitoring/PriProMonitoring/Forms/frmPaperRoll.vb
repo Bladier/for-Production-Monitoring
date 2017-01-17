@@ -3,6 +3,8 @@
     Const value As Integer = 1000
     Const value1 As Integer = 40
     Dim mag As Hashtable
+
+
     Private Sub btnsave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnsave.Click
         SavePapRoll()
     End Sub
@@ -41,6 +43,7 @@
         txtSerial.Text = ""
         txtSpoolDiameter.Text = ""
     End Sub
+
     Private Function isValid() As Boolean
         If CboMagazine.Text = "" Then CboMagazine.Focus() : Return False
         If txtSerial.Text = "" Then txtSerial.Focus() : Return False
@@ -51,10 +54,11 @@
     End Function
 
     Private Sub frmPaperRoll_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        LoadScheme()
+        LoadMagazine()
+
     End Sub
 
-    Private Sub LoadScheme()
+    Private Sub LoadMagazine()
         Dim mySql As String = "SELECT * FROM tblmagazine"
         Dim ds As DataSet = LoadSQL(mySql)
 

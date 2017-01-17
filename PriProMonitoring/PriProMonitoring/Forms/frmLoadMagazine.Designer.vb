@@ -22,77 +22,91 @@ Partial Class frmLoadMagazine
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Me.btnsearch = New System.Windows.Forms.Button()
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.lvPaproll = New System.Windows.Forms.ListView()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.btnSet = New System.Windows.Forms.Button()
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtserial = New PriProMonitoring.watermark()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'btnsearch
         '
-        Me.btnsearch.Location = New System.Drawing.Point(311, 12)
+        Me.btnsearch.Location = New System.Drawing.Point(310, 6)
         Me.btnsearch.Name = "btnsearch"
-        Me.btnsearch.Size = New System.Drawing.Size(75, 23)
+        Me.btnsearch.Size = New System.Drawing.Size(75, 32)
         Me.btnsearch.TabIndex = 1
         Me.btnsearch.Text = "Search"
         Me.btnsearch.UseVisualStyleBackColor = True
         '
-        'BackgroundWorker1
+        'lvPaproll
         '
-        Me.BackgroundWorker1.WorkerReportsProgress = True
-        Me.BackgroundWorker1.WorkerSupportsCancellation = True
+        Me.lvPaproll.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader5, Me.ColumnHeader3, Me.ColumnHeader4})
+        Me.lvPaproll.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lvPaproll.FullRowSelect = True
+        Me.lvPaproll.GridLines = True
+        Me.lvPaproll.Location = New System.Drawing.Point(8, 39)
+        Me.lvPaproll.Name = "lvPaproll"
+        Me.lvPaproll.Size = New System.Drawing.Size(297, 90)
+        Me.lvPaproll.TabIndex = 2
+        Me.lvPaproll.UseCompatibleStateImageBehavior = False
+        Me.lvPaproll.View = System.Windows.Forms.View.Details
         '
-        'Button1
+        'ColumnHeader1
         '
-        Me.Button1.Location = New System.Drawing.Point(79, 79)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(101, 23)
-        Me.Button1.TabIndex = 3
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.ColumnHeader1.Text = "ID"
+        Me.ColumnHeader1.Width = 0
         '
-        'Label1
+        'ColumnHeader2
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(107, 63)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(39, 13)
-        Me.Label1.TabIndex = 4
-        Me.Label1.Text = "Label1"
+        Me.ColumnHeader2.Text = "Mag_ID"
+        Me.ColumnHeader2.Width = 0
         '
-        'ProgressBar1
+        'ColumnHeader3
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(12, 108)
-        Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(374, 23)
-        Me.ProgressBar1.TabIndex = 5
+        Me.ColumnHeader3.Text = "Magazine"
+        Me.ColumnHeader3.Width = 185
+        '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "Paper Roll"
+        Me.ColumnHeader4.Width = 107
+        '
+        'btnSet
+        '
+        Me.btnSet.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSet.Location = New System.Drawing.Point(310, 100)
+        Me.btnSet.Name = "btnSet"
+        Me.btnSet.Size = New System.Drawing.Size(75, 29)
+        Me.btnSet.TabIndex = 3
+        Me.btnSet.Text = "&Set"
+        Me.btnSet.UseVisualStyleBackColor = True
+        '
+        'ColumnHeader5
+        '
+        Me.ColumnHeader5.Text = "Chamber"
+        Me.ColumnHeader5.Width = 0
         '
         'txtserial
         '
         Me.txtserial.Location = New System.Drawing.Point(8, 13)
         Me.txtserial.Name = "txtserial"
         Me.txtserial.Size = New System.Drawing.Size(297, 20)
-        Me.txtserial.TabIndex = 2
+        Me.txtserial.TabIndex = 0
         Me.txtserial.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtserial.WatermarkText = "Enter paper roll serial"
-        '
-        'Timer1
-        '
-        Me.Timer1.Interval = 2000
+        Me.txtserial.WatermarkText = "Enter paper roll serial or magazine"
         '
         'frmLoadMagazine
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(390, 140)
-        Me.Controls.Add(Me.ProgressBar1)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button1)
+        Me.ClientSize = New System.Drawing.Size(397, 134)
+        Me.Controls.Add(Me.btnSet)
+        Me.Controls.Add(Me.lvPaproll)
         Me.Controls.Add(Me.txtserial)
         Me.Controls.Add(Me.btnsearch)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
@@ -105,9 +119,11 @@ Partial Class frmLoadMagazine
     End Sub
     Friend WithEvents btnsearch As System.Windows.Forms.Button
     Friend WithEvents txtserial As PriProMonitoring.watermark
-    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
-    Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents lvPaproll As System.Windows.Forms.ListView
+    Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents btnSet As System.Windows.Forms.Button
+    Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
 End Class

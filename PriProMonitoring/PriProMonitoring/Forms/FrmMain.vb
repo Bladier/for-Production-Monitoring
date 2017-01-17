@@ -3,6 +3,8 @@
     Private MagazineStatus As Boolean
     Dim CheckLastID As String = ""
 
+    Dim tmplastSalesID As String
+    Dim tmpdate As String
 
     Friend Sub NotYetLogin(Optional ByVal st As Boolean = True)
         locked = IIf(GetOption("Locked") = "YES", True, False)
@@ -60,10 +62,11 @@
     End Sub
 
     Private Sub FrmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-       
-        AddHandler TmpTimer.Tick, AddressOf SalesWatcher_Tick
+        Control.CheckForIllegalCrossThreadCalls = False
+
+
+        'AddHandler TmpTimer.Tick, AddressOf SalesWatcher_Tick
         SalesWatcher.Start()
-        frmCheckSales.Show()
 
         NotYetLogin()
     End Sub
@@ -126,26 +129,88 @@
     End Sub
 
     Private Sub SalesWatcher_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SalesWatcher.Tick
-     
+        If ToolStripSplitButton1.Enabled = False Then
+            SalesWatcher.Stop()
+            Exit Sub
+        End If
+
+        ToolStripSplitButton1.PerformButtonClick()
     End Sub
 
     Private Sub bgWorker_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles bgWorker.DoWork
-        CheckLastID = GetOption("LastSalesID")
-        If CheckLastID = "" Then Exit Sub
-
-
-        If frmSales.GetLastEntry(1) = "" Or frmSales.GetLastEntry(0) = "" Then Exit Sub
-
-        If GetRemarks("LastSalesID") = frmSales.GetLastEntry(1) Then
-            Exit Sub
-        Else
-            If CheckLastID <> "" Then
-                frmSales.SalesLoad()
-            End If
-        End If
+        NewSalesLoad()
     End Sub
 
     Private Sub bgWorker_ProgressChanged(ByVal sender As System.Object, ByVal e As System.ComponentModel.ProgressChangedEventArgs) Handles bgWorker.ProgressChanged
-        ToolStripProgressBar1.Value = e.ProgressPercentage
+        ToolStripPBar.Value = e.ProgressPercentage
+    End Sub
+
+    Private Sub NewSalesLoad()
+
+        Dim CheckLastID As String = GetOption("LastSalesID")
+        If CheckLastID = "" Then Exit Sub
+
+        If GetRemarks("LastSalesID") = frmSales.GetLastEntry(0) Then
+            Exit Sub
+        Else
+            If CheckLastID <> "" Then
+                Dim tmpRemarks As String = GetRemarks("LastSalesID")
+
+                tmpRemarks = tmpRemarks.Remove(tmpRemarks.Length - 2)
+
+                tmplastSalesID = frmSales.GetLastEntry(0)
+                tmpdate = frmSales.GetLastEntry(1)
+
+                If GetOption("LastSalesID") = tmplastSalesID Then _
+                    MsgBox("No new row data in sales", MsgBoxStyle.Information, "Sales") : Exit Sub
+
+                UpdateOptionSales("LastSalesID", tmplastSalesID, tmpdate)
+
+                Dim SaveSales As New Sales
+                With SaveSales
+                    Dim POSsales As String = "SELECT I.ID,I.ITEMNO,M.ITEMNAME AS DESCRIPTION,E.TRANSDATE," & _
+                                             "I.QTY,E.DATESTAMP FROM POSITEM I " & _
+                                            "INNER JOIN POSENTRY E ON I.POSENTRYID = E.ID " & _
+                                            "INNER JOIN ITEMMASTER M ON I.ITEMNO = M.ITEMNO " & _
+                                            "where E.DATESTAMP > '" & tmpRemarks & "'" & _
+                                             "ORDER BY E.DATESTAMP ASC "
+
+                    Dim ds As DataSet = LoadSQLPOS(POSsales, "POSITEM")
+                    If ds.Tables(0).Rows.Count <= 0 Then Exit Sub
+
+                    Console.WriteLine("Count: " & ds.Tables(0).Rows.Count)
+                    Dim max As Integer = ds.Tables(0).Rows.Count
+
+                    Count.Text = max
+
+                    For Each dr As DataRow In ds.Tables(0).Rows
+                        .ItemCode = dr.Item("ItemNo")
+                        .Descrition = dr.Item("Description")
+                        .SalesID = dr.Item("ID")
+                        .QTY = dr.Item("QTY")
+                        .SaveSales()
+
+                        ToolStripPBar.Maximum = max
+                        ToolStripPBar.Value = ToolStripPBar.Value + 1
+                        Application.DoEvents()
+                        lblToolStripStatus.Text = String.Format("{0}%", ((ToolStripPBar.Value / ToolStripPBar.Maximum) * 100).ToString("F2"))
+                    Next
+
+                    If MsgBox("Sales Updated.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, _
+        "Sales...") = MsgBoxResult.Ok Then ToolStripPBar.Minimum = 0 : ToolStripPBar.Value = 0 : lblToolStripStatus.Text = "0.00%"
+
+
+                End With
+            End If
+        End If
+    End Sub
+  
+    Private Sub ToolStripSplitButton1_ButtonClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripSplitButton1.ButtonClick
+        ToolStripSplitButton1.Enabled = False
+        bgWorker.RunWorkerAsync()
+    End Sub
+
+    Private Sub bgWorker_RunWorkerCompleted(ByVal sender As System.Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bgWorker.RunWorkerCompleted
+        ToolStripSplitButton1.Enabled = True
     End Sub
 End Class
