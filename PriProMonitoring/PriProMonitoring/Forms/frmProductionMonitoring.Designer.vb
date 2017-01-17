@@ -24,7 +24,6 @@ Partial Class frmProductionMonitoring
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnSearch = New System.Windows.Forms.Button()
-        Me.txtSEarch = New PriProMonitoring.watermark()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.lvpapercuts = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -35,7 +34,6 @@ Partial Class frmProductionMonitoring
         Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.txtmagazine = New PriProMonitoring.watermark()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.tpProgressBar = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolRemaining = New System.Windows.Forms.ToolStripStatusLabel()
@@ -50,8 +48,6 @@ Partial Class frmProductionMonitoring
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.btnSearch)
-        Me.GroupBox1.Controls.Add(Me.txtSEarch)
         Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
@@ -70,19 +66,8 @@ Partial Class frmProductionMonitoring
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
-        'txtSEarch
-        '
-        Me.txtSEarch.Location = New System.Drawing.Point(11, 15)
-        Me.txtSEarch.Name = "txtSEarch"
-        Me.txtSEarch.Size = New System.Drawing.Size(364, 20)
-        Me.txtSEarch.TabIndex = 0
-        Me.txtSEarch.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSEarch.WatermarkText = "Search . . ."
-        '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.lvpapercuts)
-        Me.GroupBox2.Controls.Add(Me.txtmagazine)
         Me.GroupBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.GroupBox2.Location = New System.Drawing.Point(12, 67)
         Me.GroupBox2.Name = "GroupBox2"
@@ -137,24 +122,13 @@ Partial Class frmProductionMonitoring
         '
         'ColumnHeader4
         '
-        Me.ColumnHeader4.Text = "ItemCode"
+        Me.ColumnHeader4.Text = "Paper Cut Code"
         Me.ColumnHeader4.Width = 0
         '
         'ColumnHeader5
         '
         Me.ColumnHeader5.Text = "Description"
         Me.ColumnHeader5.Width = 291
-        '
-        'txtmagazine
-        '
-        Me.txtmagazine.Location = New System.Drawing.Point(7, 17)
-        Me.txtmagazine.Name = "txtmagazine"
-        Me.txtmagazine.ReadOnly = True
-        Me.txtmagazine.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtmagazine.Size = New System.Drawing.Size(459, 20)
-        Me.txtmagazine.TabIndex = 0
-        Me.txtmagazine.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtmagazine.WatermarkText = "Magazine"
         '
         'StatusStrip1
         '
@@ -259,4 +233,5 @@ Partial Class frmProductionMonitoring
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents btnProduction As System.Windows.Forms.Button
+    Friend WithEvents txtMagazine2 As PriProMonitoring.watermark
 End Class

@@ -41,13 +41,13 @@ Partial Class FrmMain
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusDateandTime = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripPBar = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolStripSplitButton1 = New System.Windows.Forms.ToolStripSplitButton()
+        Me.lblToolStripStatus = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripPBar = New System.Windows.Forms.ToolStripProgressBar()
+        Me.Count = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TmpTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SalesWatcher = New System.Windows.Forms.Timer(Me.components)
         Me.bgWorker = New System.ComponentModel.BackgroundWorker()
-        Me.lblToolStripStatus = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Count = New System.Windows.Forms.ToolStripStatusLabel()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -167,21 +167,41 @@ Partial Class FrmMain
         Me.statusUser.Size = New System.Drawing.Size(30, 20)
         Me.statusUser.Text = "User"
         '
-        'ToolStripPBar
-        '
-        Me.ToolStripPBar.Name = "ToolStripPBar"
-        Me.ToolStripPBar.Size = New System.Drawing.Size(100, 16)
-        '
         'ToolStripSplitButton1
         '
+        Me.ToolStripSplitButton1.AutoToolTip = False
         Me.ToolStripSplitButton1.BackColor = System.Drawing.Color.White
         Me.ToolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
         Me.ToolStripSplitButton1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.ToolStripSplitButton1.Image = CType(resources.GetObject("ToolStripSplitButton1.Image"), System.Drawing.Image)
         Me.ToolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripSplitButton1.Margin = New System.Windows.Forms.Padding(0)
         Me.ToolStripSplitButton1.Name = "ToolStripSplitButton1"
-        Me.ToolStripSplitButton1.Size = New System.Drawing.Size(52, 20)
+        Me.ToolStripSplitButton1.Size = New System.Drawing.Size(52, 22)
         Me.ToolStripSplitButton1.Text = "Sales "
+        '
+        'lblToolStripStatus
+        '
+        Me.lblToolStripStatus.BackColor = System.Drawing.Color.White
+        Me.lblToolStripStatus.Margin = New System.Windows.Forms.Padding(0, 0, 0, 2)
+        Me.lblToolStripStatus.Name = "lblToolStripStatus"
+        Me.lblToolStripStatus.Size = New System.Drawing.Size(38, 20)
+        Me.lblToolStripStatus.Text = "0.00%"
+        '
+        'ToolStripPBar
+        '
+        Me.ToolStripPBar.Margin = New System.Windows.Forms.Padding(0)
+        Me.ToolStripPBar.Name = "ToolStripPBar"
+        Me.ToolStripPBar.Size = New System.Drawing.Size(100, 22)
+        Me.ToolStripPBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous
+        '
+        'Count
+        '
+        Me.Count.BackColor = System.Drawing.SystemColors.Control
+        Me.Count.ForeColor = System.Drawing.SystemColors.Control
+        Me.Count.Name = "Count"
+        Me.Count.Size = New System.Drawing.Size(13, 17)
+        Me.Count.Text = "1"
         '
         'TmpTimer
         '
@@ -195,20 +215,6 @@ Partial Class FrmMain
         'bgWorker
         '
         Me.bgWorker.WorkerReportsProgress = True
-        '
-        'lblToolStripStatus
-        '
-        Me.lblToolStripStatus.Name = "lblToolStripStatus"
-        Me.lblToolStripStatus.Size = New System.Drawing.Size(38, 17)
-        Me.lblToolStripStatus.Text = "0.00%"
-        '
-        'Count
-        '
-        Me.Count.BackColor = System.Drawing.SystemColors.Control
-        Me.Count.ForeColor = System.Drawing.SystemColors.Control
-        Me.Count.Name = "Count"
-        Me.Count.Size = New System.Drawing.Size(13, 17)
-        Me.Count.Text = "1"
         '
         'FrmMain
         '
@@ -252,7 +258,7 @@ Partial Class FrmMain
     Friend WithEvents SalesWatcher As System.Windows.Forms.Timer
     Friend WithEvents bgWorker As System.ComponentModel.BackgroundWorker
     Friend WithEvents ToolStripPBar As System.Windows.Forms.ToolStripProgressBar
-    Friend WithEvents ToolStripSplitButton1 As System.Windows.Forms.ToolStripSplitButton
     Friend WithEvents lblToolStripStatus As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents Count As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents ToolStripSplitButton1 As System.Windows.Forms.ToolStripSplitButton
 End Class

@@ -48,7 +48,7 @@ Partial Class frmPaperRolls
         Me.GroupBox1.Location = New System.Drawing.Point(12, 5)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(604, 54)
-        Me.GroupBox1.TabIndex = 1
+        Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
         'txtSearch
@@ -83,7 +83,7 @@ Partial Class frmPaperRolls
         Me.LvPaperRollList.Location = New System.Drawing.Point(12, 74)
         Me.LvPaperRollList.Name = "LvPaperRollList"
         Me.LvPaperRollList.Size = New System.Drawing.Size(426, 196)
-        Me.LvPaperRollList.TabIndex = 2
+        Me.LvPaperRollList.TabIndex = 1
         Me.LvPaperRollList.UseCompatibleStateImageBehavior = False
         Me.LvPaperRollList.View = System.Windows.Forms.View.Details
         '
@@ -115,7 +115,7 @@ Partial Class frmPaperRolls
         Me.btnSelect.Location = New System.Drawing.Point(442, 266)
         Me.btnSelect.Name = "btnSelect"
         Me.btnSelect.Size = New System.Drawing.Size(90, 34)
-        Me.btnSelect.TabIndex = 2
+        Me.btnSelect.TabIndex = 3
         Me.btnSelect.Text = "&Select"
         Me.btnSelect.UseVisualStyleBackColor = True
         '
@@ -127,7 +127,7 @@ Partial Class frmPaperRolls
         Me.btnClose.Location = New System.Drawing.Point(533, 266)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(90, 34)
-        Me.btnClose.TabIndex = 3
+        Me.btnClose.TabIndex = 4
         Me.btnClose.Text = "&Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
@@ -141,7 +141,7 @@ Partial Class frmPaperRolls
         Me.CboChamber.Name = "CboChamber"
         Me.CboChamber.Size = New System.Drawing.Size(163, 23)
         Me.CboChamber.Sorted = True
-        Me.CboChamber.TabIndex = 4
+        Me.CboChamber.TabIndex = 2
         '
         'lblChamber
         '

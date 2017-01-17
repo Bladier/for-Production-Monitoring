@@ -10,13 +10,13 @@
         Me.Close()
     End Sub
 
-    Private Sub txtSEarch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSEarch.KeyPress
+    Private Sub txtSEarch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         If isEnter(e) Then
             btnSearch.PerformClick()
         End If
     End Sub
 
-    Private Sub txtmagazine_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtmagazine.TextChanged
+    Private Sub txtmagazine_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         LOADACTIVEMAGAZINE()
     End Sub
 

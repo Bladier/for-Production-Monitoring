@@ -11,32 +11,39 @@ Public Class frmLoadMagazine
         If Not MagazineStatus Then
             Me.Enabled = True
         Else
-            Me.Enabled = False
+            Disabled()
+            GetActivePAPERROLL()
         End If
     End Sub
 
+    Private Sub Disabled()
+        txtserial.Enabled = False
+        lvPaproll.Enabled = False
+        btnsearch.Enabled = False
+        btnSet.Enabled = False
+    End Sub
 
-    Private Function GetActivePAPERROLL() As String
-        Dim mysql As String = " SELECT * FROM TBLPAPERROLL " _
-                              & " WHERE STATUS <> 0 "
-        Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERCUT")
+    Private Sub GetActivePAPERROLL()
+        Dim mysql As String = "SELECT P.PAPROLL_ID,P.MAG_IDS,P.CHAMBER,M.MAGDESCRIPTION,P.PAPROLL_SERIAL FROM TBLPAPERROLL P " & _
+                             "INNER JOIN TBLMAGAZINE M ON M.MAG_ID = P.MAG_IDS " & _
+                             " WHERE P.CHAMBER ='B' OR P.CHAMBER ='C'"
+
+        Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
         If ds.Tables(0).Rows.Count <= 0 Then
-            Return ""
+            Exit Sub
         End If
-        Return ds.Tables(0).Rows(0).Item("PAPROLL_SERIAL")
-    End Function
 
+        For Each dr As DataRow In ds.Tables(0).Rows
+            Dim row As ListViewItem = lvPaproll.Items.Add(dr.Item("PAPROLL_ID"))
 
-    Private Function GetMagazine(ByVal mag As String) As String
-        Dim mysql As String = " SELECT * FROM tblmagazine m inner join tblpaperroll p " _
-                              & "on m.mag_ID = p.mag_ids" _
-                              & String.Format(" WHERE paproll_serial = '{0}'", mag)
-        Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERCUT")
-        If ds.Tables(0).Rows.Count <= 0 Then
-            Return ""
-        End If
-        Return ds.Tables(0).Rows(0).Item("Magdescription")
-    End Function
+            row.SubItems.Add(dr.Item("MAG_IDS"))
+            row.SubItems.Add(dr.Item("CHAMBER"))
+            row.SubItems.Add(dr.Item("MAGDESCRIPTION"))
+            row.SubItems.Add(dr.Item("PAPROLL_SERIAL"))
+        Next
+      
+    End Sub
+
 
     Private Sub btnSet_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSet.Click
         If lvPaproll.Items.Count < 2 Then Exit Sub

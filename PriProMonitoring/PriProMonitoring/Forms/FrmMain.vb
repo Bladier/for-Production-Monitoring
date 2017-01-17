@@ -205,7 +205,7 @@
         End If
     End Sub
   
-    Private Sub ToolStripSplitButton1_ButtonClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripSplitButton1.ButtonClick
+    Private Sub ToolStripSplitButton1_ButtonClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripSplitButton1.Click
         ToolStripSplitButton1.Enabled = False
         bgWorker.RunWorkerAsync()
     End Sub
@@ -213,4 +213,6 @@
     Private Sub bgWorker_RunWorkerCompleted(ByVal sender As System.Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bgWorker.RunWorkerCompleted
         ToolStripSplitButton1.Enabled = True
     End Sub
+
+  
 End Class

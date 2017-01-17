@@ -13,7 +13,7 @@
         databasePOS.dbNamePOS = GetOption("DatabasePOS")
         LastSaleID = GetOption("LastSalesID")
 
-        If LastSaleID <> "" Then GoTo NextLineToDo
+        ' If LastSaleID <> "" Then GoTo NextLineToDo
 
         If CheckSalesIFNull() Then ' if new install POS
             GoTo nextToExit
@@ -26,49 +26,51 @@
                 UpdateOptionSales("LastSalesID ", tmplastSalesID, tmpdate)
                 MsgBox("Sales has been loaded.", MsgBoxStyle.Information, "Sales")
                 Exit Sub
-            Else
-                GoTo NextLineToDo
             End If
-
-NextLineToDo:
-            Dim tmpRemarks As String = GetRemarks("LastSalesID")
-           
-            tmpRemarks = tmpRemarks.Remove(tmpRemarks.Length - 2)
-
-            tmplastSalesID = GetLastEntry(0)
-            tmpdate = GetLastEntry(1)
-
-            If tmplastSalesID = "" Then _
-                MsgBox("No new row data in sales", MsgBoxStyle.Information, "Sales") : Exit Sub
-
-            Dim SaveSales As New Sales
-            With SaveSales
-                Dim POSsales As String = "SELECT I.ID,I.ITEMNO,M.ITEMNAME AS DESCRIPTION,E.TRANSDATE," & _
-                                         "I.QTY,E.DATESTAMP FROM POSITEM I " & _
-                                        "INNER JOIN POSENTRY E ON I.POSENTRYID = E.ID " & _
-                                        "INNER JOIN ITEMMASTER M ON I.ITEMNO = M.ITEMNO " & _
-                                        "where E.DATESTAMP > '" & tmpRemarks & "'" & _
-                                         "ORDER BY E.DATESTAMP ASC "
-
-                Dim ds As DataSet = LoadSQLPOS(POSsales, "POSITEM")
-                If ds.Tables(0).Rows.Count <= 0 Then Exit Sub
-
-                Console.WriteLine("Count: " & ds.Tables(0).Rows.Count)
-
-                For Each dr As DataRow In ds.Tables(0).Rows
-
-                    .ItemCode = dr.Item("ItemNo")
-                    .Descrition = dr.Item("Description")
-                    .SalesID = dr.Item("ID")
-                    .QTY = dr.Item("QTY")
-                    .SaveSales()
-                Next
-
-                UpdateOptionSales("LastSalesID", tmplastSalesID, tmpdate)
-            End With
-
-            MsgBox("Sales Updated.", MsgBoxStyle.Information, "Sales")
         End If
+        '            Else
+        '                GoTo NextLineToDo
+        '            End If
+
+        'NextLineToDo:
+        '            Dim tmpRemarks As String = GetRemarks("LastSalesID")
+
+        '            tmpRemarks = tmpRemarks.Remove(tmpRemarks.Length - 2)
+
+        '            tmplastSalesID = GetLastEntry(0)
+        '            tmpdate = GetLastEntry(1)
+
+        '            If tmplastSalesID = "" Then _
+        '                MsgBox("No new row data in sales", MsgBoxStyle.Information, "Sales") : Exit Sub
+
+        '            Dim SaveSales As New Sales
+        '            With SaveSales
+        '                Dim POSsales As String = "SELECT I.ID,I.ITEMNO,M.ITEMNAME AS DESCRIPTION,E.TRANSDATE," & _
+        '                                         "I.QTY,E.DATESTAMP FROM POSITEM I " & _
+        '                                        "INNER JOIN POSENTRY E ON I.POSENTRYID = E.ID " & _
+        '                                        "INNER JOIN ITEMMASTER M ON I.ITEMNO = M.ITEMNO " & _
+        '                                        "where E.DATESTAMP > '" & tmpRemarks & "'" & _
+        '                                         "ORDER BY E.DATESTAMP ASC "
+
+        '                Dim ds As DataSet = LoadSQLPOS(POSsales, "POSITEM")
+        '                If ds.Tables(0).Rows.Count <= 0 Then Exit Sub
+
+        '                Console.WriteLine("Count: " & ds.Tables(0).Rows.Count)
+
+        '                For Each dr As DataRow In ds.Tables(0).Rows
+
+        '                    .ItemCode = dr.Item("ItemNo")
+        '                    .Descrition = dr.Item("Description")
+        '                    .SalesID = dr.Item("ID")
+        '                    .QTY = dr.Item("QTY")
+        '                    .SaveSales()
+        '                Next
+
+        '                UpdateOptionSales("LastSalesID", tmplastSalesID, tmpdate)
+        '            End With
+
+        '            MsgBox("Sales Updated.", MsgBoxStyle.Information, "Sales")
+        '        End If
 nextToExit:
     End Sub
 
