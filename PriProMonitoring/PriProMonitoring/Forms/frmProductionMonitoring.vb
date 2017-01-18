@@ -4,21 +4,11 @@
     Dim SelectedPaPRoll As PaperRoll
     Dim saveSales As production
 
-    Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
-        frmMagAndPapRollList.txtSearch.Text = txtSEarch.Text
-        frmMagAndPapRollList.Show()
-        Me.Close()
+    Private Sub frmProductionMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+            txtMagazine1.Text = GetMag(0)
+            txtMagazine2.Text = GetMag(1)
     End Sub
 
-    Private Sub txtSEarch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
-        If isEnter(e) Then
-            btnSearch.PerformClick()
-        End If
-    End Sub
-
-    Private Sub txtmagazine_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LOADACTIVEMAGAZINE()
-    End Sub
 
     Private Sub LOADACTIVEMAGAZINE()
         Dim mysql As String = "SELECT * FROM papercut"
@@ -37,34 +27,45 @@
             lv.SubItems.Add(dr(7))
         Next
 
-        Dim TOTAL_LENGTH As Double = ds.Tables(0).Rows(0).Item("TOTAL_LENGTH")
-        Dim SERIAL As String = ds.Tables(0).Rows(0).Item("PAPROLL_SERIAL")
-
-        ToolRemaining.Text = SERIAL & " : " & TOTAL_LENGTH
+      
+        txtActiveMagazine.Text = "Remaining" & " : " & GetLength(0) & "m " & GetMag(0) & _
+                                " | " & GetLength(1) & "m " & GetMag(1)
     End Sub
+    Public Function GetLength() As List(Of Double)
+        Dim mysql As String = "SELECT * FROM TBLPAPERROLL P INNER JOIN TBLMAGAZINE M ON M.MAG_ID=P.MAG_IDS " & _
+                              " WHERE STATUS <> 0 and P.Chamber = 'B' OR P.Chamber='C'"
+        Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
+        Dim tmplenght As New List(Of Double)()
+        For Each dr As DataRow In ds.Tables(0).Rows
+            tmplenght.Add(dr.Item("Total_length"))
+        Next
 
-    Private Sub frmProductionMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        txtmagazine.Text = GetMag()
-    End Sub
-
-    Private Function GetMag() As String
-        Dim mysql As String = " SELECT * FROM TBLMAGAZINE M INNER JOIN TBLPAPERROLL P ON M.MAG_ID=P.MAG_IDS" _
-                              & " WHERE STATUS <> 0 "
-        Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERCUT")
-        Return ds.Tables(0).Rows(0).Item("MAGDESCRIPTION")
+        Return tmplenght
     End Function
 
-    Private Sub tpProgressBar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tpProgressBar.Click
+    Public Function GetMag() As List(Of String)
 
-    End Sub
+        Dim output As New List(Of String)()
 
+        Dim mysql As String = " SELECT * FROM TBLMAGAZINE M INNER JOIN TBLPAPERROLL P ON M.MAG_ID=P.MAG_IDS" _
+                              & " WHERE STATUS <> 0 and P.Chamber = 'B' OR P.Chamber='C'"
+        Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERCUT")
+
+
+        For Each dr As DataRow In ds.Tables(0).Rows
+            output.Add(dr.Item("Magdescription"))
+        Next
+
+        Return output
+
+    End Function
 
     Private Sub btnProduction_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProduction.Click
         Dim mysql As String = "SELECT * FROM TBLPRO WHERE STATUS = '0'"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPRO")
         Console.WriteLine("TBLPRO count: " & ds.Tables(0).Rows.Count)
 
-        If ds.Tables(0).Rows.Count = 0 Then GoTo ExitIfNoNewData
+        If ds.Tables(0).Rows.Count = 0 Then Exit Sub
 
         For Each dr As DataRow In ds.Tables(0).Rows
             Dim mysqlitem As String = "SELECT * FROM ITEM WHERE ITEMCODE = '" & dr.Item("ITEMCODE") & "'"
@@ -75,7 +76,7 @@
             Dim dsline As DataSet = LoadSQL(mysqlitmLine, "TBL_ITEMLINE")
 
             If dsline.Tables(0).Rows.Count = 0 Then _
-                MsgBox("Please Update ItemLines", MsgBoxStyle.Critical) : GoTo ExitIfNoNewData
+                MsgBox("Please Update ItemLines", MsgBoxStyle.Critical) : Exit Sub
 
             Console.WriteLine("TBLITEM_LINE count: " & dsline.Tables(0).Rows.Count)
             Console.WriteLine("PApcutID: " & dsline.Tables(0).Rows(0).Item("PAPERCUT_ID"))
@@ -134,10 +135,23 @@
         Next
 
         MsgBox("Updated New Sales", MsgBoxStyle.Information, "Production")
-ExitIfNoNewData:
-        Exit Sub
 
     End Sub
 
-  
+    Private Sub txtMagazine1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtMagazine1.TextChanged
+        LOADACTIVEMAGAZINE()
+    End Sub
+
+    Private Sub Watermark1_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
+        If isEnter(e) Then btnSearch.PerformClick()
+    End Sub
+
+    Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
+        If txtSearch.Text = "" Then Exit Sub
+
+        frmPaperRolls.txtSearch.Text = txtSearch.Text
+        frmPaperRolls.Show()
+        Me.Close()
+
+    End Sub
 End Class

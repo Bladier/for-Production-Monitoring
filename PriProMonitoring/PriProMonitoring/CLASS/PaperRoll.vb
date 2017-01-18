@@ -148,11 +148,6 @@
         Dim mySql As String = String.Format("SELECT * FROM tblpaperRoll WHERE Paproll_serial = '{0}'", _PaperRollSErial)
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
-        'If ds.Tables(0).Rows.Count = 1 Then
-        '    MsgBox("Class already existed", MsgBoxStyle.Critical)
-        '    Exit Sub
-        'End If
-
         Dim dsNewRow As DataRow
         dsNewRow = ds.Tables(0).NewRow
         With dsNewRow

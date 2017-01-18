@@ -74,7 +74,7 @@
             RollstatInactive(LoadActiveRoll, 0) 'update last load to 0
             UpdateRollstatus(PAPSERIAL, 1) ' update new load to 1
 
-            frmProductionMonitoring.txtmagazine.Text = LVPAPROLL.SelectedItems(0).SubItems(3).Text
+            frmProductionMonitoring.txtMagazine1.Text = LVPAPROLL.SelectedItems(0).SubItems(3).Text
 
             savePapLog(LVPAPROLL.SelectedItems(0).SubItems(0).Text) 'save paper log
 
