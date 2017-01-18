@@ -197,7 +197,7 @@
     End Sub
 
     Public Sub Updatepaper()
-        Dim mySql As String = String.Format("SELECT * FROM {0} WHERE status <> {1}", MainTable, _status)
+        Dim mySql As String = String.Format("SELECT * FROM {0} WHERE PAPROLL_SERIAL = '{1}'", MainTable, _PaperRollSErial)
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
         Dim TotLength As Double = ds.Tables(0).Rows(0).Item("Total_Length")

@@ -79,6 +79,7 @@ Partial Class frmSetupDatabase
         Me.Controls.Add(Me.txtpath)
         Me.Controls.Add(Me.btnLoad)
         Me.Controls.Add(Me.btnbrowse)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmSetupDatabase"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Setup"

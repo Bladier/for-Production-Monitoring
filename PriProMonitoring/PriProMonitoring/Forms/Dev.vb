@@ -122,4 +122,26 @@
     '    MsgBox("Done")
     '    Button2.Enabled = True
     'End Sub
+
+    Private Sub btnDeduct_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDeduct.Click
+        Updatepaper()
+    End Sub
+
+    Private Sub Updatepaper()
+        Dim mySql As String = String.Format("SELECT * FROM {0} WHERE mag_IDS = {1}", "tblpaperroll", 2)
+        Dim ds As DataSet = LoadSQL(mySql, "tblpaperroll")
+
+        Dim TotLength As Double = ds.Tables(0).Rows(0).Item("Total_Length")
+
+        If ds.Tables(0).Rows.Count <> 1 Then
+            MsgBox("Unable to update record", MsgBoxStyle.Critical)
+            Exit Sub
+        End If
+
+        With ds.Tables("tblpaperroll").Rows(0)
+            .Item("Total_Length") = TotLength - 183.084
+            .Item("Updated_at") = Now
+        End With
+        database.SaveEntry(ds, False)
+    End Sub
 End Class

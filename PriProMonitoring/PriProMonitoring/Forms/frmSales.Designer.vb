@@ -44,7 +44,7 @@ Partial Class frmSales
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmSales"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmSales"
+        Me.Text = "Setup Prodution"
         Me.ResumeLayout(False)
 
     End Sub

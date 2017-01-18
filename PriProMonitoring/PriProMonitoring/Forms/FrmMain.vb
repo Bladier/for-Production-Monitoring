@@ -14,20 +14,23 @@
 
         If Not locked Then
             SetUpDatabaseToolStripMenuItem.Enabled = st
-            LoadIMDToolStripMenuItem1.Enabled = st
         Else
             SetUpDatabaseToolStripMenuItem.Enabled = Not st
             LoadIMDToolStripMenuItem1.Enabled = Not st
         End If
 
+        'Initialization
+        LoadIMDToolStripMenuItem1.Enabled = Not st
         LoadMagazineToolStripMenuItem.Enabled = Not st
+        LoadSalesToolStripMenuItem.Enabled = Not st
 
+        'Magazine
         AddMagazineToolStripMenuItem.Enabled = Not st
         AddPaperRollToolStripMenuItem.Enabled = Not st
-        TransactionToolStripMenuItem.Enabled = Not st
         AddItemToolStripMenuItem.Enabled = Not st
 
-        LoadSalesToolStripMenuItem.Enabled = Not st
+        'Transaction
+        TransactionToolStripMenuItem.Enabled = Not st
 
         If Not st Then
             menuLogin.Text = "&Log Out"

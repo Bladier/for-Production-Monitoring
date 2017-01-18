@@ -22,13 +22,7 @@ Partial Class frmProductionMonitoring
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.btnProduction = New System.Windows.Forms.Button()
         Me.lvpapercuts = New System.Windows.Forms.ListView()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.txtActiveMagazine = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.btnSearch = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -37,22 +31,17 @@ Partial Class frmProductionMonitoring
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.txtActiveMagazine = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.btnSearch = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtSearch = New PriProMonitoring.watermark()
         Me.txtMagazine2 = New PriProMonitoring.watermark()
         Me.txtMagazine1 = New PriProMonitoring.watermark()
-        Me.txtSearch = New PriProMonitoring.watermark()
         Me.StatusStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'btnProduction
-        '
-        Me.btnProduction.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnProduction.Location = New System.Drawing.Point(413, 179)
-        Me.btnProduction.Name = "btnProduction"
-        Me.btnProduction.Size = New System.Drawing.Size(133, 58)
-        Me.btnProduction.TabIndex = 4
-        Me.btnProduction.Text = "Production"
-        Me.btnProduction.UseVisualStyleBackColor = True
         '
         'lvpapercuts
         '
@@ -63,57 +52,10 @@ Partial Class frmProductionMonitoring
         Me.lvpapercuts.GridLines = True
         Me.lvpapercuts.Location = New System.Drawing.Point(13, 90)
         Me.lvpapercuts.Name = "lvpapercuts"
-        Me.lvpapercuts.Size = New System.Drawing.Size(332, 272)
+        Me.lvpapercuts.Size = New System.Drawing.Size(433, 272)
         Me.lvpapercuts.TabIndex = 3
         Me.lvpapercuts.UseCompatibleStateImageBehavior = False
         Me.lvpapercuts.View = System.Windows.Forms.View.Details
-        '
-        'StatusStrip1
-        '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.txtActiveMagazine})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 381)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(635, 22)
-        Me.StatusStrip1.TabIndex = 2
-        Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'txtActiveMagazine
-        '
-        Me.txtActiveMagazine.BackColor = System.Drawing.SystemColors.Control
-        Me.txtActiveMagazine.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtActiveMagazine.Name = "txtActiveMagazine"
-        Me.txtActiveMagazine.Size = New System.Drawing.Size(103, 17)
-        Me.txtActiveMagazine.Text = "Active Magazine"
-        '
-        'btnSearch
-        '
-        Me.btnSearch.Location = New System.Drawing.Point(525, 16)
-        Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(75, 30)
-        Me.btnSearch.TabIndex = 1
-        Me.btnSearch.Text = "Search"
-        Me.btnSearch.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 23)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(46, 15)
-        Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Search"
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.txtSearch)
-        Me.GroupBox1.Controls.Add(Me.btnSearch)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(11, -2)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(612, 57)
-        Me.GroupBox1.TabIndex = 0
-        Me.GroupBox1.TabStop = False
         '
         'ColumnHeader1
         '
@@ -152,15 +94,71 @@ Partial Class frmProductionMonitoring
         '
         'ColumnHeader8
         '
-        Me.ColumnHeader8.Text = "Description"
-        Me.ColumnHeader8.Width = 327
+        Me.ColumnHeader8.Text = "Paper Cut"
+        Me.ColumnHeader8.Width = 427
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.txtActiveMagazine})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 378)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(466, 22)
+        Me.StatusStrip1.TabIndex = 2
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'txtActiveMagazine
+        '
+        Me.txtActiveMagazine.BackColor = System.Drawing.SystemColors.Control
+        Me.txtActiveMagazine.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtActiveMagazine.Name = "txtActiveMagazine"
+        Me.txtActiveMagazine.Size = New System.Drawing.Size(103, 17)
+        Me.txtActiveMagazine.Text = "Active Magazine"
+        '
+        'btnSearch
+        '
+        Me.btnSearch.Location = New System.Drawing.Point(350, 15)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(75, 30)
+        Me.btnSearch.TabIndex = 1
+        Me.btnSearch.Text = "Search"
+        Me.btnSearch.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(6, 23)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(46, 15)
+        Me.Label1.TabIndex = 6
+        Me.Label1.Text = "Search"
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.txtSearch)
+        Me.GroupBox1.Controls.Add(Me.btnSearch)
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(11, -2)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(435, 57)
+        Me.GroupBox1.TabIndex = 0
+        Me.GroupBox1.TabStop = False
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Location = New System.Drawing.Point(58, 20)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(286, 21)
+        Me.txtSearch.TabIndex = 0
+        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSearch.WatermarkText = "Search paper roll serial"
         '
         'txtMagazine2
         '
         Me.txtMagazine2.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMagazine2.Location = New System.Drawing.Point(191, 64)
+        Me.txtMagazine2.Location = New System.Drawing.Point(250, 64)
         Me.txtMagazine2.Name = "txtMagazine2"
-        Me.txtMagazine2.Size = New System.Drawing.Size(154, 22)
+        Me.txtMagazine2.Size = New System.Drawing.Size(193, 22)
         Me.txtMagazine2.TabIndex = 2
         Me.txtMagazine2.WatermarkColor = System.Drawing.Color.Gray
         Me.txtMagazine2.WatermarkText = "Magazine"
@@ -171,32 +169,22 @@ Partial Class frmProductionMonitoring
         Me.txtMagazine1.Location = New System.Drawing.Point(13, 64)
         Me.txtMagazine1.Name = "txtMagazine1"
         Me.txtMagazine1.ReadOnly = True
-        Me.txtMagazine1.Size = New System.Drawing.Size(172, 22)
+        Me.txtMagazine1.Size = New System.Drawing.Size(231, 22)
         Me.txtMagazine1.TabIndex = 1
         Me.txtMagazine1.WatermarkColor = System.Drawing.Color.Gray
         Me.txtMagazine1.WatermarkText = "Magazine"
-        '
-        'txtSearch
-        '
-        Me.txtSearch.Location = New System.Drawing.Point(58, 20)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(465, 21)
-        Me.txtSearch.TabIndex = 0
-        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSearch.WatermarkText = "Search paper roll serial"
         '
         'frmProductionMonitoring
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(635, 403)
+        Me.ClientSize = New System.Drawing.Size(466, 400)
         Me.Controls.Add(Me.txtMagazine2)
         Me.Controls.Add(Me.txtMagazine1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.lvpapercuts)
-        Me.Controls.Add(Me.btnProduction)
         Me.Name = "frmProductionMonitoring"
         Me.Text = "Production"
         Me.StatusStrip1.ResumeLayout(False)
@@ -207,7 +195,6 @@ Partial Class frmProductionMonitoring
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents btnProduction As System.Windows.Forms.Button
     Friend WithEvents lvpapercuts As System.Windows.Forms.ListView
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Friend WithEvents txtActiveMagazine As System.Windows.Forms.ToolStripStatusLabel

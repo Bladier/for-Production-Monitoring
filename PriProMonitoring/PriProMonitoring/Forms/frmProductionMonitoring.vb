@@ -5,13 +5,13 @@
     Dim saveSales As production
 
     Private Sub frmProductionMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-            txtMagazine1.Text = GetMag(0)
-            txtMagazine2.Text = GetMag(1)
+        txtMagazine1.Text = GetMag(0)
+        txtMagazine2.Text = GetMag(1)
     End Sub
 
 
     Private Sub LOADACTIVEMAGAZINE()
-        Dim mysql As String = "SELECT * FROM papercut"
+        Dim mysql As String = "SELECT * FROM papercut order by Mag_IDP"
 
         Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERCUT")
 
@@ -30,10 +30,13 @@
       
         txtActiveMagazine.Text = "Remaining" & " : " & GetLength(0) & "m " & GetMag(0) & _
                                 " | " & GetLength(1) & "m " & GetMag(1)
+
+        Production()
     End Sub
+
     Public Function GetLength() As List(Of Double)
         Dim mysql As String = "SELECT * FROM TBLPAPERROLL P INNER JOIN TBLMAGAZINE M ON M.MAG_ID=P.MAG_IDS " & _
-                              " WHERE STATUS <> 0 and P.Chamber = 'B' OR P.Chamber='C'"
+                              " WHERE STATUS <> 0 and P.Chamber = 'B' OR P.Chamber='C' ORDER BY PAPROLL_ID ASC"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
         Dim tmplenght As New List(Of Double)()
         For Each dr As DataRow In ds.Tables(0).Rows
@@ -48,9 +51,8 @@
         Dim output As New List(Of String)()
 
         Dim mysql As String = " SELECT * FROM TBLMAGAZINE M INNER JOIN TBLPAPERROLL P ON M.MAG_ID=P.MAG_IDS" _
-                              & " WHERE STATUS <> 0 and P.Chamber = 'B' OR P.Chamber='C'"
+                              & " WHERE STATUS <> 0 and P.Chamber = 'B' OR P.Chamber='C' ORDER BY PAPROLL_ID ASC"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERCUT")
-
 
         For Each dr As DataRow In ds.Tables(0).Rows
             output.Add(dr.Item("Magdescription"))
@@ -60,12 +62,13 @@
 
     End Function
 
-    Private Sub btnProduction_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProduction.Click
+    Private Sub Production()
         Dim mysql As String = "SELECT * FROM TBLPRO WHERE STATUS = '0'"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPRO")
         Console.WriteLine("TBLPRO count: " & ds.Tables(0).Rows.Count)
 
-        If ds.Tables(0).Rows.Count = 0 Then Exit Sub
+        If ds.Tables(0).Rows.Count = 0 Then GoTo nextlineTodo
+
 
         For Each dr As DataRow In ds.Tables(0).Rows
             Dim mysqlitem As String = "SELECT * FROM ITEM WHERE ITEMCODE = '" & dr.Item("ITEMCODE") & "'"
@@ -114,6 +117,9 @@
 
         If lvpapercuts.Items.Count <= 0 Then Exit Sub
 
+nextlineTodo:
+
+
         For Each itm As ListViewItem In lvpapercuts.Items
             Dim newMysqlSalesLines As String = "SELECT * FROM TBL_PROLINE " & _
                 "WHERE PAPCUT_CODE = '" & itm.SubItems(6).Text & "' AND STATUS <> 1"
@@ -128,15 +134,15 @@
                 database.SaveEntry(MysqlSalesLines, False)
 
                 SelectedPaPRoll = New PaperRoll
+                SelectedPaPRoll.PaperRollSErial = itm.SubItems(2).Text
                 SelectedPaPRoll.TotalLength = SubTotal * meter
                 SelectedPaPRoll.Updatepaper()
             Next
-
         Next
 
-        MsgBox("Updated New Sales", MsgBoxStyle.Information, "Production")
-
+        Console.WriteLine("Production updated")
     End Sub
+  
 
     Private Sub txtMagazine1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtMagazine1.TextChanged
         LOADACTIVEMAGAZINE()

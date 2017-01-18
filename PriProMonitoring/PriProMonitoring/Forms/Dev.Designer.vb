@@ -27,6 +27,7 @@ Partial Class Dev
         Me.Button2 = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnDeduct = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
@@ -44,7 +45,7 @@ Partial Class Dev
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(51, 73)
+        Me.Button2.Location = New System.Drawing.Point(51, 65)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(159, 23)
         Me.Button2.TabIndex = 1
@@ -53,7 +54,7 @@ Partial Class Dev
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(51, 140)
+        Me.ProgressBar1.Location = New System.Drawing.Point(51, 132)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(262, 23)
         Me.ProgressBar1.TabIndex = 2
@@ -61,17 +62,27 @@ Partial Class Dev
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(53, 124)
+        Me.Label1.Location = New System.Drawing.Point(53, 116)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(39, 13)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Label1"
+        '
+        'btnDeduct
+        '
+        Me.btnDeduct.Location = New System.Drawing.Point(56, 181)
+        Me.btnDeduct.Name = "btnDeduct"
+        Me.btnDeduct.Size = New System.Drawing.Size(145, 23)
+        Me.btnDeduct.TabIndex = 4
+        Me.btnDeduct.Text = "Deduct to Negative"
+        Me.btnDeduct.UseVisualStyleBackColor = True
         '
         'Dev
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(401, 262)
+        Me.Controls.Add(Me.btnDeduct)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.Button2)
@@ -87,4 +98,5 @@ Partial Class Dev
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents btnDeduct As System.Windows.Forms.Button
 End Class
