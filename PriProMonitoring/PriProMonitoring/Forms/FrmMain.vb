@@ -12,17 +12,20 @@
         'file
         AdjustmentToolStripMenuItem.Enabled = Not st
 
+
         If Not locked Then
             SetUpDatabaseToolStripMenuItem.Enabled = st
+            SettingsToolStripMenuItem.Enabled = st
         Else
             SetUpDatabaseToolStripMenuItem.Enabled = Not st
             LoadIMDToolStripMenuItem1.Enabled = Not st
+            SettingsToolStripMenuItem.Enabled = Not st
         End If
 
         'Initialization
         LoadIMDToolStripMenuItem1.Enabled = Not st
         LoadMagazineToolStripMenuItem.Enabled = Not st
-        LoadSalesToolStripMenuItem.Enabled = Not st
+
 
         'Magazine
         AddMagazineToolStripMenuItem.Enabled = Not st
@@ -127,10 +130,6 @@
         frmAdjustment.Show()
     End Sub
 
-    Private Sub LoadSalesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadSalesToolStripMenuItem.Click
-        frmSales.Show()
-    End Sub
-
     Private Sub SalesWatcher_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SalesWatcher.Tick
         If ToolStripSplitButton1.Enabled = False Then
             SalesWatcher.Stop()
@@ -218,4 +217,9 @@
     End Sub
 
   
+    Private Sub SettingsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SettingsToolStripMenuItem.Click
+        If Not locked Then MsgBox("Database not set.", MsgBoxStyle.Exclamation) : Exit Sub
+
+        frmSettings.Show()
+    End Sub
 End Class

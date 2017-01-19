@@ -75,6 +75,16 @@
         End Set
     End Property
 
+    Private _Remaining As Double
+    Public Property Remaining() As Double
+        Get
+            Return _Remaining
+        End Get
+        Set(ByVal value As Double)
+            _Remaining = value
+        End Set
+    End Property
+
     Private _Addedby As String
     Public Property Addedby() As String
         Get
@@ -139,7 +149,7 @@
             Created_at = .Item("Created_at")
             _Updated_at = .Item("Update_at")
             _status = .Item("Status")
-
+            _Remaining = .Item("Remaining")
         End With
     
     End Sub
@@ -160,7 +170,7 @@
             .Item("Addedby") = FrmMain.statusUser.Text
             .Item("Created_at") = Now
             .Item("status") = 0
-
+            .Item("Remaining") = _Remaining
         End With
         ds.Tables(0).Rows.Add(dsNewRow)
         database.SaveEntry(ds)
@@ -168,7 +178,7 @@
     End Sub
 
     Friend Sub loadSerial(ByVal serial As String)
-        Dim mysql As String = "SELECT * FROM " & MainTable & " WHERE PAPROLL_SERIAL = " & serial
+        Dim mysql As String = "SELECT * FROM " & MainTable & " WHERE PAPROLL_SERIAL = '" & serial & "'"
         Dim ds As DataSet = LoadSQL(mysql, MainTable)
 
         For Each dr As DataRow In ds.Tables(0).Rows
@@ -191,7 +201,7 @@
             _Created_at = .Item("Created_AT")
             _Updated_at = .Item("Updated_At")
             _status = .Item("Status")
-
+            _Remaining = .Item("Remaining")
         End With
 
     End Sub
@@ -200,7 +210,7 @@
         Dim mySql As String = String.Format("SELECT * FROM {0} WHERE PAPROLL_SERIAL = '{1}'", MainTable, _PaperRollSErial)
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
-        Dim TotLength As Double = ds.Tables(0).Rows(0).Item("Total_Length")
+        Dim Remaining As Double = ds.Tables(0).Rows(0).Item("Remaining")
 
         If ds.Tables(0).Rows.Count <> 1 Then
             MsgBox("Unable to update record", MsgBoxStyle.Critical)
@@ -208,7 +218,7 @@
         End If
 
         With ds.Tables(MainTable).Rows(0)
-            .Item("Total_Length") = TotLength - _TotalLength
+            .Item("Remaining") = Remaining - _Remaining
             .Item("Updated_at") = Now
         End With
         database.SaveEntry(ds, False)

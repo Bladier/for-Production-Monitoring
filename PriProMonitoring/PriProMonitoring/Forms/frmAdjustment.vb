@@ -6,11 +6,11 @@
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         If txtSearch.Text = "" Then Exit Sub
 
-        Dim MYSQL As String = "SELECT P.PAPERCUT_ID,P.MAG_IDP,R.PAPROLL_SERIAL,STATUS,R.TOTAL_LENGTH," & _
-          "P.PAPERCUT,P.PAPCUT_ITEMCODE,P.PAPCUT_DESCRIPTION " & _
+        Dim MYSQL As String = "SELECT P.PAPERCUT_ID,P.MAG_IDP,R.PAPROLL_SERIAL,STATUS,R.REMAINING," & _
+          "P.PAPERCUT,P.PAPCUT_CODE,P.PAPCUT_DESCRIPTION " & _
           "FROM TBLPAPERCUT P INNER JOIN TBLPAPERROLL R ON P.MAG_IDP = R.MAG_IDS " & _
           "INNER JOIN TBLMAGAZINE M ON M.MAG_ID = P.MAG_IDP " & _
-        String.Format("WHERE PAPROLL_SERIAL = {0} ORDER BY PAPERCUT_ID ASC ", txtSearch.Text)
+        String.Format("WHERE UPPER(PAPROLL_SERIAL) = UPPER('{0}') ORDER BY PAPERCUT_ID ASC ", txtSearch.Text)
         Dim ds As DataSet = LoadSQL(MYSQL, "PAPERCUT")
 
         If ds.Tables(0).Rows.Count = 0 Then MsgBox("This paper roll doesn't existed" & vbCrLf & _
@@ -24,8 +24,8 @@
             lv.SubItems.Add(dr(3))
             lv.SubItems.Add(dr(4))
             lv.SubItems.Add(dr(5))
-            lv.SubItems.Add(dr(7))
             lv.SubItems.Add(dr(6))
+            lv.SubItems.Add(dr(7))
             lv.SubItems.Add("")
         Next
 
@@ -80,17 +80,23 @@
             .Remarks = txtRemarks.Text
             .CreatedAT = Now
 
+
             For Each itms As ListViewItem In lvpapercuts.Items
                 If itms.SubItems(8).Text = "" Then
                     On Error Resume Next
                 Else
                     TotalAdj = itms.SubItems(5).Text * CDbl(itms.SubItems(8).Text)
+                End If
+                If itms.SubItems(8).Text = "" Then
+                    On Error Resume Next
+                Else
                     saveAdj.TotalAdjustment += CDbl(TotalAdj)
                 End If
-            Next
 
-            .TotalAdjustment = TotalAdj
+            Next
         End With
+
+
 
         For Each itm As ListViewItem In lvpapercuts.Items
             saveAdjLine = New adjustmentLine

@@ -28,11 +28,11 @@ Partial Class FrmMain
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuLogin = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdjustmentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuInitialization = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoadMagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SetUpDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoadIMDToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LoadSalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddMagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddPaperRollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -63,7 +63,7 @@ Partial Class FrmMain
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuLogin, Me.AdjustmentToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuLogin, Me.AdjustmentToolStripMenuItem, Me.SettingsToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
@@ -78,11 +78,17 @@ Partial Class FrmMain
         '
         Me.AdjustmentToolStripMenuItem.Name = "AdjustmentToolStripMenuItem"
         Me.AdjustmentToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
-        Me.AdjustmentToolStripMenuItem.Text = "Adjustment"
+        Me.AdjustmentToolStripMenuItem.Text = "&Adjustment"
+        '
+        'SettingsToolStripMenuItem
+        '
+        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
+        Me.SettingsToolStripMenuItem.Text = "&Settings"
         '
         'menuInitialization
         '
-        Me.menuInitialization.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadMagazineToolStripMenuItem, Me.SetUpDatabaseToolStripMenuItem, Me.LoadIMDToolStripMenuItem1, Me.LoadSalesToolStripMenuItem})
+        Me.menuInitialization.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadMagazineToolStripMenuItem, Me.SetUpDatabaseToolStripMenuItem, Me.LoadIMDToolStripMenuItem1})
         Me.menuInitialization.Name = "menuInitialization"
         Me.menuInitialization.Size = New System.Drawing.Size(83, 20)
         Me.menuInitialization.Text = "Initialization"
@@ -104,12 +110,6 @@ Partial Class FrmMain
         Me.LoadIMDToolStripMenuItem1.Name = "LoadIMDToolStripMenuItem1"
         Me.LoadIMDToolStripMenuItem1.Size = New System.Drawing.Size(155, 22)
         Me.LoadIMDToolStripMenuItem1.Text = "Lo&ad IMD"
-        '
-        'LoadSalesToolStripMenuItem
-        '
-        Me.LoadSalesToolStripMenuItem.Name = "LoadSalesToolStripMenuItem"
-        Me.LoadSalesToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
-        Me.LoadSalesToolStripMenuItem.Text = "Load &Sales"
         '
         'MagazineToolStripMenuItem
         '
@@ -254,11 +254,11 @@ Partial Class FrmMain
     Friend WithEvents AddItemToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LoadIMDToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AdjustmentToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents LoadSalesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SalesWatcher As System.Windows.Forms.Timer
     Friend WithEvents bgWorker As System.ComponentModel.BackgroundWorker
     Friend WithEvents ToolStripPBar As System.Windows.Forms.ToolStripProgressBar
     Friend WithEvents lblToolStripStatus As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents Count As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents ToolStripSplitButton1 As System.Windows.Forms.ToolStripSplitButton
+    Friend WithEvents SettingsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

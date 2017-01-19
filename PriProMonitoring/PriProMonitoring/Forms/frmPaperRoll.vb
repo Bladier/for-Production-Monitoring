@@ -27,6 +27,7 @@
             .Thickness = txtPaperThickness.Text
             .SpoolDiameter = txtSpoolDiameter.Text
             .TotalLength = CalcuteTotalength(txtOuterDiameter.Text, txtPaperThickness.Text, txtSpoolDiameter.Text)
+            .Remaining = CalcuteTotalength(txtOuterDiameter.Text, txtPaperThickness.Text, txtSpoolDiameter.Text)
         End With
 
         PaprollSave.SaveRoll()
@@ -101,10 +102,13 @@
         Dim val As Double
         Dim OD As Double = outerDiam ^ 2
         Dim SD As Double = spoolDiam ^ 2
+
         Dim ODSD As Double = OD - SD
         Dim Val1 As Double = value * pie
+
         Dim ODSDPIE As Double = Val1 * ODSD
         Dim thck As Double = thckness * value1
+
         val = value * pie * (OD - SD) / (thckness * value1)
         '  1000*3.1416*(C4^2-C5^2)/(C6*40)
         Return val * 0.001

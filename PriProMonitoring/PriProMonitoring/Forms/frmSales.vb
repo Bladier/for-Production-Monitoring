@@ -24,7 +24,7 @@
                 tmplastSalesID = GetLastSaledID(0)
                 tmpdate = GetLastSaledID(1)
                 UpdateOptionSales("LastSalesID ", tmplastSalesID, tmpdate)
-                MsgBox("Sales has been loaded.", MsgBoxStyle.Information, "Sales")
+                MsgBox("Production has been set.", MsgBoxStyle.Information, "Production")
                 Exit Sub
             End If
         End If

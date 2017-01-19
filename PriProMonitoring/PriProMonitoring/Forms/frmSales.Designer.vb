@@ -31,7 +31,7 @@ Partial Class frmSales
         Me.btnSales.Name = "btnSales"
         Me.btnSales.Size = New System.Drawing.Size(263, 25)
         Me.btnSales.TabIndex = 0
-        Me.btnSales.Text = "Load Sales"
+        Me.btnSales.Text = "Setup production"
         Me.btnSales.UseVisualStyleBackColor = True
         '
         'frmSales

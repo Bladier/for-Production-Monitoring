@@ -135,7 +135,7 @@ nextlineTodo:
 
                 SelectedPaPRoll = New PaperRoll
                 SelectedPaPRoll.PaperRollSErial = itm.SubItems(2).Text
-                SelectedPaPRoll.TotalLength = SubTotal * meter
+                SelectedPaPRoll.Remaining = SubTotal * meter
                 SelectedPaPRoll.Updatepaper()
             Next
         Next

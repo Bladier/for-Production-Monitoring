@@ -33,7 +33,7 @@
         End If
 
         If Not locked Then
-            MsgBox("New Branch has been setup", MsgBoxStyle.Information)
+            MsgBox("Database has been setup", MsgBoxStyle.Information)
         Else
             MsgBox("Setup updated", MsgBoxStyle.Information)
         End If

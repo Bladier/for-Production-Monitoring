@@ -309,4 +309,17 @@ Friend Module database
         Return True
     End Function
 
+
+    Friend Function GetOptionpPOS(ByVal keys As String) As String
+        Dim mySql As String = "SELECT * FROM SYSSETUP WHERE DESCRIPTION = '" & keys & "'"
+        Dim ret As String
+        Try
+            Dim ds As DataSet = LoadSQLPOS(mySql)
+            ret = ds.Tables(0).Rows(0).Item("SYSVALUE")
+        Catch ex As Exception
+            ret = 0
+        End Try
+
+        Return ret
+    End Function
 End Module
