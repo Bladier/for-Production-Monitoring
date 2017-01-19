@@ -25,7 +25,6 @@ Partial Class frmAdjustment
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.txtSearch = New PriProMonitoring.watermark()
         Me.lvpapercuts = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -46,6 +45,7 @@ Partial Class frmAdjustment
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtRemarks = New PriProMonitoring.watermark()
+        Me.txtSearch = New PriProMonitoring.watermark()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -84,15 +84,6 @@ Partial Class frmAdjustment
         Me.GroupBox1.Size = New System.Drawing.Size(538, 38)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
-        '
-        'txtSearch
-        '
-        Me.txtSearch.Location = New System.Drawing.Point(53, 11)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(381, 21)
-        Me.txtSearch.TabIndex = 0
-        Me.txtSearch.WatermarkColor = System.Drawing.Color.DimGray
-        Me.txtSearch.WatermarkText = "Search paper roll serial . . ."
         '
         'lvpapercuts
         '
@@ -161,7 +152,7 @@ Partial Class frmAdjustment
         Me.GroupBox2.Location = New System.Drawing.Point(12, 82)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(326, 141)
-        Me.GroupBox2.TabIndex = 1
+        Me.GroupBox2.TabIndex = 2
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Paper Cuts"
         '
@@ -172,7 +163,7 @@ Partial Class frmAdjustment
         Me.GroupBox3.Location = New System.Drawing.Point(340, 150)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(210, 38)
-        Me.GroupBox3.TabIndex = 2
+        Me.GroupBox3.TabIndex = 4
         Me.GroupBox3.TabStop = False
         '
         'btnClose
@@ -183,7 +174,7 @@ Partial Class frmAdjustment
         Me.btnClose.Location = New System.Drawing.Point(108, 9)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(99, 27)
-        Me.btnClose.TabIndex = 2
+        Me.btnClose.TabIndex = 1
         Me.btnClose.Text = "&Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
@@ -207,7 +198,7 @@ Partial Class frmAdjustment
         Me.rbAdd.Location = New System.Drawing.Point(136, 12)
         Me.rbAdd.Name = "rbAdd"
         Me.rbAdd.Size = New System.Drawing.Size(46, 19)
-        Me.rbAdd.TabIndex = 3
+        Me.rbAdd.TabIndex = 0
         Me.rbAdd.TabStop = True
         Me.rbAdd.Text = "Add"
         Me.rbAdd.UseVisualStyleBackColor = True
@@ -219,7 +210,7 @@ Partial Class frmAdjustment
         Me.rbDeduct.Location = New System.Drawing.Point(219, 13)
         Me.rbDeduct.Name = "rbDeduct"
         Me.rbDeduct.Size = New System.Drawing.Size(64, 19)
-        Me.rbDeduct.TabIndex = 4
+        Me.rbDeduct.TabIndex = 1
         Me.rbDeduct.Text = "Deduct"
         Me.rbDeduct.UseVisualStyleBackColor = True
         '
@@ -241,7 +232,7 @@ Partial Class frmAdjustment
         Me.GroupBox5.Location = New System.Drawing.Point(12, 46)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(328, 38)
-        Me.GroupBox5.TabIndex = 3
+        Me.GroupBox5.TabIndex = 1
         Me.GroupBox5.TabStop = False
         '
         'Label5
@@ -260,9 +251,18 @@ Partial Class frmAdjustment
         Me.txtRemarks.Multiline = True
         Me.txtRemarks.Name = "txtRemarks"
         Me.txtRemarks.Size = New System.Drawing.Size(253, 79)
-        Me.txtRemarks.TabIndex = 6
+        Me.txtRemarks.TabIndex = 3
         Me.txtRemarks.WatermarkColor = System.Drawing.Color.Gray
         Me.txtRemarks.WatermarkText = "Remarks"
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Location = New System.Drawing.Point(53, 11)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(381, 21)
+        Me.txtSearch.TabIndex = 0
+        Me.txtSearch.WatermarkColor = System.Drawing.Color.DimGray
+        Me.txtSearch.WatermarkText = "Search paper roll serial . . ."
         '
         'frmAdjustment
         '

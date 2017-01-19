@@ -178,7 +178,7 @@
     End Sub
 
     Friend Sub loadSerial(ByVal serial As String)
-        Dim mysql As String = "SELECT * FROM " & MainTable & " WHERE PAPROLL_SERIAL = '" & serial & "'"
+        Dim mysql As String = "SELECT * FROM " & MainTable & " WHERE UPPER(PAPROLL_SERIAL) = UPPER('" & serial & "')"
         Dim ds As DataSet = LoadSQL(mysql, MainTable)
 
         For Each dr As DataRow In ds.Tables(0).Rows

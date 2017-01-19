@@ -84,6 +84,16 @@
         End Set
     End Property
 
+    Private _UOM As String
+    Public Property UOM() As String
+        Get
+            Return _UOM
+        End Get
+        Set(ByVal value As String)
+            _UOM = value
+        End Set
+    End Property
+
     Private _AdjustmentLine As adjustmentCollection
     Public Property AdjustmentLines() As adjustmentCollection
         Get
@@ -125,7 +135,7 @@
             _CreatedAT = .Item("Created_at")
             _UpdatedAT = .Item("Updated_at")
             _TotalAdjustment = .Item("Total_Adjustment")
-            
+            _UOM = .Item("UOM")
         End With
     End Sub
 
@@ -140,7 +150,7 @@
             _CreatedAT = .Item("Created_at")
             _UpdatedAT = .Item("Updated_at")
             _TotalAdjustment = .Item("Total_Adjustment")
-           
+            _UOM = .Item("UOM")
         End With
         ' Load adjustment line
         mySql = String.Format("SELECT * FROM {0} WHERE Adjustment_ID = {1} ORDER BY ID", subtable, _ID)
@@ -171,7 +181,8 @@
             .Item("Remarks") = _remarks
             .Item("Adjusted_By") = FrmMain.statusUser.Text
             .Item("Created_at") = _CreatedAT
-            .Item("Total_adjustment") = _TotalAdjustment
+            .Item("Total_adjustment") = _TotalAdjustment * Meter
+            .Item("UOM") = _UOM
         End With
         ds.Tables(0).Rows.Add(dsNewRow)
         database.SaveEntry(ds)

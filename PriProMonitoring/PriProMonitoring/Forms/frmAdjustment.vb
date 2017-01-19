@@ -1,7 +1,7 @@
 ﻿Public Class frmAdjustment
     Dim saveAdj As adjustment
     Dim saveAdjLine As adjustmentLine
-    Const Meter As Double = 0.0254 ' 1 inch = 0.0254 m
+
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         If txtSearch.Text = "" Then Exit Sub
@@ -79,7 +79,7 @@
             .PaprollSserial = tmppapSerial.PaperRollSErial
             .Remarks = txtRemarks.Text
             .CreatedAT = Now
-
+            .UOM = "m"
 
             For Each itms As ListViewItem In lvpapercuts.Items
                 If itms.SubItems(8).Text = "" Then
@@ -95,7 +95,6 @@
 
             Next
         End With
-
 
 
         For Each itm As ListViewItem In lvpapercuts.Items
@@ -152,14 +151,14 @@
         Dim mySql1 As String = "SELECT * FROM " & fillData & " WHERE PapRoll_ID = '" & papRollID & "'"
         Dim ds As DataSet = LoadSQL(mySql1, fillData)
 
-        Dim OldLength As Double = ds.Tables(0).Rows(0).Item("TOTAL_LENGTH")
+        Dim OldLength As Double = ds.Tables(0).Rows(0).Item("Remaining")
         Dim LengthP As Double = TotalLength * Meter
 
         If ds.Tables(fillData).Rows.Count = 1 Then
             With ds.Tables(fillData).Rows(0)
                 .Item("Updated_at") = Now
                 .Item("AddedBy") = FrmMain.statusUser.Text
-                .Item("TOTAL_LENGTH") = OldLength + LengthP
+                .Item("Remaining") = OldLength + LengthP
             End With
             database.SaveEntry(ds, False)
         End If
@@ -170,14 +169,14 @@
         Dim mySql1 As String = "SELECT * FROM " & fillData & " WHERE PapRoll_ID = '" & papRollID & "'"
         Dim ds As DataSet = LoadSQL(mySql1, fillData)
 
-        Dim OldLength As Double = ds.Tables(0).Rows(0).Item("TOTAL_LENGTH")
+        Dim OldLength As Double = ds.Tables(0).Rows(0).Item("Remaining")
         Dim LengthP As Double = TotalLength * Meter
 
         If ds.Tables(fillData).Rows.Count = 1 Then
             With ds.Tables(fillData).Rows(0)
                 .Item("Updated_at") = Now
                 .Item("AddedBy") = FrmMain.statusUser.Text
-                .Item("TOTAL_LENGTH") = OldLength - LengthP
+                .Item("Remaining") = OldLength - LengthP
             End With
             database.SaveEntry(ds, False)
         End If
