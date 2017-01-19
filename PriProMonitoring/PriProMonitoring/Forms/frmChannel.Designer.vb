@@ -111,6 +111,7 @@ Partial Class frmChannel
         Me.Controls.Add(Me.LVPapercut)
         Me.Controls.Add(Me.txtSearch)
         Me.Controls.Add(Me.btnSearch)
+        Me.MaximizeBox = False
         Me.Name = "frmChannel"
         Me.Text = "Channel"
         Me.ResumeLayout(False)

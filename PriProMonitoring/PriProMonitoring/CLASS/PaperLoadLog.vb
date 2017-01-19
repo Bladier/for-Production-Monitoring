@@ -41,6 +41,17 @@
             _Created_at = value
         End Set
     End Property
+
+    Private _Remaining As Double
+    Public Property Remaining() As Double
+        Get
+            Return _Remaining
+        End Get
+        Set(ByVal value As Double)
+            _Remaining = value
+        End Set
+    End Property
+
 #End Region
 
 #Region "Functions and Procedures"
@@ -58,6 +69,7 @@
             _PaprollID = .Item("Paproll_ID")
             _loaded_by = .Item("Loaded_by")
             _Created_at = .Item("Loaded_at")
+            _Remaining = .Item("Remaining")
         End With
 
     End Sub
@@ -73,6 +85,7 @@
             .Item("Paproll_ID") = _PaprollID
             .Item("Loaded_by") = _loaded_by
             .Item("Loaded_at") = Now
+            .Item("Remaining") = _Remaining
         End With
         ds.Tables(0).Rows.Add(dsNewRow)
         database.SaveEntry(ds)
@@ -85,6 +98,7 @@
             _PaprollID = .Item("Paproll_ID")
             _loaded_by = .Item("Loaded_by")
             _Created_at = .Item("Loaded_at")
+            _Remaining = .Item("Remaining")
         End With
 
     End Sub

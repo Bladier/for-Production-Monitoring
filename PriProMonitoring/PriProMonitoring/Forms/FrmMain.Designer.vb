@@ -31,10 +31,7 @@ Partial Class FrmMain
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuInitialization = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoadMagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SetUpDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LoadIMDToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AddMagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddPaperRollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TransactionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -71,24 +68,24 @@ Partial Class FrmMain
         'menuLogin
         '
         Me.menuLogin.Name = "menuLogin"
-        Me.menuLogin.Size = New System.Drawing.Size(136, 22)
+        Me.menuLogin.Size = New System.Drawing.Size(152, 22)
         Me.menuLogin.Text = "&Login"
         '
         'AdjustmentToolStripMenuItem
         '
         Me.AdjustmentToolStripMenuItem.Name = "AdjustmentToolStripMenuItem"
-        Me.AdjustmentToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
+        Me.AdjustmentToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.AdjustmentToolStripMenuItem.Text = "&Adjustment"
         '
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SettingsToolStripMenuItem.Text = "&Settings"
         '
         'menuInitialization
         '
-        Me.menuInitialization.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadMagazineToolStripMenuItem, Me.SetUpDatabaseToolStripMenuItem, Me.LoadIMDToolStripMenuItem1})
+        Me.menuInitialization.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadMagazineToolStripMenuItem})
         Me.menuInitialization.Name = "menuInitialization"
         Me.menuInitialization.Size = New System.Drawing.Size(83, 20)
         Me.menuInitialization.Text = "Initialization"
@@ -96,33 +93,15 @@ Partial Class FrmMain
         'LoadMagazineToolStripMenuItem
         '
         Me.LoadMagazineToolStripMenuItem.Name = "LoadMagazineToolStripMenuItem"
-        Me.LoadMagazineToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.LoadMagazineToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
         Me.LoadMagazineToolStripMenuItem.Text = "&Load Magazine"
-        '
-        'SetUpDatabaseToolStripMenuItem
-        '
-        Me.SetUpDatabaseToolStripMenuItem.Name = "SetUpDatabaseToolStripMenuItem"
-        Me.SetUpDatabaseToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
-        Me.SetUpDatabaseToolStripMenuItem.Text = "Setup &Database"
-        '
-        'LoadIMDToolStripMenuItem1
-        '
-        Me.LoadIMDToolStripMenuItem1.Name = "LoadIMDToolStripMenuItem1"
-        Me.LoadIMDToolStripMenuItem1.Size = New System.Drawing.Size(155, 22)
-        Me.LoadIMDToolStripMenuItem1.Text = "Lo&ad IMD"
         '
         'MagazineToolStripMenuItem
         '
-        Me.MagazineToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddMagazineToolStripMenuItem, Me.AddPaperRollToolStripMenuItem, Me.AddItemToolStripMenuItem})
+        Me.MagazineToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddPaperRollToolStripMenuItem, Me.AddItemToolStripMenuItem})
         Me.MagazineToolStripMenuItem.Name = "MagazineToolStripMenuItem"
         Me.MagazineToolStripMenuItem.Size = New System.Drawing.Size(70, 20)
         Me.MagazineToolStripMenuItem.Text = "Magazine"
-        '
-        'AddMagazineToolStripMenuItem
-        '
-        Me.AddMagazineToolStripMenuItem.Name = "AddMagazineToolStripMenuItem"
-        Me.AddMagazineToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.AddMagazineToolStripMenuItem.Text = "A&dd Magazine"
         '
         'AddPaperRollToolStripMenuItem
         '
@@ -145,9 +124,9 @@ Partial Class FrmMain
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusDateandTime, Me.statusUser, Me.ToolStripSplitButton1, Me.lblToolStripStatus, Me.ToolStripPBar, Me.Count})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 554)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 551)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1003, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1003, 25)
         Me.StatusStrip1.TabIndex = 1
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -156,7 +135,7 @@ Partial Class FrmMain
         Me.statusDateandTime.BackColor = System.Drawing.SystemColors.ControlLight
         Me.statusDateandTime.Margin = New System.Windows.Forms.Padding(0, 0, 0, 2)
         Me.statusDateandTime.Name = "statusDateandTime"
-        Me.statusDateandTime.Size = New System.Drawing.Size(73, 20)
+        Me.statusDateandTime.Size = New System.Drawing.Size(73, 23)
         Me.statusDateandTime.Text = "Date Not Set"
         '
         'statusUser
@@ -164,7 +143,7 @@ Partial Class FrmMain
         Me.statusUser.BackColor = System.Drawing.Color.OrangeRed
         Me.statusUser.Margin = New System.Windows.Forms.Padding(0, 0, 0, 2)
         Me.statusUser.Name = "statusUser"
-        Me.statusUser.Size = New System.Drawing.Size(30, 20)
+        Me.statusUser.Size = New System.Drawing.Size(30, 23)
         Me.statusUser.Text = "User"
         '
         'ToolStripSplitButton1
@@ -177,7 +156,7 @@ Partial Class FrmMain
         Me.ToolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripSplitButton1.Margin = New System.Windows.Forms.Padding(0)
         Me.ToolStripSplitButton1.Name = "ToolStripSplitButton1"
-        Me.ToolStripSplitButton1.Size = New System.Drawing.Size(52, 22)
+        Me.ToolStripSplitButton1.Size = New System.Drawing.Size(52, 25)
         Me.ToolStripSplitButton1.Text = "Sales "
         '
         'lblToolStripStatus
@@ -185,14 +164,14 @@ Partial Class FrmMain
         Me.lblToolStripStatus.BackColor = System.Drawing.Color.White
         Me.lblToolStripStatus.Margin = New System.Windows.Forms.Padding(0, 0, 0, 2)
         Me.lblToolStripStatus.Name = "lblToolStripStatus"
-        Me.lblToolStripStatus.Size = New System.Drawing.Size(38, 20)
+        Me.lblToolStripStatus.Size = New System.Drawing.Size(38, 23)
         Me.lblToolStripStatus.Text = "0.00%"
         '
         'ToolStripPBar
         '
         Me.ToolStripPBar.Margin = New System.Windows.Forms.Padding(0)
         Me.ToolStripPBar.Name = "ToolStripPBar"
-        Me.ToolStripPBar.Size = New System.Drawing.Size(100, 22)
+        Me.ToolStripPBar.Size = New System.Drawing.Size(117, 25)
         Me.ToolStripPBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         '
         'Count
@@ -200,7 +179,7 @@ Partial Class FrmMain
         Me.Count.BackColor = System.Drawing.SystemColors.Control
         Me.Count.ForeColor = System.Drawing.SystemColors.Control
         Me.Count.Name = "Count"
-        Me.Count.Size = New System.Drawing.Size(13, 17)
+        Me.Count.Size = New System.Drawing.Size(13, 20)
         Me.Count.Text = "1"
         '
         'TmpTimer
@@ -226,6 +205,7 @@ Partial Class FrmMain
         Me.Controls.Add(Me.MenuStrip1)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
+        Me.MaximizeBox = False
         Me.Name = "FrmMain"
         Me.Text = "Monitoring System"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -245,14 +225,11 @@ Partial Class FrmMain
     Friend WithEvents statusUser As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents menuInitialization As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LoadMagazineToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents SetUpDatabaseToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TmpTimer As System.Windows.Forms.Timer
     Friend WithEvents MagazineToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents AddMagazineToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddPaperRollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TransactionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddItemToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents LoadIMDToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AdjustmentToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SalesWatcher As System.Windows.Forms.Timer
     Friend WithEvents bgWorker As System.ComponentModel.BackgroundWorker

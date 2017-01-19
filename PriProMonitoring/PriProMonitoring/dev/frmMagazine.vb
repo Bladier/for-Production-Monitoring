@@ -30,7 +30,6 @@ Public Class frmMagazine
         With MAGAZINESAVE
             .MagItemcode = txtItemCode.Text
             .MagDescription = txtDescription.Text
-
         End With
 
         For Each row As DataGridViewRow In dgPCCUT.Rows
@@ -216,4 +215,13 @@ Public Class frmMagazine
     End Sub
    
   
+    Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
+        Dim row As ListViewItem = lvMag.Items.Add(txtItemCode.Text)
+        row.SubItems.Add(txtDescription.Text)
+    End Sub
+
+    Private Sub btnRemove_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRemove.Click
+        If lvMag.SelectedItems.Count = 0 Then Exit Sub
+        lvMag.SelectedItems(0).Remove()
+    End Sub
 End Class

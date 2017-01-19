@@ -84,26 +84,28 @@
         Dim mySql As String = String.Format("SELECT * FROM " & MainTable & " WHERE magcode = '{0}'", _MagItemcode)
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
-        Dim dsNewRow As DataRow
-        dsNewRow = ds.Tables(0).NewRow
-        With dsNewRow
-            .Item("Magcode") = _MagItemcode
-            .Item("MagDescription") = _MagDescription
+        If ds.Tables(0).Rows.Count = 1 Then
+            With ds.Tables(MainTable).Rows(0)
+                .Item("Magcode") = _MagItemcode
+                .Item("Magdescription") = _MagDescription
+            End With
+            database.SaveEntry(ds, False)
 
-        End With
-        ds.Tables(0).Rows.Add(dsNewRow)
-        database.SaveEntry(ds)
+        Else
 
+            Dim dsNewRow As DataRow
+            dsNewRow = ds.Tables(0).NewRow
+            With dsNewRow
+                .Item("Magcode") = _MagItemcode
+                .Item("MagDescription") = _MagDescription
+            End With
+            ds.Tables(0).Rows.Add(dsNewRow)
+            database.SaveEntry(ds)
 
-        mySql = "SELECT * FROM " & MainTable & " ORDER BY Mag_ID DESC ROWS 1"
-        ds = LoadSQL(mySql, MainTable)
-        _MagID = ds.Tables(MainTable).Rows(0).Item("Mag_ID")
+        End If
 
-        For Each paPcutS As PaperCut In PaperCuts
-            paPcutS.mag_IDP = _MagID
-            paPcutS.Save_Papercut()
-        Next
     End Sub
+
 
     Public Sub LoadByRow(ByVal dr As DataRow)
         Dim mySql As String, ds As New DataSet

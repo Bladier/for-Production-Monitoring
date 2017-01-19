@@ -221,7 +221,7 @@ Friend Module database
             If keys = "LastSalesID" Then
                 Return ""
             End If
-            ret = 0
+            ret = Nothing
         End Try
 
         Return ret

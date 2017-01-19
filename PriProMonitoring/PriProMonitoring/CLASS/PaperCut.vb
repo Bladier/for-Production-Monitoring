@@ -101,6 +101,8 @@
     End Sub
 
     Public Sub Save_Papercut()
+        gETmAGid()
+
         Dim mySql As String = String.Format("SELECT * FROM {0} ROWS 1", MainTable)
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
@@ -115,6 +117,15 @@
         End With
         ds.Tables(MainTable).Rows.Add(dsNewRow)
         database.SaveEntry(ds)
+    End Sub
+
+    Public Sub gETmAGid()
+
+        Dim mySql As String = "SELECT * FROM tblMagazine ORDER BY Mag_ID DESC ROWS 1"
+        Dim ds As DataSet = LoadSQL(mySql, MainTable)
+
+        mag_IDP = ds.Tables(MainTable).Rows(0).Item("Mag_ID")
+
     End Sub
 
     Public Sub Update()

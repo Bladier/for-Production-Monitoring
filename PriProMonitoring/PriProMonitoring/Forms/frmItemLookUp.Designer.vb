@@ -128,6 +128,7 @@ Partial Class frmItemLookUp
         Me.Controls.Add(Me.btnSelect)
         Me.Controls.Add(Me.txtSearch)
         Me.Controls.Add(Me.btnSearch)
+        Me.MaximizeBox = False
         Me.Name = "frmItemLookUp"
         Me.Text = "Item LookUp"
         Me.ResumeLayout(False)

@@ -31,37 +31,41 @@ Partial Class frmSetupDatabase
         '
         'btnbrowse
         '
-        Me.btnbrowse.Location = New System.Drawing.Point(400, 21)
+        Me.btnbrowse.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnbrowse.Location = New System.Drawing.Point(400, 17)
         Me.btnbrowse.Name = "btnbrowse"
-        Me.btnbrowse.Size = New System.Drawing.Size(75, 23)
+        Me.btnbrowse.Size = New System.Drawing.Size(75, 32)
         Me.btnbrowse.TabIndex = 0
         Me.btnbrowse.Text = "Browse"
         Me.btnbrowse.UseVisualStyleBackColor = True
         '
         'btnLoad
         '
-        Me.btnLoad.Location = New System.Drawing.Point(401, 50)
+        Me.btnLoad.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLoad.Location = New System.Drawing.Point(400, 49)
         Me.btnLoad.Name = "btnLoad"
-        Me.btnLoad.Size = New System.Drawing.Size(75, 23)
+        Me.btnLoad.Size = New System.Drawing.Size(75, 29)
         Me.btnLoad.TabIndex = 1
         Me.btnLoad.Text = "Setup"
         Me.btnLoad.UseVisualStyleBackColor = True
         '
         'txtpath
         '
+        Me.txtpath.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtpath.Location = New System.Drawing.Point(47, 23)
         Me.txtpath.Name = "txtpath"
         Me.txtpath.ReadOnly = True
-        Me.txtpath.Size = New System.Drawing.Size(347, 20)
+        Me.txtpath.Size = New System.Drawing.Size(347, 21)
         Me.txtpath.TabIndex = 2
         '
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.Label1.Location = New System.Drawing.Point(12, 26)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(29, 13)
+        Me.Label1.Size = New System.Drawing.Size(32, 15)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Path"
         '

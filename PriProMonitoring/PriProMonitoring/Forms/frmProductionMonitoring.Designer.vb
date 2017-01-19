@@ -185,7 +185,9 @@ Partial Class frmProductionMonitoring
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.lvpapercuts)
+        Me.MaximizeBox = False
         Me.Name = "frmProductionMonitoring"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Production"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()

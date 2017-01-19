@@ -25,20 +25,26 @@ Partial Class frmMagazine
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.txtSEarch = New PriProMonitoring.watermark()
         Me.dgPCCUT = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.txtDescription = New PriProMonitoring.watermark()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtItemCode = New PriProMonitoring.watermark()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnUpdate = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lvMag = New System.Windows.Forms.ListView()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.btnRemove = New System.Windows.Forms.Button()
+        Me.txtDescription = New PriProMonitoring.watermark()
+        Me.txtItemCode = New PriProMonitoring.watermark()
+        Me.txtSEarch = New PriProMonitoring.watermark()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgPCCUT, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -73,15 +79,6 @@ Partial Class frmMagazine
         Me.GroupBox1.Size = New System.Drawing.Size(661, 49)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
-        '
-        'txtSEarch
-        '
-        Me.txtSEarch.Location = New System.Drawing.Point(72, 15)
-        Me.txtSEarch.Name = "txtSEarch"
-        Me.txtSEarch.Size = New System.Drawing.Size(490, 21)
-        Me.txtSEarch.TabIndex = 0
-        Me.txtSEarch.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSEarch.WatermarkText = "Search . . ."
         '
         'dgPCCUT
         '
@@ -122,45 +119,27 @@ Partial Class frmMagazine
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Controls.Add(Me.txtItemCode)
         Me.GroupBox2.Controls.Add(Me.Label2)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 136)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 78)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(318, 111)
+        Me.GroupBox2.Size = New System.Drawing.Size(318, 67)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
-        '
-        'txtDescription
-        '
-        Me.txtDescription.Location = New System.Drawing.Point(82, 67)
-        Me.txtDescription.Name = "txtDescription"
-        Me.txtDescription.Size = New System.Drawing.Size(226, 21)
-        Me.txtDescription.TabIndex = 1
-        Me.txtDescription.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtDescription.WatermarkText = "Description"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.Label3.Location = New System.Drawing.Point(7, 71)
+        Me.Label3.Location = New System.Drawing.Point(7, 43)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(69, 15)
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "Description"
         '
-        'txtItemCode
-        '
-        Me.txtItemCode.Location = New System.Drawing.Point(105, 19)
-        Me.txtItemCode.Name = "txtItemCode"
-        Me.txtItemCode.Size = New System.Drawing.Size(203, 21)
-        Me.txtItemCode.TabIndex = 0
-        Me.txtItemCode.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtItemCode.WatermarkText = "ItemCode"
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.Label2.Location = New System.Drawing.Point(7, 23)
+        Me.Label2.Location = New System.Drawing.Point(7, 15)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(92, 15)
         Me.Label2.TabIndex = 1
@@ -179,7 +158,7 @@ Partial Class frmMagazine
         '
         Me.btnSave.Location = New System.Drawing.Point(432, 347)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(81, 33)
+        Me.btnSave.Size = New System.Drawing.Size(80, 33)
         Me.btnSave.TabIndex = 2
         Me.btnSave.Text = "&Save"
         Me.btnSave.UseVisualStyleBackColor = True
@@ -193,12 +172,92 @@ Partial Class frmMagazine
         Me.btnUpdate.Text = "&Edit"
         Me.btnUpdate.UseVisualStyleBackColor = True
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label4.Location = New System.Drawing.Point(333, 65)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(59, 15)
+        Me.Label4.TabIndex = 6
+        Me.Label4.Text = "Paper cut"
+        '
+        'lvMag
+        '
+        Me.lvMag.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
+        Me.lvMag.FullRowSelect = True
+        Me.lvMag.Location = New System.Drawing.Point(13, 199)
+        Me.lvMag.Name = "lvMag"
+        Me.lvMag.Size = New System.Drawing.Size(317, 141)
+        Me.lvMag.TabIndex = 7
+        Me.lvMag.UseCompatibleStateImageBehavior = False
+        Me.lvMag.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "Magazine Code"
+        Me.ColumnHeader1.Width = 142
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Description"
+        Me.ColumnHeader2.Width = 170
+        '
+        'btnAdd
+        '
+        Me.btnAdd.Location = New System.Drawing.Point(159, 155)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(80, 33)
+        Me.btnAdd.TabIndex = 8
+        Me.btnAdd.Text = "&Add"
+        Me.btnAdd.UseVisualStyleBackColor = True
+        '
+        'btnRemove
+        '
+        Me.btnRemove.Location = New System.Drawing.Point(245, 156)
+        Me.btnRemove.Name = "btnRemove"
+        Me.btnRemove.Size = New System.Drawing.Size(80, 33)
+        Me.btnRemove.TabIndex = 9
+        Me.btnRemove.Text = "&Remove"
+        Me.btnRemove.UseVisualStyleBackColor = True
+        '
+        'txtDescription
+        '
+        Me.txtDescription.Location = New System.Drawing.Point(82, 39)
+        Me.txtDescription.Name = "txtDescription"
+        Me.txtDescription.Size = New System.Drawing.Size(226, 21)
+        Me.txtDescription.TabIndex = 1
+        Me.txtDescription.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtDescription.WatermarkText = "Description"
+        '
+        'txtItemCode
+        '
+        Me.txtItemCode.Location = New System.Drawing.Point(105, 11)
+        Me.txtItemCode.Name = "txtItemCode"
+        Me.txtItemCode.Size = New System.Drawing.Size(203, 21)
+        Me.txtItemCode.TabIndex = 0
+        Me.txtItemCode.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtItemCode.WatermarkText = "ItemCode"
+        '
+        'txtSEarch
+        '
+        Me.txtSEarch.Location = New System.Drawing.Point(72, 15)
+        Me.txtSEarch.Name = "txtSEarch"
+        Me.txtSEarch.Size = New System.Drawing.Size(490, 21)
+        Me.txtSEarch.TabIndex = 0
+        Me.txtSEarch.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSEarch.WatermarkText = "Search . . ."
+        '
         'frmMagazine
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(684, 392)
+        Me.Controls.Add(Me.btnRemove)
+        Me.Controls.Add(Me.btnAdd)
+        Me.Controls.Add(Me.lvMag)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.btnUpdate)
@@ -206,6 +265,7 @@ Partial Class frmMagazine
         Me.Controls.Add(Me.dgPCCUT)
         Me.Controls.Add(Me.GroupBox1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MaximizeBox = False
         Me.Name = "frmMagazine"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Magazine"
@@ -215,6 +275,7 @@ Partial Class frmMagazine
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents btnSearch As System.Windows.Forms.Button
@@ -234,4 +295,10 @@ Partial Class frmMagazine
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents lvMag As System.Windows.Forms.ListView
+    Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents btnAdd As System.Windows.Forms.Button
+    Friend WithEvents btnRemove As System.Windows.Forms.Button
 End Class

@@ -14,21 +14,16 @@
 
 
         If Not locked Then
-            SetUpDatabaseToolStripMenuItem.Enabled = st
             SettingsToolStripMenuItem.Enabled = st
         Else
-            SetUpDatabaseToolStripMenuItem.Enabled = Not st
-            LoadIMDToolStripMenuItem1.Enabled = Not st
             SettingsToolStripMenuItem.Enabled = Not st
         End If
 
         'Initialization
-        LoadIMDToolStripMenuItem1.Enabled = Not st
         LoadMagazineToolStripMenuItem.Enabled = Not st
 
 
         'Magazine
-        AddMagazineToolStripMenuItem.Enabled = Not st
         AddPaperRollToolStripMenuItem.Enabled = Not st
         AddItemToolStripMenuItem.Enabled = Not st
 
@@ -77,11 +72,6 @@
         NotYetLogin()
     End Sub
 
-    Private Sub SetupDatabaseToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SetUpDatabaseToolStripMenuItem.Click
-        Dim child As New frmSetupDatabase
-        child.MdiParent = Me
-        child.Show()
-    End Sub
 
     Private Sub TmpTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TmpTimer.Tick
         If menuLogin.Text = "&Login" Then
@@ -91,9 +81,6 @@
         End If
     End Sub
 
-    Private Sub AddMagazineToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddMagazineToolStripMenuItem.Click
-        frmMagazine.Show()
-    End Sub
 
     Private Sub AddPaperRollToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddPaperRollToolStripMenuItem.Click
         frmPaperRoll.Show()
@@ -119,10 +106,6 @@
 
     Private Sub AddItemToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddItemToolStripMenuItem.Click
         frmItem.Show()
-    End Sub
-
-    Private Sub LoadIMDToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadIMDToolStripMenuItem1.Click
-        frmImportIMDD.Show()
     End Sub
 
  
@@ -218,8 +201,6 @@
 
   
     Private Sub SettingsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SettingsToolStripMenuItem.Click
-        If Not locked Then MsgBox("Database not set.", MsgBoxStyle.Exclamation) : Exit Sub
-
         frmSettings.Show()
     End Sub
 End Class

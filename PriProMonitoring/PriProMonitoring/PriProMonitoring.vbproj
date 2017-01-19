@@ -126,10 +126,10 @@
     <Compile Include="CLASS\production.vb" />
     <Compile Include="CLASS\Reporting.vb" />
     <Compile Include="CLASS\Sales.vb" />
-    <Compile Include="Forms\Dev.Designer.vb">
+    <Compile Include="dev\Dev.Designer.vb">
       <DependentUpon>Dev.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Dev.vb">
+    <Compile Include="dev\Dev.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmAdjustment.Designer.vb">
@@ -174,16 +174,16 @@
     <Compile Include="Forms\frmMagAndPapRollList.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmMagazine.Designer.vb">
+    <Compile Include="dev\frmMagazine.Designer.vb">
       <DependentUpon>frmMagazine.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmMagazine.vb">
+    <Compile Include="dev\frmMagazine.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmMagazineList.Designer.vb">
+    <Compile Include="dev\frmMagazineList.Designer.vb">
       <DependentUpon>frmMagazineList.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmMagazineList.vb">
+    <Compile Include="dev\frmMagazineList.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmPaperRoll.Designer.vb">
@@ -270,7 +270,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\Dev.resx">
+    <EmbeddedResource Include="dev\Dev.resx">
       <DependentUpon>Dev.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAdjustment.resx">
@@ -294,10 +294,10 @@
     <EmbeddedResource Include="Forms\frmMagAndPapRollList.resx">
       <DependentUpon>frmMagAndPapRollList.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMagazine.resx">
+    <EmbeddedResource Include="dev\frmMagazine.resx">
       <DependentUpon>frmMagazine.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMagazineList.resx">
+    <EmbeddedResource Include="dev\frmMagazineList.resx">
       <DependentUpon>frmMagazineList.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">

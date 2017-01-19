@@ -43,7 +43,7 @@
 
 
     Private Sub frmLoadIMD_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.Text = "Import IMD | Active Form"
+        Me.Text = "Setup Dabatase | Active Form"
     End Sub
 
    

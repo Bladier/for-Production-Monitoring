@@ -84,7 +84,7 @@ Partial Class frmPaperRoll
         Me.Label4.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.Label4.Location = New System.Drawing.Point(12, 135)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(98, 15)
+        Me.Label4.Size = New System.Drawing.Size(100, 15)
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Paper Thickness"
         '
@@ -149,7 +149,7 @@ Partial Class frmPaperRoll
         Me.Label5.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.Label5.Location = New System.Drawing.Point(12, 21)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(62, 15)
+        Me.Label5.Size = New System.Drawing.Size(59, 15)
         Me.Label5.TabIndex = 14
         Me.Label5.Text = "Magazine"
         '
@@ -207,7 +207,7 @@ Partial Class frmPaperRoll
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.CboMagazine)
-        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmPaperRoll"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
