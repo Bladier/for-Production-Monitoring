@@ -61,7 +61,7 @@
     End Sub
 
     Private Sub btnPost_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPost.Click
-        If lvpapercuts.Items.Count <= 0 Then MsgBox("No data to adjust", MsgBoxStyle.Information, "Adjustment")
+        If lvpapercuts.Items.Count <= 0 Then MsgBox("No paper to adjust", MsgBoxStyle.Information, "Adjustment")
         If txtRemarks.Text = "" Then Exit Sub
 
         Dim ans As DialogResult = MsgBox("Do you want to save this adjustment?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
