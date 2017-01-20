@@ -29,6 +29,7 @@ Partial Class FrmMain
         Me.menuLogin = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdjustmentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PaperEmptyDeclarationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuInitialization = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoadMagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -45,7 +46,6 @@ Partial Class FrmMain
         Me.TmpTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SalesWatcher = New System.Windows.Forms.Timer(Me.components)
         Me.bgWorker = New System.ComponentModel.BackgroundWorker()
-        Me.PaperEmptyDeclarationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -83,6 +83,12 @@ Partial Class FrmMain
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
         Me.SettingsToolStripMenuItem.Text = "&Settings"
+        '
+        'PaperEmptyDeclarationToolStripMenuItem
+        '
+        Me.PaperEmptyDeclarationToolStripMenuItem.Name = "PaperEmptyDeclarationToolStripMenuItem"
+        Me.PaperEmptyDeclarationToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
+        Me.PaperEmptyDeclarationToolStripMenuItem.Text = "Paper empty &Declaration"
         '
         'menuInitialization
         '
@@ -196,12 +202,6 @@ Partial Class FrmMain
         '
         Me.bgWorker.WorkerReportsProgress = True
         '
-        'PaperEmptyDeclarationToolStripMenuItem
-        '
-        Me.PaperEmptyDeclarationToolStripMenuItem.Name = "PaperEmptyDeclarationToolStripMenuItem"
-        Me.PaperEmptyDeclarationToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
-        Me.PaperEmptyDeclarationToolStripMenuItem.Text = "Paper empty &Declaration"
-        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -212,7 +212,6 @@ Partial Class FrmMain
         Me.Controls.Add(Me.MenuStrip1)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.MaximizeBox = False
         Me.Name = "FrmMain"
         Me.Text = "Monitoring System"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

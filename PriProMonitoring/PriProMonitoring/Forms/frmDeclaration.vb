@@ -27,9 +27,15 @@
             .SavePAPEmPTY()
         End With
 
+        MsgBox("Posted.", MsgBoxStyle.Information, "Posted")
+        txtEmulsion.Text = ""
+        txtAdvance.Text = ""
+        txtlastout.Text = ""
+        cboPaperRollSerial.SelectedItem = Nothing
+        frmDeclaration_Load(sender, e)
     End Sub
 
-
+  
     
 
     Private Sub frmDeclaration_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
