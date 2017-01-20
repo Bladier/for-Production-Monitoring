@@ -46,11 +46,19 @@ Public Class frmLoadMagazine
 
 
     Private Sub btnSet_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSet.Click
-        If lvPaproll.Items.Count < 2 Then Exit Sub
+        If lvPaproll.Items.Count = 0 Then Exit Sub
 
-        For Each itm As ListViewItem In lvPaproll.Items
-            UpdateRollstatus(itm.SubItems(4).Text, "1", itm.SubItems(2).Text)
-        Next
+        Dim getchamber As Integer = GetOption("Number Chamber")
+        If getchamber < 2 Then
+            For Each itm As ListViewItem In lvPaproll.Items
+                UpdateRollstatus(itm.SubItems(4).Text, "1", itm.SubItems(2).Text)
+            Next
+        Else
+            For Each itm As ListViewItem In lvPaproll.Items
+                UpdateRollstatus(itm.SubItems(4).Text, "1", itm.SubItems(2).Text)
+            Next
+
+        End If
 
         UpdateOptions("Magazine", "YES") 'Set magazine load
 

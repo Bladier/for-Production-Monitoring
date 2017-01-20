@@ -101,9 +101,8 @@
     End Sub
 
     Public Sub Save_Papercut()
-        gETmAGid()
 
-        Dim mySql As String = String.Format("SELECT * FROM {0} ROWS 1", MainTable)
+        Dim mySql As String = String.Format("SELECT * FROM {0} ", MainTable)
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
         Dim dsNewRow As DataRow
@@ -119,14 +118,15 @@
         database.SaveEntry(ds)
     End Sub
 
-    Public Sub gETmAGid()
+    Public Function gETmAGid() As Integer
 
         Dim mySql As String = "SELECT * FROM tblMagazine ORDER BY Mag_ID DESC ROWS 1"
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
         mag_IDP = ds.Tables(MainTable).Rows(0).Item("Mag_ID")
 
-    End Sub
+        Return mag_IDP
+    End Function
 
     Public Sub Update()
         Dim mySql As String = String.Format("SELECT * FROM {0} WHERE {1}= {2} ", MainTable, "PAPerCUT_ID", _PapcutID)

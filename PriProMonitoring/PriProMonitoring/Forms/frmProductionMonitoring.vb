@@ -4,7 +4,13 @@
     Dim SelectedPaPRoll As PaperRoll
     Dim saveSales As production
 
+    Dim chmbercount As Integer = GetOption("Number Chamber")
+
     Private Sub frmProductionMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        If chmbercount < 2 Then
+            txtMagazine1.Text = GetMag(0) : Exit Sub
+        End If
+
         txtMagazine1.Text = GetMag(0)
         txtMagazine2.Text = GetMag(1)
     End Sub
@@ -27,7 +33,12 @@
             lv.SubItems.Add(dr(7))
         Next
 
-      
+        If chmbercount < 2 Then
+            txtActiveMagazine.Text = "Remaining" & " : " & GetLength(0) & "m " & GetMag(0)
+            Production()
+            Exit Sub
+        End If
+
         txtActiveMagazine.Text = "Remaining" & " : " & GetLength(0) & "m " & GetMag(0) & _
                                 " | " & GetLength(1) & "m " & GetMag(1)
 
@@ -124,6 +135,8 @@ nextlineTodo:
             Dim newMysqlSalesLines As String = "SELECT * FROM TBL_PROLINE " & _
                 "WHERE PAPCUT_CODE = '" & itm.SubItems(6).Text & "' AND STATUS <> 1"
             Dim MysqlSalesLines As DataSet = LoadSQL(newMysqlSalesLines, "TBL_PROLINE")
+
+            If MysqlSalesLines.Tables(0).Rows.Count = 0 Then Exit Sub
 
             For Each dr As DataRow In MysqlSalesLines.Tables(0).Rows
                 Dim SubTotal As Double = (MysqlSalesLines.Tables(0).Rows(0).Item(5) * itm.SubItems(5).Text)

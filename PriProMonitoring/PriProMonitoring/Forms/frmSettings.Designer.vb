@@ -23,6 +23,11 @@ Partial Class frmSettings
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtVersion = New System.Windows.Forms.TextBox()
+        Me.txtAreaname = New System.Windows.Forms.TextBox()
+        Me.txtAreacode = New System.Windows.Forms.TextBox()
+        Me.txtBranchname = New System.Windows.Forms.TextBox()
+        Me.txtBranchCode = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -42,15 +47,14 @@ Partial Class frmSettings
         Me.btnBrowsepapecut = New System.Windows.Forms.Button()
         Me.txtPapercut = New System.Windows.Forms.TextBox()
         Me.OFDMagazine = New System.Windows.Forms.OpenFileDialog()
-        Me.txtBranchCode = New System.Windows.Forms.TextBox()
-        Me.txtBranchname = New System.Windows.Forms.TextBox()
-        Me.txtAreacode = New System.Windows.Forms.TextBox()
-        Me.txtAreaname = New System.Windows.Forms.TextBox()
-        Me.txtVersion = New System.Windows.Forms.TextBox()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.txtChamber = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -73,6 +77,46 @@ Partial Class frmSettings
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Branch"
+        '
+        'txtVersion
+        '
+        Me.txtVersion.Location = New System.Drawing.Point(90, 134)
+        Me.txtVersion.Name = "txtVersion"
+        Me.txtVersion.ReadOnly = True
+        Me.txtVersion.Size = New System.Drawing.Size(208, 21)
+        Me.txtVersion.TabIndex = 13
+        '
+        'txtAreaname
+        '
+        Me.txtAreaname.Location = New System.Drawing.Point(90, 104)
+        Me.txtAreaname.Name = "txtAreaname"
+        Me.txtAreaname.ReadOnly = True
+        Me.txtAreaname.Size = New System.Drawing.Size(208, 21)
+        Me.txtAreaname.TabIndex = 12
+        '
+        'txtAreacode
+        '
+        Me.txtAreacode.Location = New System.Drawing.Point(90, 75)
+        Me.txtAreacode.Name = "txtAreacode"
+        Me.txtAreacode.ReadOnly = True
+        Me.txtAreacode.Size = New System.Drawing.Size(208, 21)
+        Me.txtAreacode.TabIndex = 11
+        '
+        'txtBranchname
+        '
+        Me.txtBranchname.Location = New System.Drawing.Point(90, 45)
+        Me.txtBranchname.Name = "txtBranchname"
+        Me.txtBranchname.ReadOnly = True
+        Me.txtBranchname.Size = New System.Drawing.Size(208, 21)
+        Me.txtBranchname.TabIndex = 10
+        '
+        'txtBranchCode
+        '
+        Me.txtBranchCode.Location = New System.Drawing.Point(90, 13)
+        Me.txtBranchCode.Name = "txtBranchCode"
+        Me.txtBranchCode.ReadOnly = True
+        Me.txtBranchCode.Size = New System.Drawing.Size(208, 21)
+        Me.txtBranchCode.TabIndex = 9
         '
         'Label5
         '
@@ -127,7 +171,7 @@ Partial Class frmSettings
         'btnSave
         '
         Me.btnSave.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(510, 190)
+        Me.btnSave.Location = New System.Drawing.Point(504, 203)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(76, 28)
         Me.btnSave.TabIndex = 1
@@ -137,7 +181,7 @@ Partial Class frmSettings
         'btnClose
         '
         Me.btnClose.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnClose.Location = New System.Drawing.Point(592, 190)
+        Me.btnClose.Location = New System.Drawing.Point(586, 203)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(79, 28)
         Me.btnClose.TabIndex = 2
@@ -251,52 +295,44 @@ Partial Class frmSettings
         '
         Me.OFDMagazine.Filter = "Excel 2003|*.xls|Excel 2007|*.xlsx"
         '
-        'txtBranchCode
+        'GroupBox5
         '
-        Me.txtBranchCode.Location = New System.Drawing.Point(90, 13)
-        Me.txtBranchCode.Name = "txtBranchCode"
-        Me.txtBranchCode.ReadOnly = True
-        Me.txtBranchCode.Size = New System.Drawing.Size(208, 21)
-        Me.txtBranchCode.TabIndex = 9
+        Me.GroupBox5.Controls.Add(Me.Label6)
+        Me.GroupBox5.Controls.Add(Me.txtChamber)
+        Me.GroupBox5.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox5.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.GroupBox5.Location = New System.Drawing.Point(12, 180)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(349, 50)
+        Me.GroupBox5.TabIndex = 10
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Chamber"
         '
-        'txtBranchname
+        'txtChamber
         '
-        Me.txtBranchname.Location = New System.Drawing.Point(90, 45)
-        Me.txtBranchname.Name = "txtBranchname"
-        Me.txtBranchname.ReadOnly = True
-        Me.txtBranchname.Size = New System.Drawing.Size(208, 21)
-        Me.txtBranchname.TabIndex = 10
+        Me.txtChamber.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtChamber.Location = New System.Drawing.Point(140, 19)
+        Me.txtChamber.Name = "txtChamber"
+        Me.txtChamber.Size = New System.Drawing.Size(203, 21)
+        Me.txtChamber.TabIndex = 5
         '
-        'txtAreacode
+        'Label6
         '
-        Me.txtAreacode.Location = New System.Drawing.Point(90, 75)
-        Me.txtAreacode.Name = "txtAreacode"
-        Me.txtAreacode.ReadOnly = True
-        Me.txtAreacode.Size = New System.Drawing.Size(208, 21)
-        Me.txtAreacode.TabIndex = 11
-        '
-        'txtAreaname
-        '
-        Me.txtAreaname.Location = New System.Drawing.Point(90, 104)
-        Me.txtAreaname.Name = "txtAreaname"
-        Me.txtAreaname.ReadOnly = True
-        Me.txtAreaname.Size = New System.Drawing.Size(208, 21)
-        Me.txtAreaname.TabIndex = 12
-        '
-        'txtVersion
-        '
-        Me.txtVersion.Location = New System.Drawing.Point(90, 134)
-        Me.txtVersion.Name = "txtVersion"
-        Me.txtVersion.ReadOnly = True
-        Me.txtVersion.Size = New System.Drawing.Size(208, 21)
-        Me.txtVersion.TabIndex = 13
+        Me.Label6.AutoSize = True
+        Me.Label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label6.Location = New System.Drawing.Point(11, 22)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(123, 16)
+        Me.Label6.TabIndex = 14
+        Me.Label6.Text = "Number of Chamber"
         '
         'frmSettings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(690, 224)
+        Me.ClientSize = New System.Drawing.Size(683, 243)
+        Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
@@ -315,6 +351,8 @@ Partial Class frmSettings
         Me.GroupBox3.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -343,4 +381,7 @@ Partial Class frmSettings
     Friend WithEvents txtAreacode As System.Windows.Forms.TextBox
     Friend WithEvents txtBranchname As System.Windows.Forms.TextBox
     Friend WithEvents txtBranchCode As System.Windows.Forms.TextBox
+    Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents txtChamber As System.Windows.Forms.TextBox
 End Class

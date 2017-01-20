@@ -286,10 +286,11 @@ Friend Module database
             ds.Tables(fillData).Rows.Add(dsNewRow)
             SaveEntry(ds)
         Else
-            ds.Tables(0).Rows(0).Item("opt_values") = value
-            ds.Tables(0).Rows(0).Item("Remarks") = transdate
-            'String.Format(transdate.ToString("MM/dd/yyyy"))
-            SaveEntry(ds, False)
+            With ds.Tables(filldata).Rows(0)
+                .Item("opt_values") = value
+                .Item("Remarks") = transdate
+            End With
+            database.SaveEntry(ds, False)
         End If
     End Sub
 

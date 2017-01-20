@@ -7,7 +7,10 @@ Public Class frmSettings
     Dim tmplastSalesID As String
     Dim tmpdate As String
 
+    Dim tmpchamber As New Chamber
+
     Private Function IsValid() As Boolean
+        If txtChamber.Text = "" Then txtChamber.Focus() : Return False
         If txtpath.Text = "" Then txtpath.Focus() : Return False
         If txtPapercut.Text = "" Then txtPapercut.Focus() : Return False
         If txtMagazine.Text = "" Then txtMagazine.Focus() : Return False
@@ -33,6 +36,8 @@ Public Class frmSettings
     End Sub
 
     Private Sub btnSet_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        If Not IsValid() Then Exit Sub
+
         Me.Enabled = False
         SaveDatabasePath() 'save database path
 
@@ -54,6 +59,14 @@ Public Class frmSettings
         UpdateOptions("Area Code", txtAreacode.Text)
         UpdateOptions("Area Name", txtAreaname.Text)
         UpdateOptions("Version", txtVersion.Text)
+        UpdateOptions("Number Chamber", txtChamber.Text)
+
+
+        If txtChamber.Text = 1 Then
+            tmpchamber.PoputlateChamberOnlyOne()
+        Else
+            tmpchamber.PoputlateChamber()
+        End If
 
         MsgBox("New branch has been setup", MsgBoxStyle.Information, "Setup")
         FrmMain.NotYetLogin()
@@ -260,10 +273,8 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
 
         Me.Enabled = False
         For cnt = 2 To MaxEntries
-            Dim ImportedItem As New item
 
             Dim MAGAZINESAVE As New Magazine
-            Dim ColIPAPERCUT As New CollectionPaperCut
 
             With MAGAZINESAVE
                 .MagItemcode = oSheet.Cells(cnt, 1).Value
@@ -273,6 +284,7 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
 
             Dim SAVEPAPERCUT As New PaperCut
             With SAVEPAPERCUT
+                .mag_IDP = .gETmAGid
                 .PapCutITemcode = oSheet.Cells(cnt, 3).Value
                 .papcutDescription = oSheet.Cells(cnt, 4).Value
                 .papcut = oSheet.Cells(cnt, 5).Value
@@ -285,5 +297,9 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
         oXL.Quit()
         oXL = Nothing
 
+    End Sub
+
+    Private Sub txtChamber_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtChamber.KeyPress
+        DigitOnly(e)
     End Sub
 End Class

@@ -8,6 +8,8 @@
         If LvPaperRollList.SelectedItems.Count = 0 Then Exit Sub
 
         If Not MagStatus Then
+
+            'Dim ChamberCount As Integer = GetOption("")
             Dim count As Integer = frmLoadMagazine.lvPaproll.Items.Count
             If count = 2 Then GoTo nextlineTodo
 

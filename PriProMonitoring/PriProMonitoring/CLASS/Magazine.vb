@@ -101,9 +101,7 @@
             End With
             ds.Tables(0).Rows.Add(dsNewRow)
             database.SaveEntry(ds)
-
         End If
-
     End Sub
 
 

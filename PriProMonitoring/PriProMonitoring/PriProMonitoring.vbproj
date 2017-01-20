@@ -109,6 +109,7 @@
     </Compile>
     <Compile Include="CLASS\AdjustmentCollection.vb" />
     <Compile Include="CLASS\AdjustmentLine.vb" />
+    <Compile Include="CLASS\Chamber.vb" />
     <Compile Include="CLASS\SalesLine.vb" />
     <Compile Include="CLASS\ItemData.vb" />
     <Compile Include="CLASS\CollectionPaperCut.vb">
@@ -186,10 +187,10 @@
     <Compile Include="dev\frmMagazineList.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmPaperRoll.Designer.vb">
+    <Compile Include="dev\frmPaperRoll.Designer.vb">
       <DependentUpon>frmPaperRoll.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmPaperRoll.vb">
+    <Compile Include="dev\frmPaperRoll.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmPaperRolls.Designer.vb">
@@ -204,10 +205,10 @@
     <Compile Include="Forms\frmProductionMonitoring.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmSales.Designer.vb">
+    <Compile Include="dev\frmSales.Designer.vb">
       <DependentUpon>frmSales.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmSales.vb">
+    <Compile Include="dev\frmSales.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmSettings.Designer.vb">
@@ -216,10 +217,10 @@
     <Compile Include="Forms\frmSettings.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmSetupDatabase.Designer.vb">
+    <Compile Include="dev\frmSetupDatabase.Designer.vb">
       <DependentUpon>frmSetupDatabase.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmSetupDatabase.vb">
+    <Compile Include="dev\frmSetupDatabase.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Login.vb">
@@ -303,7 +304,7 @@
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmPaperRoll.resx">
+    <EmbeddedResource Include="dev\frmPaperRoll.resx">
       <DependentUpon>frmPaperRoll.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPaperRolls.resx">
@@ -312,13 +313,13 @@
     <EmbeddedResource Include="Forms\frmProductionMonitoring.resx">
       <DependentUpon>frmProductionMonitoring.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSales.resx">
+    <EmbeddedResource Include="dev\frmSales.resx">
       <DependentUpon>frmSales.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSettings.resx">
       <DependentUpon>frmSettings.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSetupDatabase.resx">
+    <EmbeddedResource Include="dev\frmSetupDatabase.resx">
       <DependentUpon>frmSetupDatabase.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
