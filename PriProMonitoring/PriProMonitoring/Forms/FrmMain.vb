@@ -11,7 +11,7 @@
 
         'file
         AdjustmentToolStripMenuItem.Enabled = Not st
-
+        PaperEmptyDeclarationToolStripMenuItem.Enabled = Not st
 
         If Not locked Then
             SettingsToolStripMenuItem.Enabled = st
@@ -202,5 +202,9 @@
   
     Private Sub SettingsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SettingsToolStripMenuItem.Click
         frmSettings.Show()
+    End Sub
+
+    Private Sub PaperEmptyDeclarationToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PaperEmptyDeclarationToolStripMenuItem.Click
+        frmDeclaration.Show()
     End Sub
 End Class

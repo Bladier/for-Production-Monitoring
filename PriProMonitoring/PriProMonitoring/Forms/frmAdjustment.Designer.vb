@@ -158,9 +158,9 @@ Partial Class frmAdjustment
         '
         Me.GroupBox2.Controls.Add(Me.lvpapercuts)
         Me.GroupBox2.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 82)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 85)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(326, 141)
+        Me.GroupBox2.Size = New System.Drawing.Size(326, 144)
         Me.GroupBox2.TabIndex = 2
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Paper Cuts"
@@ -248,7 +248,7 @@ Partial Class frmAdjustment
         '
         Me.Label5.AutoSize = True
         Me.Label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label5.Location = New System.Drawing.Point(15, 229)
+        Me.Label5.Location = New System.Drawing.Point(15, 232)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(58, 15)
         Me.Label5.TabIndex = 7
@@ -256,7 +256,7 @@ Partial Class frmAdjustment
         '
         'txtRemarks
         '
-        Me.txtRemarks.Location = New System.Drawing.Point(17, 247)
+        Me.txtRemarks.Location = New System.Drawing.Point(17, 250)
         Me.txtRemarks.Multiline = True
         Me.txtRemarks.Name = "txtRemarks"
         Me.txtRemarks.Size = New System.Drawing.Size(317, 64)

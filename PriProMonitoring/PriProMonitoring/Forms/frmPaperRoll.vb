@@ -117,4 +117,26 @@
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
         Me.Close()
     End Sub
+
+    Private Sub txtSerial_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSerial.KeyPress
+        DigitOnly(e)
+    End Sub
+
+    Private Sub txtOuterDiameter_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtOuterDiameter.KeyPress
+        DigitOnly(e)
+    End Sub
+
+    Private Sub txtSpoolDiameter_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSpoolDiameter.KeyPress
+        DigitOnly(e)
+    End Sub
+
+    Private Sub txtPaperThickness_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtPaperThickness.KeyPress
+        DigitOnly(e)
+    End Sub
+
+    Private Sub txtPaperThickness_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPaperThickness.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            btnsave.PerformClick()
+        End If
+    End Sub
 End Class

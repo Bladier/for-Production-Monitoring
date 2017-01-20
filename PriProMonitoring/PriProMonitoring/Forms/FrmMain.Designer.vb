@@ -45,6 +45,7 @@ Partial Class FrmMain
         Me.TmpTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SalesWatcher = New System.Windows.Forms.Timer(Me.components)
         Me.bgWorker = New System.ComponentModel.BackgroundWorker()
+        Me.PaperEmptyDeclarationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -60,7 +61,7 @@ Partial Class FrmMain
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuLogin, Me.AdjustmentToolStripMenuItem, Me.SettingsToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuLogin, Me.AdjustmentToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.PaperEmptyDeclarationToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
@@ -68,19 +69,19 @@ Partial Class FrmMain
         'menuLogin
         '
         Me.menuLogin.Name = "menuLogin"
-        Me.menuLogin.Size = New System.Drawing.Size(152, 22)
+        Me.menuLogin.Size = New System.Drawing.Size(204, 22)
         Me.menuLogin.Text = "&Login"
         '
         'AdjustmentToolStripMenuItem
         '
         Me.AdjustmentToolStripMenuItem.Name = "AdjustmentToolStripMenuItem"
-        Me.AdjustmentToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AdjustmentToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
         Me.AdjustmentToolStripMenuItem.Text = "&Adjustment"
         '
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
         Me.SettingsToolStripMenuItem.Text = "&Settings"
         '
         'menuInitialization
@@ -195,6 +196,12 @@ Partial Class FrmMain
         '
         Me.bgWorker.WorkerReportsProgress = True
         '
+        'PaperEmptyDeclarationToolStripMenuItem
+        '
+        Me.PaperEmptyDeclarationToolStripMenuItem.Name = "PaperEmptyDeclarationToolStripMenuItem"
+        Me.PaperEmptyDeclarationToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
+        Me.PaperEmptyDeclarationToolStripMenuItem.Text = "Paper empty &Declaration"
+        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -238,4 +245,5 @@ Partial Class FrmMain
     Friend WithEvents Count As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents ToolStripSplitButton1 As System.Windows.Forms.ToolStripSplitButton
     Friend WithEvents SettingsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PaperEmptyDeclarationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

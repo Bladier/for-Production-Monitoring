@@ -15,6 +15,7 @@
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,7 +28,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -110,6 +110,9 @@
     <Compile Include="CLASS\AdjustmentCollection.vb" />
     <Compile Include="CLASS\AdjustmentLine.vb" />
     <Compile Include="CLASS\Chamber.vb" />
+    <Compile Include="CLASS\PaperListEmpty.vb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="CLASS\SalesLine.vb" />
     <Compile Include="CLASS\ItemData.vb" />
     <Compile Include="CLASS\CollectionPaperCut.vb">
@@ -143,6 +146,12 @@
       <DependentUpon>frmChannel.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmChannel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDeclaration.Designer.vb">
+      <DependentUpon>frmDeclaration.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDeclaration.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmImportIMDD.Designer.vb">
@@ -187,10 +196,10 @@
     <Compile Include="dev\frmMagazineList.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dev\frmPaperRoll.Designer.vb">
+    <Compile Include="Forms\frmPaperRoll.Designer.vb">
       <DependentUpon>frmPaperRoll.vb</DependentUpon>
     </Compile>
-    <Compile Include="dev\frmPaperRoll.vb">
+    <Compile Include="Forms\frmPaperRoll.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmPaperRolls.Designer.vb">
@@ -280,6 +289,9 @@
     <EmbeddedResource Include="Forms\frmChannel.resx">
       <DependentUpon>frmChannel.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDeclaration.resx">
+      <DependentUpon>frmDeclaration.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmImportIMDD.resx">
       <DependentUpon>frmImportIMDD.vb</DependentUpon>
     </EmbeddedResource>
@@ -304,7 +316,7 @@
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="dev\frmPaperRoll.resx">
+    <EmbeddedResource Include="Forms\frmPaperRoll.resx">
       <DependentUpon>frmPaperRoll.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPaperRolls.resx">

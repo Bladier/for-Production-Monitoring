@@ -8,7 +8,7 @@
 
     Private Sub frmProductionMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If chmbercount < 2 Then
-            txtMagazine1.Text = GetMag(0) : Exit Sub
+            txtMagazine1.Text = GetMag(0) : txtMagazine2.Visible = False : Exit Sub
         End If
 
         txtMagazine1.Text = GetMag(0)
@@ -51,7 +51,7 @@
         Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
         Dim tmplenght As New List(Of Double)()
         For Each dr As DataRow In ds.Tables(0).Rows
-            tmplenght.Add(dr.Item("Total_length"))
+            tmplenght.Add(dr.Item("Remaining"))
         Next
 
         Return tmplenght
@@ -133,10 +133,10 @@ nextlineTodo:
 
         For Each itm As ListViewItem In lvpapercuts.Items
             Dim newMysqlSalesLines As String = "SELECT * FROM TBL_PROLINE " & _
-                "WHERE PAPCUT_CODE = '" & itm.SubItems(6).Text & "' AND STATUS <> 1"
+                "WHERE PAPCUT_CODE = '" & itm.SubItems(6).Text & "' AND STATUS <> 1 AND STATUS <> 2"
             Dim MysqlSalesLines As DataSet = LoadSQL(newMysqlSalesLines, "TBL_PROLINE")
 
-            If MysqlSalesLines.Tables(0).Rows.Count = 0 Then Exit Sub
+            If MysqlSalesLines.Tables(0).Rows.Count = 0 Then On Error Resume Next
 
             For Each dr As DataRow In MysqlSalesLines.Tables(0).Rows
                 Dim SubTotal As Double = (MysqlSalesLines.Tables(0).Rows(0).Item(5) * itm.SubItems(5).Text)
@@ -166,7 +166,7 @@ nextlineTodo:
     End Sub
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
-        If txtSearch.Text = "" Then Exit Sub
+        'If txtSearch.Text = "" Then Exit Sub
 
         frmPaperRolls.txtSearch.Text = txtSearch.Text
         frmPaperRolls.Show()
