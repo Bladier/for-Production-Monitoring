@@ -48,8 +48,8 @@ Partial Class frmSettings
         Me.txtPapercut = New System.Windows.Forms.TextBox()
         Me.OFDMagazine = New System.Windows.Forms.OpenFileDialog()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.txtChamber = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtChamber = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -74,7 +74,7 @@ Partial Class frmSettings
         Me.GroupBox1.Location = New System.Drawing.Point(367, 12)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(304, 162)
-        Me.GroupBox1.TabIndex = 0
+        Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Branch"
         '
@@ -84,7 +84,7 @@ Partial Class frmSettings
         Me.txtVersion.Name = "txtVersion"
         Me.txtVersion.ReadOnly = True
         Me.txtVersion.Size = New System.Drawing.Size(208, 21)
-        Me.txtVersion.TabIndex = 13
+        Me.txtVersion.TabIndex = 4
         '
         'txtAreaname
         '
@@ -92,7 +92,7 @@ Partial Class frmSettings
         Me.txtAreaname.Name = "txtAreaname"
         Me.txtAreaname.ReadOnly = True
         Me.txtAreaname.Size = New System.Drawing.Size(208, 21)
-        Me.txtAreaname.TabIndex = 12
+        Me.txtAreaname.TabIndex = 3
         '
         'txtAreacode
         '
@@ -100,7 +100,7 @@ Partial Class frmSettings
         Me.txtAreacode.Name = "txtAreacode"
         Me.txtAreacode.ReadOnly = True
         Me.txtAreacode.Size = New System.Drawing.Size(208, 21)
-        Me.txtAreacode.TabIndex = 11
+        Me.txtAreacode.TabIndex = 2
         '
         'txtBranchname
         '
@@ -108,7 +108,7 @@ Partial Class frmSettings
         Me.txtBranchname.Name = "txtBranchname"
         Me.txtBranchname.ReadOnly = True
         Me.txtBranchname.Size = New System.Drawing.Size(208, 21)
-        Me.txtBranchname.TabIndex = 10
+        Me.txtBranchname.TabIndex = 1
         '
         'txtBranchCode
         '
@@ -116,7 +116,7 @@ Partial Class frmSettings
         Me.txtBranchCode.Name = "txtBranchCode"
         Me.txtBranchCode.ReadOnly = True
         Me.txtBranchCode.Size = New System.Drawing.Size(208, 21)
-        Me.txtBranchCode.TabIndex = 9
+        Me.txtBranchCode.TabIndex = 0
         '
         'Label5
         '
@@ -174,7 +174,7 @@ Partial Class frmSettings
         Me.btnSave.Location = New System.Drawing.Point(504, 203)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(76, 28)
-        Me.btnSave.TabIndex = 1
+        Me.btnSave.TabIndex = 5
         Me.btnSave.Text = "&Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
@@ -184,7 +184,7 @@ Partial Class frmSettings
         Me.btnClose.Location = New System.Drawing.Point(586, 203)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(79, 28)
-        Me.btnClose.TabIndex = 2
+        Me.btnClose.TabIndex = 6
         Me.btnClose.Text = "&Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
@@ -195,7 +195,7 @@ Partial Class frmSettings
         Me.txtpath.Name = "txtpath"
         Me.txtpath.ReadOnly = True
         Me.txtpath.Size = New System.Drawing.Size(287, 21)
-        Me.txtpath.TabIndex = 5
+        Me.txtpath.TabIndex = 0
         '
         'btnbrowse
         '
@@ -204,7 +204,7 @@ Partial Class frmSettings
         Me.btnbrowse.Location = New System.Drawing.Point(305, 12)
         Me.btnbrowse.Name = "btnbrowse"
         Me.btnbrowse.Size = New System.Drawing.Size(38, 32)
-        Me.btnbrowse.TabIndex = 4
+        Me.btnbrowse.TabIndex = 1
         Me.btnbrowse.Text = ". . ."
         Me.btnbrowse.UseVisualStyleBackColor = True
         '
@@ -217,7 +217,7 @@ Partial Class frmSettings
         Me.GroupBox2.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(349, 50)
-        Me.GroupBox2.TabIndex = 7
+        Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Database path"
         '
@@ -230,7 +230,7 @@ Partial Class frmSettings
         Me.GroupBox3.Location = New System.Drawing.Point(12, 68)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(349, 50)
-        Me.GroupBox3.TabIndex = 8
+        Me.GroupBox3.TabIndex = 1
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Magazine"
         '
@@ -241,7 +241,7 @@ Partial Class frmSettings
         Me.btnBrowseMagazine.Location = New System.Drawing.Point(305, 12)
         Me.btnBrowseMagazine.Name = "btnBrowseMagazine"
         Me.btnBrowseMagazine.Size = New System.Drawing.Size(38, 32)
-        Me.btnBrowseMagazine.TabIndex = 4
+        Me.btnBrowseMagazine.TabIndex = 1
         Me.btnBrowseMagazine.Text = ". . ."
         Me.btnBrowseMagazine.UseVisualStyleBackColor = True
         '
@@ -252,7 +252,7 @@ Partial Class frmSettings
         Me.txtMagazine.Name = "txtMagazine"
         Me.txtMagazine.ReadOnly = True
         Me.txtMagazine.Size = New System.Drawing.Size(287, 21)
-        Me.txtMagazine.TabIndex = 5
+        Me.txtMagazine.TabIndex = 0
         '
         'OFDPapercut
         '
@@ -267,7 +267,7 @@ Partial Class frmSettings
         Me.GroupBox4.Location = New System.Drawing.Point(12, 124)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(349, 50)
-        Me.GroupBox4.TabIndex = 9
+        Me.GroupBox4.TabIndex = 2
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Papercut Path"
         '
@@ -278,7 +278,7 @@ Partial Class frmSettings
         Me.btnBrowsepapecut.Location = New System.Drawing.Point(305, 12)
         Me.btnBrowsepapecut.Name = "btnBrowsepapecut"
         Me.btnBrowsepapecut.Size = New System.Drawing.Size(38, 32)
-        Me.btnBrowsepapecut.TabIndex = 4
+        Me.btnBrowsepapecut.TabIndex = 1
         Me.btnBrowsepapecut.Text = ". . ."
         Me.btnBrowsepapecut.UseVisualStyleBackColor = True
         '
@@ -289,7 +289,7 @@ Partial Class frmSettings
         Me.txtPapercut.Name = "txtPapercut"
         Me.txtPapercut.ReadOnly = True
         Me.txtPapercut.Size = New System.Drawing.Size(287, 21)
-        Me.txtPapercut.TabIndex = 5
+        Me.txtPapercut.TabIndex = 0
         '
         'OFDMagazine
         '
@@ -304,17 +304,9 @@ Partial Class frmSettings
         Me.GroupBox5.Location = New System.Drawing.Point(12, 180)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(349, 50)
-        Me.GroupBox5.TabIndex = 10
+        Me.GroupBox5.TabIndex = 3
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Chamber"
-        '
-        'txtChamber
-        '
-        Me.txtChamber.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtChamber.Location = New System.Drawing.Point(140, 19)
-        Me.txtChamber.Name = "txtChamber"
-        Me.txtChamber.Size = New System.Drawing.Size(203, 21)
-        Me.txtChamber.TabIndex = 5
         '
         'Label6
         '
@@ -323,8 +315,16 @@ Partial Class frmSettings
         Me.Label6.Location = New System.Drawing.Point(11, 22)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(123, 16)
-        Me.Label6.TabIndex = 14
+        Me.Label6.TabIndex = 0
         Me.Label6.Text = "Number of Chamber"
+        '
+        'txtChamber
+        '
+        Me.txtChamber.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtChamber.Location = New System.Drawing.Point(140, 19)
+        Me.txtChamber.Name = "txtChamber"
+        Me.txtChamber.Size = New System.Drawing.Size(203, 21)
+        Me.txtChamber.TabIndex = 1
         '
         'frmSettings
         '

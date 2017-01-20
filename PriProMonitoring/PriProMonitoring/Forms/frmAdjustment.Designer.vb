@@ -248,7 +248,7 @@ Partial Class frmAdjustment
         '
         Me.Label5.AutoSize = True
         Me.Label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label5.Location = New System.Drawing.Point(18, 226)
+        Me.Label5.Location = New System.Drawing.Point(15, 229)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(58, 15)
         Me.Label5.TabIndex = 7
@@ -256,10 +256,10 @@ Partial Class frmAdjustment
         '
         'txtRemarks
         '
-        Me.txtRemarks.Location = New System.Drawing.Point(81, 229)
+        Me.txtRemarks.Location = New System.Drawing.Point(17, 247)
         Me.txtRemarks.Multiline = True
         Me.txtRemarks.Name = "txtRemarks"
-        Me.txtRemarks.Size = New System.Drawing.Size(253, 79)
+        Me.txtRemarks.Size = New System.Drawing.Size(317, 64)
         Me.txtRemarks.TabIndex = 3
         Me.txtRemarks.WatermarkColor = System.Drawing.Color.Gray
         Me.txtRemarks.WatermarkText = "Remarks"
