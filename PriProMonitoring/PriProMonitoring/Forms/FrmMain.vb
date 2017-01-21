@@ -114,12 +114,14 @@
     End Sub
 
     Private Sub SalesWatcher_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SalesWatcher.Tick
+
         If ToolStripSplitButton1.Enabled = False Then
             SalesWatcher.Stop()
             Exit Sub
         End If
 
         ToolStripSplitButton1.PerformButtonClick()
+        SalesWatcher.Start()
     End Sub
 
     Private Sub bgWorker_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles bgWorker.DoWork
@@ -146,10 +148,10 @@
                 tmplastSalesID = frmSales.GetLastEntry(0)
                 tmpdate = frmSales.GetLastEntry(1)
 
+                If tmplastSalesID = "" Then Exit Sub
+
                 If GetOption("LastSalesID") = tmplastSalesID Then _
                     MsgBox("No new row data in sales", MsgBoxStyle.Information, "Sales") : Exit Sub
-
-                UpdateOptionSales("LastSalesID", tmplastSalesID, tmpdate)
 
                 Dim SaveSales As New Sales
                 With SaveSales
@@ -180,6 +182,14 @@
                         Application.DoEvents()
                         lblToolStripStatus.Text = String.Format("{0}%", ((ToolStripPBar.Value / ToolStripPBar.Maximum) * 100).ToString("F2"))
                     Next
+
+                    Dim updatemainTainance As New GetSalesID
+
+                    With updatemainTainance
+                        .OPTVALUES = tmplastSalesID
+                        .REMARKS = tmpdate
+                    End With
+                    updatemainTainance.UPDATE_MAINTAINANCE("LastSalesID ")
 
                     If MsgBox("Sales Updated.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, _
         "Sales...") = MsgBoxResult.Ok Then ToolStripPBar.Minimum = 0 : ToolStripPBar.Value = 0 : lblToolStripStatus.Text = "0.00%"

@@ -23,7 +23,15 @@
             If LastSaleID = "" Then
                 tmplastSalesID = GetLastSaledID(0)
                 tmpdate = GetLastSaledID(1)
-                UpdateOptionSales("LastSalesID ", tmplastSalesID, tmpdate)
+
+                Dim updatemainTainance As New GetSalesID
+
+                With updatemainTainance
+                    .OPTVALUES = tmplastSalesID
+                    .REMARKS = tmpdate
+                End With
+                updatemainTainance.UPDATE_MAINTAINANCE("LastSalesID ")
+
                 MsgBox("Production has been set.", MsgBoxStyle.Information, "Production")
                 Exit Sub
             End If

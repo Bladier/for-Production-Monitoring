@@ -270,29 +270,29 @@ Friend Module database
     End Sub
 
 
-    Friend Sub UpdateOptionSales(ByVal key As String, ByVal value As String, ByVal transdate As String)
-        Dim mySql As String = "SELECT * FROM tblMaintenance WHERE opt_keys = '" & key & "'"
-        Dim fillData As String = "tblMaintenance"
-        Dim ds As DataSet = LoadSQL(mySql, fillData)
+    'Friend Sub UpdateOptionSales(ByVal key As String, ByVal value As String, ByVal transdate As String)
+    '    Dim mySql As String = "SELECT * FROM tblMaintenance WHERE opt_keys = '" & key & "'"
+    '    Dim fillData As String = "tblMaintenance"
+    '    Dim ds As DataSet = LoadSQL(mySql, fillData)
 
-        If ds.Tables(fillData).Rows.Count = 0 Then
-            Dim dsNewRow As DataRow
-            dsNewRow = ds.Tables(fillData).NewRow
-            With dsNewRow
-                .Item("opt_keys") = key
-                .Item("opt_values") = value
-                .Item("Remarks") = transdate
-            End With
-            ds.Tables(fillData).Rows.Add(dsNewRow)
-            SaveEntry(ds)
-        Else
-            With ds.Tables(filldata).Rows(0)
-                .Item("opt_values") = value
-                .Item("Remarks") = transdate
-            End With
-            database.SaveEntry(ds, False)
-        End If
-    End Sub
+    '    If ds.Tables(fillData).Rows.Count = 0 Then
+    '        Dim dsNewRow As DataRow
+    '        dsNewRow = ds.Tables(fillData).NewRow
+    '        With dsNewRow
+    '            .Item("opt_keys") = key
+    '            .Item("opt_values") = value
+    '            .Item("Remarks") = transdate
+    '        End With
+    '        ds.Tables(fillData).Rows.Add(dsNewRow)
+    '        SaveEntry(ds)
+    '    Else
+    '        With ds.Tables(fillData).Rows(0)
+    '            .Item("opt_values") = value
+    '            .Item("Remarks") = transdate
+    '        End With
+    '        SaveEntry(ds, False)
+    '    End If
+    'End Sub
 
     Friend Function CheckSalesIFNull() As Boolean
         databasePOS.dbNamePOS = GetOption("DatabasePOS")

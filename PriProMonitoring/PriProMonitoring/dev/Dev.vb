@@ -107,7 +107,14 @@
                     If MsgBox("Sales Updated.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, _
         "Sales...") = MsgBoxResult.Ok Then ProgressBar1.Minimum = 0 : ProgressBar1.Value = 0 : Label1.Text = "0.00%"
 
-                    UpdateOptionSales("LastSalesID", tmplastSalesID, tmpdate)
+                    Dim updatemainTainance As New GetSalesID
+
+                    With updatemainTainance
+                        .OPTVALUES = tmplastSalesID
+                        .REMARKS = tmpdate
+                    End With
+                    updatemainTainance.UPDATE_MAINTAINANCE("LastSalesID ")
+
                 End With
             End If
         End If

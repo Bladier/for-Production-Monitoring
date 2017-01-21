@@ -7,6 +7,8 @@ Public Class frmSettings
     Dim tmplastSalesID As String
     Dim tmpdate As String
 
+
+
     Dim tmpchamber As New Chamber
 
     Private Function IsValid() As Boolean
@@ -131,12 +133,19 @@ Public Class frmSettings
         If LastSaleID = "" Then
             tmplastSalesID = GetLastSaledID(0)
             tmpdate = GetLastSaledID(1)
-            UpdateOptionSales("LastSalesID ", tmplastSalesID, tmpdate)
+
+            Dim updatemainTainance As New GetSalesID
+
+            With updatemainTainance
+                .OPTVALUES = tmplastSalesID
+                .REMARKS = tmpdate
+            End With
+            updatemainTainance.UPDATE_MAINTAINANCE("LastSalesID ")
         End If
 
     End Sub
 
-    Friend Function GetLastSaledID() As String()
+    Private Function GetLastSaledID() As String()
 
         databasePOS.dbNamePOS = GetOption("DatabasePOS")
         Dim mysql As String = "select I.ID,I.itemno,E.TRANSDATE,E.DATESTAMP from POSITEM I " & _
@@ -153,7 +162,7 @@ Public Class frmSettings
         Return ID
     End Function
 
-    Friend Function GetLastEntry() As String()
+    Private Function GetLastEntry() As String()
         Dim LastTimeStamp As String = GetRemarks("LastSalesID")
         If LastTimeStamp = "" Then Return Nothing
         Dim ID As String()

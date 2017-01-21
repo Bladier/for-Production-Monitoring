@@ -110,6 +110,9 @@
     <Compile Include="CLASS\AdjustmentCollection.vb" />
     <Compile Include="CLASS\AdjustmentLine.vb" />
     <Compile Include="CLASS\Chamber.vb" />
+    <Compile Include="CLASS\GetSalesID.vb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="CLASS\PaperListEmpty.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
