@@ -25,13 +25,16 @@ Partial Class frmMagazine
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtSEarch = New PriProMonitoring.watermark()
         Me.dgPCCUT = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txtDescription = New PriProMonitoring.watermark()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtItemCode = New PriProMonitoring.watermark()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
@@ -42,9 +45,6 @@ Partial Class frmMagazine
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnRemove = New System.Windows.Forms.Button()
-        Me.txtDescription = New PriProMonitoring.watermark()
-        Me.txtItemCode = New PriProMonitoring.watermark()
-        Me.txtSEarch = New PriProMonitoring.watermark()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgPCCUT, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -79,6 +79,15 @@ Partial Class frmMagazine
         Me.GroupBox1.Size = New System.Drawing.Size(661, 49)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
+        '
+        'txtSEarch
+        '
+        Me.txtSEarch.Location = New System.Drawing.Point(72, 15)
+        Me.txtSEarch.Name = "txtSEarch"
+        Me.txtSEarch.Size = New System.Drawing.Size(490, 21)
+        Me.txtSEarch.TabIndex = 0
+        Me.txtSEarch.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSEarch.WatermarkText = "Search . . ."
         '
         'dgPCCUT
         '
@@ -125,6 +134,15 @@ Partial Class frmMagazine
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         '
+        'txtDescription
+        '
+        Me.txtDescription.Location = New System.Drawing.Point(82, 39)
+        Me.txtDescription.Name = "txtDescription"
+        Me.txtDescription.Size = New System.Drawing.Size(226, 21)
+        Me.txtDescription.TabIndex = 1
+        Me.txtDescription.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtDescription.WatermarkText = "Description"
+        '
         'Label3
         '
         Me.Label3.AutoSize = True
@@ -134,6 +152,15 @@ Partial Class frmMagazine
         Me.Label3.Size = New System.Drawing.Size(69, 15)
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "Description"
+        '
+        'txtItemCode
+        '
+        Me.txtItemCode.Location = New System.Drawing.Point(105, 11)
+        Me.txtItemCode.Name = "txtItemCode"
+        Me.txtItemCode.Size = New System.Drawing.Size(203, 21)
+        Me.txtItemCode.TabIndex = 0
+        Me.txtItemCode.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtItemCode.WatermarkText = "ItemCode"
         '
         'Label2
         '
@@ -220,33 +247,6 @@ Partial Class frmMagazine
         Me.btnRemove.TabIndex = 9
         Me.btnRemove.Text = "&Remove"
         Me.btnRemove.UseVisualStyleBackColor = True
-        '
-        'txtDescription
-        '
-        Me.txtDescription.Location = New System.Drawing.Point(82, 39)
-        Me.txtDescription.Name = "txtDescription"
-        Me.txtDescription.Size = New System.Drawing.Size(226, 21)
-        Me.txtDescription.TabIndex = 1
-        Me.txtDescription.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtDescription.WatermarkText = "Description"
-        '
-        'txtItemCode
-        '
-        Me.txtItemCode.Location = New System.Drawing.Point(105, 11)
-        Me.txtItemCode.Name = "txtItemCode"
-        Me.txtItemCode.Size = New System.Drawing.Size(203, 21)
-        Me.txtItemCode.TabIndex = 0
-        Me.txtItemCode.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtItemCode.WatermarkText = "ItemCode"
-        '
-        'txtSEarch
-        '
-        Me.txtSEarch.Location = New System.Drawing.Point(72, 15)
-        Me.txtSEarch.Name = "txtSEarch"
-        Me.txtSEarch.Size = New System.Drawing.Size(490, 21)
-        Me.txtSEarch.TabIndex = 0
-        Me.txtSEarch.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSEarch.WatermarkText = "Search . . ."
         '
         'frmMagazine
         '

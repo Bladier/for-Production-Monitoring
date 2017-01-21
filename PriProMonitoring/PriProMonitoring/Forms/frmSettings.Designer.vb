@@ -22,6 +22,7 @@ Partial Class frmSettings
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSettings))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txtVersion = New System.Windows.Forms.TextBox()
         Me.txtAreaname = New System.Windows.Forms.TextBox()
@@ -80,6 +81,7 @@ Partial Class frmSettings
         '
         'txtVersion
         '
+        Me.txtVersion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtVersion.Location = New System.Drawing.Point(90, 134)
         Me.txtVersion.Name = "txtVersion"
         Me.txtVersion.ReadOnly = True
@@ -88,6 +90,7 @@ Partial Class frmSettings
         '
         'txtAreaname
         '
+        Me.txtAreaname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtAreaname.Location = New System.Drawing.Point(90, 104)
         Me.txtAreaname.Name = "txtAreaname"
         Me.txtAreaname.ReadOnly = True
@@ -96,6 +99,7 @@ Partial Class frmSettings
         '
         'txtAreacode
         '
+        Me.txtAreacode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtAreacode.Location = New System.Drawing.Point(90, 75)
         Me.txtAreacode.Name = "txtAreacode"
         Me.txtAreacode.ReadOnly = True
@@ -104,6 +108,7 @@ Partial Class frmSettings
         '
         'txtBranchname
         '
+        Me.txtBranchname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtBranchname.Location = New System.Drawing.Point(90, 45)
         Me.txtBranchname.Name = "txtBranchname"
         Me.txtBranchname.ReadOnly = True
@@ -112,6 +117,7 @@ Partial Class frmSettings
         '
         'txtBranchCode
         '
+        Me.txtBranchCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtBranchCode.Location = New System.Drawing.Point(90, 13)
         Me.txtBranchCode.Name = "txtBranchCode"
         Me.txtBranchCode.ReadOnly = True
@@ -170,26 +176,31 @@ Partial Class frmSettings
         '
         'btnSave
         '
+        Me.btnSave.BackColor = System.Drawing.SystemColors.Control
+        Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSave.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSave.Location = New System.Drawing.Point(504, 203)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(76, 28)
         Me.btnSave.TabIndex = 5
         Me.btnSave.Text = "&Save"
-        Me.btnSave.UseVisualStyleBackColor = True
+        Me.btnSave.UseVisualStyleBackColor = False
         '
         'btnClose
         '
+        Me.btnClose.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnClose.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClose.Location = New System.Drawing.Point(586, 203)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(79, 28)
         Me.btnClose.TabIndex = 6
         Me.btnClose.Text = "&Close"
-        Me.btnClose.UseVisualStyleBackColor = True
+        Me.btnClose.UseVisualStyleBackColor = False
         '
         'txtpath
         '
+        Me.txtpath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtpath.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtpath.Location = New System.Drawing.Point(12, 18)
         Me.txtpath.Name = "txtpath"
@@ -247,6 +258,7 @@ Partial Class frmSettings
         '
         'txtMagazine
         '
+        Me.txtMagazine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtMagazine.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtMagazine.Location = New System.Drawing.Point(12, 18)
         Me.txtMagazine.Name = "txtMagazine"
@@ -284,6 +296,7 @@ Partial Class frmSettings
         '
         'txtPapercut
         '
+        Me.txtPapercut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtPapercut.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPapercut.Location = New System.Drawing.Point(12, 18)
         Me.txtPapercut.Name = "txtPapercut"
@@ -320,6 +333,7 @@ Partial Class frmSettings
         '
         'txtChamber
         '
+        Me.txtChamber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtChamber.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtChamber.Location = New System.Drawing.Point(140, 19)
         Me.txtChamber.Name = "txtChamber"
@@ -339,7 +353,9 @@ Partial Class frmSettings
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.GroupBox1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.Name = "frmSettings"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Settings"

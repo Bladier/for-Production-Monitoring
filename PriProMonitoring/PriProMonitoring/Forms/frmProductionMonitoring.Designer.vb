@@ -22,6 +22,7 @@ Partial Class frmProductionMonitoring
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmProductionMonitoring))
         Me.lvpapercuts = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -36,9 +37,9 @@ Partial Class frmProductionMonitoring
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.txtSearch = New PriProMonitoring.watermark()
         Me.txtMagazine2 = New PriProMonitoring.watermark()
         Me.txtMagazine1 = New PriProMonitoring.watermark()
+        Me.txtSearch = New PriProMonitoring.watermark()
         Me.StatusStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -144,15 +145,6 @@ Partial Class frmProductionMonitoring
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
-        'txtSearch
-        '
-        Me.txtSearch.Location = New System.Drawing.Point(58, 20)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(286, 21)
-        Me.txtSearch.TabIndex = 0
-        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSearch.WatermarkText = "Search paper roll serial"
-        '
         'txtMagazine2
         '
         Me.txtMagazine2.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -174,6 +166,15 @@ Partial Class frmProductionMonitoring
         Me.txtMagazine1.WatermarkColor = System.Drawing.Color.Gray
         Me.txtMagazine1.WatermarkText = "Magazine"
         '
+        'txtSearch
+        '
+        Me.txtSearch.Location = New System.Drawing.Point(58, 20)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(286, 21)
+        Me.txtSearch.TabIndex = 0
+        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSearch.WatermarkText = "Search paper roll serial"
+        '
         'frmProductionMonitoring
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -185,6 +186,7 @@ Partial Class frmProductionMonitoring
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.lvpapercuts)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "frmProductionMonitoring"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

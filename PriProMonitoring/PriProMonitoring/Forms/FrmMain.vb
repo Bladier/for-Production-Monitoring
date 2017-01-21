@@ -217,4 +217,10 @@
     Private Sub PaperEmptyDeclarationToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PaperEmptyDeclarationToolStripMenuItem.Click
         frmDeclaration.Show()
     End Sub
+
+    Private Sub FrmMain_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+        If MessageBox.Show("Do you want to closed?", Me.Text, MessageBoxButtons.OKCancel) = Windows.Forms.DialogResult.Cancel Then
+            e.Cancel = True
+        End If
+    End Sub
 End Class

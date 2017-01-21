@@ -224,4 +224,5 @@ Public Class frmMagazine
         If lvMag.SelectedItems.Count = 0 Then Exit Sub
         lvMag.SelectedItems(0).Remove()
     End Sub
+
 End Class

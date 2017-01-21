@@ -84,6 +84,9 @@
         For Each dr As DataRow In ds.Tables(0).Rows
             Dim mysqlitem As String = "SELECT * FROM ITEM WHERE ITEMCODE = '" & dr.Item("ITEMCODE") & "'"
             Dim dsnew As DataSet = LoadSQL(mysqlitem, "ITEM")
+
+            If dsnew.Tables(0).Rows.Count = 0 Then GoTo nextlineTodo
+
             Dim tmpID As Integer = dsnew.Tables(0).Rows(0).Item("ITEM_ID")
 
             Dim mysqlitmLine As String = "SELECT * FROM TBLITEM_LINE where ITEM_ID = ' " & tmpID & "'"
