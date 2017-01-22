@@ -114,14 +114,8 @@
     End Sub
 
     Private Sub SalesWatcher_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SalesWatcher.Tick
-
-        If ToolStripSplitButton1.Enabled = False Then
-            SalesWatcher.Stop()
-            Exit Sub
-        End If
-
-        ToolStripSplitButton1.PerformButtonClick()
-        SalesWatcher.Start()
+        SalesWatcher.Stop()
+        bgWorker.RunWorkerAsync()
     End Sub
 
     Private Sub bgWorker_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles bgWorker.DoWork
@@ -159,7 +153,7 @@
                                              "I.QTY,E.DATESTAMP FROM POSITEM I " & _
                                             "INNER JOIN POSENTRY E ON I.POSENTRYID = E.ID " & _
                                             "INNER JOIN ITEMMASTER M ON I.ITEMNO = M.ITEMNO " & _
-                                            "where E.DATESTAMP > '" & tmpRemarks & "'" & _
+                                            "where E.DATESTAMP > '" & tmpRemarks & "' AND I.QTY <> '0' " & _
                                              "ORDER BY E.DATESTAMP ASC "
 
                     Dim ds As DataSet = LoadSQLPOS(POSsales, "POSITEM")
@@ -200,13 +194,9 @@
         End If
     End Sub
   
-    Private Sub ToolStripSplitButton1_ButtonClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripSplitButton1.Click
-        ToolStripSplitButton1.Enabled = False
-        bgWorker.RunWorkerAsync()
-    End Sub
 
     Private Sub bgWorker_RunWorkerCompleted(ByVal sender As System.Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bgWorker.RunWorkerCompleted
-        ToolStripSplitButton1.Enabled = True
+        SalesWatcher.Start()
     End Sub
 
   
@@ -223,4 +213,5 @@
             e.Cancel = True
         End If
     End Sub
+
 End Class

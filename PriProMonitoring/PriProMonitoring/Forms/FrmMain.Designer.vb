@@ -39,7 +39,6 @@ Partial Class FrmMain
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusDateandTime = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripSplitButton1 = New System.Windows.Forms.ToolStripSplitButton()
         Me.lblToolStripStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripPBar = New System.Windows.Forms.ToolStripProgressBar()
         Me.Count = New System.Windows.Forms.ToolStripStatusLabel()
@@ -130,7 +129,7 @@ Partial Class FrmMain
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusDateandTime, Me.statusUser, Me.ToolStripSplitButton1, Me.lblToolStripStatus, Me.ToolStripPBar, Me.Count})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusDateandTime, Me.statusUser, Me.lblToolStripStatus, Me.ToolStripPBar, Me.Count})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 551)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(1003, 25)
@@ -152,19 +151,6 @@ Partial Class FrmMain
         Me.statusUser.Name = "statusUser"
         Me.statusUser.Size = New System.Drawing.Size(30, 23)
         Me.statusUser.Text = "User"
-        '
-        'ToolStripSplitButton1
-        '
-        Me.ToolStripSplitButton1.AutoToolTip = False
-        Me.ToolStripSplitButton1.BackColor = System.Drawing.Color.White
-        Me.ToolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripSplitButton1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ToolStripSplitButton1.Image = CType(resources.GetObject("ToolStripSplitButton1.Image"), System.Drawing.Image)
-        Me.ToolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripSplitButton1.Margin = New System.Windows.Forms.Padding(0)
-        Me.ToolStripSplitButton1.Name = "ToolStripSplitButton1"
-        Me.ToolStripSplitButton1.Size = New System.Drawing.Size(52, 25)
-        Me.ToolStripSplitButton1.Text = "Sales "
         '
         'lblToolStripStatus
         '
@@ -243,7 +229,6 @@ Partial Class FrmMain
     Friend WithEvents ToolStripPBar As System.Windows.Forms.ToolStripProgressBar
     Friend WithEvents lblToolStripStatus As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents Count As System.Windows.Forms.ToolStripStatusLabel
-    Friend WithEvents ToolStripSplitButton1 As System.Windows.Forms.ToolStripSplitButton
     Friend WithEvents SettingsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PaperEmptyDeclarationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class
