@@ -45,6 +45,8 @@ Partial Class FrmMain
         Me.TmpTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SalesWatcher = New System.Windows.Forms.Timer(Me.components)
         Me.bgWorker = New System.ComponentModel.BackgroundWorker()
+        Me.StatusCounter = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.Counter = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -129,7 +131,7 @@ Partial Class FrmMain
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusDateandTime, Me.statusUser, Me.lblToolStripStatus, Me.ToolStripPBar, Me.Count})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusDateandTime, Me.statusUser, Me.lblToolStripStatus, Me.ToolStripPBar, Me.StatusCounter, Me.Count})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 551)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(1003, 25)
@@ -182,11 +184,23 @@ Partial Class FrmMain
         'SalesWatcher
         '
         Me.SalesWatcher.Enabled = True
-        Me.SalesWatcher.Interval = 60000
+        Me.SalesWatcher.Interval = 30000
         '
         'bgWorker
         '
         Me.bgWorker.WorkerReportsProgress = True
+        '
+        'StatusCounter
+        '
+        Me.StatusCounter.BackColor = System.Drawing.SystemColors.Control
+        Me.StatusCounter.Name = "StatusCounter"
+        Me.StatusCounter.Size = New System.Drawing.Size(50, 20)
+        Me.StatusCounter.Text = "Counter"
+        '
+        'Counter
+        '
+        Me.Counter.Enabled = True
+        Me.Counter.Interval = 1000
         '
         'FrmMain
         '
@@ -231,4 +245,6 @@ Partial Class FrmMain
     Friend WithEvents Count As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents SettingsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PaperEmptyDeclarationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents StatusCounter As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents Counter As System.Windows.Forms.Timer
 End Class

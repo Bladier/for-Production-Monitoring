@@ -6,6 +6,8 @@
     Dim tmplastSalesID As String
     Dim tmpdate As String
 
+    Dim timerCounter As Integer = 30
+
     Friend Sub NotYetLogin(Optional ByVal st As Boolean = True)
         locked = IIf(GetOption("Locked") = "YES", True, False)
 
@@ -119,6 +121,9 @@
     End Sub
 
     Private Sub bgWorker_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles bgWorker.DoWork
+        Counter.Stop()
+        timerCounter = 0
+        StatusCounter.Text = timerCounter
         NewSalesLoad()
     End Sub
 
@@ -165,11 +170,28 @@
                     Count.Text = max
 
                     For Each dr As DataRow In ds.Tables(0).Rows
-                        .ItemCode = dr.Item("ItemNo")
-                        .Descrition = dr.Item("Description")
-                        .SalesID = dr.Item("ID")
-                        .QTY = dr.Item("QTY")
-                        .SaveSales()
+
+                        Dim tmpItemLine As New ItemLine
+
+                        Dim mysqlITem As String = "SELECT * FROM ITEM WHERE ITEMCODE = '" & dr.Item("ITEMNO") & "'"
+                        Dim dsITEM As DataSet = LoadSQL(mysqlITem, "ITEM")
+
+                        If dsITEM.Tables(0).Rows.Count = 0 Then
+                            On Error Resume Next
+                        Else
+                            tmpItemLine.LoadExistItemLine(dsITEM.Tables(0).Rows(0).Item("ITEM_ID"))
+
+                            If tmpItemLine.itemLineID = 0 Then
+                                On Error Resume Next
+                            Else
+
+                                .ItemCode = dr.Item("ItemNo")
+                                .Descrition = dr.Item("Description")
+                                .SalesID = dr.Item("ID")
+                                .QTY = dr.Item("QTY")
+                                .SaveSales()
+                            End If
+                        End If
 
                         ToolStripPBar.Maximum = max
                         ToolStripPBar.Value = ToolStripPBar.Value + 1
@@ -197,6 +219,8 @@
 
     Private Sub bgWorker_RunWorkerCompleted(ByVal sender As System.Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bgWorker.RunWorkerCompleted
         SalesWatcher.Start()
+        Counter.Start()
+        timerCounter = 30
     End Sub
 
   
@@ -214,4 +238,12 @@
         End If
     End Sub
 
+    Private Sub Counter_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Counter.Tick
+        StatusCounter.Text = timerCounter.ToString
+        If timerCounter = 0 Then
+            timerCounter = 30
+        Else
+            timerCounter -= 1
+        End If
+    End Sub
 End Class

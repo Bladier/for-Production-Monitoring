@@ -87,7 +87,7 @@ Public Class ComputerUser
 
     Public Function LoginUser(ByVal user As String, ByVal password As String) As Boolean
         mySql = "SELECT  * FROM " & fillData
-        mySql &= vbCrLf & String.Format(" WHERE UPPER(USERID) = UPPER('{0}') AND UPPER(PasswD) = UPPER('{1}')", user, password)
+        mySql &= vbCrLf & String.Format(" WHERE UPPER(CODE) = UPPER('{0}') AND UPPER(PasswD) = UPPER('{1}')", user, password)
         Dim ds As DataSet
 
         ds = LoadSQLPOS(mySql, fillData)

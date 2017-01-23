@@ -136,7 +136,7 @@ nextlineTodo:
 
         For Each itm As ListViewItem In lvpapercuts.Items
             Dim newMysqlSalesLines As String = "SELECT * FROM TBL_PROLINE " & _
-                "WHERE PAPCUT_CODE = '" & itm.SubItems(6).Text & "' AND STATUS <> 1 AND STATUS <> 2"
+                "WHERE PAPCUT_CODE = '" & itm.SubItems(6).Text & "' AND STATUS <> 1 "
             Dim MysqlSalesLines As DataSet = LoadSQL(newMysqlSalesLines, "TBL_PROLINE")
 
             If MysqlSalesLines.Tables(0).Rows.Count = 0 Then On Error Resume Next

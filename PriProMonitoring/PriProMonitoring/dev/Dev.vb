@@ -1,5 +1,6 @@
 ﻿Public Class Dev
 
+    Dim timercount As Integer = 30
 
     Dim tmplastSalesID As String
     Dim tmpdate As String
@@ -150,5 +151,22 @@
             .Item("Updated_at") = Now
         End With
         database.SaveEntry(ds, False)
+    End Sub
+
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        Timer1.Interval = 1000 'The number of miliseconds in a second
+        Timer1.Enabled = True 'Start the timer
+
+    End Sub
+
+    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+
+        Label2.Text = timercount.ToString() 'show the countdown in the label
+        If timercount = 0 Then 'Check to see if it has reached 0, if yes then stop timer and display done
+            timercount = 30
+            Button3.PerformClick()
+        Else 'If timercount is higher then 0 then subtract one from it
+            timercount -= 1
+        End If
     End Sub
 End Class

@@ -49,15 +49,18 @@ Public Class frmLoadMagazine
         If lvPaproll.Items.Count = 0 Then Exit Sub
 
         Dim getchamber As Integer = GetOption("Number Chamber")
-        If getchamber < 2 Then
+        If getchamber = 1 Then
+            If lvPaproll.Items.Count <> 1 Then MsgBox("This branch used only one chamber." & vbCrLf & "Just remove one magazine.", MsgBoxStyle.Critical, "Magazine setup") : Exit Sub
             For Each itm As ListViewItem In lvPaproll.Items
                 UpdateRollstatus(itm.SubItems(4).Text, "1", itm.SubItems(2).Text)
             Next
-        Else
-            For Each itm As ListViewItem In lvPaproll.Items
-                UpdateRollstatus(itm.SubItems(4).Text, "1", itm.SubItems(2).Text)
-            Next
+        End If
 
+        If getchamber = 2 Then
+            If lvPaproll.Items.Count <> 2 Then MsgBox("This branch has two chamber." & vbCrLf & "Add one more magazine.", MsgBoxStyle.Critical, "Magazine setup") : Exit Sub
+            For Each itm As ListViewItem In lvPaproll.Items
+                UpdateRollstatus(itm.SubItems(4).Text, "1", itm.SubItems(2).Text)
+            Next
         End If
 
         UpdateOptions("Magazine", "YES") 'Set magazine load

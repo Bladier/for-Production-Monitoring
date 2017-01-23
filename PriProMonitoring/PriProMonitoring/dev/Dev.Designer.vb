@@ -22,12 +22,16 @@ Partial Class Dev
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnDeduct = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'Button1
@@ -77,11 +81,34 @@ Partial Class Dev
         Me.btnDeduct.Text = "Deduct to Negative"
         Me.btnDeduct.UseVisualStyleBackColor = True
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(480, 39)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(104, 23)
+        Me.Button3.TabIndex = 5
+        Me.Button3.Text = "Counter"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(510, 75)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(39, 13)
+        Me.Label2.TabIndex = 6
+        Me.Label2.Text = "Label2"
+        '
+        'Timer1
+        '
+        '
         'Dev
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(401, 262)
+        Me.ClientSize = New System.Drawing.Size(608, 238)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.btnDeduct)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ProgressBar1)
@@ -99,4 +126,7 @@ Partial Class Dev
     Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnDeduct As System.Windows.Forms.Button
+    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Timer1 As System.Windows.Forms.Timer
 End Class

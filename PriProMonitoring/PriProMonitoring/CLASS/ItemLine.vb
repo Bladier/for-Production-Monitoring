@@ -96,6 +96,25 @@
         End With
     End Sub
 
+    Friend Sub LoadExistItemLine(ByVal id As Integer)
+        Dim mySql As String = String.Format("SELECT * FROM tblitem_line WHERE ITEM_ID = {0}", id)
+        Dim ds As DataSet = LoadSQL(mySql, MainTable)
+
+        'If ds.Tables(0).Rows.Count <= 0 Then
+        '    MsgBox("Failed to load Item", MsgBoxStyle.Critical)
+        '    Exit Sub
+        'End If
+
+        With ds.Tables(0).Rows(0)
+            _itemLineID = .Item("ITemLine_ID")
+            _Item_ID = .Item("Item_ID")
+            _PaperCut_ID = .Item("PaperCut_ID")
+            _QTY = .Item("QTY")
+            _Created_at = .Item("Created_at")
+            _Updated_at = .Item("Updated_at")
+        End With
+    End Sub
+
     Public Sub Save_itemLine()
         Dim isNew As Boolean = False
 
