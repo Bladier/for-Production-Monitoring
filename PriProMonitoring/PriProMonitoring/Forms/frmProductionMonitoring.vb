@@ -6,7 +6,15 @@
 
     Dim chmbercount As Integer = GetOption("Number Chamber")
 
+    Dim timerCounter As Integer = 30
+
     Private Sub frmProductionMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.TopMost = True
+        Control.CheckForIllegalCrossThreadCalls = False
+
+        ProductionWatcher.Start()
+        ProductionTimer1.Start()
+
         If chmbercount < 2 Then
             txtMagazine1.Text = GetMag(0) : txtMagazine2.Visible = False : Exit Sub
         End If
@@ -76,10 +84,12 @@
     Private Sub Production()
         Dim mysql As String = "SELECT * FROM TBLPRO WHERE STATUS = '0'"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPRO")
-        Console.WriteLine("TBLPRO count: " & ds.Tables(0).Rows.Count)
 
         If ds.Tables(0).Rows.Count = 0 Then GoTo nextlineTodo
 
+        Console.WriteLine("TBLPRO count: " & ds.Tables(0).Rows.Count)
+
+        Dim max As Integer = ds.Tables(0).Rows.Count
 
         For Each dr As DataRow In ds.Tables(0).Rows
             Dim mysqlitem As String = "SELECT * FROM ITEM WHERE ITEMCODE = '" & dr.Item("ITEMCODE") & "'"
@@ -174,6 +184,32 @@ nextlineTodo:
         frmPaperRolls.txtSearch.Text = txtSearch.Text
         frmPaperRolls.Show()
         Me.Close()
+    End Sub
 
+    Private Sub BGwatcher_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles BGwatcher.DoWork
+        ProductionTimer1.Stop()
+        timerCounter = 0
+        StatusTimer.Text = timerCounter
+        Production()
+    End Sub
+
+    Private Sub ProductionWatcher_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductionWatcher.Tick
+        ProductionWatcher.Stop()
+        BGwatcher.RunWorkerAsync()
+    End Sub
+
+    Private Sub BGwatcher_RunWorkerCompleted(ByVal sender As System.Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BGwatcher.RunWorkerCompleted
+        ProductionWatcher.Start()
+        ProductionTimer1.Start()
+        timerCounter = 30
+    End Sub
+
+    Private Sub ProductionTimer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductionTimer1.Tick
+        StatusTimer.Text = timerCounter.ToString
+        If timerCounter = 0 Then
+            timerCounter = 30
+        Else
+            timerCounter -= 1
+        End If
     End Sub
 End Class

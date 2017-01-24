@@ -53,6 +53,7 @@ Partial Class FrmMain
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.BackColor = System.Drawing.Color.Gainsboro
         Me.MenuStrip1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.menuInitialization, Me.MagazineToolStripMenuItem, Me.TransactionToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
@@ -133,10 +134,11 @@ Partial Class FrmMain
         'StatusStrip1
         '
         Me.StatusStrip1.BackgroundImage = CType(resources.GetObject("StatusStrip1.BackgroundImage"), System.Drawing.Image)
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusDateandTime, Me.statusUser, Me.lblToolStripStatus, Me.ToolStripPBar, Me.StatusCounter, Me.Count})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 551)
+        Me.StatusStrip1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusDateandTime, Me.statusUser, Me.StatusCounter, Me.lblToolStripStatus, Me.ToolStripPBar, Me.Count})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 550)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1003, 25)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1003, 26)
         Me.StatusStrip1.TabIndex = 1
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -150,7 +152,7 @@ Partial Class FrmMain
         Me.statusDateandTime.Image = CType(resources.GetObject("statusDateandTime.Image"), System.Drawing.Image)
         Me.statusDateandTime.Margin = New System.Windows.Forms.Padding(0, 0, 0, 2)
         Me.statusDateandTime.Name = "statusDateandTime"
-        Me.statusDateandTime.Size = New System.Drawing.Size(93, 23)
+        Me.statusDateandTime.Size = New System.Drawing.Size(103, 24)
         Me.statusDateandTime.Text = "Date Not Set"
         '
         'statusUser
@@ -162,7 +164,7 @@ Partial Class FrmMain
         Me.statusUser.Image = CType(resources.GetObject("statusUser.Image"), System.Drawing.Image)
         Me.statusUser.Margin = New System.Windows.Forms.Padding(0, 0, 0, 2)
         Me.statusUser.Name = "statusUser"
-        Me.statusUser.Size = New System.Drawing.Size(50, 23)
+        Me.statusUser.Size = New System.Drawing.Size(55, 24)
         Me.statusUser.Text = "User"
         '
         'lblToolStripStatus
@@ -173,12 +175,12 @@ Partial Class FrmMain
                     Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
         Me.lblToolStripStatus.Margin = New System.Windows.Forms.Padding(0, 0, 0, 2)
         Me.lblToolStripStatus.Name = "lblToolStripStatus"
-        Me.lblToolStripStatus.Size = New System.Drawing.Size(42, 23)
+        Me.lblToolStripStatus.Size = New System.Drawing.Size(49, 24)
         Me.lblToolStripStatus.Text = "0.00%"
         '
         'ToolStripPBar
         '
-        Me.ToolStripPBar.Margin = New System.Windows.Forms.Padding(0)
+        Me.ToolStripPBar.Margin = New System.Windows.Forms.Padding(0, 0, 0, 1)
         Me.ToolStripPBar.Name = "ToolStripPBar"
         Me.ToolStripPBar.Size = New System.Drawing.Size(117, 25)
         Me.ToolStripPBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous
@@ -193,7 +195,7 @@ Partial Class FrmMain
         Me.StatusCounter.Image = CType(resources.GetObject("StatusCounter.Image"), System.Drawing.Image)
         Me.StatusCounter.Margin = New System.Windows.Forms.Padding(0)
         Me.StatusCounter.Name = "StatusCounter"
-        Me.StatusCounter.Size = New System.Drawing.Size(39, 25)
+        Me.StatusCounter.Size = New System.Drawing.Size(42, 26)
         Me.StatusCounter.Text = "30"
         '
         'Count
@@ -201,7 +203,7 @@ Partial Class FrmMain
         Me.Count.BackColor = System.Drawing.SystemColors.Control
         Me.Count.ForeColor = System.Drawing.Color.Silver
         Me.Count.Name = "Count"
-        Me.Count.Size = New System.Drawing.Size(13, 20)
+        Me.Count.Size = New System.Drawing.Size(15, 21)
         Me.Count.Text = "1"
         '
         'TmpTimer
@@ -227,6 +229,7 @@ Partial Class FrmMain
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1003, 576)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)

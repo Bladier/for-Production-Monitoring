@@ -4,9 +4,17 @@
 
     Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
         If LvPaperRollList.Items.Count = 0 Then Exit Sub
-        If CboChamber.Text = "" Then Exit Sub
         If LvPaperRollList.SelectedItems.Count = 0 Then Exit Sub
 
+        If ModName = "Empty paper roll" Then
+            frmDeclaration.txtSearch.Text = LvPaperRollList.SelectedItems(0).SubItems(3).Text
+            frmDeclaration.txtSearch.Focus()
+            frmDeclaration.Show()
+            Me.Close()
+            Exit Sub
+        End If
+
+        If CboChamber.Text = "" Then Exit Sub
         If Not MagStatus Then
 
             'Dim ChamberCount As Integer = GetOption("")
@@ -223,6 +231,7 @@ nextlineTodo:
 
         Return value
     End Function
+
     Private Sub txtSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
         If isEnter(e) Then btnSearch.PerformClick()
     End Sub
@@ -235,5 +244,10 @@ nextlineTodo:
         If isEnter(e) Then
             btnSelect.PerformClick()
         End If
+    End Sub
+
+    Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
+        frmPaperRoll.Show()
+        Me.Hide()
     End Sub
 End Class

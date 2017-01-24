@@ -12,6 +12,7 @@
     Private Sub SavePapRoll()
         If Not isValid() Then Exit Sub
 
+
         Dim mysql As String = "SELECT * FROM TBLPAPERROLL WHERE PAPROLL_SERIAL = '" & txtSerial.Text & "'"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
         If ds.Tables(0).Rows.Count >= 1 Then MsgBox("Paper Roll Serial Already Existed", MsgBoxStyle.Exclamation) : Exit Sub
@@ -31,6 +32,14 @@
         End With
 
         PaprollSave.SaveRoll()
+
+        If ModName = "Declare empty paper roll" Then
+            frmDeclaration.txtSearch.Text = txtSerial.Text
+            frmDeclaration.txtSearch.Focus()
+            frmDeclaration.Show()
+            Me.Close()
+            Exit Sub
+        End If
 
         MsgBox("Paper Roll Saved", MsgBoxStyle.Information)
         clearFields()

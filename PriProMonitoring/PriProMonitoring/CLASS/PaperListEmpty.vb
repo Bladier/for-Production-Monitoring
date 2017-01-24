@@ -129,10 +129,28 @@
 
     End Sub
 
+
+    Friend Sub EmpRoll(ByVal serial As String, ByVal status As Integer, Optional ByVal tmpchamber As String = "")
+        Dim mySql As String = "SELECT * FROM TBLPAPERROLL WHERE paproll_serial = '" & serial & "'"
+        Dim fillData As String = "TBLPAPERROLL"
+        Dim ds As DataSet = LoadSQL(mySql, fillData)
+
+        If ds.Tables(fillData).Rows.Count = 1 Then
+            With ds.Tables("TBLPAPERROLL").Rows(0)
+                .Item("Updated_at") = Now
+                .Item("AddedBy") = FrmMain.statusUser.Text
+                .Item("status") = status
+                .Item("Chamber") = tmpchamber
+            End With
+            database.SaveEntry(ds, False)
+        End If
+    End Sub
+
+
     Public Function PopulateSerial() As List(Of String)
 
         Dim serial As New List(Of String)()
-        Dim mysql As String = "SELECT * FROM TBLPAPERROLL WHERE STATUS <> 2 ORDER BY PAPROLL_ID"
+        Dim mysql As String = "SELECT * FROM TBLPAPERROLL WHERE STATUS <> 2 ORDER BY PAPROLL_ID "
         Dim ds As DataSet = LoadSQL(mysql, "tblpaperroll")
 
         For Each dr As DataRow In ds.Tables(0).Rows

@@ -99,7 +99,8 @@
             Me.Refresh()
             Exit Sub
         End If
-        frmProductionMonitoring.Show()
+
+       frmProductionMonitoring.Show()
     End Sub
 
     Private Sub LoadMagazineToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadMagazineToolStripMenuItem.Click

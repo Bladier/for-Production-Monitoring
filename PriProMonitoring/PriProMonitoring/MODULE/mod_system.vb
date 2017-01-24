@@ -11,6 +11,8 @@ Module mod_system
     Public POSuser As New ComputerUser
     Public Meter As Double = 0.0254 ' 1 inch = 0.0254
 
+    Public ModName As String = ""
+
     Friend Function DigitOnly(ByVal e As System.Windows.Forms.KeyPressEventArgs, Optional ByVal isWhole As Boolean = False)
         Console.WriteLine("char: " & e.KeyChar & " -" & Char.IsDigit(e.KeyChar))
         If e.KeyChar <> ControlChars.Back Then

@@ -35,6 +35,8 @@ Partial Class frmPaperRolls
         Me.btnClose = New System.Windows.Forms.Button()
         Me.CboChamber = New System.Windows.Forms.ComboBox()
         Me.lblChamber = New System.Windows.Forms.Label()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -81,7 +83,7 @@ Partial Class frmPaperRolls
         '
         'LvPaperRollList
         '
-        Me.LvPaperRollList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5})
+        Me.LvPaperRollList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader1})
         Me.LvPaperRollList.Font = New System.Drawing.Font("MS Reference Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LvPaperRollList.FullRowSelect = True
         Me.LvPaperRollList.GridLines = True
@@ -106,12 +108,12 @@ Partial Class frmPaperRolls
         'ColumnHeader4
         '
         Me.ColumnHeader4.Text = "Magazine"
-        Me.ColumnHeader4.Width = 230
+        Me.ColumnHeader4.Width = 142
         '
         'ColumnHeader5
         '
         Me.ColumnHeader5.Text = "Paper Roll"
-        Me.ColumnHeader5.Width = 197
+        Me.ColumnHeader5.Width = 129
         '
         'btnSelect
         '
@@ -163,12 +165,31 @@ Partial Class frmPaperRolls
         Me.lblChamber.TabIndex = 5
         Me.lblChamber.Text = "Chamber"
         '
+        'btnAdd
+        '
+        Me.btnAdd.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAdd.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.btnAdd.Location = New System.Drawing.Point(12, 309)
+        Me.btnAdd.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(119, 42)
+        Me.btnAdd.TabIndex = 6
+        Me.btnAdd.Text = "&Add paper roll"
+        Me.btnAdd.UseVisualStyleBackColor = True
+        '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "Chamber"
+        Me.ColumnHeader1.Width = 157
+        '
         'frmPaperRolls
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(632, 357)
+        Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.lblChamber)
         Me.Controls.Add(Me.CboChamber)
         Me.Controls.Add(Me.btnClose)
@@ -198,4 +219,6 @@ Partial Class frmPaperRolls
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents CboChamber As System.Windows.Forms.ComboBox
     Friend WithEvents lblChamber As System.Windows.Forms.Label
+    Friend WithEvents btnAdd As System.Windows.Forms.Button
+    Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
 End Class
