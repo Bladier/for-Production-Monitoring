@@ -41,11 +41,11 @@ Partial Class FrmMain
         Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lblToolStripStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripPBar = New System.Windows.Forms.ToolStripProgressBar()
+        Me.StatusCounter = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Count = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TmpTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SalesWatcher = New System.Windows.Forms.Timer(Me.components)
         Me.bgWorker = New System.ComponentModel.BackgroundWorker()
-        Me.StatusCounter = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Counter = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -53,6 +53,7 @@ Partial Class FrmMain
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.menuInitialization, Me.MagazineToolStripMenuItem, Me.TransactionToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
@@ -64,73 +65,74 @@ Partial Class FrmMain
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuLogin, Me.AdjustmentToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.PaperEmptyDeclarationToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(41, 20)
         Me.FileToolStripMenuItem.Text = "File"
         '
         'menuLogin
         '
         Me.menuLogin.Name = "menuLogin"
-        Me.menuLogin.Size = New System.Drawing.Size(204, 22)
+        Me.menuLogin.Size = New System.Drawing.Size(219, 22)
         Me.menuLogin.Text = "&Login"
         '
         'AdjustmentToolStripMenuItem
         '
         Me.AdjustmentToolStripMenuItem.Name = "AdjustmentToolStripMenuItem"
-        Me.AdjustmentToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
+        Me.AdjustmentToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
         Me.AdjustmentToolStripMenuItem.Text = "&Adjustment"
         '
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
         Me.SettingsToolStripMenuItem.Text = "&Settings"
         '
         'PaperEmptyDeclarationToolStripMenuItem
         '
         Me.PaperEmptyDeclarationToolStripMenuItem.Name = "PaperEmptyDeclarationToolStripMenuItem"
-        Me.PaperEmptyDeclarationToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
+        Me.PaperEmptyDeclarationToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
         Me.PaperEmptyDeclarationToolStripMenuItem.Text = "Paper empty &Declaration"
         '
         'menuInitialization
         '
         Me.menuInitialization.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadMagazineToolStripMenuItem})
         Me.menuInitialization.Name = "menuInitialization"
-        Me.menuInitialization.Size = New System.Drawing.Size(83, 20)
+        Me.menuInitialization.Size = New System.Drawing.Size(88, 20)
         Me.menuInitialization.Text = "Initialization"
         '
         'LoadMagazineToolStripMenuItem
         '
         Me.LoadMagazineToolStripMenuItem.Name = "LoadMagazineToolStripMenuItem"
-        Me.LoadMagazineToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.LoadMagazineToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.LoadMagazineToolStripMenuItem.Text = "&Load Magazine"
         '
         'MagazineToolStripMenuItem
         '
         Me.MagazineToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddPaperRollToolStripMenuItem, Me.AddItemToolStripMenuItem})
         Me.MagazineToolStripMenuItem.Name = "MagazineToolStripMenuItem"
-        Me.MagazineToolStripMenuItem.Size = New System.Drawing.Size(70, 20)
+        Me.MagazineToolStripMenuItem.Size = New System.Drawing.Size(76, 20)
         Me.MagazineToolStripMenuItem.Text = "Magazine"
         '
         'AddPaperRollToolStripMenuItem
         '
         Me.AddPaperRollToolStripMenuItem.Name = "AddPaperRollToolStripMenuItem"
-        Me.AddPaperRollToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AddPaperRollToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
         Me.AddPaperRollToolStripMenuItem.Text = "Add &Paper Roll"
         '
         'AddItemToolStripMenuItem
         '
         Me.AddItemToolStripMenuItem.Name = "AddItemToolStripMenuItem"
-        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
         Me.AddItemToolStripMenuItem.Text = "Add &Item"
         '
         'TransactionToolStripMenuItem
         '
         Me.TransactionToolStripMenuItem.Name = "TransactionToolStripMenuItem"
-        Me.TransactionToolStripMenuItem.Size = New System.Drawing.Size(81, 20)
+        Me.TransactionToolStripMenuItem.Size = New System.Drawing.Size(87, 20)
         Me.TransactionToolStripMenuItem.Text = "Transaction"
         '
         'StatusStrip1
         '
+        Me.StatusStrip1.BackgroundImage = CType(resources.GetObject("StatusStrip1.BackgroundImage"), System.Drawing.Image)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusDateandTime, Me.statusUser, Me.lblToolStripStatus, Me.ToolStripPBar, Me.StatusCounter, Me.Count})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 551)
         Me.StatusStrip1.Name = "StatusStrip1"
@@ -141,25 +143,37 @@ Partial Class FrmMain
         'statusDateandTime
         '
         Me.statusDateandTime.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.statusDateandTime.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.statusDateandTime.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.statusDateandTime.Image = CType(resources.GetObject("statusDateandTime.Image"), System.Drawing.Image)
         Me.statusDateandTime.Margin = New System.Windows.Forms.Padding(0, 0, 0, 2)
         Me.statusDateandTime.Name = "statusDateandTime"
-        Me.statusDateandTime.Size = New System.Drawing.Size(73, 23)
+        Me.statusDateandTime.Size = New System.Drawing.Size(93, 23)
         Me.statusDateandTime.Text = "Date Not Set"
         '
         'statusUser
         '
-        Me.statusUser.BackColor = System.Drawing.Color.OrangeRed
+        Me.statusUser.BackColor = System.Drawing.Color.Gainsboro
+        Me.statusUser.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.statusUser.Image = CType(resources.GetObject("statusUser.Image"), System.Drawing.Image)
         Me.statusUser.Margin = New System.Windows.Forms.Padding(0, 0, 0, 2)
         Me.statusUser.Name = "statusUser"
-        Me.statusUser.Size = New System.Drawing.Size(30, 23)
+        Me.statusUser.Size = New System.Drawing.Size(50, 23)
         Me.statusUser.Text = "User"
         '
         'lblToolStripStatus
         '
         Me.lblToolStripStatus.BackColor = System.Drawing.Color.White
+        Me.lblToolStripStatus.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
         Me.lblToolStripStatus.Margin = New System.Windows.Forms.Padding(0, 0, 0, 2)
         Me.lblToolStripStatus.Name = "lblToolStripStatus"
-        Me.lblToolStripStatus.Size = New System.Drawing.Size(38, 23)
+        Me.lblToolStripStatus.Size = New System.Drawing.Size(42, 23)
         Me.lblToolStripStatus.Text = "0.00%"
         '
         'ToolStripPBar
@@ -169,10 +183,23 @@ Partial Class FrmMain
         Me.ToolStripPBar.Size = New System.Drawing.Size(117, 25)
         Me.ToolStripPBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         '
+        'StatusCounter
+        '
+        Me.StatusCounter.BackColor = System.Drawing.SystemColors.Control
+        Me.StatusCounter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.StatusCounter.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.StatusCounter.Image = CType(resources.GetObject("StatusCounter.Image"), System.Drawing.Image)
+        Me.StatusCounter.Margin = New System.Windows.Forms.Padding(0)
+        Me.StatusCounter.Name = "StatusCounter"
+        Me.StatusCounter.Size = New System.Drawing.Size(39, 25)
+        Me.StatusCounter.Text = "30"
+        '
         'Count
         '
         Me.Count.BackColor = System.Drawing.SystemColors.Control
-        Me.Count.ForeColor = System.Drawing.SystemColors.Control
+        Me.Count.ForeColor = System.Drawing.Color.Silver
         Me.Count.Name = "Count"
         Me.Count.Size = New System.Drawing.Size(13, 20)
         Me.Count.Text = "1"
@@ -189,13 +216,6 @@ Partial Class FrmMain
         'bgWorker
         '
         Me.bgWorker.WorkerReportsProgress = True
-        '
-        'StatusCounter
-        '
-        Me.StatusCounter.BackColor = System.Drawing.SystemColors.Control
-        Me.StatusCounter.Name = "StatusCounter"
-        Me.StatusCounter.Size = New System.Drawing.Size(50, 20)
-        Me.StatusCounter.Text = "Counter"
         '
         'Counter
         '

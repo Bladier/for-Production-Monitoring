@@ -105,29 +105,31 @@
     End Sub
 
 
+    Public Function LoadMagID(ByVal magdesc As String) As Integer
+        Dim mysql = String.Format("SELECT * FROM tblmagazine WHERE magDescription = '{0}'", magdesc)
+        Dim ds As DataSet = New DataSet
+        ds = LoadSQL(mysql)
+
+        If ds.Tables(0).Rows.Count = 0 Then
+            Console.WriteLine("Failed to load magazine " & magdesc)
+            Return 0
+        End If
+
+        LoadByRow(ds.Tables(0).Rows(0))
+
+        Return _MagID
+    End Function
+
+
     Public Sub LoadByRow(ByVal dr As DataRow)
         Dim mySql As String, ds As New DataSet
         With dr
-
             _MagID = .Item("mag_ID")
             _MagItemcode = .Item("Magcode")
             _MagDescription = .Item("MagDescription")
 
         End With
-        ' Load paperuct
-        mySql = String.Format("SELECT * FROM {0} WHERE mag_IDP = {1} ORDER BY papercut_ID", SubTable, _MagID)
-        ds.Clear()
-        ds = LoadSQL(mySql, SubTable)
-
-        _PaperCuts = New CollectionPaperCut
-        For Each dr In ds.Tables(SubTable).Rows
-            Console.WriteLine(dr.Item("papcut_description"))
-            Dim tmppapcut As New PaperCut
-            tmppapcut.lOAD_PaperCut_row(dr)
-
-            'Load paperuct
-            _PaperCuts.Add(tmppapcut)
-        Next
+      
     End Sub
 
     Public Sub UpdateMagazine()

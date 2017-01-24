@@ -129,7 +129,7 @@
     End Function
 
     Public Sub Update()
-        Dim mySql As String = String.Format("SELECT * FROM {0} WHERE {1}= {2} ", MainTable, "PAPerCUT_ID", _PapcutID)
+        Dim mySql As String = String.Format("SELECT * FROM {0} WHERE {1}= '{2}' ", MainTable, "Papcut_code", _PapCutITemcode)
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
         If ds.Tables(0).Rows.Count = 1 Then
@@ -146,6 +146,7 @@
                 .Item("MAG_IDP") = _mag_IDP
                 .Item("PAPCUT_CODE") = _PapCutITemcode
                 .Item("PAPCUT_DESCRIPTION") = _papcutDescription
+                .Item("PAPERCUT") = _papcut
                 .Item("UOM") = "Inch"
             End With
             ds.Tables(0).Rows.Add(dsNewRow)

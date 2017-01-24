@@ -21,7 +21,7 @@ Public Class frmSettings
     Private Sub frmSettings_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         If locked Then
-
+            txtChamber.Text = GetOption("Number Chamber")
             txtBranchCode.Text = GetOptionpPOS("Branch Code")
             txtBranchname.Text = GetOptionpPOS("Branch Name")
             txtAreacode.Text = GetOptionpPOS("Area Code")
@@ -40,40 +40,54 @@ Public Class frmSettings
     Private Sub btnSet_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
         If Not IsValid() Then Exit Sub
 
-        Me.Enabled = False
-        SaveDatabasePath() 'save database path
+        If btnSave.Text = "&Save" Then
+            Me.Enabled = False
+            SaveDatabasePath() 'save database path
 
-        databasePOS.dbNamePOS = GetOption("DatabasePOS")
+            databasePOS.dbNamePOS = GetOption("DatabasePOS")
 
-        txtBranchCode.Text = GetOptionpPOS("Branch Code")
-        txtBranchname.Text = GetOptionpPOS("Branch Name")
-        txtAreacode.Text = GetOptionpPOS("Area Code")
-        txtAreaname.Text = GetOptionpPOS("Area Name")
-        txtVersion.Text = GetOptionpPOS("Version")
+            txtBranchCode.Text = GetOptionpPOS("Branch Code")
+            txtBranchname.Text = GetOptionpPOS("Branch Name")
+            txtAreacode.Text = GetOptionpPOS("Area Code")
+            txtAreaname.Text = GetOptionpPOS("Area Name")
+            txtVersion.Text = GetOptionpPOS("Version")
 
-        LoadIMD() ' lOADING IMD
-        ImportMagazine() 'ImportMagazine
-        ImportPapercut() 'ImportPapercut
-        GetLastSales() 'Setup sales
+            LoadIMD() ' lOADING IMD
+            ImportMagazine() 'ImportMagazine
+            ImportPapercut() 'ImportPapercut
+            GetLastSales() 'Setup sales
 
-        UpdateOptions("Branch Code", txtBranchCode.Text)
-        UpdateOptions("Branch Name", txtBranchname.Text)
-        UpdateOptions("Area Code", txtAreacode.Text)
-        UpdateOptions("Area Name", txtAreaname.Text)
-        UpdateOptions("Version", txtVersion.Text)
-        UpdateOptions("Number Chamber", txtChamber.Text)
+            UpdateOptions("Branch Code", txtBranchCode.Text)
+            UpdateOptions("Branch Name", txtBranchname.Text)
+            UpdateOptions("Area Code", txtAreacode.Text)
+            UpdateOptions("Area Name", txtAreaname.Text)
+            UpdateOptions("Version", txtVersion.Text)
+            UpdateOptions("Number Chamber", txtChamber.Text)
 
 
-        If txtChamber.Text = 1 Then
-            tmpchamber.PoputlateChamberOnlyOne()
+            If txtChamber.Text = 1 Then
+                tmpchamber.PoputlateChamberOnlyOne()
+            Else
+                tmpchamber.PoputlateChamber()
+            End If
+
+            MsgBox("New branch has been setup", MsgBoxStyle.Information, "Setup")
+            FrmMain.NotYetLogin()
+            Me.Enabled = True
+            Me.Close()
+
         Else
-            tmpchamber.PoputlateChamber()
+
+            Me.Enabled = False
+            LoadIMD()
+            UpdateMagazine()
+            ImportPapercut()
+
+            MsgBox("Data updated", MsgBoxStyle.Information, "Settings")
+            Me.Enabled = True
+            Me.Close()
         End If
 
-        MsgBox("New branch has been setup", MsgBoxStyle.Information, "Setup")
-        FrmMain.NotYetLogin()
-        Me.Enabled = True
-        Me.Close()
     End Sub
 
     Private Sub SaveDatabasePath()
@@ -298,7 +312,59 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
                 .papcutDescription = oSheet.Cells(cnt, 4).Value
                 .papcut = oSheet.Cells(cnt, 5).Value
             End With
-            SAVEPAPERCUT.Save_Papercut()
+            'SAVEPAPERCUT.Save_Papercut()
+            SAVEPAPERCUT.Update()
+        Next
+
+        oSheet = Nothing
+        oWB = Nothing
+        oXL.Quit()
+        oXL = Nothing
+
+    End Sub
+
+
+    Private Sub UpdateMagazine()
+        Dim fileName As String = OFDMagazine.FileName
+        Dim isDone As Boolean = False
+
+        If fileName = "" Then Exit Sub
+
+        'Load Excel
+        Dim oXL As New Excel.Application
+        Dim oWB As Excel.Workbook
+        Dim oSheet As Excel.Worksheet
+
+        oWB = oXL.Workbooks.Open(fileName)
+        oSheet = oWB.Worksheets(1)
+
+        Dim MaxColumn As Integer = oSheet.Cells(1, oSheet.Columns.Count).End(Excel.XlDirection.xlToLeft).column
+        Dim MaxEntries As Integer = oSheet.Cells(oSheet.Rows.Count, 1).End(Excel.XlDirection.xlUp).row
+
+
+        Me.Enabled = False
+        For cnt = 2 To MaxEntries
+
+            Dim MAGAZINESAVE As New Magazine
+
+            With MAGAZINESAVE
+                .MagItemcode = oSheet.Cells(cnt, 1).Value
+                .MagDescription = oSheet.Cells(cnt, 2).Value
+            End With
+            MAGAZINESAVE.Save_Magazine()
+
+            Dim SAVEPAPERCUT As New PaperCut
+
+            With SAVEPAPERCUT
+
+                .mag_IDP = MAGAZINESAVE.LoadMagID(MAGAZINESAVE.MagDescription)
+
+                .PapCutITemcode = oSheet.Cells(cnt, 3).Value
+                .papcutDescription = oSheet.Cells(cnt, 4).Value
+                .papcut = oSheet.Cells(cnt, 5).Value
+            End With
+        
+            SAVEPAPERCUT.Update()
         Next
 
         oSheet = Nothing
