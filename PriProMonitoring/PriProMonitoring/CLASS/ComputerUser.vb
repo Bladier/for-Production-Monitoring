@@ -1,11 +1,8 @@
-﻿
-
-
-Public Class ComputerUser
+﻿Public Class ComputerUser
 
     Private fillData As String = "sysworkgroup"
     Private mySql As String = String.Empty
-   
+
 #Region "Properties"
     Private _CODE As String
     Public Property CODE() As String
@@ -124,5 +121,10 @@ Public Class ComputerUser
         Return ds.Tables(0).Rows(0).Item(0)
     End Function
 
+
+    'Public Function CheckUserType(ByVal Fname As String) As Boolean
+    '    Dim mysql As String = "SELECT * FROM " & fillData & " WHERE NAME = '" & Fname & "'"
+    '    Dim ds As 
+    'End Function
 #End Region
 End Class

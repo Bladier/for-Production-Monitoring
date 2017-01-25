@@ -47,6 +47,8 @@ Partial Class frmAdjustment
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtRemarks = New PriProMonitoring.watermark()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtLength = New PriProMonitoring.watermark()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -162,7 +164,7 @@ Partial Class frmAdjustment
         Me.GroupBox2.Location = New System.Drawing.Point(12, 85)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(326, 144)
-        Me.GroupBox2.TabIndex = 2
+        Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Paper Cuts"
         '
@@ -170,7 +172,7 @@ Partial Class frmAdjustment
         '
         Me.GroupBox3.Controls.Add(Me.btnClose)
         Me.GroupBox3.Controls.Add(Me.btnPost)
-        Me.GroupBox3.Location = New System.Drawing.Point(340, 276)
+        Me.GroupBox3.Location = New System.Drawing.Point(340, 287)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(210, 38)
         Me.GroupBox3.TabIndex = 4
@@ -203,13 +205,11 @@ Partial Class frmAdjustment
         'rbAdd
         '
         Me.rbAdd.AutoSize = True
-        Me.rbAdd.Checked = True
         Me.rbAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.rbAdd.Location = New System.Drawing.Point(136, 12)
         Me.rbAdd.Name = "rbAdd"
         Me.rbAdd.Size = New System.Drawing.Size(46, 19)
         Me.rbAdd.TabIndex = 0
-        Me.rbAdd.TabStop = True
         Me.rbAdd.Text = "Add"
         Me.rbAdd.UseVisualStyleBackColor = True
         '
@@ -249,7 +249,7 @@ Partial Class frmAdjustment
         '
         Me.Label5.AutoSize = True
         Me.Label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label5.Location = New System.Drawing.Point(15, 232)
+        Me.Label5.Location = New System.Drawing.Point(4, 263)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(58, 15)
         Me.Label5.TabIndex = 7
@@ -257,20 +257,41 @@ Partial Class frmAdjustment
         '
         'txtRemarks
         '
-        Me.txtRemarks.Location = New System.Drawing.Point(17, 250)
+        Me.txtRemarks.Location = New System.Drawing.Point(64, 261)
         Me.txtRemarks.Multiline = True
         Me.txtRemarks.Name = "txtRemarks"
-        Me.txtRemarks.Size = New System.Drawing.Size(317, 64)
+        Me.txtRemarks.Size = New System.Drawing.Size(269, 64)
         Me.txtRemarks.TabIndex = 3
         Me.txtRemarks.WatermarkColor = System.Drawing.Color.Gray
         Me.txtRemarks.WatermarkText = "Remarks"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label2.Location = New System.Drawing.Point(16, 236)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(45, 15)
+        Me.Label2.TabIndex = 8
+        Me.Label2.Text = "Length"
+        '
+        'txtLength
+        '
+        Me.txtLength.Location = New System.Drawing.Point(63, 233)
+        Me.txtLength.Name = "txtLength"
+        Me.txtLength.Size = New System.Drawing.Size(271, 21)
+        Me.txtLength.TabIndex = 2
+        Me.txtLength.WatermarkColor = System.Drawing.Color.DimGray
+        Me.txtLength.WatermarkText = "Length"
         '
         'frmAdjustment
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(559, 320)
+        Me.ClientSize = New System.Drawing.Size(559, 333)
+        Me.Controls.Add(Me.txtLength)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtRemarks)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.GroupBox5)
@@ -317,4 +338,6 @@ Partial Class frmAdjustment
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents txtRemarks As PriProMonitoring.watermark
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents txtLength As PriProMonitoring.watermark
 End Class

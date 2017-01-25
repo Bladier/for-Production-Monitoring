@@ -73,6 +73,8 @@ nextlineTodo:
     End Sub
 
     Private Sub frmPaperRolls_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        If ModName = "Empty paper roll" Then btnAdd.Visible = True
+
         LoadChamber()
         If txtSearch.Text <> "" Then
             btnSearch.PerformClick()

@@ -94,6 +94,17 @@
         End Set
     End Property
 
+
+    Private _LENGTH As Double
+    Public Property LENGTH() As String
+        Get
+            Return _LENGTH
+        End Get
+        Set(ByVal value As String)
+            _LENGTH = value
+        End Set
+
+    End Property
     Private _AdjustmentLine As adjustmentCollection
     Public Property AdjustmentLines() As adjustmentCollection
         Get
@@ -136,6 +147,7 @@
             _UpdatedAT = .Item("Updated_at")
             _TotalAdjustment = .Item("Total_Adjustment")
             _UOM = .Item("UOM")
+            _LENGTH = .Item("LENGTH_EXPOSE")
         End With
     End Sub
 
@@ -151,6 +163,7 @@
             _UpdatedAT = .Item("Updated_at")
             _TotalAdjustment = .Item("Total_Adjustment")
             _UOM = .Item("UOM")
+            _LENGTH = .Item("LENGTH_EXPOSE")
         End With
         ' Load adjustment line
         mySql = String.Format("SELECT * FROM {0} WHERE Adjustment_ID = {1} ORDER BY ID", subtable, _ID)
@@ -183,6 +196,7 @@
             .Item("Created_at") = _CreatedAT
             .Item("Total_adjustment") = _TotalAdjustment * Meter
             .Item("UOM") = _UOM
+            .Item("LENGTH_EXPOSE") = _LENGTH
         End With
         ds.Tables(0).Rows.Add(dsNewRow)
         database.SaveEntry(ds)

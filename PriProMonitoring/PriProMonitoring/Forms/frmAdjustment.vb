@@ -63,6 +63,8 @@
     Private Sub btnPost_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPost.Click
         If lvpapercuts.Items.Count <= 0 Then MsgBox("No paper to adjust", MsgBoxStyle.Information, "Adjustment")
         If txtRemarks.Text = "" Then Exit Sub
+        If rbAdd.Checked = False And rbDeduct.Checked = False Then _
+            MsgBox("Select adjustment type" & vbCrLf & "Either Add or deduct.", MsgBoxStyle.Critical) : Exit Sub
 
         Dim ans As DialogResult = MsgBox("Do you want to save this adjustment?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
         If ans = Windows.Forms.DialogResult.No Then Exit Sub
@@ -80,7 +82,7 @@
             .Remarks = txtRemarks.Text
             .CreatedAT = Now
             .UOM = "m"
-
+            .LENGTH = txtLength.Text
             For Each itms As ListViewItem In lvpapercuts.Items
                 If itms.SubItems(8).Text = "" Then
                     On Error Resume Next
@@ -118,13 +120,18 @@
 
         Next
 
+        Dim tmptotal As Double = TotalAdj + saveAdj.LENGTH
+        saveAdj.TotalAdjustment = tmptotal
+
         saveAdj.AdjustmentLines = ColAdjLine
         saveAdj.SaveAdjustment()
+
+
 
         If rbAdd.Checked = True Then
             AddToPaperRoll(tmppapSerial.PaprollID, TotalAdj)
         Else
-            DeductToPaperRoll(tmppapSerial.PaprollID, TotalAdj)
+            DeductToPaperRoll(tmppapSerial.PaprollID, tmptotal)
         End If
 
 
@@ -136,6 +143,7 @@
         txtSearch.Text = ""
         lvpapercuts.Items.Clear()
         txtRemarks.Text = ""
+        txtLength.Text = ""
     End Sub
 
     Private Function LoadCurMag(ByVal ID As Integer) As String
@@ -216,5 +224,13 @@
 
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
 
+    End Sub
+
+    Private Sub txtLength_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtLength.KeyPress
+        DigitOnly(e)
+    End Sub
+
+    Private Sub txtRemarks_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtRemarks.KeyPress
+        If isEnter(e) Then btnPost.PerformClick()
     End Sub
 End Class
