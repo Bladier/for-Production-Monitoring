@@ -74,6 +74,15 @@
         End Set
     End Property
 
+    Private _Declaredby As String
+    Public Property Declaredby() As String
+        Get
+            Return _Declaredby
+        End Get
+        Set(ByVal value As String)
+            _Declaredby = value
+        End Set
+    End Property
 #End Region
 
 #Region "procedures and functions"
@@ -106,6 +115,7 @@
             _LASTOUT = IIf(IsDBNull(.Item("LASTOUT")), "", .Item("LASTOUT"))
             _UOM = .Item("UOM")
             _cREATEDAT = .Item("CREATED_AT")
+            _Declaredby = .Item("Declaredby")
         End With
     End Sub
 
@@ -122,6 +132,7 @@
             .Item("LASTOUT") = _LASTOUT
             .Item("UOM") = _UOM
             .Item("CREATED_AT") = _cREATEDAT
+            .Item("Declaredby") = _Declaredby
         End With
 
         ds.Tables(0).Rows.Add(dsNewRow)

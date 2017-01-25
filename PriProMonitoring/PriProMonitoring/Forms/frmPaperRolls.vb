@@ -70,6 +70,8 @@ nextlineTodo:
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         loadPaperRollSearch(txtSearch.Text, txtSearch.Text)
+
+        CurrentLyUsed()
     End Sub
 
     Private Sub frmPaperRolls_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -81,10 +83,11 @@ nextlineTodo:
             Exit Sub
         End If
         loadPaperRoll()
+        CurrentLyUsed()
     End Sub
 
     Private Sub loadPaperRollSearch(ByVal papSerial As String, Optional ByVal mag As String = "")
-        Dim mysql As String = "SELECT P.PAPROLL_ID,P.MAG_IDS,M.MAGDESCRIPTION,P.PAPROLL_SERIAL FROM TBLPAPERROLL P " & _
+        Dim mysql As String = "SELECT P.PAPROLL_ID,P.MAG_IDS,M.MAGDESCRIPTION,P.PAPROLL_SERIAL,P.Chamber FROM TBLPAPERROLL P " & _
                               "INNER JOIN TBLMAGAZINE M ON M.MAG_ID = P.MAG_IDS " & _
                               "WHERE UPPER(P.PAPROLL_SERIAL) = UPPER('" & papSerial & "') OR UPPER(M.MAGDESCRIPTION) = UPPER('" & mag & "')" & _
                               "and status <> '2'"
@@ -103,14 +106,17 @@ nextlineTodo:
             lv.SubItems.Add(dr.Item("MAG_IDS"))
             lv.SubItems.Add(dr.Item("MAGDESCRIPTION"))
             lv.SubItems.Add(dr.Item("PAPROLL_SERIAL"))
+            If dr.Item("Chamber") = "" Then On Error Resume Next
+            lv.SubItems.Add(dr.Item("Chamber"))
         Next
-      
+
+
         MsgBox(count & "paper roll found.", MsgBoxStyle.Information)
     End Sub
 
 
     Private Sub loadPaperRoll()
-        Dim mysql As String = "SELECT P.PAPROLL_ID,P.MAG_IDS,M.MAGDESCRIPTION,P.PAPROLL_SERIAL FROM TBLPAPERROLL P " & _
+        Dim mysql As String = "SELECT P.PAPROLL_ID,P.MAG_IDS,M.MAGDESCRIPTION,P.PAPROLL_SERIAL,P.Chamber FROM TBLPAPERROLL P " & _
                               "INNER JOIN TBLMAGAZINE M ON M.MAG_ID = P.MAG_IDS where P.STATUS <> '2'"
 
         Dim ds As DataSet = LoadSQL(mysql, "TBL")
@@ -123,7 +129,11 @@ nextlineTodo:
             lv.SubItems.Add(dr.Item("MAG_IDS"))
             lv.SubItems.Add(dr.Item("MAGDESCRIPTION"))
             lv.SubItems.Add(dr.Item("PAPROLL_SERIAL"))
+            If dr.Item("Chamber") = "" Then On Error Resume Next
+            lv.SubItems.Add(dr.Item("Chamber"))
         Next
+
+nextlineTodo:
 
         MsgBox(count & " paper roll found.", MsgBoxStyle.Information)
     End Sub
@@ -199,7 +209,6 @@ nextlineTodo:
             End With
             database.SaveEntry(ds, False)
         End If
-
     End Sub
 
     Private Function CHECKMAG_IFALREADYUSED() As Boolean
@@ -218,6 +227,25 @@ nextlineTodo:
         End Try
         Return True
     End Function
+
+    Private Sub CurrentLyUsed()
+        For Each itm As ListViewItem In LvPaperRollList.Items
+
+            Dim mysql As String = "SELECT paproll_ID,paproll_serial,chamber,mag_IDS,M.MAGDESCRIPTION " & _
+                           "FROM TBLPAPERROLL INNER JOIN TBLMAGAZINE M ON M.MAG_ID =TBLPAPERROLL.MAG_IDS " & _
+                           "WHERE MAG_IDS = '" & itm.SubItems(1).Text & "' " & _
+                           "AND STATUS ='1' " & _
+                           "group by MAG_IDS,paproll_ID,paproll_serial,chamber,MAGDESCRIPTION"
+            Dim ds As DataSet = LoadSQL(mysql, "tblpaperroll")
+
+            If ds.Tables(0).Rows.Count = 1 Then
+                itm.BackColor = Color.Red
+            Else
+                itm.BackColor = Color.White
+            End If
+
+        Next
+    End Sub
 
     Private Function GetRemaining() As Double
         Dim value As Double

@@ -38,7 +38,7 @@
                 .LASTOUT = itm.SubItems(3).Text
                 .UOM = "Inch"
                 .cREATEDAT = Now
-
+                .Declaredby = FrmMain.statusUser.Text
                 .SavePAPEmPTY()
                 SavepapEmp.EmpRoll(itm.SubItems(0).Text, "2")
 
@@ -46,7 +46,6 @@
 
                 DeductToPaperRoll(itm.SubItems(0).Text, tmpTotal) ' Deduct to paper roll
             End With
-
         Next
 
 
@@ -181,7 +180,7 @@
     End Sub
 
     Private Sub txtSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
-        If isEnter(e) Then btnPost.PerformClick()
+        If isEnter(e) Then btnSearch.PerformClick()
     End Sub
 
     Private Sub txtEmulsion_KeyPress_1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtEmulsion.KeyPress
@@ -194,5 +193,9 @@
 
     Private Sub txtlastout_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtlastout.KeyPress
         DigitOnly(e)
+    End Sub
+
+    Private Sub btnSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles btnSearch.KeyPress
+        If isEnter(e) Then btnPost.PerformClick()
     End Sub
 End Class

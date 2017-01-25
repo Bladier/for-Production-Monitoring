@@ -31,12 +31,12 @@ Partial Class frmPaperRolls
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnSelect = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.CboChamber = New System.Windows.Forms.ComboBox()
         Me.lblChamber = New System.Windows.Forms.Label()
         Me.btnAdd = New System.Windows.Forms.Button()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -60,10 +60,10 @@ Partial Class frmPaperRolls
         '
         Me.txtSearch.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSearch.Location = New System.Drawing.Point(6, 23)
+        Me.txtSearch.Location = New System.Drawing.Point(6, 24)
         Me.txtSearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(500, 22)
+        Me.txtSearch.Size = New System.Drawing.Size(519, 22)
         Me.txtSearch.TabIndex = 0
         Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
         Me.txtSearch.WatermarkText = "Search . . ."
@@ -73,10 +73,10 @@ Partial Class frmPaperRolls
         Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSearch.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnSearch.Location = New System.Drawing.Point(512, 17)
+        Me.btnSearch.Location = New System.Drawing.Point(531, 21)
         Me.btnSearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(90, 42)
+        Me.btnSearch.Size = New System.Drawing.Size(71, 28)
         Me.btnSearch.TabIndex = 1
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
@@ -114,6 +114,11 @@ Partial Class frmPaperRolls
         '
         Me.ColumnHeader5.Text = "Paper Roll"
         Me.ColumnHeader5.Width = 129
+        '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "Chamber"
+        Me.ColumnHeader1.Width = 157
         '
         'btnSelect
         '
@@ -177,11 +182,6 @@ Partial Class frmPaperRolls
         Me.btnAdd.TabIndex = 6
         Me.btnAdd.Text = "&Add paper roll"
         Me.btnAdd.UseVisualStyleBackColor = True
-        '
-        'ColumnHeader1
-        '
-        Me.ColumnHeader1.Text = "Chamber"
-        Me.ColumnHeader1.Width = 157
         '
         'frmPaperRolls
         '
