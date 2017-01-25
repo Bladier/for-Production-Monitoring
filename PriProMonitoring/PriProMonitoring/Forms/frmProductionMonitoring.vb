@@ -10,6 +10,12 @@
 
     Private Sub frmProductionMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.TopMost = True
+        Me.MinimizeBox = False
+        Me.MaximizeBox = False
+
+        Me.MaximumSize = New Size(471, 436)
+        Me.MinimumSize = Me.MaximumSize
+
         Control.CheckForIllegalCrossThreadCalls = False
 
         ProductionWatcher.Start()

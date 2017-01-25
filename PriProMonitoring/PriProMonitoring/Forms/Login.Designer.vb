@@ -31,7 +31,7 @@ Partial Class Login
         'btnLogin
         '
         Me.btnLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLogin.Location = New System.Drawing.Point(34, 101)
+        Me.btnLogin.Location = New System.Drawing.Point(131, 100)
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(75, 28)
         Me.btnLogin.TabIndex = 2
@@ -41,7 +41,7 @@ Partial Class Login
         'btnExit
         '
         Me.btnExit.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExit.Location = New System.Drawing.Point(131, 101)
+        Me.btnExit.Location = New System.Drawing.Point(34, 100)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(75, 28)
         Me.btnExit.TabIndex = 3

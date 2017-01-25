@@ -247,4 +247,15 @@
             timerCounter -= 1
         End If
     End Sub
+
+   
+    Private Sub Disabled()
+        Me.MaximumSize = New Size(50, 50)
+        Me.MinimumSize = Me.MaximumSize
+    End Sub
+
+    Private Sub FrmMain_MinimumSizeChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.MinimumSizeChanged
+        Disabled()
+    End Sub
+
 End Class

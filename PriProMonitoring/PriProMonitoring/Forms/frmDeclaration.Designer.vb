@@ -24,12 +24,14 @@ Partial Class frmDeclaration
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDeclaration))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.btnRemove = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtEmulsion = New PriProMonitoring.watermark()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtlastout = New PriProMonitoring.watermark()
+        Me.txtAdvance = New PriProMonitoring.watermark()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.cboPaperRollSerial = New System.Windows.Forms.ComboBox()
@@ -37,25 +39,21 @@ Partial Class frmDeclaration
         Me.btnClose = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.btnSearch = New System.Windows.Forms.Button()
+        Me.txtSearch = New PriProMonitoring.watermark()
         Me.lvPaperRoll = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.txtSearch = New PriProMonitoring.watermark()
-        Me.txtEmulsion = New PriProMonitoring.watermark()
-        Me.txtlastout = New PriProMonitoring.watermark()
-        Me.txtAdvance = New PriProMonitoring.watermark()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.btnRemove)
         Me.GroupBox1.Controls.Add(Me.Label6)
-        Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.txtEmulsion)
         Me.GroupBox1.Controls.Add(Me.Label2)
@@ -72,6 +70,17 @@ Partial Class frmDeclaration
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Search paper serial"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label4.Location = New System.Drawing.Point(263, 91)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(35, 18)
+        Me.Label4.TabIndex = 21
+        Me.Label4.Text = "Inch"
         '
         'btnRemove
         '
@@ -94,28 +103,6 @@ Partial Class frmDeclaration
         Me.Label6.TabIndex = 20
         Me.Label6.Text = "Inch"
         '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label5.Location = New System.Drawing.Point(263, 89)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(35, 18)
-        Me.Label5.TabIndex = 21
-        Me.Label5.Text = "Inch"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label4.Location = New System.Drawing.Point(262, 60)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(16, 18)
-        Me.Label4.TabIndex = 19
-        Me.Label4.Text = "ft"
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -126,6 +113,15 @@ Partial Class frmDeclaration
         Me.Label1.TabIndex = 16
         Me.Label1.Text = "Emulsion"
         '
+        'txtEmulsion
+        '
+        Me.txtEmulsion.Location = New System.Drawing.Point(80, 58)
+        Me.txtEmulsion.Name = "txtEmulsion"
+        Me.txtEmulsion.Size = New System.Drawing.Size(177, 21)
+        Me.txtEmulsion.TabIndex = 1
+        Me.txtEmulsion.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtEmulsion.WatermarkText = "Emulsion"
+        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -135,6 +131,24 @@ Partial Class frmDeclaration
         Me.Label2.Size = New System.Drawing.Size(53, 15)
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Advance"
+        '
+        'txtlastout
+        '
+        Me.txtlastout.Location = New System.Drawing.Point(81, 121)
+        Me.txtlastout.Name = "txtlastout"
+        Me.txtlastout.Size = New System.Drawing.Size(177, 21)
+        Me.txtlastout.TabIndex = 3
+        Me.txtlastout.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtlastout.WatermarkText = "Lastout"
+        '
+        'txtAdvance
+        '
+        Me.txtAdvance.Location = New System.Drawing.Point(80, 88)
+        Me.txtAdvance.Name = "txtAdvance"
+        Me.txtAdvance.Size = New System.Drawing.Size(177, 21)
+        Me.txtAdvance.TabIndex = 2
+        Me.txtAdvance.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtAdvance.WatermarkText = "Advance"
         '
         'Label3
         '
@@ -193,9 +207,9 @@ Partial Class frmDeclaration
         Me.GroupBox3.Controls.Add(Me.txtSearch)
         Me.GroupBox3.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.GroupBox3.Location = New System.Drawing.Point(533, 147)
+        Me.GroupBox3.Location = New System.Drawing.Point(537, 140)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(325, 55)
+        Me.GroupBox3.Size = New System.Drawing.Size(325, 92)
         Me.GroupBox3.TabIndex = 2
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Search paper roll to load"
@@ -203,12 +217,22 @@ Partial Class frmDeclaration
         'btnSearch
         '
         Me.btnSearch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.btnSearch.Location = New System.Drawing.Point(227, 19)
+        Me.btnSearch.Location = New System.Drawing.Point(232, 49)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(87, 29)
         Me.btnSearch.TabIndex = 1
         Me.btnSearch.Text = "&Search"
         Me.btnSearch.UseVisualStyleBackColor = True
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSearch.Location = New System.Drawing.Point(6, 21)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(313, 22)
+        Me.txtSearch.TabIndex = 0
+        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSearch.WatermarkText = "Search paper roll .  . . "
         '
         'lvPaperRoll
         '
@@ -242,43 +266,6 @@ Partial Class frmDeclaration
         Me.ColumnHeader4.Text = "Lastout"
         Me.ColumnHeader4.Width = 125
         '
-        'txtSearch
-        '
-        Me.txtSearch.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch.Location = New System.Drawing.Point(6, 22)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(214, 22)
-        Me.txtSearch.TabIndex = 0
-        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSearch.WatermarkText = "Search paper roll .  . . "
-        '
-        'txtEmulsion
-        '
-        Me.txtEmulsion.Location = New System.Drawing.Point(80, 58)
-        Me.txtEmulsion.Name = "txtEmulsion"
-        Me.txtEmulsion.Size = New System.Drawing.Size(177, 21)
-        Me.txtEmulsion.TabIndex = 1
-        Me.txtEmulsion.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtEmulsion.WatermarkText = "Emulsion"
-        '
-        'txtlastout
-        '
-        Me.txtlastout.Location = New System.Drawing.Point(81, 121)
-        Me.txtlastout.Name = "txtlastout"
-        Me.txtlastout.Size = New System.Drawing.Size(177, 21)
-        Me.txtlastout.TabIndex = 3
-        Me.txtlastout.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtlastout.WatermarkText = "Lastout"
-        '
-        'txtAdvance
-        '
-        Me.txtAdvance.Location = New System.Drawing.Point(80, 88)
-        Me.txtAdvance.Name = "txtAdvance"
-        Me.txtAdvance.Size = New System.Drawing.Size(177, 21)
-        Me.txtAdvance.TabIndex = 2
-        Me.txtAdvance.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtAdvance.WatermarkText = "Advance"
-        '
         'frmDeclaration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -295,7 +282,7 @@ Partial Class frmDeclaration
         Me.MaximizeBox = False
         Me.Name = "frmDeclaration"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Declaration"
+        Me.Text = "Declare Empty Roll"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
@@ -318,12 +305,11 @@ Partial Class frmDeclaration
     Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
     Friend WithEvents btnRemove As System.Windows.Forms.Button
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents txtEmulsion As PriProMonitoring.watermark
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents txtlastout As PriProMonitoring.watermark
     Friend WithEvents txtAdvance As PriProMonitoring.watermark
     Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
 End Class

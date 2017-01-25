@@ -39,9 +39,9 @@ Partial Class FrmMain
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusDateandTime = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.StatusCounter = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lblToolStripStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripPBar = New System.Windows.Forms.ToolStripProgressBar()
-        Me.StatusCounter = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Count = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TmpTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SalesWatcher = New System.Windows.Forms.Timer(Me.components)
@@ -167,6 +167,19 @@ Partial Class FrmMain
         Me.statusUser.Size = New System.Drawing.Size(55, 24)
         Me.statusUser.Text = "User"
         '
+        'StatusCounter
+        '
+        Me.StatusCounter.BackColor = System.Drawing.SystemColors.Control
+        Me.StatusCounter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.StatusCounter.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.StatusCounter.Image = CType(resources.GetObject("StatusCounter.Image"), System.Drawing.Image)
+        Me.StatusCounter.Margin = New System.Windows.Forms.Padding(0)
+        Me.StatusCounter.Name = "StatusCounter"
+        Me.StatusCounter.Size = New System.Drawing.Size(42, 26)
+        Me.StatusCounter.Text = "30"
+        '
         'lblToolStripStatus
         '
         Me.lblToolStripStatus.BackColor = System.Drawing.Color.White
@@ -184,19 +197,6 @@ Partial Class FrmMain
         Me.ToolStripPBar.Name = "ToolStripPBar"
         Me.ToolStripPBar.Size = New System.Drawing.Size(117, 25)
         Me.ToolStripPBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous
-        '
-        'StatusCounter
-        '
-        Me.StatusCounter.BackColor = System.Drawing.SystemColors.Control
-        Me.StatusCounter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.StatusCounter.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
-                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
-                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
-        Me.StatusCounter.Image = CType(resources.GetObject("StatusCounter.Image"), System.Drawing.Image)
-        Me.StatusCounter.Margin = New System.Windows.Forms.Padding(0)
-        Me.StatusCounter.Name = "StatusCounter"
-        Me.StatusCounter.Size = New System.Drawing.Size(42, 26)
-        Me.StatusCounter.Text = "30"
         '
         'Count
         '

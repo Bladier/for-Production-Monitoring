@@ -7,7 +7,7 @@
         Static wrongLogin As Integer
 
         Dim user As String = DreadKnight(txtusername.Text)
-        Dim pass As String = txtpassword.Text
+        Dim pass As String = DreadKnight(txtpassword.Text)
 
         Dim loginUser As New ComputerUser
         If Not loginUser.LoginUser(user, pass) Then

@@ -17,10 +17,10 @@ Public Class frmLoadMagazine
     End Sub
 
     Private Sub Disabled()
-        txtserial.Enabled = False
+        ' txtserial.Enabled = False
         lvPaproll.Enabled = False
-        btnsearch.Enabled = False
-        btnSet.Enabled = False
+        'btnsearch.Enabled = False
+        'btnSet.Enabled = False
     End Sub
 
     Private Sub GetActivePAPERROLL()
@@ -50,14 +50,16 @@ Public Class frmLoadMagazine
 
         Dim getchamber As Integer = GetOption("Number Chamber")
         If getchamber = 1 Then
-            If lvPaproll.Items.Count <> 1 Then MsgBox("This branch used only one chamber." & vbCrLf & "Just remove one magazine.", MsgBoxStyle.Critical, "Magazine setup") : Exit Sub
+            If lvPaproll.Items.Count <> 1 Then MsgBox("This branch used only one chamber." _
+                & vbCrLf & "Just remove one magazine.", MsgBoxStyle.Critical, "Magazine setup") : Exit Sub
             For Each itm As ListViewItem In lvPaproll.Items
                 UpdateRollstatus(itm.SubItems(4).Text, "1", itm.SubItems(2).Text)
             Next
         End If
 
         If getchamber = 2 Then
-            If lvPaproll.Items.Count <> 2 Then MsgBox("This branch has two chamber." & vbCrLf & "Add one more magazine.", MsgBoxStyle.Critical, "Magazine setup") : Exit Sub
+            If lvPaproll.Items.Count <> 2 Then MsgBox("This branch has two chamber." _
+                & vbCrLf & "Add one more magazine.", MsgBoxStyle.Critical, "Magazine setup") : Exit Sub
             For Each itm As ListViewItem In lvPaproll.Items
                 UpdateRollstatus(itm.SubItems(4).Text, "1", itm.SubItems(2).Text)
             Next

@@ -75,7 +75,14 @@
         cboPaperRollSerial.SelectedItem = Nothing
     End Sub
 
+    Private Sub Disabled()
+        Me.MaximumSize = New Size(886, 429)
+        Me.MinimumSize = Me.MaximumSize
+    End Sub
+
     Private Sub frmDeclaration_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Disabled()
+
         Dim tmplist As New PaperListEmpty
         For Each serial In tmplist.PopulateSerial()
             cboPaperRollSerial.Items.Add(serial)

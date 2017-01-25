@@ -11,6 +11,11 @@ Public Class frmSettings
 
     Dim tmpchamber As New Chamber
 
+    Private Sub Disabled()
+        Me.MaximumSize = New Size(689, 271)
+        Me.MinimumSize = Me.MaximumSize
+    End Sub
+
     Private Function IsValid() As Boolean
         If txtChamber.Text = "" Then txtChamber.Focus() : Return False
         If txtpath.Text = "" Then txtpath.Focus() : Return False
@@ -18,8 +23,9 @@ Public Class frmSettings
         If txtMagazine.Text = "" Then txtMagazine.Focus() : Return False
         Return True
     End Function
-    Private Sub frmSettings_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
+    Private Sub frmSettings_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Disabled()
         If locked Then
             txtChamber.Text = GetOption("Number Chamber")
             txtBranchCode.Text = GetOptionpPOS("Branch Code")
@@ -363,7 +369,7 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
                 .papcutDescription = oSheet.Cells(cnt, 4).Value
                 .papcut = oSheet.Cells(cnt, 5).Value
             End With
-        
+
             SAVEPAPERCUT.Update()
         Next
 
