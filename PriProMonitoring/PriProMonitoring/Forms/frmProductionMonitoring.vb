@@ -9,7 +9,7 @@
     Dim timerCounter As Integer = 30
 
     Private Sub frmProductionMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.TopMost = True
+
         Me.MinimizeBox = False
         Me.MaximizeBox = False
 
@@ -90,8 +90,9 @@
     Private Sub Production()
         Dim mysql As String = "SELECT * FROM TBLPRO WHERE STATUS = '0'"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPRO")
+        Dim COUNTMAX As Integer = ds.Tables(0).Rows.Count
 
-        If ds.Tables(0).Rows.Count = 0 Then GoTo nextlineTodo
+        If COUNTMAX = 0 Then GoTo nextlineTodo
 
         Console.WriteLine("TBLPRO count: " & ds.Tables(0).Rows.Count)
 
@@ -125,10 +126,10 @@
                     .ProductionID = dr.Item("Production_ID")
                     .MagID = tmpPapcut.mag_IDP
                     .Paproll_serial = ""
-                    .Quantity = dr.Item("QTY") * dsline.Tables(0).Rows(0).Item("QTY")
+                    .Quantity = dr.Item("QTY") * dr1.Item("QTY")
                     .Papercuts = tmpPapcut.papcut
                     .papcut_Desc = tmpPapcut.papcutDescription
-                    .SubTotal_Length = (dr.Item("QTY") * dsline.Tables(0).Rows(0).Item("QTY")) * tmpPapcut.papcut
+                    .SubTotal_Length = (dr.Item("QTY") * dr1.Item("QTY")) * tmpPapcut.papcut
                     .Papcut_Code = tmpPapcut.PapCutITemcode
 
                     .SaveSalesLine()
@@ -155,21 +156,23 @@ nextlineTodo:
                 "WHERE PAPCUT_CODE = '" & itm.SubItems(6).Text & "' AND STATUS <> 1 "
             Dim MysqlSalesLines As DataSet = LoadSQL(newMysqlSalesLines, "TBL_PROLINE")
 
-            If MysqlSalesLines.Tables(0).Rows.Count = 0 Then On Error Resume Next
+            If MysqlSalesLines.Tables(0).Rows.Count = 0 Then
+                On Error Resume Next
+            Else
+                For Each dr As DataRow In MysqlSalesLines.Tables(0).Rows
+                    Dim SubTotal As Double = (MysqlSalesLines.Tables(0).Rows(0).Item(5) * itm.SubItems(5).Text)
 
-            For Each dr As DataRow In MysqlSalesLines.Tables(0).Rows
-                Dim SubTotal As Double = (MysqlSalesLines.Tables(0).Rows(0).Item(5) * itm.SubItems(5).Text)
+                    dr("Paproll_SERIAL") = itm.SubItems(2).Text
+                    dr("Status") = 1
 
-                dr("Paproll_SERIAL") = itm.SubItems(2).Text
-                dr("Status") = 1
+                    database.SaveEntry(MysqlSalesLines, False)
 
-                database.SaveEntry(MysqlSalesLines, False)
-
-                SelectedPaPRoll = New PaperRoll
-                SelectedPaPRoll.PaperRollSErial = itm.SubItems(2).Text
-                SelectedPaPRoll.Remaining = SubTotal * meter
-                SelectedPaPRoll.Updatepaper()
-            Next
+                    SelectedPaPRoll = New PaperRoll
+                    SelectedPaPRoll.PaperRollSErial = itm.SubItems(2).Text
+                    SelectedPaPRoll.Remaining = SubTotal * meter
+                    SelectedPaPRoll.Updatepaper()
+                Next
+            End If
         Next
 
         Console.WriteLine("Production updated")

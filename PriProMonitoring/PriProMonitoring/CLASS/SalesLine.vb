@@ -156,8 +156,9 @@
 
         mysql = "SELECT * FROM " & filldata & " where ID = '" & _ID & "'"
         Dim ds As DataSet = LoadSQL(mysql, filldata)
+        Dim COUNTMAX As Integer = ds.Tables(0).Rows.Count
 
-        If ds.Tables(0).Rows.Count = 1 Then
+        If COUNTMAX = 1 Then
             With ds.Tables(0).Rows(0)
                 .Item("PRODUCTION_ID") = _ProductionID
                 .Item("MAG_ID") = _MagID

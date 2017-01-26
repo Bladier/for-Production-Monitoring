@@ -106,10 +106,12 @@ nextlineTodo:
             lv.SubItems.Add(dr.Item("MAG_IDS"))
             lv.SubItems.Add(dr.Item("MAGDESCRIPTION"))
             lv.SubItems.Add(dr.Item("PAPROLL_SERIAL"))
-            If dr.Item("Chamber") = "" Then On Error Resume Next
-            lv.SubItems.Add(dr.Item("Chamber"))
+            If IsDBNull(dr.Item("Chamber")) Or dr.Item("Chamber") Is Nothing Then
+                On Error Resume Next
+            Else
+                lv.SubItems.Add(dr.Item("Chamber"))
+            End If
         Next
-
 
         MsgBox(count & "paper roll found.", MsgBoxStyle.Information)
     End Sub
@@ -129,8 +131,12 @@ nextlineTodo:
             lv.SubItems.Add(dr.Item("MAG_IDS"))
             lv.SubItems.Add(dr.Item("MAGDESCRIPTION"))
             lv.SubItems.Add(dr.Item("PAPROLL_SERIAL"))
-            If dr.Item("Chamber") = "" Then On Error Resume Next
-            lv.SubItems.Add(dr.Item("Chamber"))
+            If IsDBNull(dr.Item("Chamber")) Or dr.Item("Chamber") Is Nothing Then
+
+                On Error Resume Next
+            Else
+                lv.SubItems.Add(dr.Item("Chamber"))
+            End If
         Next
 
 nextlineTodo:
