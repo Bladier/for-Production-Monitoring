@@ -60,7 +60,7 @@
     End Sub
 
     Public Function GetLength() As List(Of Double)
-        Dim mysql As String = "SELECT * FROM TBLPAPERROLL P INNER JOIN TBLMAGAZINE M ON M.MAG_ID=P.MAG_IDS " & _
+        Dim mysql As String = "SELECT * FROM TBLPAPERROLL P INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID=P.PAPIDS " & _
                               " WHERE STATUS <> 0 and P.Chamber = 'B' OR P.Chamber='C' ORDER BY PAPROLL_ID ASC"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
         Dim tmplenght As New List(Of Double)()
@@ -75,12 +75,12 @@
 
         Dim output As New List(Of String)()
 
-        Dim mysql As String = " SELECT * FROM TBLMAGAZINE M INNER JOIN TBLPAPERROLL P ON M.MAG_ID=P.MAG_IDS" _
+        Dim mysql As String = " SELECT * FROM TBLPAPROLL_MAIN M INNER JOIN TBLPAPERROLL P ON M.PAPID=P.PAPIDS" _
                               & " WHERE STATUS <> 0 and P.Chamber = 'B' OR P.Chamber='C' ORDER BY PAPROLL_ID ASC"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERCUT")
 
         For Each dr As DataRow In ds.Tables(0).Rows
-            output.Add(dr.Item("Magdescription"))
+            output.Add(dr.Item("PAPDESC"))
         Next
 
         Return output
