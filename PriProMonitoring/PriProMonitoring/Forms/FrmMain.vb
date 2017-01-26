@@ -254,8 +254,17 @@
         Me.MinimumSize = Me.MaximumSize
     End Sub
 
-    Private Sub FrmMain_MinimumSizeChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.MinimumSizeChanged
-        Disabled()
+
+    Private Sub FrmMain_MaximumSizeChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.MaximumSizeChanged
+        Me.Size = New Size(300, 300)
+        Me.MinimumSize = Me.MaximumSize
+    End Sub
+
+    Public Sub New()
+        MyBase.New()
+        InitializeComponent()
+        Me.MaximumSize = New Size(700, 500)
+        Me.StartPosition = FormStartPosition.CenterScreen
     End Sub
 
 End Class

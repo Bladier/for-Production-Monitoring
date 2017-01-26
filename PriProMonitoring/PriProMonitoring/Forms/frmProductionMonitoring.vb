@@ -129,7 +129,7 @@
                     .Quantity = dr.Item("QTY") * dr1.Item("QTY")
                     .Papercuts = tmpPapcut.papcut
                     .papcut_Desc = tmpPapcut.papcutDescription
-                    .SubTotal_Length = (dr.Item("QTY") * dr1.Item("QTY")) * tmpPapcut.papcut
+                    .SubTotal_Length = .Quantity * tmpPapcut.papcut
                     .Papcut_Code = tmpPapcut.PapCutITemcode
 
                     .SaveSalesLine()
@@ -160,7 +160,8 @@ nextlineTodo:
                 On Error Resume Next
             Else
                 For Each dr As DataRow In MysqlSalesLines.Tables(0).Rows
-                    Dim SubTotal As Double = (MysqlSalesLines.Tables(0).Rows(0).Item(5) * itm.SubItems(5).Text)
+                    Dim SubTotal As Double = dr.Item("SUBTOTAL_LENGTH")
+                    '(MysqlSalesLines.Tables(0).Rows(0).Item(5) * itm.SubItems(5).Text)
 
                     dr("Paproll_SERIAL") = itm.SubItems(2).Text
                     dr("Status") = 1
@@ -196,10 +197,10 @@ nextlineTodo:
     End Sub
 
     Private Sub BGwatcher_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles BGwatcher.DoWork
-        ProductionTimer1.Stop()
-        timerCounter = 0
-        StatusTimer.Text = timerCounter
-        Production()
+        'ProductionTimer1.Stop()
+        'timerCounter = 0
+        'StatusTimer.Text = timerCounter
+        'Production()
     End Sub
 
     Private Sub ProductionWatcher_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductionWatcher.Tick
