@@ -12,13 +12,13 @@
         End Set
     End Property
 
-    Private _MagID As Integer
-    Public Property MagID() As Integer
+    Private _PAPID As Integer
+    Public Property PAPID() As Integer
         Get
-            Return _MagID
+            Return _PAPID
         End Get
         Set(ByVal value As Integer)
-            _MagID = value
+            _PAPID = value
         End Set
     End Property
 
@@ -140,7 +140,7 @@
 
         With ds.Tables(0).Rows(0)
             _PaprollID = .Item("Paproll_ID")
-            _MagID = .Item("MAG_ID")
+            _PAPID = .Item("PAPIDS")
             _PaperRollSErial = .Item("papRoll_Serial")
             _OuterDiameter = .Item("Outer_diameter")
             _Thickness = .Item("Thickness")
@@ -161,7 +161,7 @@
         Dim dsNewRow As DataRow
         dsNewRow = ds.Tables(0).NewRow
         With dsNewRow
-            .Item("Mag_IDS") = _MagID
+            .Item("PAPIDS") = _PAPID
             .Item("paproll_serial") = _PaperRollSErial
             .Item("Outer_diameter") = _OuterDiameter
             .Item("thickness") = _Thickness
@@ -191,7 +191,7 @@
         With dr
 
             _PaprollID = .Item("Paproll_ID")
-            _MagID = .Item("Mag_IDS")
+            _PAPID = .Item("PAPIDS")
             _PaperRollSErial = .Item("Paproll_Serial")
             _OuterDiameter = .Item("Outer_Diameter")
             _Thickness = .Item("Thickness")

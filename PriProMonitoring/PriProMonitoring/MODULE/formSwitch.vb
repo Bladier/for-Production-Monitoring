@@ -6,7 +6,7 @@
         frmitem = 2
     End Enum
 
-    Friend Sub ReloadFormFromSearch(ByVal gotoForm As FormName, ByVal mg As Magazine)
+    Friend Sub ReloadFormFromSearch(ByVal gotoForm As FormName, ByVal mg As PAPERROLLMAIN)
         Select Case gotoForm
             Case FormName.frmmagazine
                 frmMagazine.LoadMagazine(mg)

@@ -1,6 +1,6 @@
 ﻿Imports System.Data.Odbc
 Public Class frmMagazine
-    Private SelectedMAG As Magazine
+    Private SelectedMAG As PAPERROLLMAIN
     Private SAVEPAPERCUT As PaperCut
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
         If btnSave.Text = "&Save" Then
@@ -14,22 +14,22 @@ Public Class frmMagazine
     Private Sub SaveItems()
         If Not isValid() Then Exit Sub
 
-        Dim mysql As String = "SELECT * FROM TBLMAGAZINE WHERE MAGCODE= '" & txtItemCode.Text & "'"
-        Dim DS As DataSet = LoadSQL(mysql, "TBLMAGAZINE")
+        Dim mysql As String = "SELECT * FROM TBLPAPROLL_MAIN WHERE PAPCODE= '" & txtItemCode.Text & "'"
+        Dim DS As DataSet = LoadSQL(mysql, "TBLPAPROLL_MAIN")
         If DS.Tables(0).Rows.Count = 1 Then
             MsgBox("Magazine already existed", MsgBoxStyle.Critical)
             Exit Sub
         End If
 
-        Dim ans As DialogResult = MsgBox("Do you want to save this magazine?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
+        Dim ans As DialogResult = MsgBox("Do you want to save this PAPER ROLL?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
         If ans = Windows.Forms.DialogResult.No Then Exit Sub
 
-        Dim MAGAZINESAVE As New Magazine
+        Dim MAGAZINESAVE As New PAPERROLLMAIN
         Dim ColIPAPERCUT As New CollectionPaperCut
 
         With MAGAZINESAVE
-            .MagItemcode = txtItemCode.Text
-            .MagDescription = txtDescription.Text
+            .PAPERCODE = txtItemCode.Text
+            .PAPERDESCRIPTION = txtDescription.Text
         End With
 
         For Each row As DataGridViewRow In dgPCCUT.Rows
@@ -48,7 +48,7 @@ Public Class frmMagazine
         MAGAZINESAVE.PaperCuts = ColIPAPERCUT
         MAGAZINESAVE.Save_Magazine()
 
-        MsgBox("Magazine saved", MsgBoxStyle.Information)
+        MsgBox("PAPER ROLL saved", MsgBoxStyle.Information)
         txtItemCode.Focus()
         clearfields()
         ReadOnlyFalse()
@@ -60,16 +60,16 @@ Public Class frmMagazine
         ReadOnlyFalse()
         txtItemCode.Enabled = False
 
-        Dim ans As DialogResult = MsgBox("Do you want to Update Magazine?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
+        Dim ans As DialogResult = MsgBox("Do you want to Update PAPER ROLL?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
         If ans = Windows.Forms.DialogResult.No Then Exit Sub
 
         Dim Colpapercut As New CollectionPaperCut
-        Dim Magazinemodify As New Magazine
+        Dim Magazinemodify As New PAPERROLLMAIN
 
         With Magazinemodify
-            .MagItemcode = txtItemCode.Text
-            .MagDescription = txtDescription.Text
-            .MagID = frmMagazineList.LBLID.Text
+            .PAPERCODE = txtItemCode.Text
+            .PAPERDESCRIPTION = txtDescription.Text
+            .PAPID = frmMagazineList.LBLID.Text
         End With
 
         Dim PapercutModify As New PaperCut
@@ -86,12 +86,12 @@ Public Class frmMagazine
                 End If
 
             End With
-            PapercutModify.mag_IDP = frmMagazineList.LBLID.Text
+            PapercutModify.PAPID = frmMagazineList.LBLID.Text
             PapercutModify.Update()
         Next
         Magazinemodify.UpdateMagazine()
 
-        MsgBox("Magazine Updated", MsgBoxStyle.Information)
+        MsgBox("PAPER ROLL Updated", MsgBoxStyle.Information)
 
         btnSave.Enabled = True
         btnUpdate.Text = "&Edit"
@@ -166,13 +166,13 @@ Public Class frmMagazine
     End Sub
 
 
-    Friend Sub LoadMagazine(ByVal mg As Magazine)
-        If mg.MagItemcode = "" Then Exit Sub
+    Friend Sub LoadMagazine(ByVal PAP As PAPERROLLMAIN)
+        If PAP.PAPERCODE = "" Then Exit Sub
 
-        txtItemCode.Text = mg.MagItemcode
-        txtDescription.Text = mg.MagDescription
+        txtItemCode.Text = PAP.PAPERCODE
+        txtDescription.Text = PAP.PAPERDESCRIPTION
 
-        LoadPAPCUT(mg.MagID)
+        LoadPAPCUT(PAP.PAPID)
         ReadOnlyTrue()
         btnSave.Enabled = False
         btnUpdate.Enabled = True

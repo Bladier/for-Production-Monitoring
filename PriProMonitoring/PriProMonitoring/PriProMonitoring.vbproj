@@ -130,7 +130,7 @@
     <Compile Include="CLASS\ItemLine.vb" />
     <Compile Include="CLASS\item.vb" />
     <Compile Include="CLASS\PaperLoadLog.vb" />
-    <Compile Include="CLASS\Magazine.vb" />
+    <Compile Include="CLASS\PAPERROLLMAIN.vb" />
     <Compile Include="CLASS\PaperCut.vb" />
     <Compile Include="CLASS\PaperRoll.vb" />
     <Compile Include="CLASS\production.vb" />

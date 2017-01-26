@@ -124,7 +124,7 @@
                 Dim SaveSL As New SalesLine
                 With SaveSL
                     .ProductionID = dr.Item("Production_ID")
-                    .MagID = tmpPapcut.mag_IDP
+                    .PAPID = tmpPapcut.PAPID
                     .Paproll_serial = ""
                     .Quantity = dr.Item("QTY") * dr1.Item("QTY")
                     .Papercuts = tmpPapcut.papcut

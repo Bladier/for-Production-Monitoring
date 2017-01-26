@@ -2,7 +2,7 @@
     Const pie As Double = 3.1416
     Const value As Integer = 1000
     Const value1 As Integer = 40
-    Dim mag As Hashtable
+    Dim PAP As Hashtable
 
 
     Private Sub btnsave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnsave.Click
@@ -22,7 +22,7 @@
 
         Dim PaprollSave As New PaperRoll
         With PaprollSave
-            .MagID = GetMagID(CboMagazine.Text)
+            .PAPID = gETPAPID(CboMagazine.Text)
             .PaperRollSErial = txtSerial.Text
             .OuterDiameter = txtOuterDiameter.Text
             .Thickness = txtPaperThickness.Text
@@ -64,31 +64,31 @@
     End Function
 
     Private Sub frmPaperRoll_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        LoadMagazine()
+        lOADPAPROLL()
 
     End Sub
 
-    Private Sub LoadMagazine()
-        Dim mySql As String = "SELECT * FROM tblmagazine"
+    Private Sub lOADPAPROLL()
+        Dim mySql As String = "SELECT * FROM TBLPAPROLL_MAIN"
         Dim ds As DataSet = LoadSQL(mySql)
 
-        mag = New Hashtable
+        PAP = New Hashtable
         CboMagazine.Items.Clear()
         Dim tmpName As String, tmpID As Integer
 
         For Each dr As DataRow In ds.Tables(0).Rows
             With dr
-                tmpID = .Item("mag_ID")
-                tmpName = .Item("Magdescription")
+                tmpID = .Item("PAPID")
+                tmpName = .Item("PAPCODE")
             End With
-            mag.Add(tmpID, tmpName)
+            PAP.Add(tmpID, tmpName)
             CboMagazine.Items.Add(tmpName)
         Next
 
     End Sub
 
     Private Function GetMagByID(ByVal id As Integer) As String
-        For Each el As DictionaryEntry In mag
+        For Each el As DictionaryEntry In PAP
             If el.Key = id Then
                 Return el.Value
             End If
@@ -97,8 +97,8 @@
         Return "N/A"
     End Function
 
-    Private Function GetMagID(ByVal name As String) As Integer
-        For Each el As DictionaryEntry In mag
+    Private Function gETPAPID(ByVal name As String) As Integer
+        For Each el As DictionaryEntry In PAP
             If el.Value = name Then
                 Return el.Key
             End If

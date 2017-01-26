@@ -25,13 +25,13 @@
         End Set
     End Property
 
-    Private _MagID As Integer
-    Public Property MagID() As Integer
+    Private _PAPID As Integer
+    Public Property PAPID() As Integer
         Get
-            Return _MagID
+            Return _PAPID
         End Get
         Set(ByVal value As Integer)
-            _MagID = value
+            _PAPID = value
         End Set
 
     End Property
@@ -140,7 +140,7 @@
         With dr
             _ID = .Item("ID")
             _ProductionID = .Item("Production_ID")
-            _MagID = .Item("MAG_ID")
+            _PAPID = .Item("MAG_ID")
             _Paproll_serial = .Item("PAPROLL_SERIAL")
             _Quantity = .Item("Quantity")
             _Papercut = .Item("PAPERCUT")
@@ -161,7 +161,7 @@
         If COUNTMAX = 1 Then
             With ds.Tables(0).Rows(0)
                 .Item("PRODUCTION_ID") = _ProductionID
-                .Item("MAG_ID") = _MagID
+                .Item("PAPID") = _PAPID
                 .Item("PAPROLL_SERIAL") = _Paproll_serial
                 .Item("Quantity") = _Quantity
                 .Item("PAPERCUT") = _Papercut
@@ -178,7 +178,7 @@
             dsNewRow = ds.Tables(filldata).NewRow
             With dsNewRow
                 .Item("PRODUCTION_ID") = _ProductionID
-                .Item("MAG_ID") = _MagID
+                .Item("PAPID") = _PAPID
                 .Item("PAPROLL_SERIAL") = _Paproll_serial
                 .Item("Quantity") = _Quantity
                 .Item("PAPERCUT") = _Papercut

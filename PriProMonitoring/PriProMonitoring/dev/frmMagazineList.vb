@@ -29,35 +29,35 @@
     Private Sub SEARCH()
         Dim secured_str As String = txtSearch.Text
         secured_str = DreadKnight(secured_str)
-        Dim mySql As String = "SELECT * FROM TBLMAGAZINE WHERE "
-        mySql &= String.Format("(UPPER (MAGITEMCODE) LIKE UPPER('%{0}%') OR UPPER (MAGDESCRIPTION) LIKE UPPER('%{0}%'))", secured_str)
-        mySql &= "ORDER BY MAG_ID ASC"
+        Dim mySql As String = "SELECT * FROM TBLPAPROLL_MAIN WHERE "
+        mySql &= String.Format("(UPPER (PAPCODE) LIKE UPPER('%{0}%') OR UPPER (PAPDESC) LIKE UPPER('%{0}%'))", secured_str)
+        mySql &= "ORDER BY PAPID ASC"
 
         LOADMAGAZINE(mySql)
-        MsgBox(String.Format("{0} MAGAZINE found.", lvmagazine.Items.Count), MsgBoxStyle.Information)
+        MsgBox(String.Format("{0} PAPER ROLL found.", lvmagazine.Items.Count), MsgBoxStyle.Information)
 
     End Sub
 
-    Private Sub LOADMAGAZINE(Optional ByVal mySql As String = "SELECT * FROM TBLMAGAZINE WHERE MAG_ID <> 0")
+    Private Sub LOADMAGAZINE(Optional ByVal mySql As String = "SELECT * FROM TBLPAPROLL_MAIN WHERE PAPID <> 0")
 
         Dim ds As DataSet = LoadSQL(mySql)
 
         MAG = New Hashtable
         lvmagazine.Items.Clear()
         For Each dr As DataRow In ds.Tables(0).Rows
-            Dim MAGS As New Magazine
-            MAGS.LoadByRow(dr)
-            AddItem(MAGS)
+            Dim PAP As New PAPERROLLMAIN
+            PAP.LoadByRow(dr)
+            AddItem(PAP)
 
-            MAG.Add(MAGS.MagID, MAGS)
+            MAG.Add(PAP.PAPID, PAP)
         Next
 
     End Sub
 
-    Private Sub AddItem(ByVal MAG As Magazine)
-        Dim lv As ListViewItem = lvmagazine.Items.Add(MAG.MagID)
-        lv.SubItems.Add(MAG.MagItemcode)
-        lv.SubItems.Add(MAG.MagDescription)
+    Private Sub AddItem(ByVal PAP As PAPERROLLMAIN)
+        Dim lv As ListViewItem = lvmagazine.Items.Add(PAP.PAPID)
+        lv.SubItems.Add(PAP.PAPERCODE)
+        lv.SubItems.Add(PAP.PAPERDESCRIPTION)
     End Sub
 
     Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
@@ -70,7 +70,7 @@
 
         idx = CInt(lvmagazine.FocusedItem.Text)
         LBLID.Text = idx
-        Dim selected_magazine As New Magazine
+        Dim selected_magazine As New PAPERROLLMAIN
         For Each dt As DictionaryEntry In MAG
             If dt.Key = idx Then
 

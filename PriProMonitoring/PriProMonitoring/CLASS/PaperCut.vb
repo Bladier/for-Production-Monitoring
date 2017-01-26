@@ -13,13 +13,13 @@
         End Set
     End Property
 
-    Private _mag_IDP As Integer
-    Public Property mag_IDP() As Integer
+    Private _PAPID As Integer
+    Public Property PAPID() As Integer
         Get
-            Return _mag_IDP
+            Return _PAPID
         End Get
         Set(ByVal value As Integer)
-            _mag_IDP = value
+            _PAPID = value
         End Set
     End Property
 
@@ -80,7 +80,7 @@
     Public Sub lOAD_PaperCut_row(ByVal dr As DataRow)
         With dr
             _PapcutID = .Item("PAPerCUT_ID")
-            _mag_IDP = .Item("MAG_IDP")
+            _PAPID = .Item("PAPID")
             _PapCutITemcode = .Item("papCUt_CODE")
             _papcutDescription = .Item("PAPCUT_DESCRIPTION")
             _papcut = .Item("PAPERCUT")
@@ -108,7 +108,7 @@
         Dim dsNewRow As DataRow
         dsNewRow = ds.Tables(MainTable).NewRow
         With dsNewRow
-            .Item("MAG_IDP") = _mag_IDP
+            .Item("PAPID") = _PAPID
             .Item("PAPCUT_CODE") = _PapCutITemcode
             .Item("PAPCUT_DESCRIPTION") = _papcutDescription
             .Item("PAPERCUT") = _papcut
@@ -118,14 +118,14 @@
         database.SaveEntry(ds)
     End Sub
 
-    Public Function gETmAGid() As Integer
+    Public Function gETPAPID() As Integer
 
-        Dim mySql As String = "SELECT * FROM tblMagazine ORDER BY Mag_ID DESC ROWS 1"
+        Dim mySql As String = "SELECT * FROM TBLPAPROLL_MAIN ORDER BY PAPID DESC ROWS 1"
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
-        mag_IDP = ds.Tables(MainTable).Rows(0).Item("Mag_ID")
+        _PAPID = ds.Tables(MainTable).Rows(0).Item("PAPID")
 
-        Return mag_IDP
+        Return _PAPID
     End Function
 
     Public Sub Update()
@@ -143,7 +143,7 @@
             Dim dsNewRow As DataRow
             dsNewRow = ds.Tables(0).NewRow
             With dsNewRow
-                .Item("MAG_IDP") = _mag_IDP
+                .Item("PAPID") = _PAPID
                 .Item("PAPCUT_CODE") = _PapCutITemcode
                 .Item("PAPCUT_DESCRIPTION") = _papcutDescription
                 .Item("PAPERCUT") = _papcut

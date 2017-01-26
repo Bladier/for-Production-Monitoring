@@ -23,7 +23,7 @@
     End Sub
 
 
-    Private MAG_IDS() As Integer = {"1", "2", "3", "4"}
+    Private PAPIDS() As Integer = {"1", "2", "3", "4"}
     Private Serial() As String = {"5RS0001", "8RS0001", "5RG0001", "4RS0001"}
     Private Diameter() As Double = {23.55, 20.35, 23.65, 21.25}
     Private thickness() As Double = {0.2, 0.2, 0.2, 0.2}
@@ -37,11 +37,11 @@
     Private remaining1() As Double = {192.55, 130.25, 185.25, 150.256}
 
     Sub AddpaperRolls()
-        For i As Integer = 0 To MAG_IDS.Count - 1
+        For i As Integer = 0 To PAPIDS.Count - 1
 
             Dim tmppap As New PaperRoll
             With tmppap
-                .MagID = MAG_IDS(i)
+                .PAPID = PAPIDS(i)
                 .PaperRollSErial = Serial(i)
                 .OuterDiameter = Diameter(i)
                 .Thickness = thickness(i)

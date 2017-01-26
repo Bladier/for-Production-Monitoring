@@ -303,17 +303,17 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
         Me.Enabled = False
         For cnt = 2 To MaxEntries
 
-            Dim MAGAZINESAVE As New Magazine
+            Dim MAGAZINESAVE As New PAPERROLLMAIN
 
             With MAGAZINESAVE
-                .MagItemcode = oSheet.Cells(cnt, 1).Value
-                .MagDescription = oSheet.Cells(cnt, 2).Value
+                .PAPERCODE = oSheet.Cells(cnt, 1).Value
+                .PAPERDESCRIPTION = oSheet.Cells(cnt, 2).Value
             End With
             MAGAZINESAVE.Save_Magazine()
 
             Dim SAVEPAPERCUT As New PaperCut
             With SAVEPAPERCUT
-                .mag_IDP = .gETmAGid
+                .PAPID = .gETPAPID
                 .PapCutITemcode = oSheet.Cells(cnt, 3).Value
                 .papcutDescription = oSheet.Cells(cnt, 4).Value
                 .papcut = oSheet.Cells(cnt, 5).Value
@@ -351,11 +351,11 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
         Me.Enabled = False
         For cnt = 2 To MaxEntries
 
-            Dim MAGAZINESAVE As New Magazine
+            Dim MAGAZINESAVE As New PAPERROLLMAIN
 
             With MAGAZINESAVE
-                .MagItemcode = oSheet.Cells(cnt, 1).Value
-                .MagDescription = oSheet.Cells(cnt, 2).Value
+                .PAPERCODE = oSheet.Cells(cnt, 1).Value
+                .PAPERDESCRIPTION = oSheet.Cells(cnt, 2).Value
             End With
             MAGAZINESAVE.Save_Magazine()
 
@@ -363,7 +363,7 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
 
             With SAVEPAPERCUT
 
-                .mag_IDP = MAGAZINESAVE.LoadMagID(MAGAZINESAVE.MagDescription)
+                .PAPID = MAGAZINESAVE.LoadPAPERID(MAGAZINESAVE.PAPERDESCRIPTION)
 
                 .PapCutITemcode = oSheet.Cells(cnt, 3).Value
                 .papcutDescription = oSheet.Cells(cnt, 4).Value

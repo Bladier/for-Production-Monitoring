@@ -87,9 +87,9 @@ nextlineTodo:
     End Sub
 
     Private Sub loadPaperRollSearch(ByVal papSerial As String, Optional ByVal mag As String = "")
-        Dim mysql As String = "SELECT P.PAPROLL_ID,P.MAG_IDS,M.MAGDESCRIPTION,P.PAPROLL_SERIAL,P.Chamber FROM TBLPAPERROLL P " & _
-                              "INNER JOIN TBLMAGAZINE M ON M.MAG_ID = P.MAG_IDS " & _
-                              "WHERE UPPER(P.PAPROLL_SERIAL) = UPPER('" & papSerial & "') OR UPPER(M.MAGDESCRIPTION) = UPPER('" & mag & "')" & _
+        Dim mysql As String = "SELECT P.PAPROLL_ID,P.PAPIDS,M.PAPDESC,P.PAPROLL_SERIAL,P.Chamber FROM TBLPAPERROLL P " & _
+                              "INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID = P.PAPIDS " & _
+                              "WHERE UPPER(P.PAPROLL_SERIAL) = UPPER('" & papSerial & "') OR UPPER(M.PAPDESC) = UPPER('" & mag & "')" & _
                               "and status <> '2'"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
         Dim count As Integer = ds.Tables(0).Rows.Count
@@ -103,8 +103,8 @@ nextlineTodo:
 
             Dim tmpID As Integer = dr.Item("Paproll_ID")
             Dim lv As ListViewItem = LvPaperRollList.Items.Add(tmpID)
-            lv.SubItems.Add(dr.Item("MAG_IDS"))
-            lv.SubItems.Add(dr.Item("MAGDESCRIPTION"))
+            lv.SubItems.Add(dr.Item("PAPIDS"))
+            lv.SubItems.Add(dr.Item("PAPDESC"))
             lv.SubItems.Add(dr.Item("PAPROLL_SERIAL"))
             If IsDBNull(dr.Item("Chamber")) Or dr.Item("Chamber") Is Nothing Then
                 On Error Resume Next
@@ -118,8 +118,8 @@ nextlineTodo:
 
 
     Private Sub loadPaperRoll()
-        Dim mysql As String = "SELECT P.PAPROLL_ID,P.MAG_IDS,M.MAGDESCRIPTION,P.PAPROLL_SERIAL,P.Chamber FROM TBLPAPERROLL P " & _
-                              "INNER JOIN TBLMAGAZINE M ON M.MAG_ID = P.MAG_IDS where P.STATUS <> '2'"
+        Dim mysql As String = "SELECT P.PAPROLL_ID,P.PAPIDS,M.PAPDESC,P.PAPROLL_SERIAL,P.Chamber FROM TBLPAPERROLL P " & _
+                              "INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID = P.PAPIDS where P.STATUS <> '2'"
 
         Dim ds As DataSet = LoadSQL(mysql, "TBL")
         Dim count As Integer = ds.Tables(0).Rows.Count
@@ -128,8 +128,8 @@ nextlineTodo:
         For Each dr As DataRow In ds.Tables(0).Rows
             Dim tmpID As Integer = dr.Item("Paproll_ID")
             Dim lv As ListViewItem = LvPaperRollList.Items.Add(tmpID)
-            lv.SubItems.Add(dr.Item("MAG_IDS"))
-            lv.SubItems.Add(dr.Item("MAGDESCRIPTION"))
+            lv.SubItems.Add(dr.Item("PAPIDS"))
+            lv.SubItems.Add(dr.Item("PAPDESC"))
             lv.SubItems.Add(dr.Item("PAPROLL_SERIAL"))
             If IsDBNull(dr.Item("Chamber")) Or dr.Item("Chamber") Is Nothing Then
 
@@ -218,11 +218,11 @@ nextlineTodo:
     End Sub
 
     Private Function CHECKMAG_IFALREADYUSED() As Boolean
-        Dim mysql As String = "SELECT paproll_ID,paproll_serial,chamber,mag_IDS,M.MAGDESCRIPTION " & _
-                              "FROM TBLPAPERROLL INNER JOIN TBLMAGAZINE M ON M.MAG_ID =TBLPAPERROLL.MAG_IDS " & _
-                              "WHERE MAG_IDS = '" & LvPaperRollList.SelectedItems(0).SubItems(1).Text & "' " & _
+        Dim mysql As String = "SELECT paproll_ID,paproll_serial,chamber,PAPIDS,M.MAGDESCRIPTION " & _
+                              "FROM TBLPAPERROLL INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID =TBLPAPERROLL.PAPIDS " & _
+                              "WHERE PAPIDS = '" & LvPaperRollList.SelectedItems(0).SubItems(1).Text & "' " & _
                               "AND STATUS ='1' " & _
-                              "group by MAG_IDS,paproll_ID,paproll_serial,chamber,MAGDESCRIPTION"
+                              "group by PAPIDS,paproll_ID,paproll_serial,chamber,M.PAPDESC"
         Try
             Dim ds As DataSet = LoadSQL(mysql, "tblpaperroll")
             If ds.Tables(0).Rows.Count = 1 Then
@@ -237,11 +237,11 @@ nextlineTodo:
     Private Sub CurrentLyUsed()
         For Each itm As ListViewItem In LvPaperRollList.Items
 
-            Dim mysql As String = "SELECT paproll_ID,paproll_serial,chamber,mag_IDS,M.MAGDESCRIPTION " & _
-                           "FROM TBLPAPERROLL INNER JOIN TBLMAGAZINE M ON M.MAG_ID =TBLPAPERROLL.MAG_IDS " & _
-                           "WHERE MAG_IDS = '" & itm.SubItems(1).Text & "' " & _
+            Dim mysql As String = "SELECT paproll_ID,paproll_serial,chamber,PAPIDS,M.PAPDESC " & _
+                           "FROM TBLPAPERROLL INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID =TBLPAPERROLL.PAPIDS " & _
+                           "WHERE PAPIDS = '" & itm.SubItems(1).Text & "' " & _
                            "AND STATUS ='1' " & _
-                           "group by MAG_IDS,paproll_ID,paproll_serial,chamber,MAGDESCRIPTION"
+                           "group by PAPIDS,paproll_ID,paproll_serial,chamber,M.PAPDESC"
             Dim ds As DataSet = LoadSQL(mysql, "tblpaperroll")
 
             If ds.Tables(0).Rows.Count = 1 Then
