@@ -24,7 +24,6 @@ Partial Class frmPaperRolls
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPaperRolls))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.txtSearch = New PriProMonitoring.watermark()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.LvPaperRollList = New System.Windows.Forms.ListView()
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -44,8 +43,6 @@ Partial Class frmPaperRolls
         '
         Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox1.Controls.Add(Me.txtSearch)
-        Me.GroupBox1.Controls.Add(Me.btnSearch)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.GroupBox1.Location = New System.Drawing.Point(12, 6)
@@ -55,18 +52,6 @@ Partial Class frmPaperRolls
         Me.GroupBox1.Size = New System.Drawing.Size(608, 66)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
-        '
-        'txtSearch
-        '
-        Me.txtSearch.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSearch.Location = New System.Drawing.Point(6, 24)
-        Me.txtSearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(519, 22)
-        Me.txtSearch.TabIndex = 0
-        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSearch.WatermarkText = "Search . . ."
         '
         'btnSearch
         '
@@ -152,7 +137,7 @@ Partial Class frmPaperRolls
         Me.CboChamber.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.CboChamber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CboChamber.FormattingEnabled = True
-        Me.CboChamber.Location = New System.Drawing.Point(450, 186)
+        Me.CboChamber.Location = New System.Drawing.Point(451, 184)
         Me.CboChamber.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.CboChamber.Name = "CboChamber"
         Me.CboChamber.Size = New System.Drawing.Size(163, 23)
@@ -164,7 +149,7 @@ Partial Class frmPaperRolls
         Me.lblChamber.AutoSize = True
         Me.lblChamber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblChamber.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblChamber.Location = New System.Drawing.Point(449, 164)
+        Me.lblChamber.Location = New System.Drawing.Point(450, 162)
         Me.lblChamber.Name = "lblChamber"
         Me.lblChamber.Size = New System.Drawing.Size(63, 16)
         Me.lblChamber.TabIndex = 5

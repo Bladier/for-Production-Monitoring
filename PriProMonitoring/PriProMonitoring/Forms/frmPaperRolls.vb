@@ -218,11 +218,11 @@ nextlineTodo:
     End Sub
 
     Private Function CHECKMAG_IFALREADYUSED() As Boolean
-        Dim mysql As String = "SELECT paproll_ID,paproll_serial,chamber,PAPIDS,M.MAGDESCRIPTION " & _
+        Dim mysql As String = "SELECT paproll_ID,paproll_serial,chamber,M.PAPID,M.PAPDESC " & _
                               "FROM TBLPAPERROLL INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID =TBLPAPERROLL.PAPIDS " & _
-                              "WHERE PAPIDS = '" & LvPaperRollList.SelectedItems(0).SubItems(1).Text & "' " & _
+                              "WHERE PAPID = '" & LvPaperRollList.SelectedItems(0).SubItems(1).Text & "' " & _
                               "AND STATUS ='1' " & _
-                              "group by PAPIDS,paproll_ID,paproll_serial,chamber,M.PAPDESC"
+                              "group by PAPID,paproll_ID,paproll_serial,chamber,M.PAPDESC"
         Try
             Dim ds As DataSet = LoadSQL(mysql, "tblpaperroll")
             If ds.Tables(0).Rows.Count = 1 Then
@@ -239,7 +239,7 @@ nextlineTodo:
 
             Dim mysql As String = "SELECT paproll_ID,paproll_serial,chamber,PAPIDS,M.PAPDESC " & _
                            "FROM TBLPAPERROLL INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID =TBLPAPERROLL.PAPIDS " & _
-                           "WHERE PAPIDS = '" & itm.SubItems(1).Text & "' " & _
+                           "WHERE paproll_serial = '" & itm.SubItems(3).Text & "' " & _
                            "AND STATUS ='1' " & _
                            "group by PAPIDS,paproll_ID,paproll_serial,chamber,M.PAPDESC"
             Dim ds As DataSet = LoadSQL(mysql, "tblpaperroll")
@@ -249,7 +249,6 @@ nextlineTodo:
             Else
                 itm.BackColor = Color.White
             End If
-
         Next
     End Sub
 
@@ -268,7 +267,7 @@ nextlineTodo:
         Return value
     End Function
 
-    Private Sub txtSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
+    Private Sub txtSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         If isEnter(e) Then btnSearch.PerformClick()
     End Sub
 
@@ -285,5 +284,9 @@ nextlineTodo:
     Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
         frmPaperRoll.Show()
         Me.Hide()
+    End Sub
+
+    Private Sub LvPaperRollList_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LvPaperRollList.Click
+       
     End Sub
 End Class

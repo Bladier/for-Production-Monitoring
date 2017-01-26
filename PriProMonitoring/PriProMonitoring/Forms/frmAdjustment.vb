@@ -6,10 +6,10 @@
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         If txtSearch.Text = "" Then Exit Sub
 
-        Dim MYSQL As String = "SELECT P.PAPERCUT_ID,P.MAG_IDP,R.PAPROLL_SERIAL,STATUS,R.REMAINING," & _
+        Dim MYSQL As String = "SELECT P.PAPERCUT_ID,P.PAPID,R.PAPROLL_SERIAL,STATUS,R.REMAINING," & _
           "P.PAPERCUT,P.PAPCUT_CODE,P.PAPCUT_DESCRIPTION " & _
-          "FROM TBLPAPERCUT P INNER JOIN TBLPAPERROLL R ON P.MAG_IDP = R.MAG_IDS " & _
-          "INNER JOIN TBLMAGAZINE M ON M.MAG_ID = P.MAG_IDP " & _
+          "FROM TBLPAPERCUT P INNER JOIN TBLPAPERROLL R ON P.PAPID = R.PAPIDS " & _
+          "INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID = P.PAPID " & _
         String.Format("WHERE UPPER(PAPROLL_SERIAL) = UPPER('{0}') ORDER BY PAPERCUT_ID ASC ", txtSearch.Text)
         Dim ds As DataSet = LoadSQL(MYSQL, "PAPERCUT")
 
@@ -147,11 +147,11 @@
     End Sub
 
     Private Function LoadCurMag(ByVal ID As Integer) As String
-        Dim filldata As String = "TBLMAGAZINE"
-        Dim mysql As String = "SELECT * FROM " & filldata & " WHERE MAG_ID =" & ID
+        Dim filldata As String = "TBLPAPROLL_MAIN"
+        Dim mysql As String = "SELECT * FROM " & filldata & " WHERE PAPID =" & ID
         Dim ds As DataSet = LoadSQL(mysql, filldata)
 
-        Return ds.Tables(0).Rows(0).Item("MagDescription")
+        Return ds.Tables(0).Rows(0).Item("PAPCODE")
     End Function
 
     Private Sub AddToPaperRoll(ByVal papRollID As Integer, ByVal TotalLength As Double)

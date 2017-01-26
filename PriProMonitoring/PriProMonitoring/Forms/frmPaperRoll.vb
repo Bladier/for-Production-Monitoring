@@ -33,7 +33,7 @@
 
         PaprollSave.SaveRoll()
 
-        If ModName = "Declare empty paper roll" Then
+        If ModName = "Empty paper roll" Then
             frmDeclaration.txtSearch.Text = txtSerial.Text
             frmDeclaration.txtSearch.Focus()
             frmDeclaration.Show()

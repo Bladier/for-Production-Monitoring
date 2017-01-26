@@ -26,10 +26,10 @@ Partial Class frmLoadMagazine
         Me.lvPaproll = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnSet = New System.Windows.Forms.Button()
-        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtserial = New PriProMonitoring.watermark()
         Me.SuspendLayout()
         '
@@ -65,9 +65,14 @@ Partial Class frmLoadMagazine
         Me.ColumnHeader2.Text = "Mag_ID"
         Me.ColumnHeader2.Width = 0
         '
+        'ColumnHeader5
+        '
+        Me.ColumnHeader5.Text = "Chamber"
+        Me.ColumnHeader5.Width = 0
+        '
         'ColumnHeader3
         '
-        Me.ColumnHeader3.Text = "Magazine"
+        Me.ColumnHeader3.Text = "Description"
         Me.ColumnHeader3.Width = 185
         '
         'ColumnHeader4
@@ -85,11 +90,6 @@ Partial Class frmLoadMagazine
         Me.btnSet.Text = "&Set"
         Me.btnSet.UseVisualStyleBackColor = True
         '
-        'ColumnHeader5
-        '
-        Me.ColumnHeader5.Text = "Chamber"
-        Me.ColumnHeader5.Width = 0
-        '
         'txtserial
         '
         Me.txtserial.Location = New System.Drawing.Point(8, 13)
@@ -97,7 +97,7 @@ Partial Class frmLoadMagazine
         Me.txtserial.Size = New System.Drawing.Size(297, 20)
         Me.txtserial.TabIndex = 0
         Me.txtserial.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtserial.WatermarkText = "Enter paper roll serial or magazine"
+        Me.txtserial.WatermarkText = "Enter paper roll serial "
         '
         'frmLoadMagazine
         '
@@ -112,7 +112,7 @@ Partial Class frmLoadMagazine
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
         Me.Name = "frmLoadMagazine"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Load Magazine"
+        Me.Text = "Load Paper Roll"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

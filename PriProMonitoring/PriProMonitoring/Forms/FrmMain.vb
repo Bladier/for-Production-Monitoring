@@ -249,19 +249,15 @@
     End Sub
 
    
-    Private Sub Disabled()
-        Me.MaximumSize = New Size(50, 50)
+    Private Sub MINIMIZE()
+        Me.MaximumSize = New Size(200, 10)
         Me.MinimumSize = Me.MaximumSize
-    End Sub
-
-
-    Private Sub FrmMain_MaximumSizeChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.MaximumSizeChanged
-        Me.Size = New Size(300, 300)
-        Me.MinimumSize = Me.MaximumSize
+        Me.Location = New Point(10, 690)
     End Sub
 
     Public Sub New()
         MyBase.New()
+        MINIMIZE()
         InitializeComponent()
         Me.MaximumSize = New Size(700, 500)
         Me.StartPosition = FormStartPosition.CenterScreen

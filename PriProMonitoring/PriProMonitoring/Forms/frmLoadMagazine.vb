@@ -24,8 +24,8 @@ Public Class frmLoadMagazine
     End Sub
 
     Private Sub GetActivePAPERROLL()
-        Dim mysql As String = "SELECT P.PAPROLL_ID,P.MAG_IDS,P.CHAMBER,M.MAGDESCRIPTION,P.PAPROLL_SERIAL FROM TBLPAPERROLL P " & _
-                             "INNER JOIN TBLMAGAZINE M ON M.MAG_ID = P.MAG_IDS " & _
+        Dim mysql As String = "SELECT P.PAPROLL_ID,P.PAPIDS,P.CHAMBER,M.PAPDESC,P.PAPROLL_SERIAL FROM TBLPAPERROLL P " & _
+                             "INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID = P.PAPIDS " & _
                              " WHERE P.CHAMBER ='B' OR P.CHAMBER ='C'"
 
         Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
@@ -36,9 +36,9 @@ Public Class frmLoadMagazine
         For Each dr As DataRow In ds.Tables(0).Rows
             Dim row As ListViewItem = lvPaproll.Items.Add(dr.Item("PAPROLL_ID"))
 
-            row.SubItems.Add(dr.Item("MAG_IDS"))
+            row.SubItems.Add(dr.Item("PAPIDS"))
             row.SubItems.Add(dr.Item("CHAMBER"))
-            row.SubItems.Add(dr.Item("MAGDESCRIPTION"))
+            row.SubItems.Add(dr.Item("PAPDESC"))
             row.SubItems.Add(dr.Item("PAPROLL_SERIAL"))
         Next
       
@@ -51,7 +51,7 @@ Public Class frmLoadMagazine
         Dim getchamber As Integer = GetOption("Number Chamber")
         If getchamber = 1 Then
             If lvPaproll.Items.Count <> 1 Then MsgBox("This branch used only one chamber." _
-                & vbCrLf & "Just remove one magazine.", MsgBoxStyle.Critical, "Magazine setup") : Exit Sub
+                & vbCrLf & "Just remove one PAPER ROLL.", MsgBoxStyle.Critical, "PAPER ROLL setup") : Exit Sub
             For Each itm As ListViewItem In lvPaproll.Items
                 UpdateRollstatus(itm.SubItems(4).Text, "1", itm.SubItems(2).Text)
             Next
@@ -59,7 +59,7 @@ Public Class frmLoadMagazine
 
         If getchamber = 2 Then
             If lvPaproll.Items.Count <> 2 Then MsgBox("This branch has two chamber." _
-                & vbCrLf & "Add one more magazine.", MsgBoxStyle.Critical, "Magazine setup") : Exit Sub
+                & vbCrLf & "Add one more PAPER ROLL.", MsgBoxStyle.Critical, "PAPER ROLL setup") : Exit Sub
             For Each itm As ListViewItem In lvPaproll.Items
                 UpdateRollstatus(itm.SubItems(4).Text, "1", itm.SubItems(2).Text)
             Next
@@ -67,7 +67,7 @@ Public Class frmLoadMagazine
 
         UpdateOptions("Magazine", "YES") 'Set magazine load
 
-        MsgBox("Magazine has been initialized", MsgBoxStyle.Information, "Magazine")
+        MsgBox("PAPER ROLL has been initialized", MsgBoxStyle.Information, "PAPER ROLL")
         Me.Close()
     End Sub
 

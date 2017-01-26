@@ -22,16 +22,16 @@
         ProductionTimer1.Start()
 
         If chmbercount < 2 Then
-            txtMagazine1.Text = GetMag(0) : txtMagazine2.Visible = False : Exit Sub
+            txtMagazine1.Text = Getpap(0) : txtMagazine2.Visible = False : Exit Sub
         End If
 
-        txtMagazine1.Text = GetMag(0)
-        txtMagazine2.Text = GetMag(1)
+        txtMagazine1.Text = Getpap(0)
+        txtMagazine2.Text = Getpap(1)
     End Sub
 
 
     Private Sub LOADACTIVEMAGAZINE()
-        Dim mysql As String = "SELECT * FROM papercut order by Mag_IDP"
+        Dim mysql As String = "SELECT * FROM papercut order by PAPID"
 
         Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERCUT")
 
@@ -48,15 +48,15 @@
         Next
 
         If chmbercount < 2 Then
-            txtActiveMagazine.Text = "Remaining" & " : " & GetLength(0) & "m " & GetMag(0)
+            txtActiveMagazine.Text = "Remaining" & " : " & GetLength(0) & "m " & Getpap(0)
             Production()
             Exit Sub
         End If
 
-        txtActiveMagazine.Text = "Remaining" & " : " & GetLength(0) & "m " & GetMag(0) & _
-                                " | " & GetLength(1) & "m " & GetMag(1)
+        txtActiveMagazine.Text = "Remaining" & " : " & GetLength(0) & "m " & Getpap(0) & _
+                                " | " & GetLength(1) & "m " & Getpap(1)
 
-        Production()
+        'Production()
     End Sub
 
     Public Function GetLength() As List(Of Double)
@@ -71,7 +71,7 @@
         Return tmplenght
     End Function
 
-    Public Function GetMag() As List(Of String)
+    Public Function Getpap() As List(Of String)
 
         Dim output As New List(Of String)()
 
@@ -80,7 +80,7 @@
         Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERCUT")
 
         For Each dr As DataRow In ds.Tables(0).Rows
-            output.Add(dr.Item("PAPDESC"))
+            output.Add(dr.Item("PAPCODE"))
         Next
 
         Return output
@@ -197,10 +197,10 @@ nextlineTodo:
     End Sub
 
     Private Sub BGwatcher_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles BGwatcher.DoWork
-        'ProductionTimer1.Stop()
-        'timerCounter = 0
-        'StatusTimer.Text = timerCounter
-        'Production()
+        ProductionTimer1.Stop()
+        timerCounter = 0
+        StatusTimer.Text = timerCounter
+        Production()
     End Sub
 
     Private Sub ProductionWatcher_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductionWatcher.Tick
@@ -222,4 +222,5 @@ nextlineTodo:
             timerCounter -= 1
         End If
     End Sub
+
 End Class
