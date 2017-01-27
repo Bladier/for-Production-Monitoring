@@ -35,7 +35,7 @@ Partial Class frmLoadMagazine
         '
         'btnsearch
         '
-        Me.btnsearch.Location = New System.Drawing.Point(310, 6)
+        Me.btnsearch.Location = New System.Drawing.Point(338, 6)
         Me.btnsearch.Name = "btnsearch"
         Me.btnsearch.Size = New System.Drawing.Size(75, 32)
         Me.btnsearch.TabIndex = 1
@@ -50,7 +50,7 @@ Partial Class frmLoadMagazine
         Me.lvPaproll.GridLines = True
         Me.lvPaproll.Location = New System.Drawing.Point(8, 39)
         Me.lvPaproll.Name = "lvPaproll"
-        Me.lvPaproll.Size = New System.Drawing.Size(297, 90)
+        Me.lvPaproll.Size = New System.Drawing.Size(324, 90)
         Me.lvPaproll.TabIndex = 2
         Me.lvPaproll.UseCompatibleStateImageBehavior = False
         Me.lvPaproll.View = System.Windows.Forms.View.Details
@@ -73,17 +73,17 @@ Partial Class frmLoadMagazine
         'ColumnHeader3
         '
         Me.ColumnHeader3.Text = "Description"
-        Me.ColumnHeader3.Width = 185
+        Me.ColumnHeader3.Width = 220
         '
         'ColumnHeader4
         '
         Me.ColumnHeader4.Text = "Paper Roll"
-        Me.ColumnHeader4.Width = 107
+        Me.ColumnHeader4.Width = 98
         '
         'btnSet
         '
         Me.btnSet.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSet.Location = New System.Drawing.Point(310, 100)
+        Me.btnSet.Location = New System.Drawing.Point(338, 100)
         Me.btnSet.Name = "btnSet"
         Me.btnSet.Size = New System.Drawing.Size(75, 29)
         Me.btnSet.TabIndex = 3
@@ -94,7 +94,7 @@ Partial Class frmLoadMagazine
         '
         Me.txtserial.Location = New System.Drawing.Point(8, 13)
         Me.txtserial.Name = "txtserial"
-        Me.txtserial.Size = New System.Drawing.Size(297, 20)
+        Me.txtserial.Size = New System.Drawing.Size(324, 20)
         Me.txtserial.TabIndex = 0
         Me.txtserial.WatermarkColor = System.Drawing.Color.Gray
         Me.txtserial.WatermarkText = "Enter paper roll serial "
@@ -104,7 +104,7 @@ Partial Class frmLoadMagazine
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(397, 134)
+        Me.ClientSize = New System.Drawing.Size(423, 135)
         Me.Controls.Add(Me.btnSet)
         Me.Controls.Add(Me.lvPaproll)
         Me.Controls.Add(Me.txtserial)
