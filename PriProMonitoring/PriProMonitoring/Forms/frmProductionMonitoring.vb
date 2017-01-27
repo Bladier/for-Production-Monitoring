@@ -191,7 +191,7 @@ nextlineTodo:
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         'If txtSearch.Text = "" Then Exit Sub
 
-        frmPaperRolls.txtSearch.Text = txtSearch.Text
+        frmPaperRolls.txtsearch1.Text = txtSearch.Text
         frmPaperRolls.Show()
         Me.Close()
     End Sub

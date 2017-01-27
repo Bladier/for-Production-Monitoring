@@ -23,7 +23,6 @@ Partial Class frmPaperRolls
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPaperRolls))
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.LvPaperRollList = New System.Windows.Forms.ListView()
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -36,22 +35,12 @@ Partial Class frmPaperRolls
         Me.CboChamber = New System.Windows.Forms.ComboBox()
         Me.lblChamber = New System.Windows.Forms.Label()
         Me.btnAdd = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnSearch1 = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtsearch1 = New PriProMonitoring.watermark()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 6)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.GroupBox1.Size = New System.Drawing.Size(608, 66)
-        Me.GroupBox1.TabIndex = 0
-        Me.GroupBox1.TabStop = False
         '
         'btnSearch
         '
@@ -168,19 +157,61 @@ Partial Class frmPaperRolls
         Me.btnAdd.Text = "&Add paper roll"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.GroupBox1.Controls.Add(Me.txtsearch1)
+        Me.GroupBox1.Controls.Add(Me.btnSearch1)
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(608, 57)
+        Me.GroupBox1.TabIndex = 13
+        Me.GroupBox1.TabStop = False
+        '
+        'btnSearch1
+        '
+        Me.btnSearch1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSearch1.Location = New System.Drawing.Point(507, 16)
+        Me.btnSearch1.Name = "btnSearch1"
+        Me.btnSearch1.Size = New System.Drawing.Size(95, 30)
+        Me.btnSearch1.TabIndex = 1
+        Me.btnSearch1.Text = "Search"
+        Me.btnSearch1.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(6, 23)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(46, 15)
+        Me.Label1.TabIndex = 6
+        Me.Label1.Text = "Search"
+        '
+        'txtsearch1
+        '
+        Me.txtsearch1.Location = New System.Drawing.Point(58, 21)
+        Me.txtsearch1.Name = "txtsearch1"
+        Me.txtsearch1.Size = New System.Drawing.Size(443, 21)
+        Me.txtsearch1.TabIndex = 7
+        Me.txtsearch1.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtsearch1.WatermarkText = "Search"
+        '
         'frmPaperRolls
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(632, 357)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.lblChamber)
         Me.Controls.Add(Me.CboChamber)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btnSelect)
         Me.Controls.Add(Me.LvPaperRollList)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
@@ -192,7 +223,6 @@ Partial Class frmPaperRolls
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents txtSearch As PriProMonitoring.watermark
     Friend WithEvents btnSearch As System.Windows.Forms.Button
     Friend WithEvents LvPaperRollList As System.Windows.Forms.ListView
@@ -206,4 +236,8 @@ Partial Class frmPaperRolls
     Friend WithEvents lblChamber As System.Windows.Forms.Label
     Friend WithEvents btnAdd As System.Windows.Forms.Button
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents txtsearch1 As PriProMonitoring.watermark
+    Friend WithEvents btnSearch1 As System.Windows.Forms.Button
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class

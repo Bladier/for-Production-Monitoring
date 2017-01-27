@@ -3,7 +3,7 @@ Public Class frmLoadMagazine
     Private MagazineStatus As Boolean = IIf(GetOption("Magazine") = "YES", True, False)
 
     Private Sub btnsearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnsearch.Click
-        frmPaperRolls.txtSearch.Text = txtserial.Text
+        frmPaperRolls.txtsearch1.Text = txtserial.Text
         frmPaperRolls.Show()
     End Sub
 

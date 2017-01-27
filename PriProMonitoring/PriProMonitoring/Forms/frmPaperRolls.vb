@@ -68,18 +68,13 @@ nextlineTodo:
     End Sub
 
 
-    Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
-        loadPaperRollSearch(txtSearch.Text, txtSearch.Text)
-
-        CurrentLyUsed()
-    End Sub
-
+    
     Private Sub frmPaperRolls_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If ModName = "Empty paper roll" Then btnAdd.Visible = True
 
         LoadChamber()
-        If txtSearch.Text <> "" Then
-            btnSearch.PerformClick()
+        If txtsearch1.Text <> "" Then
+            btnSearch1.PerformClick()
             Exit Sub
         End If
         loadPaperRoll()
@@ -95,7 +90,7 @@ nextlineTodo:
         Dim count As Integer = ds.Tables(0).Rows.Count
 
         If ds.Tables(0).Rows.Count = 0 Then _
-        MsgBox(count & " paper roll found.", MsgBoxStyle.Information) : txtSearch.Text = "" : Exit Sub
+        MsgBox(count & " paper roll found.", MsgBoxStyle.Information) : txtsearch1.Text = "" : Exit Sub
 
         LvPaperRollList.Items.Clear()
 
@@ -267,9 +262,6 @@ nextlineTodo:
         Return value
     End Function
 
-    Private Sub txtSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
-        If isEnter(e) Then btnSearch.PerformClick()
-    End Sub
 
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
         Me.Close()
@@ -288,5 +280,15 @@ nextlineTodo:
 
     Private Sub LvPaperRollList_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LvPaperRollList.Click
        
+    End Sub
+
+    Private Sub btnSearch1_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles btnSearch1.KeyPress
+        loadPaperRollSearch(txtSearch.Text, txtSearch.Text)
+
+        CurrentLyUsed()
+    End Sub
+
+    Private Sub txtsearch1_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtsearch1.KeyPress
+        If isEnter(e) Then btnSearch.PerformClick()
     End Sub
 End Class
