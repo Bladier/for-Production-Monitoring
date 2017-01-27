@@ -8,12 +8,14 @@
 
     Dim timerCounter As Integer = 30
 
+
     Friend Sub NotYetLogin(Optional ByVal st As Boolean = True)
         locked = IIf(GetOption("Locked") = "YES", True, False)
 
-        'file
+        'file menu
         AdjustmentToolStripMenuItem.Enabled = Not st
         PaperEmptyDeclarationToolStripMenuItem.Enabled = Not st
+        InitializePaperRollToolStripMenuItem.Enabled = Not st
 
         If Not locked Then
             SettingsToolStripMenuItem.Enabled = st
@@ -21,47 +23,22 @@
             SettingsToolStripMenuItem.Enabled = Not st
         End If
 
-        'Initialization
-        LoadMagazineToolStripMenuItem.Enabled = Not st
-
-
-        'Magazine
-        AddPaperRollToolStripMenuItem.Enabled = Not st
+        'Item menu
         AddItemToolStripMenuItem.Enabled = Not st
 
-        'Transaction
-        TransactionToolStripMenuItem.Enabled = Not st
+        'TootStripMenus
+        ToolStripProduction.Enabled = Not st
+        ToolStripAddpaperroll.Enabled = Not st
 
         If Not st Then
-            menuLogin.Text = "&Log Out"
+            ToolStripLogin.Text = "&Log Out"
         Else
-            menuLogin.Text = "&Login"
+            ToolStripLogin.Text = "&Login"
         End If
     End Sub
 
-    Private Sub LoginToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles menuLogin.Click
-        If menuLogin.Text = "&Login" Then
-            Login.Show()
-        Else
-            Dim ans As DialogResult = MsgBox("Do you want to LOGOUT?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information, "Logout")
-            If ans = Windows.Forms.DialogResult.No Then Exit Sub
+    Private Sub LoginToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
-            Dim formNames As New List(Of String)
-            For Each Form In My.Application.OpenForms
-                If Form.Name <> "FrmMain" Or Not Form.name <> "Login" Then
-                    formNames.Add(Form.Name)
-                End If
-            Next
-            For Each currentFormName As String In formNames
-                Application.OpenForms(currentFormName).Close()
-            Next
-
-            MsgBox("Thank you!", MsgBoxStyle.Information)
-            locked = IIf(GetOption("Locked") = "YES", True, False)
-            NotYetLogin()
-            Login.Show()
-            statusUser.Text = "User"
-        End If
     End Sub
 
     Private Sub FrmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -76,7 +53,7 @@
 
 
     Private Sub TmpTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TmpTimer.Tick
-        If menuLogin.Text = "&Login" Then
+        If ToolStripLogin.Text = "&Login" Then
             statusDateandTime.Text = "Date not set"
         Else
             statusDateandTime.Text = CurrentDate.ToLongDateString & " " & Now.ToString("T")
@@ -84,27 +61,8 @@
     End Sub
 
 
-    Private Sub AddPaperRollToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddPaperRollToolStripMenuItem.Click
-        frmPaperRoll.Show()
-    End Sub
-
     Private Sub MenuStrip1_ItemClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
 
-    End Sub
-
-    Private Sub TransactionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TransactionToolStripMenuItem.Click
-        MagazineStatus = IIf(GetOption("Magazine") = "YES", True, False)
-        If Not MagazineStatus Then
-            MsgBox("You need to initialize magazine before to begin.", MsgBoxStyle.Exclamation, "Production")
-            Me.Refresh()
-            Exit Sub
-        End If
-
-       frmProductionMonitoring.Show()
-    End Sub
-
-    Private Sub LoadMagazineToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadMagazineToolStripMenuItem.Click
-        frmLoadMagazine.Show()
     End Sub
 
     Private Sub AddItemToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddItemToolStripMenuItem.Click
@@ -151,7 +109,8 @@
                 If tmplastSalesID = "" Then Exit Sub
 
                 If GetOption("LastSalesID") = tmplastSalesID Then _
-                    MsgBox("No new row data in sales", MsgBoxStyle.Information, "Sales") : Exit Sub
+                    ToolStripStatusSalesMessage.Text = "No new row data in sales" : Exit Sub
+                ' MsgBox("No new row data in sales", MsgBoxStyle.Information, "Sales") : Exit Sub
 
                 Dim SaveSales As New Sales
                 With SaveSales
@@ -208,8 +167,11 @@
                     End With
                     updatemainTainance.UPDATE_MAINTAINANCE("LastSalesID ")
 
-                    If MsgBox("Sales Updated.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, _
-        "Sales...") = MsgBoxResult.Ok Then ToolStripPBar.Minimum = 0 : ToolStripPBar.Value = 0 : lblToolStripStatus.Text = "0.00%"
+                    ToolStripStatusSalesMessage.Text = "Sales Updated."
+
+                    '            If MsgBox("Sales Updated.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, _
+                    '"Sales...") = MsgBoxResult.Ok Then
+                    ToolStripPBar.Minimum = 0 : ToolStripPBar.Value = 0 : lblToolStripStatus.Text = "0.00%"
 
 
                 End With
@@ -248,20 +210,77 @@
         End If
     End Sub
 
+    Private Sub ToolStripLogin_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripLogin.Click
+        If ToolStripLogin.Text = "&Login" Then
+            Login.Show()
+        Else
+            Dim ans As DialogResult = MsgBox("Do you want to LOGOUT?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information, "Logout")
+            If ans = Windows.Forms.DialogResult.No Then Exit Sub
+
+            Dim formNames As New List(Of String)
+            For Each Form In My.Application.OpenForms
+                If Form.Name <> "FrmMain" Or Not Form.name <> "Login" Then
+                    formNames.Add(Form.Name)
+                End If
+            Next
+            For Each currentFormName As String In formNames
+                Application.OpenForms(currentFormName).Close()
+            Next
+
+            MsgBox("Thank you!", MsgBoxStyle.Information)
+            locked = IIf(GetOption("Locked") = "YES", True, False)
+            NotYetLogin()
+            Login.Show()
+            statusUser.Text = "User"
+        End If
+    End Sub
+
    
-    Private Sub MINIMIZE()
-        Me.MaximumSize = New Size(200, 10)
-        Me.MinimumSize = Me.MaximumSize
-        Me.Location = New Point(10, 690)
+    Private Sub ToolStripProduction_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripProduction.Click
+        MagazineStatus = IIf(GetOption("Magazine") = "YES", True, False)
+        If Not MagazineStatus Then
+            MsgBox("You need to initialize magazine before to begin.", MsgBoxStyle.Exclamation, "Production")
+            Me.Refresh()
+            Exit Sub
+        End If
+
+        frmProductionMonitoring.Show()
     End Sub
 
-    Public Sub New()
-        MyBase.New()
-        MINIMIZE()
-        InitializeComponent()
-        Me.MaximumSize = New Size(700, 500)
-        Me.StartPosition = FormStartPosition.CenterScreen
+
+    Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
+        Select Case keyData
+            Case Keys.F5
+                ToolStripLogin.PerformClick()
+            Case Keys.F6
+                ToolStripProduction.PerformClick()
+            Case Keys.F7
+                ToolStripAddpaperroll.PerformClick()
+            Case Else
+                'Do Nothing
+        End Select
+
+        Return MyBase.ProcessCmdKey(msg, keyData)
+    End Function
+
+
+    Private Sub ToolStripAddpaperroll_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripAddpaperroll.Click
+        frmPaperRoll.Show()
     End Sub
 
-  
+    Private Sub InitializePaperRollToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InitializePaperRollToolStripMenuItem.Click
+        frmLoadMagazine.Show()
+    End Sub
+
+    'Private Sub New()
+    '    MyBase.New()
+    '    ' This call is required by the designer.
+
+    '    InitializeComponent()
+    '    Me.MinimumSize.Width = 800
+    '    Me.MinimumSize.Height = 600
+
+
+
+    'End Sub
 End Class

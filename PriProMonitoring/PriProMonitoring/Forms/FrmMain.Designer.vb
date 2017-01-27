@@ -26,16 +26,12 @@ Partial Class FrmMain
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMain))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menuLogin = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdjustmentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PaperEmptyDeclarationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menuInitialization = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LoadMagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PaperRollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AddPaperRollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InitializePaperRollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TransactionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusDateandTime = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
@@ -48,15 +44,25 @@ Partial Class FrmMain
         Me.bgWorker = New System.ComponentModel.BackgroundWorker()
         Me.Counter = New System.Windows.Forms.Timer(Me.components)
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripLogin = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripActiveUser = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripProduction = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripAddpaperroll = New System.Windows.Forms.ToolStripButton()
+        Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.ToolStripStatusSalesMessage = New System.Windows.Forms.ToolStripStatusLabel()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.Gainsboro
         Me.MenuStrip1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.menuInitialization, Me.PaperRollToolStripMenuItem, Me.TransactionToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ItemToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1003, 24)
@@ -65,78 +71,53 @@ Partial Class FrmMain
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuLogin, Me.AdjustmentToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.PaperEmptyDeclarationToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AdjustmentToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.PaperEmptyDeclarationToolStripMenuItem, Me.InitializePaperRollToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(41, 20)
         Me.FileToolStripMenuItem.Text = "File"
         '
-        'menuLogin
-        '
-        Me.menuLogin.Name = "menuLogin"
-        Me.menuLogin.Size = New System.Drawing.Size(219, 22)
-        Me.menuLogin.Text = "&Login"
-        '
         'AdjustmentToolStripMenuItem
         '
         Me.AdjustmentToolStripMenuItem.Name = "AdjustmentToolStripMenuItem"
-        Me.AdjustmentToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.AdjustmentToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
         Me.AdjustmentToolStripMenuItem.Text = "&Adjustment"
         '
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
         Me.SettingsToolStripMenuItem.Text = "&Settings"
         '
         'PaperEmptyDeclarationToolStripMenuItem
         '
         Me.PaperEmptyDeclarationToolStripMenuItem.Name = "PaperEmptyDeclarationToolStripMenuItem"
-        Me.PaperEmptyDeclarationToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
-        Me.PaperEmptyDeclarationToolStripMenuItem.Text = "Paper empty &Declaration"
+        Me.PaperEmptyDeclarationToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
+        Me.PaperEmptyDeclarationToolStripMenuItem.Text = "Paper &Empty Declaration"
         '
-        'menuInitialization
+        'InitializePaperRollToolStripMenuItem
         '
-        Me.menuInitialization.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadMagazineToolStripMenuItem})
-        Me.menuInitialization.Name = "menuInitialization"
-        Me.menuInitialization.Size = New System.Drawing.Size(88, 20)
-        Me.menuInitialization.Text = "Initialization"
+        Me.InitializePaperRollToolStripMenuItem.Name = "InitializePaperRollToolStripMenuItem"
+        Me.InitializePaperRollToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
+        Me.InitializePaperRollToolStripMenuItem.Text = "&Initialize paper roll"
         '
-        'LoadMagazineToolStripMenuItem
+        'ItemToolStripMenuItem
         '
-        Me.LoadMagazineToolStripMenuItem.Name = "LoadMagazineToolStripMenuItem"
-        Me.LoadMagazineToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
-        Me.LoadMagazineToolStripMenuItem.Text = "&Load Magazine"
-        '
-        'PaperRollToolStripMenuItem
-        '
-        Me.PaperRollToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddPaperRollToolStripMenuItem, Me.AddItemToolStripMenuItem})
-        Me.PaperRollToolStripMenuItem.Name = "PaperRollToolStripMenuItem"
-        Me.PaperRollToolStripMenuItem.Size = New System.Drawing.Size(80, 20)
-        Me.PaperRollToolStripMenuItem.Text = "Paper Roll"
-        '
-        'AddPaperRollToolStripMenuItem
-        '
-        Me.AddPaperRollToolStripMenuItem.Name = "AddPaperRollToolStripMenuItem"
-        Me.AddPaperRollToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
-        Me.AddPaperRollToolStripMenuItem.Text = "Add &Paper Roll"
+        Me.ItemToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddItemToolStripMenuItem})
+        Me.ItemToolStripMenuItem.Name = "ItemToolStripMenuItem"
+        Me.ItemToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
+        Me.ItemToolStripMenuItem.Text = "Add Item"
         '
         'AddItemToolStripMenuItem
         '
         Me.AddItemToolStripMenuItem.Name = "AddItemToolStripMenuItem"
-        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
         Me.AddItemToolStripMenuItem.Text = "Add &Item"
-        '
-        'TransactionToolStripMenuItem
-        '
-        Me.TransactionToolStripMenuItem.Name = "TransactionToolStripMenuItem"
-        Me.TransactionToolStripMenuItem.Size = New System.Drawing.Size(87, 20)
-        Me.TransactionToolStripMenuItem.Text = "Transaction"
         '
         'StatusStrip1
         '
         Me.StatusStrip1.BackgroundImage = CType(resources.GetObject("StatusStrip1.BackgroundImage"), System.Drawing.Image)
         Me.StatusStrip1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusDateandTime, Me.statusUser, Me.StatusCounter, Me.lblToolStripStatus, Me.ToolStripPBar, Me.Count})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusDateandTime, Me.statusUser, Me.StatusCounter, Me.lblToolStripStatus, Me.ToolStripPBar, Me.ToolStripStatusSalesMessage, Me.Count})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 550)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(1003, 26)
@@ -145,6 +126,7 @@ Partial Class FrmMain
         '
         'statusDateandTime
         '
+        Me.statusDateandTime.AutoToolTip = True
         Me.statusDateandTime.BackColor = System.Drawing.SystemColors.ControlLight
         Me.statusDateandTime.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.statusDateandTime.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
@@ -158,6 +140,7 @@ Partial Class FrmMain
         '
         'statusUser
         '
+        Me.statusUser.AutoToolTip = True
         Me.statusUser.BackColor = System.Drawing.Color.Gainsboro
         Me.statusUser.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
                     Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
@@ -170,6 +153,7 @@ Partial Class FrmMain
         '
         'StatusCounter
         '
+        Me.StatusCounter.AutoToolTip = True
         Me.StatusCounter.BackColor = System.Drawing.SystemColors.Control
         Me.StatusCounter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.StatusCounter.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
@@ -194,6 +178,7 @@ Partial Class FrmMain
         '
         'ToolStripPBar
         '
+        Me.ToolStripPBar.AutoToolTip = True
         Me.ToolStripPBar.Margin = New System.Windows.Forms.Padding(0, 0, 0, 1)
         Me.ToolStripPBar.Name = "ToolStripPBar"
         Me.ToolStripPBar.Size = New System.Drawing.Size(117, 25)
@@ -201,6 +186,7 @@ Partial Class FrmMain
         '
         'Count
         '
+        Me.Count.AutoToolTip = True
         Me.Count.BackColor = System.Drawing.SystemColors.Control
         Me.Count.ForeColor = System.Drawing.Color.Silver
         Me.Count.Name = "Count"
@@ -237,6 +223,92 @@ Partial Class FrmMain
         Me.ToolStripButton1.Size = New System.Drawing.Size(40, 50)
         Me.ToolStripButton1.Text = "&Login"
         '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.AutoSize = False
+        Me.ToolStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ToolStrip1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolStrip1.GripMargin = New System.Windows.Forms.Padding(2, 10, 10, 10)
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLogin, Me.ToolStripSeparator1, Me.ToolStripActiveUser, Me.ToolStripProduction, Me.ToolStripSeparator2, Me.ToolStripAddpaperroll})
+        Me.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
+        Me.ToolStrip1.Size = New System.Drawing.Size(1003, 50)
+        Me.ToolStrip1.TabIndex = 9
+        '
+        'ToolStripLogin
+        '
+        Me.ToolStripLogin.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripLogin.AutoSize = False
+        Me.ToolStripLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ToolStripLogin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolStripLogin.Image = CType(resources.GetObject("ToolStripLogin.Image"), System.Drawing.Image)
+        Me.ToolStripLogin.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripLogin.Margin = New System.Windows.Forms.Padding(0, 0, 2, 0)
+        Me.ToolStripLogin.Name = "ToolStripLogin"
+        Me.ToolStripLogin.Padding = New System.Windows.Forms.Padding(2)
+        Me.ToolStripLogin.Size = New System.Drawing.Size(70, 60)
+        Me.ToolStripLogin.Text = "&Login"
+        Me.ToolStripLogin.ToolTipText = "&Login"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 50)
+        '
+        'ToolStripActiveUser
+        '
+        Me.ToolStripActiveUser.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripActiveUser.BackColor = System.Drawing.SystemColors.Control
+        Me.ToolStripActiveUser.Name = "ToolStripActiveUser"
+        Me.ToolStripActiveUser.Size = New System.Drawing.Size(35, 47)
+        Me.ToolStripActiveUser.Text = "User"
+        Me.ToolStripActiveUser.ToolTipText = "Active User"
+        '
+        'ToolStripProduction
+        '
+        Me.ToolStripProduction.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ToolStripProduction.Image = CType(resources.GetObject("ToolStripProduction.Image"), System.Drawing.Image)
+        Me.ToolStripProduction.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripProduction.Name = "ToolStripProduction"
+        Me.ToolStripProduction.Size = New System.Drawing.Size(94, 47)
+        Me.ToolStripProduction.Text = "Production"
+        Me.ToolStripProduction.ToolTipText = "F6 Short cut key"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 50)
+        '
+        'ToolStripAddpaperroll
+        '
+        Me.ToolStripAddpaperroll.Image = CType(resources.GetObject("ToolStripAddpaperroll.Image"), System.Drawing.Image)
+        Me.ToolStripAddpaperroll.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripAddpaperroll.Name = "ToolStripAddpaperroll"
+        Me.ToolStripAddpaperroll.Size = New System.Drawing.Size(119, 47)
+        Me.ToolStripAddpaperroll.Text = "Add Paper Roll"
+        Me.ToolStripAddpaperroll.ToolTipText = "F7 ""Short cut key"""
+        '
+        'NotifyIcon1
+        '
+        Me.NotifyIcon1.Text = "Sales Updated"
+        Me.NotifyIcon1.Visible = True
+        '
+        'ToolStripStatusSalesMessage
+        '
+        Me.ToolStripStatusSalesMessage.AutoToolTip = True
+        Me.ToolStripStatusSalesMessage.BackColor = System.Drawing.SystemColors.Control
+        Me.ToolStripStatusSalesMessage.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.ToolStripStatusSalesMessage.Margin = New System.Windows.Forms.Padding(0)
+        Me.ToolStripStatusSalesMessage.Name = "ToolStripStatusSalesMessage"
+        Me.ToolStripStatusSalesMessage.Size = New System.Drawing.Size(45, 26)
+        Me.ToolStripStatusSalesMessage.Text = "Sales"
+        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -244,6 +316,7 @@ Partial Class FrmMain
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1003, 576)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -252,27 +325,23 @@ Partial Class FrmMain
         Me.Name = "FrmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Monitoring System"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents FileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents menuLogin As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Friend WithEvents statusDateandTime As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents statusUser As System.Windows.Forms.ToolStripStatusLabel
-    Friend WithEvents menuInitialization As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents LoadMagazineToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TmpTimer As System.Windows.Forms.Timer
-    Friend WithEvents PaperRollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents AddPaperRollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents TransactionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ItemToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddItemToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AdjustmentToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SalesWatcher As System.Windows.Forms.Timer
@@ -285,4 +354,14 @@ Partial Class FrmMain
     Friend WithEvents StatusCounter As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents Counter As System.Windows.Forms.Timer
     Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
+    Friend WithEvents ToolStripLogin As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripActiveUser As System.Windows.Forms.ToolStripLabel
+    Friend WithEvents ToolStripProduction As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripAddpaperroll As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents InitializePaperRollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents NotifyIcon1 As System.Windows.Forms.NotifyIcon
+    Friend WithEvents ToolStripStatusSalesMessage As System.Windows.Forms.ToolStripStatusLabel
 End Class

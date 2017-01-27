@@ -16,7 +16,7 @@
                 MsgBox("You have reached the MAXIMUM logins. This is a recording.", MsgBoxStyle.Critical)
                 End
             End If
-            MsgBox("Invalid Username and password", MsgBoxStyle.Critical)
+            MsgBox("Invalid Username and password", MsgBoxStyle.Critical, Me.Text)
             txtusername.Text = ""
             txtpassword.Text = ""
             txtusername.Focus()
@@ -26,6 +26,7 @@
         ' Success!
 
         FrmMain.statusUser.Text = loginUser.NAME
+        FrmMain.ToolStripActiveUser.Text = "Welcome, " & loginUser.CODE
         MsgBox("Welcome " & loginUser.CODE)
 
 
