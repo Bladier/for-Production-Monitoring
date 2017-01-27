@@ -160,10 +160,10 @@
     <Compile Include="Forms\frmDeclaration.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmImportIMDD.Designer.vb">
+    <Compile Include="dev\frmImportIMDD.Designer.vb">
       <DependentUpon>frmImportIMDD.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmImportIMDD.vb">
+    <Compile Include="dev\frmImportIMDD.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmItem.Designer.vb">
@@ -298,7 +298,7 @@
     <EmbeddedResource Include="Forms\frmDeclaration.resx">
       <DependentUpon>frmDeclaration.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmImportIMDD.resx">
+    <EmbeddedResource Include="dev\frmImportIMDD.resx">
       <DependentUpon>frmImportIMDD.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmItem.resx">

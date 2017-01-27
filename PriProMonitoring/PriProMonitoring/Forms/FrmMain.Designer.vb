@@ -32,7 +32,7 @@ Partial Class FrmMain
         Me.PaperEmptyDeclarationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuInitialization = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoadMagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MagazineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PaperRollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddPaperRollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TransactionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -47,6 +47,7 @@ Partial Class FrmMain
         Me.SalesWatcher = New System.Windows.Forms.Timer(Me.components)
         Me.bgWorker = New System.ComponentModel.BackgroundWorker()
         Me.Counter = New System.Windows.Forms.Timer(Me.components)
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -55,7 +56,7 @@ Partial Class FrmMain
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.Gainsboro
         Me.MenuStrip1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.menuInitialization, Me.MagazineToolStripMenuItem, Me.TransactionToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.menuInitialization, Me.PaperRollToolStripMenuItem, Me.TransactionToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1003, 24)
@@ -106,12 +107,12 @@ Partial Class FrmMain
         Me.LoadMagazineToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.LoadMagazineToolStripMenuItem.Text = "&Load Magazine"
         '
-        'MagazineToolStripMenuItem
+        'PaperRollToolStripMenuItem
         '
-        Me.MagazineToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddPaperRollToolStripMenuItem, Me.AddItemToolStripMenuItem})
-        Me.MagazineToolStripMenuItem.Name = "MagazineToolStripMenuItem"
-        Me.MagazineToolStripMenuItem.Size = New System.Drawing.Size(76, 20)
-        Me.MagazineToolStripMenuItem.Text = "Magazine"
+        Me.PaperRollToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddPaperRollToolStripMenuItem, Me.AddItemToolStripMenuItem})
+        Me.PaperRollToolStripMenuItem.Name = "PaperRollToolStripMenuItem"
+        Me.PaperRollToolStripMenuItem.Size = New System.Drawing.Size(80, 20)
+        Me.PaperRollToolStripMenuItem.Text = "Paper Roll"
         '
         'AddPaperRollToolStripMenuItem
         '
@@ -224,6 +225,18 @@ Partial Class FrmMain
         Me.Counter.Enabled = True
         Me.Counter.Interval = 1000
         '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.AutoSize = False
+        Me.ToolStripButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ToolStripButton1.Checked = True
+        Me.ToolStripButton1.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(40, 50)
+        Me.ToolStripButton1.Text = "&Login"
+        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -237,7 +250,7 @@ Partial Class FrmMain
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "FrmMain"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Monitoring System"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuStrip1.ResumeLayout(False)
@@ -257,7 +270,7 @@ Partial Class FrmMain
     Friend WithEvents menuInitialization As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LoadMagazineToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TmpTimer As System.Windows.Forms.Timer
-    Friend WithEvents MagazineToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PaperRollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddPaperRollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TransactionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddItemToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -271,4 +284,5 @@ Partial Class FrmMain
     Friend WithEvents PaperEmptyDeclarationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StatusCounter As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents Counter As System.Windows.Forms.Timer
+    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
 End Class

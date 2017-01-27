@@ -36,9 +36,9 @@ Partial Class frmPaperRolls
         Me.lblChamber = New System.Windows.Forms.Label()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtsearch1 = New PriProMonitoring.watermark()
         Me.btnSearch1 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtsearch1 = New PriProMonitoring.watermark()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -76,12 +76,12 @@ Partial Class frmPaperRolls
         '
         'ColumnHeader3
         '
-        Me.ColumnHeader3.Text = "MagID"
+        Me.ColumnHeader3.Text = "PapID"
         Me.ColumnHeader3.Width = 0
         '
         'ColumnHeader4
         '
-        Me.ColumnHeader4.Text = "Magazine"
+        Me.ColumnHeader4.Text = "Description"
         Me.ColumnHeader4.Width = 142
         '
         'ColumnHeader5
@@ -153,7 +153,7 @@ Partial Class frmPaperRolls
         Me.btnAdd.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(119, 42)
-        Me.btnAdd.TabIndex = 6
+        Me.btnAdd.TabIndex = 5
         Me.btnAdd.Text = "&Add paper roll"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
@@ -167,8 +167,17 @@ Partial Class frmPaperRolls
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(608, 57)
-        Me.GroupBox1.TabIndex = 13
+        Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
+        '
+        'txtsearch1
+        '
+        Me.txtsearch1.Location = New System.Drawing.Point(58, 21)
+        Me.txtsearch1.Name = "txtsearch1"
+        Me.txtsearch1.Size = New System.Drawing.Size(443, 21)
+        Me.txtsearch1.TabIndex = 0
+        Me.txtsearch1.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtsearch1.WatermarkText = "Search"
         '
         'btnSearch1
         '
@@ -189,15 +198,6 @@ Partial Class frmPaperRolls
         Me.Label1.Size = New System.Drawing.Size(46, 15)
         Me.Label1.TabIndex = 6
         Me.Label1.Text = "Search"
-        '
-        'txtsearch1
-        '
-        Me.txtsearch1.Location = New System.Drawing.Point(58, 21)
-        Me.txtsearch1.Name = "txtsearch1"
-        Me.txtsearch1.Size = New System.Drawing.Size(443, 21)
-        Me.txtsearch1.TabIndex = 7
-        Me.txtsearch1.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtsearch1.WatermarkText = "Search"
         '
         'frmPaperRolls
         '

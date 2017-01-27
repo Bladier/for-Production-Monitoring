@@ -30,8 +30,8 @@ Partial Class frmProductionMonitoring
         Me.ProductionWatcher = New System.Windows.Forms.Timer(Me.components)
         Me.BGwatcher = New System.ComponentModel.BackgroundWorker()
         Me.ProductionTimer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.txtMagazine2 = New PriProMonitoring.watermark()
-        Me.txtMagazine1 = New PriProMonitoring.watermark()
+        Me.txtPaperRoll2 = New PriProMonitoring.watermark()
+        Me.txtpaperRoll1 = New PriProMonitoring.watermark()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txtSearch = New PriProMonitoring.watermark()
         Me.btnSearch = New System.Windows.Forms.Button()
@@ -55,7 +55,7 @@ Partial Class frmProductionMonitoring
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.txtActiveMagazine, Me.StatusTimer})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 372)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(477, 26)
+        Me.StatusStrip1.Size = New System.Drawing.Size(474, 26)
         Me.StatusStrip1.TabIndex = 2
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -96,28 +96,28 @@ Partial Class frmProductionMonitoring
         '
         Me.ProductionTimer1.Interval = 1000
         '
-        'txtMagazine2
+        'txtPaperRoll2
         '
-        Me.txtMagazine2.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.txtMagazine2.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMagazine2.Location = New System.Drawing.Point(242, 68)
-        Me.txtMagazine2.Name = "txtMagazine2"
-        Me.txtMagazine2.Size = New System.Drawing.Size(214, 22)
-        Me.txtMagazine2.TabIndex = 14
-        Me.txtMagazine2.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtMagazine2.WatermarkText = "Magazine"
+        Me.txtPaperRoll2.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.txtPaperRoll2.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPaperRoll2.Location = New System.Drawing.Point(245, 65)
+        Me.txtPaperRoll2.Name = "txtPaperRoll2"
+        Me.txtPaperRoll2.Size = New System.Drawing.Size(214, 22)
+        Me.txtPaperRoll2.TabIndex = 14
+        Me.txtPaperRoll2.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtPaperRoll2.WatermarkText = "Paper roll"
         '
-        'txtMagazine1
+        'txtpaperRoll1
         '
-        Me.txtMagazine1.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.txtMagazine1.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMagazine1.Location = New System.Drawing.Point(13, 68)
-        Me.txtMagazine1.Name = "txtMagazine1"
-        Me.txtMagazine1.ReadOnly = True
-        Me.txtMagazine1.Size = New System.Drawing.Size(228, 22)
-        Me.txtMagazine1.TabIndex = 13
-        Me.txtMagazine1.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtMagazine1.WatermarkText = "Magazine"
+        Me.txtpaperRoll1.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.txtpaperRoll1.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtpaperRoll1.Location = New System.Drawing.Point(16, 65)
+        Me.txtpaperRoll1.Name = "txtpaperRoll1"
+        Me.txtpaperRoll1.ReadOnly = True
+        Me.txtpaperRoll1.Size = New System.Drawing.Size(228, 22)
+        Me.txtpaperRoll1.TabIndex = 13
+        Me.txtpaperRoll1.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtpaperRoll1.WatermarkText = "Paper roll"
         '
         'GroupBox1
         '
@@ -126,7 +126,7 @@ Partial Class frmProductionMonitoring
         Me.GroupBox1.Controls.Add(Me.btnSearch)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(13, 5)
+        Me.GroupBox1.Location = New System.Drawing.Point(16, 5)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(443, 57)
         Me.GroupBox1.TabIndex = 12
@@ -169,7 +169,7 @@ Partial Class frmProductionMonitoring
         Me.lvpapercuts.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvpapercuts.FullRowSelect = True
         Me.lvpapercuts.GridLines = True
-        Me.lvpapercuts.Location = New System.Drawing.Point(13, 90)
+        Me.lvpapercuts.Location = New System.Drawing.Point(16, 90)
         Me.lvpapercuts.Name = "lvpapercuts"
         Me.lvpapercuts.Size = New System.Drawing.Size(443, 272)
         Me.lvpapercuts.TabIndex = 15
@@ -221,9 +221,9 @@ Partial Class frmProductionMonitoring
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(477, 398)
-        Me.Controls.Add(Me.txtMagazine2)
-        Me.Controls.Add(Me.txtMagazine1)
+        Me.ClientSize = New System.Drawing.Size(474, 398)
+        Me.Controls.Add(Me.txtPaperRoll2)
+        Me.Controls.Add(Me.txtpaperRoll1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.lvpapercuts)
         Me.Controls.Add(Me.StatusStrip1)
@@ -246,8 +246,8 @@ Partial Class frmProductionMonitoring
     Friend WithEvents BGwatcher As System.ComponentModel.BackgroundWorker
     Friend WithEvents StatusTimer As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents ProductionTimer1 As System.Windows.Forms.Timer
-    Friend WithEvents txtMagazine2 As PriProMonitoring.watermark
-    Friend WithEvents txtMagazine1 As PriProMonitoring.watermark
+    Friend WithEvents txtPaperRoll2 As PriProMonitoring.watermark
+    Friend WithEvents txtpaperRoll1 As PriProMonitoring.watermark
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents txtSearch As PriProMonitoring.watermark
     Friend WithEvents btnSearch As System.Windows.Forms.Button

@@ -260,8 +260,8 @@
         MINIMIZE()
         InitializeComponent()
         Me.MaximumSize = New Size(700, 500)
-        'Me.StartPosition = FormStartPosition.CenterScreen
-        Me.CenterToScreen()
+        Me.StartPosition = FormStartPosition.CenterScreen
     End Sub
 
+  
 End Class

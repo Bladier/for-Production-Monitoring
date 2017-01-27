@@ -77,12 +77,14 @@
         saveAdj = New adjustment
 
         With saveAdj
+
             .PaprollID = tmppapSerial.PaprollID
             .PaprollSserial = tmppapSerial.PaperRollSErial
             .Remarks = txtRemarks.Text
             .CreatedAT = Now
             .UOM = "m"
             .LENGTH = txtLength.Text
+
             For Each itms As ListViewItem In lvpapercuts.Items
                 If itms.SubItems(8).Text = "" Then
                     On Error Resume Next
@@ -133,7 +135,6 @@
         Else
             DeductToPaperRoll(tmppapSerial.PaprollID, tmptotal)
         End If
-
 
         MsgBox("Successfully saved.", MsgBoxStyle.Information, "Adjustment")
         clearFields()

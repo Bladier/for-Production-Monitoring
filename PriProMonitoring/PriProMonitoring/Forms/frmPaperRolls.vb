@@ -50,7 +50,7 @@ nextlineTodo:
             UpdateRollstatus(LvPaperRollList.SelectedItems(0).SubItems(3).Text, 1) ' update new load to 1
             savePapLog(LvPaperRollList.SelectedItems(0).SubItems(0).Text) 'save paper log
 
-            frmProductionMonitoring.txtMagazine1.Text = LvPaperRollList.SelectedItems(0).SubItems(3).Text
+            frmProductionMonitoring.txtpaperRoll1.Text = LvPaperRollList.SelectedItems(0).SubItems(3).Text
 
             frmProductionMonitoring.Show()
             Me.Close()
@@ -90,7 +90,7 @@ nextlineTodo:
         Dim count As Integer = ds.Tables(0).Rows.Count
 
         If ds.Tables(0).Rows.Count = 0 Then _
-        MsgBox(count & " paper roll found.", MsgBoxStyle.Information) : txtsearch1.Text = "" : Exit Sub
+        MsgBox(count & " paper roll found.", MsgBoxStyle.Information) : txtsearch1.Text = "" : LvPaperRollList.Items.Clear() : Exit Sub
 
         LvPaperRollList.Items.Clear()
 
@@ -282,13 +282,14 @@ nextlineTodo:
        
     End Sub
 
-    Private Sub btnSearch1_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles btnSearch1.KeyPress
-        loadPaperRollSearch(txtSearch.Text, txtSearch.Text)
-
-        CurrentLyUsed()
+    Private Sub txtsearch1_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtsearch1.KeyPress
+        If isEnter(e) Then btnSearch1.PerformClick()
     End Sub
 
-    Private Sub txtsearch1_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtsearch1.KeyPress
-        If isEnter(e) Then btnSearch.PerformClick()
+  
+    Private Sub btnSearch1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch1.Click
+        loadPaperRollSearch(txtsearch1.Text, txtsearch1.Text)
+
+        CurrentLyUsed()
     End Sub
 End Class

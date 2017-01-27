@@ -101,7 +101,7 @@
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         frmProductionMonitoring.Close()
 
-        frmPaperRolls.txtSearch.Text = txtSearch.Text
+        frmPaperRolls.txtsearch1.Text = txtSearch.Text
         frmPaperRolls.Show()
         ModName = "Empty paper roll"
     End Sub

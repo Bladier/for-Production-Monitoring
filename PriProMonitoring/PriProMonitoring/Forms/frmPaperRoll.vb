@@ -15,7 +15,7 @@
 
         Dim mysql As String = "SELECT * FROM TBLPAPERROLL WHERE PAPROLL_SERIAL = '" & txtSerial.Text & "'"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
-        If ds.Tables(0).Rows.Count >= 1 Then MsgBox("Paper Roll Serial Already Existed", MsgBoxStyle.Exclamation) : Exit Sub
+        If ds.Tables(0).Rows.Count >= 1 Then MsgBox("Paper Roll Serial Already Existed", MsgBoxStyle.Critical) : Exit Sub
 
         Dim ans As DialogResult = MsgBox("Do you want to save this paper roll?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
         If ans = Windows.Forms.DialogResult.No Then Exit Sub
@@ -125,10 +125,6 @@
 
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
         Me.Close()
-    End Sub
-
-    Private Sub txtSerial_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSerial.KeyPress
-        DigitOnly(e)
     End Sub
 
     Private Sub txtOuterDiameter_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtOuterDiameter.KeyPress

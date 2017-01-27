@@ -10,7 +10,6 @@
 
     Private Sub frmProductionMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        Me.MinimizeBox = False
         Me.MaximizeBox = False
 
         Me.MaximumSize = New Size(471, 436)
@@ -22,11 +21,11 @@
         ProductionTimer1.Start()
 
         If chmbercount < 2 Then
-            txtMagazine1.Text = Getpap(0) : txtMagazine2.Visible = False : Exit Sub
+            txtpaperRoll1.Text = Getpap(0) : txtPaperRoll2.Visible = False : Exit Sub
         End If
 
-        txtMagazine1.Text = Getpap(0)
-        txtMagazine2.Text = Getpap(1)
+        txtpaperRoll1.Text = Getpap(0)
+        txtPaperRoll2.Text = Getpap(1)
     End Sub
 
 
@@ -178,9 +177,9 @@ nextlineTodo:
 
         Console.WriteLine("Production updated")
     End Sub
-  
 
-    Private Sub txtMagazine1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtMagazine1.TextChanged
+
+    Private Sub txtMagazine1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtpaperRoll1.TextChanged
         LOADACTIVEMAGAZINE()
     End Sub
 
