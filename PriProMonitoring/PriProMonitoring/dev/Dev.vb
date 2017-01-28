@@ -156,7 +156,6 @@
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
         Timer1.Interval = 1000 'The number of miliseconds in a second
         Timer1.Enabled = True 'Start the timer
-
     End Sub
 
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
@@ -169,9 +168,4 @@
             timercount -= 1
         End If
     End Sub
-
-  
-
-
-   
 End Class

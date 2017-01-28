@@ -140,7 +140,7 @@
         With dr
             _ID = .Item("ID")
             _ProductionID = .Item("Production_ID")
-            _PAPID = .Item("MAG_ID")
+            _PAPID = .Item("PAPID")
             _Paproll_serial = .Item("PAPROLL_SERIAL")
             _Quantity = .Item("Quantity")
             _Papercut = .Item("PAPERCUT")
@@ -192,7 +192,6 @@
             database.SaveEntry(ds)
         End If
     End Sub
-
 
 #End Region
 

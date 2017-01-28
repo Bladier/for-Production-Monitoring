@@ -38,6 +38,7 @@ Partial Class FrmMain
         Me.StatusCounter = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lblToolStripStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripPBar = New System.Windows.Forms.ToolStripProgressBar()
+        Me.ToolStripStatusSalesMessage = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Count = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TmpTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SalesWatcher = New System.Windows.Forms.Timer(Me.components)
@@ -51,8 +52,6 @@ Partial Class FrmMain
         Me.ToolStripProduction = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripAddpaperroll = New System.Windows.Forms.ToolStripButton()
-        Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
-        Me.ToolStripStatusSalesMessage = New System.Windows.Forms.ToolStripStatusLabel()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -133,6 +132,7 @@ Partial Class FrmMain
                     Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
                     Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
         Me.statusDateandTime.Image = CType(resources.GetObject("statusDateandTime.Image"), System.Drawing.Image)
+        Me.statusDateandTime.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.statusDateandTime.Margin = New System.Windows.Forms.Padding(0, 0, 0, 2)
         Me.statusDateandTime.Name = "statusDateandTime"
         Me.statusDateandTime.Size = New System.Drawing.Size(103, 24)
@@ -183,6 +183,18 @@ Partial Class FrmMain
         Me.ToolStripPBar.Name = "ToolStripPBar"
         Me.ToolStripPBar.Size = New System.Drawing.Size(117, 25)
         Me.ToolStripPBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous
+        '
+        'ToolStripStatusSalesMessage
+        '
+        Me.ToolStripStatusSalesMessage.AutoToolTip = True
+        Me.ToolStripStatusSalesMessage.BackColor = System.Drawing.SystemColors.Control
+        Me.ToolStripStatusSalesMessage.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.ToolStripStatusSalesMessage.Margin = New System.Windows.Forms.Padding(0)
+        Me.ToolStripStatusSalesMessage.Name = "ToolStripStatusSalesMessage"
+        Me.ToolStripStatusSalesMessage.Size = New System.Drawing.Size(45, 26)
+        Me.ToolStripStatusSalesMessage.Text = "Sales"
         '
         'Count
         '
@@ -292,23 +304,6 @@ Partial Class FrmMain
         Me.ToolStripAddpaperroll.Text = "Add Paper Roll"
         Me.ToolStripAddpaperroll.ToolTipText = "F7 ""Short cut key"""
         '
-        'NotifyIcon1
-        '
-        Me.NotifyIcon1.Text = "Sales Updated"
-        Me.NotifyIcon1.Visible = True
-        '
-        'ToolStripStatusSalesMessage
-        '
-        Me.ToolStripStatusSalesMessage.AutoToolTip = True
-        Me.ToolStripStatusSalesMessage.BackColor = System.Drawing.SystemColors.Control
-        Me.ToolStripStatusSalesMessage.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
-                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
-                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
-        Me.ToolStripStatusSalesMessage.Margin = New System.Windows.Forms.Padding(0)
-        Me.ToolStripStatusSalesMessage.Name = "ToolStripStatusSalesMessage"
-        Me.ToolStripStatusSalesMessage.Size = New System.Drawing.Size(45, 26)
-        Me.ToolStripStatusSalesMessage.Text = "Sales"
-        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -362,6 +357,5 @@ Partial Class FrmMain
     Friend WithEvents ToolStripAddpaperroll As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents InitializePaperRollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents NotifyIcon1 As System.Windows.Forms.NotifyIcon
     Friend WithEvents ToolStripStatusSalesMessage As System.Windows.Forms.ToolStripStatusLabel
 End Class

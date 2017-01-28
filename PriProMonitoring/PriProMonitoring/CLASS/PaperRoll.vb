@@ -147,7 +147,7 @@
             _SpoolDiameter = .Item("Spool_diameter")
             _TotalLength = .Item("Total_length")
             Created_at = .Item("Created_at")
-            _Updated_at = .Item("Update_at")
+            _Updated_at = .Item("Updated_at")
             _status = .Item("Status")
             _Remaining = .Item("Remaining")
         End With
@@ -224,5 +224,12 @@
         database.SaveEntry(ds, False)
     End Sub
 
+    Public Function LoadListEmptyPap() As DataRow
+        Dim mysql As String = "SELECT * FROM " & MainTable & " WHERE STATUS = '2'"
+        Dim ds As DataSet = LoadSQL(mysql, MainTable)
+
+
+        Return ds.Tables(0).Rows(0)
+    End Function
 #End Region
 End Class

@@ -8,7 +8,6 @@
 
     Dim timerCounter As Integer = 30
 
-
     Friend Sub NotYetLogin(Optional ByVal st As Boolean = True)
         locked = IIf(GetOption("Locked") = "YES", True, False)
 
@@ -43,7 +42,6 @@
 
     Private Sub FrmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Control.CheckForIllegalCrossThreadCalls = False
-
 
         'AddHandler TmpTimer.Tick, AddressOf SalesWatcher_Tick
         SalesWatcher.Start()
@@ -91,7 +89,6 @@
     End Sub
 
     Private Sub NewSalesLoad()
-
         Dim CheckLastID As String = GetOption("LastSalesID")
         If CheckLastID = "" Then Exit Sub
 
@@ -272,15 +269,12 @@
         frmLoadMagazine.Show()
     End Sub
 
-    'Private Sub New()
-    '    MyBase.New()
-    '    ' This call is required by the designer.
+ Public Sub New()
+        MyBase.New()
+        InitializeComponent()
+        Me.MaximumSize = New Size(800, 500)
+        Me.StartPosition = FormStartPosition.CenterScreen
+    End Sub
 
-    '    InitializeComponent()
-    '    Me.MinimumSize.Width = 800
-    '    Me.MinimumSize.Height = 600
-
-
-
-    'End Sub
+ 
 End Class

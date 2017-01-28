@@ -166,6 +166,12 @@
     <Compile Include="dev\frmImportIMDD.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frmEmptyPaperRollList.Designer.vb">
+      <DependentUpon>frmEmptyPaperRollList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEmptyPaperRollList.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmItem.Designer.vb">
       <DependentUpon>frmItem.vb</DependentUpon>
     </Compile>
@@ -200,6 +206,12 @@
       <DependentUpon>frmMagazineList.vb</DependentUpon>
     </Compile>
     <Compile Include="dev\frmMagazineList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMonitoring.Designer.vb">
+      <DependentUpon>frmMonitoring.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMonitoring.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmPaperRoll.Designer.vb">
@@ -301,6 +313,9 @@
     <EmbeddedResource Include="dev\frmImportIMDD.resx">
       <DependentUpon>frmImportIMDD.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEmptyPaperRollList.resx">
+      <DependentUpon>frmEmptyPaperRollList.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmItem.resx">
       <DependentUpon>frmItem.vb</DependentUpon>
     </EmbeddedResource>
@@ -321,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMonitoring.resx">
+      <DependentUpon>frmMonitoring.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPaperRoll.resx">
       <DependentUpon>frmPaperRoll.vb</DependentUpon>
