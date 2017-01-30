@@ -35,7 +35,7 @@ Public Class frmMagazine
         For Each row As DataGridViewRow In dgPCCUT.Rows
             SAVEPAPERCUT = New PaperCut
             With SAVEPAPERCUT
-                .PapCutITemcode = row.Cells(1).Value
+                .PapCutcode = row.Cells(1).Value
                 .papcutDescription = row.Cells(2).Value
                 .papcut = row.Cells(3).Value
 
@@ -77,7 +77,7 @@ Public Class frmMagazine
 
             With PapercutModify
                 .PapcutID = row.Cells(0).Value
-                .PapCutITemcode = row.Cells(1).Value
+                .PapCutcode = row.Cells(1).Value
                 .papcutDescription = row.Cells(2).Value
                 .papcut = row.Cells(3).Value
 
@@ -166,7 +166,7 @@ Public Class frmMagazine
     End Sub
 
 
-    Friend Sub LoadMagazine(ByVal PAP As PAPERROLLMAIN)
+    Friend Sub LoadPAPER(ByVal PAP As PAPERROLLMAIN)
         If PAP.PAPERCODE = "" Then Exit Sub
 
         txtItemCode.Text = PAP.PAPERCODE
@@ -182,7 +182,7 @@ Public Class frmMagazine
 
     Friend Sub LoadPAPCUT(ByVal ID As Integer)
         Dim da As New OdbcDataAdapter
-        Dim mySql As String = "SELECT * FROM TBLPAPERCUT WHERE MAG_IDP = '" & ID & "'"
+        Dim mySql As String = "SELECT * FROM TBLPAPERCUT WHERE PAPID = '" & ID & "'"
         Console.WriteLine("SQL: " & mySql)
         Dim ds As DataSet = LoadSQL(mySql)
         Dim dr As DataRow
@@ -201,7 +201,7 @@ Public Class frmMagazine
     Private Sub AddItemPAPCUT(ByVal PAP As DataRow)
         Dim TMPPAPER As New PaperCut
         TMPPAPER.lOAD_PaperCut_row(PAP)
-        dgPCCUT.Rows.Add(TMPPAPER.PapcutID, TMPPAPER.PapCutITemcode, TMPPAPER.papcutDescription, TMPPAPER.papcut)
+        dgPCCUT.Rows.Add(TMPPAPER.PapcutID, TMPPAPER.PapCutcode, TMPPAPER.papcutDescription, TMPPAPER.papcut)
     End Sub
 
     Private Sub txtSEarch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSEarch.KeyPress

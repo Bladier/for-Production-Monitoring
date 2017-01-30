@@ -33,13 +33,13 @@
         End Set
     End Property
 
-    Private _PapCutITemcode As String
-    Public Property PapCutITemcode() As String
+    Private _PapCutcode As String
+    Public Property PapCutcode() As String
         Get
-            Return _PapCutITemcode
+            Return _PapCutcode
         End Get
         Set(ByVal value As String)
-            _PapCutITemcode = value
+            _PapCutcode = value
         End Set
     End Property
 
@@ -81,7 +81,7 @@
         With dr
             _PapcutID = .Item("PAPerCUT_ID")
             _PAPID = .Item("PAPID")
-            _PapCutITemcode = .Item("papCUt_CODE")
+            _PapCutcode = .Item("papCUt_CODE")
             _papcutDescription = .Item("PAPCUT_DESCRIPTION")
             _papcut = .Item("PAPERCUT")
             _UOM = .Item("UOM")
@@ -109,7 +109,7 @@
         dsNewRow = ds.Tables(MainTable).NewRow
         With dsNewRow
             .Item("PAPID") = _PAPID
-            .Item("PAPCUT_CODE") = _PapCutITemcode
+            .Item("PAPCUT_CODE") = _PapCutcode
             .Item("PAPCUT_DESCRIPTION") = _papcutDescription
             .Item("PAPERCUT") = _papcut
             .Item("UOM") = "Inch"
@@ -128,13 +128,14 @@
         Return _PAPID
     End Function
 
+
     Public Sub Update()
-        Dim mySql As String = String.Format("SELECT * FROM {0} WHERE {1}= '{2}' ", MainTable, "Papcut_code", _PapCutITemcode)
+        Dim mySql As String = String.Format("SELECT * FROM {0} WHERE {1}= '{2}' ", MainTable, "Papcut_code", _PapCutcode)
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
         If ds.Tables(0).Rows.Count = 1 Then
             With ds.Tables(MainTable).Rows(0)
-                .Item("PAPCUT_CODE") = _PapCutITemcode
+                .Item("PAPCUT_CODE") = _PapCutcode
                 .Item("PAPCUT_DESCRIPTION") = _papcutDescription
                 .Item("PAPerCUT") = _papcut
             End With
@@ -144,7 +145,7 @@
             dsNewRow = ds.Tables(0).NewRow
             With dsNewRow
                 .Item("PAPID") = _PAPID
-                .Item("PAPCUT_CODE") = _PapCutITemcode
+                .Item("PAPCUT_CODE") = _PapCutcode
                 .Item("PAPCUT_DESCRIPTION") = _papcutDescription
                 .Item("PAPERCUT") = _papcut
                 .Item("UOM") = "Inch"
@@ -156,19 +157,20 @@
 
 
     Public Sub Load_papercutssssss()
-        Dim mysql = String.Format("SELECT * FROM tblpapercut WHERE papcut_Description = '{0}'", _papcutDescription)
+        Dim mysql = String.Format("SELECT * FROM tblpapercut WHERE PAPCUT_CODE = '{0}'", _PapCutcode)
         Dim ds As DataSet = New DataSet
         ds = LoadSQL(mysql)
 
         If ds.Tables(0).Rows.Count <> 1 Then
             'MsgBox("Failed to load ItemCode", MsgBoxStyle.Critical)
-            Console.WriteLine("Failed to load paper cut description " & _papcutDescription)
+            Console.WriteLine("Failed to load paper cut description " & _PapCutcode)
             Exit Sub
         End If
 
         lOAD_PaperCut_row(ds.Tables(0).Rows(0))
     End Sub
 
+   
 #End Region
 
 End Class

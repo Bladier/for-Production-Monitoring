@@ -23,13 +23,14 @@ Partial Class frmMonitoring
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.btnSearch = New System.Windows.Forms.Button()
-        Me.ListView1 = New System.Windows.Forms.ListView()
+        Me.lvListEmptyRoll = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SuspendLayout()
         '
         'btnSearch
@@ -43,51 +44,51 @@ Partial Class frmMonitoring
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
-        'ListView1
+        'lvListEmptyRoll
         '
-        Me.ListView1.Alignment = System.Windows.Forms.ListViewAlignment.SnapToGrid
-        Me.ListView1.BackColor = System.Drawing.SystemColors.Window
-        Me.ListView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
-        Me.ListView1.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ListView1.FullRowSelect = True
-        Me.ListView1.GridLines = True
-        Me.ListView1.Location = New System.Drawing.Point(27, 62)
-        Me.ListView1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.ShowItemToolTips = True
-        Me.ListView1.Size = New System.Drawing.Size(687, 338)
-        Me.ListView1.TabIndex = 1
-        Me.ListView1.UseCompatibleStateImageBehavior = False
-        Me.ListView1.View = System.Windows.Forms.View.Details
+        Me.lvListEmptyRoll.Alignment = System.Windows.Forms.ListViewAlignment.SnapToGrid
+        Me.lvListEmptyRoll.BackColor = System.Drawing.SystemColors.Window
+        Me.lvListEmptyRoll.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lvListEmptyRoll.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader5, Me.ColumnHeader3, Me.ColumnHeader4})
+        Me.lvListEmptyRoll.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lvListEmptyRoll.FullRowSelect = True
+        Me.lvListEmptyRoll.GridLines = True
+        Me.lvListEmptyRoll.Location = New System.Drawing.Point(27, 62)
+        Me.lvListEmptyRoll.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.lvListEmptyRoll.Name = "lvListEmptyRoll"
+        Me.lvListEmptyRoll.ShowItemToolTips = True
+        Me.lvListEmptyRoll.Size = New System.Drawing.Size(687, 338)
+        Me.lvListEmptyRoll.TabIndex = 1
+        Me.lvListEmptyRoll.UseCompatibleStateImageBehavior = False
+        Me.lvListEmptyRoll.View = System.Windows.Forms.View.Details
         '
         'ColumnHeader1
         '
         Me.ColumnHeader1.Text = "Paper Roll ItemCode"
-        Me.ColumnHeader1.Width = 167
+        Me.ColumnHeader1.Width = 159
         '
         'ColumnHeader2
         '
         Me.ColumnHeader2.Text = "Paper Roll Serial"
-        Me.ColumnHeader2.Width = 163
+        Me.ColumnHeader2.Width = 169
         '
         'ColumnHeader3
         '
         Me.ColumnHeader3.Text = "# of Prints"
-        Me.ColumnHeader3.Width = 95
+        Me.ColumnHeader3.Width = 78
         '
         'ColumnHeader4
         '
         Me.ColumnHeader4.Text = "Remainings"
-        Me.ColumnHeader4.Width = 163
+        Me.ColumnHeader4.Width = 253
         '
-        'TextBox1
+        'txtSearch
         '
-        Me.TextBox1.Location = New System.Drawing.Point(107, 23)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(490, 22)
-        Me.TextBox1.TabIndex = 2
+        Me.txtSearch.Location = New System.Drawing.Point(107, 23)
+        Me.txtSearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(490, 22)
+        Me.txtSearch.TabIndex = 2
         '
         'Label1
         '
@@ -101,6 +102,11 @@ Partial Class frmMonitoring
         Me.Label1.Text = "Search"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'ColumnHeader5
+        '
+        Me.ColumnHeader5.Text = "Paper Cut Description"
+        Me.ColumnHeader5.Width = 177
+        '
         'frmMonitoring
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -108,8 +114,8 @@ Partial Class frmMonitoring
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(735, 418)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.ListView1)
+        Me.Controls.Add(Me.txtSearch)
+        Me.Controls.Add(Me.lvListEmptyRoll)
         Me.Controls.Add(Me.btnSearch)
         Me.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -122,11 +128,12 @@ Partial Class frmMonitoring
 
     End Sub
     Friend WithEvents btnSearch As System.Windows.Forms.Button
-    Friend WithEvents ListView1 As System.Windows.Forms.ListView
+    Friend WithEvents lvListEmptyRoll As System.Windows.Forms.ListView
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtSearch As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
 End Class

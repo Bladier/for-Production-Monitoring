@@ -227,8 +227,9 @@
     Public Function LoadListEmptyPap() As DataRow
         Dim mysql As String = "SELECT * FROM " & MainTable & " WHERE STATUS = '2'"
         Dim ds As DataSet = LoadSQL(mysql, MainTable)
-
-
+        For Each dr As DataRow In ds.Tables(0).Rows
+            LoadByRow(dr)
+        Next
         Return ds.Tables(0).Rows(0)
     End Function
 #End Region

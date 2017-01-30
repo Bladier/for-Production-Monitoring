@@ -1,52 +1,75 @@
 ﻿Public Class frmEmptyPaperRollList
     Dim tmplist As PaperRoll
-    Dim LoadPap_HT As New Hashtable
+    Friend TmpPap As String = frmMonitoring.txtSearch.Text
+
+
+
 
     Private Sub frmEmptyPaperRollList_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim fillData As String = "tblpaperRoll"
-        Dim mysql As String = "SELECT * FROM " & fillData & " WHERE STATUS = '2' "
-        Dim ds As DataSet = LoadSQL(mysql, fillData)
 
-        LoadPap_HT = New Hashtable
-        Lvlist.Items.Clear()
+        If frmMonitoring.txtSearch.Text = "" Then
 
-  
-        tmplist = New PaperRoll
+            Dim mysql As String = "SELECT P.PAPROLL_ID,R.PAPCODE,R.PAPDESC,P.PAPROLL_SERIAL "
+            mysql &= vbCrLf & " FROM TBLPAPERROLL P	"
+            mysql &= vbCrLf & " INNER JOIN TBLPAPROLL_MAIN R ON R.PAPID = P.PAPIDS "
+            mysql &= vbCrLf & "WHERE STATUS = '2' "
+            Dim ds As DataSet = LoadSQL(mysql, fillData)
+            If ds.Tables(0).Rows.Count = 0 Then Exit Sub
 
-        For Each dr As DataRow In ds.Tables(0).Rows
+            Lvlist.Items.Clear()
 
-            tmplist = New PaperRoll
-            tmplist.LoadItem(dr.Item("PAProll_id"))
-            AddPAP(tmplist)
+            For Each dr As DataRow In ds.Tables(0).Rows
+                With dr
+                    Dim lv As ListViewItem = Lvlist.Items.Add(.Item("PAPROLL_ID"))
+                    lv.SubItems().Add(.Item("PAPCODE"))
+                    lv.SubItems().Add(.Item("PAPDESC"))
+                    lv.SubItems().Add(.Item("PAPROLL_SERIAL"))
+                End With
+            Next
 
-            tmplist.LoadByRow(dr)
+        Else
 
-            LoadPap_HT.Clear()
-            LoadPap_HT.Add(tmplist.PAPID, tmplist)
-        Next
+            Dim mysql As String = "SELECT P.PAPROLL_ID,R.PAPCODE,R.PAPDESC,P.PAPROLL_SERIAL "
+            mysql &= vbCrLf & " FROM TBLPAPERROLL P	"
+            mysql &= vbCrLf & " INNER JOIN TBLPAPROLL_MAIN R ON R.PAPID = P.PAPIDS "
+            mysql &= vbCrLf & "WHERE STATUS = '2' and UPPER(Paproll_serial) = UPPER('" & TmpPap & "')"
+            Dim ds As DataSet = LoadSQL(mysql, fillData)
 
+            If ds.Tables(0).Rows.Count = 0 Then Exit Sub
+            Lvlist.Items.Clear()
+            For Each dr As DataRow In ds.Tables(0).Rows
+                With dr
+                    Dim lv As ListViewItem = Lvlist.Items.Add(.Item("PAPROLL_ID"))
+                    lv.SubItems().Add(.Item("PAPCODE"))
+                    lv.SubItems().Add(.Item("PAPDESC"))
+                    lv.SubItems().Add(.Item("PAPROLL_SERIAL"))
+                End With
+            Next
+        End If
+
+    End Sub
+   
+    Private Sub Lvlist_MouseClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Lvlist.MouseClick
+        Me.Text = Lvlist.SelectedItems(0).SubItems(3).Text
     End Sub
 
 
-    Private Sub AddPAP(ByVal pap As PaperRoll)
-        Dim papMain As New PAPERROLLMAIN
-
-        Dim lv As ListViewItem = Lvlist.Items.Add(pap.PaprollID)
-        lv.SubItems().Add(pap.PaperRollSErial)
-
-        For Each ht As DictionaryEntry In LoadPap_HT
-            tmplist = New PaperRoll
-            tmplist = ht.Value
-
-            papMain.LoadItem(ht.Key)
-
-            MsgBox(ht.Key)
+    Friend Function PapSerial(ByVal str As String) As String
+        Return str
+    End Function
 
 
-            lv.SubItems().Add(papMain.PAPERCODE)
-            lv.SubItems().Add(papMain.PAPERDESCRIPTION)
+    Private Sub Lvlist_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Lvlist.DoubleClick
+        If Lvlist.Items.Count = 0 Then Exit Sub
+        If Lvlist.SelectedItems.Count = 0 Then
+            Lvlist.Items(0).Focused = True
+        End If
 
-        Next
+        Dim serial As String = Lvlist.SelectedItems(0).SubItems(3).Text
 
+        frmMonitoring.PopulateCount(serial)
+        frmMonitoring.Show()
+        Me.Hide()
     End Sub
 End Class

@@ -59,7 +59,7 @@ Public Class frmSettings
             txtVersion.Text = GetOptionpPOS("Version")
 
             LoadIMD() ' lOADING IMD
-            ImportMagazine() 'ImportMagazine
+            ImportPaperRoll() 'ImportMagazine
             ImportPapercut() 'ImportPapercut
             GetLastSales() 'Setup sales
 
@@ -237,7 +237,7 @@ Public Class frmSettings
 
         If fileName = "" Then Exit Sub
 
-        'Load Excel
+        'Load PAPER CUT
         Dim oXL As New Excel.Application
         Dim oWB As Excel.Workbook
         Dim oSheet As Excel.Worksheet
@@ -260,13 +260,14 @@ Public Class frmSettings
                 Dim itmLineSave As New ItemLine
                 Dim tmpPaperCut As New PaperCut
 
-                tmpPaperCut.papcutDescription = oSheet.Cells(cnt, 2).Value
+                ' tmpPaperCut.papcutDescription = oSheet.Cells(cnt, 2).Value
+                tmpPaperCut.PapCutcode = oSheet.Cells(cnt, 2).Value
                 tmpPaperCut.Load_papercutssssss()
                 'itmLineSave.Load_Itmline()
 
                 itmLineSave.Item_ID = .ID
                 itmLineSave.PaperCut_ID = tmpPaperCut.PapcutID
-                itmLineSave.QTY = oSheet.Cells(cnt, 3).Value
+                itmLineSave.QTY = oSheet.Cells(cnt, 4).Value
 
                 itmLineSave.Save_itemLine()
             End With
@@ -282,13 +283,13 @@ Public Class frmSettings
 NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
     End Sub
 
-    Private Sub ImportMagazine()
+    Private Sub ImportPaperRoll()
         Dim fileName As String = OFDMagazine.FileName
         Dim isDone As Boolean = False
 
         If fileName = "" Then Exit Sub
 
-        'Load Excel
+        'Load PAPER ROLL
         Dim oXL As New Excel.Application
         Dim oWB As Excel.Workbook
         Dim oSheet As Excel.Worksheet
@@ -314,7 +315,7 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
             Dim SAVEPAPERCUT As New PaperCut
             With SAVEPAPERCUT
                 .PAPID = .gETPAPID
-                .PapCutITemcode = oSheet.Cells(cnt, 3).Value
+                .PapCutcode = oSheet.Cells(cnt, 3).Value
                 .papcutDescription = oSheet.Cells(cnt, 4).Value
                 .papcut = oSheet.Cells(cnt, 5).Value
             End With
@@ -365,7 +366,7 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
 
                 .PAPID = MAGAZINESAVE.LoadPAPERID(MAGAZINESAVE.PAPERDESCRIPTION)
 
-                .PapCutITemcode = oSheet.Cells(cnt, 3).Value
+                .PapCutcode = oSheet.Cells(cnt, 3).Value
                 .papcutDescription = oSheet.Cells(cnt, 4).Value
                 .papcut = oSheet.Cells(cnt, 5).Value
             End With

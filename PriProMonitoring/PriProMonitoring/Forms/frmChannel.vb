@@ -37,7 +37,7 @@
 
     Private Sub AddItem(ByVal papss As PaperCut)
         Dim lv As ListViewItem = LVPapercut.Items.Add(papss.PapcutID)
-        lv.SubItems.Add(papss.PapCutITemcode)
+        lv.SubItems.Add(papss.PapCutcode)
         lv.SubItems.Add(papss.papcutDescription)
     End Sub
 
@@ -62,7 +62,7 @@
         selectedPap = New PaperCut
         selectedPap.Load_PaperCUts(LVPapercut.SelectedItems(0).Text)
 
-        frmItem.dgPapercuts.Rows.Add(selectedPap.PapcutID, selectedPap.PapCutITemcode, selectedPap.papcutDescription)
+        frmItem.dgPapercuts.Rows.Add(selectedPap.PapcutID, selectedPap.PapCutcode, selectedPap.papcutDescription)
 
         frmItem.Show()
         Me.Close()

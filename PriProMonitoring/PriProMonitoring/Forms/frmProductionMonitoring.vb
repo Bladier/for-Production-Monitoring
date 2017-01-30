@@ -129,7 +129,7 @@
                     .Papercuts = tmpPapcut.papcut
                     .papcut_Desc = tmpPapcut.papcutDescription
                     .SubTotal_Length = .Quantity * tmpPapcut.papcut
-                    .Papcut_Code = tmpPapcut.PapCutITemcode
+                    .Papcut_Code = tmpPapcut.PapCutcode
 
                     .SaveSalesLine()
                 End With

@@ -75,7 +75,7 @@
     End Sub
 
     Private Sub Disabled()
-        Me.MaximumSize = New Size(886, 429)
+        Me.MaximumSize = New Size(554, 540)
         Me.MinimumSize = Me.MaximumSize
     End Sub
 

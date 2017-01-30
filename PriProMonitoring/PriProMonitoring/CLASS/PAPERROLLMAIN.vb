@@ -47,7 +47,7 @@
 #End Region
 
 #Region "Functions and Procedures"
-    Public Sub LoadItem(ByVal id As Integer)
+    Public Sub Loadpap(ByVal id As Integer)
         Dim mySql As String = String.Format("SELECT * FROM TBLPAPROLL_MAIN WHERE PAPID = {0}", id)
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
@@ -60,10 +60,9 @@
             _PAPID = .Item("PAPID")
             _PAPERCODE = .Item("PAPCODE")
             _PAPERDESCRIPTION = .Item("PAPDESC")
-
         End With
 
-        ' Load Item Specification
+
         mySql = String.Format("SELECT * FROM {0} WHERE PaperCut_ID = {1} ORDER BY PaperCut_ID", SubTable, _PAPID)
         ds.Clear()
         ds = LoadSQL(mySql, SubTable)
@@ -74,7 +73,6 @@
             Dim tmpPapCut As New PaperCut
             tmpPapCut.lOAD_PaperCut_row(dr)
 
-            'Load Item Specification
 
             _PaperCuts.Add(tmpPapCut)
         Next
@@ -148,6 +146,8 @@
         database.SaveEntry(ds, False)
     End Sub
 #End Region
+
+   
 
 End Class
 
