@@ -41,7 +41,7 @@ Partial Class frmSettings
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.btnBrowseMagazine = New System.Windows.Forms.Button()
-        Me.txtMagazine = New System.Windows.Forms.TextBox()
+        Me.txtPAPERROLL = New System.Windows.Forms.TextBox()
         Me.ofdIMD = New System.Windows.Forms.OpenFileDialog()
         Me.OFDPapercut = New System.Windows.Forms.OpenFileDialog()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
@@ -235,7 +235,7 @@ Partial Class frmSettings
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.btnBrowseMagazine)
-        Me.GroupBox3.Controls.Add(Me.txtMagazine)
+        Me.GroupBox3.Controls.Add(Me.txtPAPERROLL)
         Me.GroupBox3.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.GroupBox3.Location = New System.Drawing.Point(12, 68)
@@ -243,7 +243,7 @@ Partial Class frmSettings
         Me.GroupBox3.Size = New System.Drawing.Size(349, 50)
         Me.GroupBox3.TabIndex = 1
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Magazine"
+        Me.GroupBox3.Text = "Paper roll path"
         '
         'btnBrowseMagazine
         '
@@ -256,15 +256,15 @@ Partial Class frmSettings
         Me.btnBrowseMagazine.Text = ". . ."
         Me.btnBrowseMagazine.UseVisualStyleBackColor = True
         '
-        'txtMagazine
+        'txtPAPERROLL
         '
-        Me.txtMagazine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtMagazine.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMagazine.Location = New System.Drawing.Point(12, 18)
-        Me.txtMagazine.Name = "txtMagazine"
-        Me.txtMagazine.ReadOnly = True
-        Me.txtMagazine.Size = New System.Drawing.Size(287, 21)
-        Me.txtMagazine.TabIndex = 0
+        Me.txtPAPERROLL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPAPERROLL.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPAPERROLL.Location = New System.Drawing.Point(12, 18)
+        Me.txtPAPERROLL.Name = "txtPAPERROLL"
+        Me.txtPAPERROLL.ReadOnly = True
+        Me.txtPAPERROLL.Size = New System.Drawing.Size(287, 21)
+        Me.txtPAPERROLL.TabIndex = 0
         '
         'OFDPapercut
         '
@@ -385,7 +385,7 @@ Partial Class frmSettings
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents btnBrowseMagazine As System.Windows.Forms.Button
-    Friend WithEvents txtMagazine As System.Windows.Forms.TextBox
+    Friend WithEvents txtPAPERROLL As System.Windows.Forms.TextBox
     Friend WithEvents ofdIMD As System.Windows.Forms.OpenFileDialog
     Friend WithEvents OFDPapercut As System.Windows.Forms.OpenFileDialog
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox

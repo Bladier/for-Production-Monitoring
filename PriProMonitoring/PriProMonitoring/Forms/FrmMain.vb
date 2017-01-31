@@ -28,11 +28,16 @@
         'TootStripMenus
         ToolStripProduction.Enabled = Not st
         ToolStripAddpaperroll.Enabled = Not st
+        ToolStripAdjusment.Enabled = Not st
 
         If Not st Then
             ToolStripLogin.Text = "&Log Out"
+            ToolStripLogin.ToolTipText = "Logout"
+            ToolStripActiveUser.ToolTipText = "Acive user"
         Else
             ToolStripLogin.Text = "&Login"
+            ToolStripLogin.ToolTipText = "Login"
+            ToolStripActiveUser.ToolTipText = "No Acive user"
         End If
     End Sub
 
@@ -224,7 +229,7 @@
                 Application.OpenForms(currentFormName).Close()
             Next
 
-            MsgBox("Thank you!", MsgBoxStyle.Information)
+            MsgBox("Thank you!", MsgBoxStyle.Information, "Logout")
             locked = IIf(GetOption("Locked") = "YES", True, False)
             NotYetLogin()
             Login.Show()
@@ -253,6 +258,8 @@
                 ToolStripProduction.PerformClick()
             Case Keys.F7
                 ToolStripAddpaperroll.PerformClick()
+            Case Keys.F8
+                ToolStripAdjusment.PerformClick()
             Case Else
                 'Do Nothing
         End Select
@@ -272,9 +279,12 @@
  Public Sub New()
         MyBase.New()
         InitializeComponent()
-        Me.MaximumSize = New Size(800, 500)
+        Me.MaximumSize = New Size(800, 600)
         Me.StartPosition = FormStartPosition.CenterScreen
     End Sub
 
  
+    Private Sub ToolStripAdjusment_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripAdjusment.Click
+        frmUnallocatedPapercut.Show()
+    End Sub
 End Class

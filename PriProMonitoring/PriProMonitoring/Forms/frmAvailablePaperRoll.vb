@@ -1,0 +1,12 @@
+﻿Public Class frmAvailablePaperRoll
+
+    Private Sub LvpaperRoll_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LvpaperRoll.DoubleClick
+        frmUnallocatedPapercut.LVUnallocatedPapCut.SelectedItems(0).SubItems(3).Text = _
+            LvpaperRoll.SelectedItems(0).SubItems(2).Text
+        Me.Close()
+    End Sub
+
+    Private Sub frmAvailablePaperRoll_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.TopMost = True
+    End Sub
+End Class

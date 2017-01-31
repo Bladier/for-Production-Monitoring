@@ -52,6 +52,7 @@ Partial Class FrmMain
         Me.ToolStripProduction = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripAddpaperroll = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripAdjusment = New System.Windows.Forms.ToolStripButton()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -242,7 +243,7 @@ Partial Class FrmMain
         Me.ToolStrip1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStrip1.GripMargin = New System.Windows.Forms.Padding(2, 10, 10, 10)
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLogin, Me.ToolStripSeparator1, Me.ToolStripActiveUser, Me.ToolStripProduction, Me.ToolStripSeparator2, Me.ToolStripAddpaperroll})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLogin, Me.ToolStripSeparator1, Me.ToolStripActiveUser, Me.ToolStripProduction, Me.ToolStripSeparator2, Me.ToolStripAddpaperroll, Me.ToolStripAdjusment})
         Me.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
         Me.ToolStrip1.Name = "ToolStrip1"
@@ -263,7 +264,6 @@ Partial Class FrmMain
         Me.ToolStripLogin.Padding = New System.Windows.Forms.Padding(2)
         Me.ToolStripLogin.Size = New System.Drawing.Size(70, 60)
         Me.ToolStripLogin.Text = "&Login"
-        Me.ToolStripLogin.ToolTipText = "&Login"
         '
         'ToolStripSeparator1
         '
@@ -278,7 +278,6 @@ Partial Class FrmMain
         Me.ToolStripActiveUser.Name = "ToolStripActiveUser"
         Me.ToolStripActiveUser.Size = New System.Drawing.Size(35, 47)
         Me.ToolStripActiveUser.Text = "User"
-        Me.ToolStripActiveUser.ToolTipText = "Active User"
         '
         'ToolStripProduction
         '
@@ -303,6 +302,15 @@ Partial Class FrmMain
         Me.ToolStripAddpaperroll.Size = New System.Drawing.Size(119, 47)
         Me.ToolStripAddpaperroll.Text = "Add Paper Roll"
         Me.ToolStripAddpaperroll.ToolTipText = "F7 ""Short cut key"""
+        '
+        'ToolStripAdjusment
+        '
+        Me.ToolStripAdjusment.Image = CType(resources.GetObject("ToolStripAdjusment.Image"), System.Drawing.Image)
+        Me.ToolStripAdjusment.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripAdjusment.Name = "ToolStripAdjusment"
+        Me.ToolStripAdjusment.Size = New System.Drawing.Size(203, 47)
+        Me.ToolStripAdjusment.Text = "Adjust UnAllocated Paper cut"
+        Me.ToolStripAdjusment.ToolTipText = "Adjustment"
         '
         'FrmMain
         '
@@ -358,4 +366,5 @@ Partial Class FrmMain
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents InitializePaperRollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripStatusSalesMessage As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents ToolStripAdjusment As System.Windows.Forms.ToolStripButton
 End Class

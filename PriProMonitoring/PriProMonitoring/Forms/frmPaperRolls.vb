@@ -158,9 +158,9 @@ nextlineTodo:
 
     End Sub
 
-    Private Function GetchamberByTag(ByVal id As Integer) As String
+    Private Function GetchamberByTag(ByVal TAG As String) As String
         For Each el As DictionaryEntry In Chamber
-            If el.Key = id Then
+            If el.Key = TAG Then
                 Return el.Value
             End If
         Next
@@ -292,4 +292,27 @@ nextlineTodo:
 
         CurrentLyUsed()
     End Sub
+
+    Private Sub LvPaperRollList_MouseClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles LvPaperRollList.MouseClick
+        If GetActiveChamber() = "" Then CboChamber.SelectedItem = Nothing : Exit Sub
+
+        CboChamber.Text = GetchamberByTag(GetActiveChamber)
+    End Sub
+
+    Private Function GetActiveChamber() As String
+
+        Dim value As String
+        Dim mysql As String = "SELECT * FROM TBLPAPERROLL P INNER JOIN TBLMACHINE M ON P.CHAMBER = M.CHAMBER_TAG " & _
+            "WHERE PAPROLL_SERIAL = '" & LvPaperRollList.SelectedItems(0).SubItems(3).Text & " '"
+        Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
+
+        If ds.Tables(0).Rows.Count = 0 Then
+            Return ""
+        End If
+
+        value = ds.Tables(0).Rows(0).Item("Chamber")
+
+        Return value
+    End Function
+
 End Class

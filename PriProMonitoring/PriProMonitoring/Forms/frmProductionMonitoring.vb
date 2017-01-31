@@ -8,12 +8,15 @@
 
     Dim timerCounter As Integer = 30
 
+    Dim mysql As String = String.Empty
+    Dim tmpPapcut As New PaperCut
+    Dim SaveSL As New SalesLine
+
     Private Sub frmProductionMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        '    Me.MaximizeBox = False
 
-        Me.MaximizeBox = False
-
-        Me.MaximumSize = New Size(471, 436)
-        Me.MinimumSize = Me.MaximumSize
+        '    Me.MaximumSize = New Size(471, 436)
+        '    Me.MinimumSize = Me.MaximumSize
 
         Control.CheckForIllegalCrossThreadCalls = False
 
@@ -48,7 +51,7 @@
 
         If chmbercount < 2 Then
             txtActiveMagazine.Text = "Remaining" & " : " & GetLength(0) & "m " & Getpap(0)
-            Production()
+            ' Production()
             Exit Sub
         End If
 
@@ -86,97 +89,97 @@
 
     End Function
 
-    Private Sub Production()
-        Dim mysql As String = "SELECT * FROM TBLPRO WHERE STATUS = '0'"
-        Dim ds As DataSet = LoadSQL(mysql, "TBLPRO")
-        Dim COUNTMAX As Integer = ds.Tables(0).Rows.Count
+    '    Private Sub Production()
+    '        Dim mysql As String = "SELECT * FROM TBLPRO WHERE STATUS = '0'"
+    '        Dim ds As DataSet = LoadSQL(mysql, "TBLPRO")
+    '        Dim COUNTMAX As Integer = ds.Tables(0).Rows.Count
 
-        If COUNTMAX = 0 Then GoTo nextlineTodo
+    '        If COUNTMAX = 0 Then GoTo nextlineTodo
 
-        Console.WriteLine("TBLPRO count: " & ds.Tables(0).Rows.Count)
+    '        Console.WriteLine("TBLPRO count: " & ds.Tables(0).Rows.Count)
 
-        Dim max As Integer = ds.Tables(0).Rows.Count
+    '        Dim max As Integer = ds.Tables(0).Rows.Count
 
-        For Each dr As DataRow In ds.Tables(0).Rows
-            Dim mysqlitem As String = "SELECT * FROM ITEM WHERE ITEMCODE = '" & dr.Item("ITEMCODE") & "'"
-            Dim dsnew As DataSet = LoadSQL(mysqlitem, "ITEM")
+    '        For Each dr As DataRow In ds.Tables(0).Rows
+    '            Dim mysqlitem As String = "SELECT * FROM ITEM WHERE ITEMCODE = '" & dr.Item("ITEMCODE") & "'"
+    '            Dim dsnew As DataSet = LoadSQL(mysqlitem, "ITEM")
 
-            If dsnew.Tables(0).Rows.Count = 0 Then GoTo nextlineTodo
+    '            If dsnew.Tables(0).Rows.Count = 0 Then GoTo nextlineTodo
 
-            Dim tmpID As Integer = dsnew.Tables(0).Rows(0).Item("ITEM_ID")
+    '            Dim tmpID As Integer = dsnew.Tables(0).Rows(0).Item("ITEM_ID")
 
-            Dim mysqlitmLine As String = "SELECT * FROM TBLITEM_LINE where ITEM_ID = ' " & tmpID & "'"
-            Dim dsline As DataSet = LoadSQL(mysqlitmLine, "TBL_ITEMLINE")
+    '            Dim mysqlitmLine As String = "SELECT * FROM TBLITEM_LINE where ITEM_ID = ' " & tmpID & "'"
+    '            Dim dsline As DataSet = LoadSQL(mysqlitmLine, "TBL_ITEMLINE")
 
-            If dsline.Tables(0).Rows.Count = 0 Then _
-                MsgBox("Please Update ItemLines", MsgBoxStyle.Critical) : Exit Sub
+    '            If dsline.Tables(0).Rows.Count = 0 Then _
+    '                MsgBox("Please Update ItemLines", MsgBoxStyle.Critical) : Exit Sub
 
-            Console.WriteLine("TBLITEM_LINE count: " & dsline.Tables(0).Rows.Count)
-            Console.WriteLine("PApcutID: " & dsline.Tables(0).Rows(0).Item("PAPERCUT_ID"))
-
-
-            For Each dr1 As DataRow In dsline.Tables(0).Rows
-                Dim tmpPapcut As New PaperCut
-                tmpPapcut.Load_PaperCUts(dr1.Item("PAPERCUT_ID"))
+    '            Console.WriteLine("TBLITEM_LINE count: " & dsline.Tables(0).Rows.Count)
+    '            Console.WriteLine("PApcutID: " & dsline.Tables(0).Rows(0).Item("PAPERCUT_ID"))
 
 
-                Dim SaveSL As New SalesLine
-                With SaveSL
-                    .ProductionID = dr.Item("Production_ID")
-                    .PAPID = tmpPapcut.PAPID
-                    .Paproll_serial = ""
-                    .Quantity = dr.Item("QTY") * dr1.Item("QTY")
-                    .Papercuts = tmpPapcut.papcut
-                    .papcut_Desc = tmpPapcut.papcutDescription
-                    .SubTotal_Length = .Quantity * tmpPapcut.papcut
-                    .Papcut_Code = tmpPapcut.PapCutcode
-
-                    .SaveSalesLine()
-                End With
-            Next
+    '            For Each dr1 As DataRow In dsline.Tables(0).Rows
+    '                Dim tmpPapcut As New PaperCut
+    '                tmpPapcut.Load_PaperCUts(dr1.Item("PAPERCUT_ID"))
 
 
-            Dim mysql1 As String = "SELECT * FROM TBLPRO WHERE PRODUCTION_ID = '" & dr.Item("PRODUCTION_ID") & "'"
-            Dim ds1 As DataSet = LoadSQL(mysql1, "TBLPRO")
+    '                Dim SaveSL As New SalesLine
+    '                With SaveSL
+    '                    .ProductionID = dr.Item("Production_ID")
+    '                    .PAPID = tmpPapcut.PAPID
+    '                    .Paproll_serial = ""
+    '                    .Quantity = dr.Item("QTY") * dr1.Item("QTY")
+    '                    .Papercuts = tmpPapcut.papcut
+    '                    .papcut_Desc = tmpPapcut.papcutDescription
+    '                    .SubTotal_Length = .Quantity * tmpPapcut.papcut
+    '                    .Papcut_Code = tmpPapcut.PapCutcode
 
-            ds1.Tables(0).Rows(0).Item("Status") = 1
-
-            database.SaveEntry(ds1, False)
-        Next
-
-
-        If lvpapercuts.Items.Count <= 0 Then Exit Sub
-
-nextlineTodo:
+    '                    .SaveSalesLine()
+    '                End With
+    '            Next
 
 
-        For Each itm As ListViewItem In lvpapercuts.Items
-            Dim newMysqlSalesLines As String = "SELECT * FROM TBL_PROLINE " & _
-                "WHERE PAPCUT_CODE = '" & itm.SubItems(6).Text & "' AND STATUS <> 1 "
-            Dim MysqlSalesLines As DataSet = LoadSQL(newMysqlSalesLines, "TBL_PROLINE")
+    '            Dim mysql1 As String = "SELECT * FROM TBLPRO WHERE PRODUCTION_ID = '" & dr.Item("PRODUCTION_ID") & "'"
+    '            Dim ds1 As DataSet = LoadSQL(mysql1, "TBLPRO")
 
-            If MysqlSalesLines.Tables(0).Rows.Count = 0 Then
-                On Error Resume Next
-            Else
-                For Each dr As DataRow In MysqlSalesLines.Tables(0).Rows
-                    Dim SubTotal As Double = dr.Item("SUBTOTAL_LENGTH")
-                    '(MysqlSalesLines.Tables(0).Rows(0).Item(5) * itm.SubItems(5).Text)
+    '            ds1.Tables(0).Rows(0).Item("Status") = 1
 
-                    dr("Paproll_SERIAL") = itm.SubItems(2).Text
-                    dr("Status") = 1
+    '            database.SaveEntry(ds1, False)
+    '        Next
 
-                    database.SaveEntry(MysqlSalesLines, False)
 
-                    SelectedPaPRoll = New PaperRoll
-                    SelectedPaPRoll.PaperRollSErial = itm.SubItems(2).Text
-                    SelectedPaPRoll.Remaining = SubTotal * meter
-                    SelectedPaPRoll.Updatepaper()
-                Next
-            End If
-        Next
+    '        If lvpapercuts.Items.Count <= 0 Then Exit Sub
 
-        Console.WriteLine("Production updated")
-    End Sub
+    'nextlineTodo:
+
+
+    '        For Each itm As ListViewItem In lvpapercuts.Items
+    '            Dim newMysqlSalesLines As String = "SELECT * FROM TBL_PROLINE " & _
+    '                "WHERE PAPCUT_CODE = '" & itm.SubItems(6).Text & "' AND STATUS <> 1 "
+    '            Dim MysqlSalesLines As DataSet = LoadSQL(newMysqlSalesLines, "TBL_PROLINE")
+
+    '            If MysqlSalesLines.Tables(0).Rows.Count = 0 Then
+    '                On Error Resume Next
+    '            Else
+    '                For Each dr As DataRow In MysqlSalesLines.Tables(0).Rows
+    '                    Dim SubTotal As Double = dr.Item("SUBTOTAL_LENGTH")
+    '                    '(MysqlSalesLines.Tables(0).Rows(0).Item(5) * itm.SubItems(5).Text)
+
+    '                    dr("Paproll_SERIAL") = itm.SubItems(2).Text
+    '                    dr("Status") = 1
+
+    '                    database.SaveEntry(MysqlSalesLines, False)
+
+    '                    SelectedPaPRoll = New PaperRoll
+    '                    SelectedPaPRoll.PaperRollSErial = itm.SubItems(2).Text
+    '                    SelectedPaPRoll.Remaining = SubTotal * meter
+    '                    SelectedPaPRoll.Updatepaper()
+    '                Next
+    '            End If
+    '        Next
+
+    '        Console.WriteLine("Production updated")
+    '    End Sub
 
 
     Private Sub txtMagazine1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtpaperRoll1.TextChanged
@@ -199,7 +202,7 @@ nextlineTodo:
         ProductionTimer1.Stop()
         timerCounter = 0
         StatusTimer.Text = timerCounter
-        Production()
+        PrintsProduction() 'Execulte this function Every 30 Seconds
     End Sub
 
     Private Sub ProductionWatcher_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductionWatcher.Tick
@@ -222,4 +225,86 @@ nextlineTodo:
         End If
     End Sub
 
+
+    Private Sub PrintsProduction()
+        Dim mysql As String = "SELECT * FROM TBLPRO WHERE STATUS = '0'"
+        Dim ds As DataSet = LoadSQL(mysql, "TBLPRO")
+
+        Dim COUNTMAX As Integer = ds.Tables(0).Rows.Count
+
+        If COUNTMAX = 0 Then GoTo nextlineTodo
+
+
+        For Each dr As DataRow In ds.Tables(0).Rows
+            mysql = "SELECT * FROM ITEM WHERE ITEMCODE  = '" & dr.Item("ITEMCODE") & "'"
+            Dim dsItem As DataSet = LoadSQL(mysql, "ITEM")
+            Console.WriteLine("Item: " & dsItem.Tables(0).Rows.Count)
+
+            mysql = "select * from tblitem_line where ITEM_ID = '" & dsItem.Tables(0).Rows(0).Item("ITEM_ID") & "'"
+            Dim dsITLine As DataSet = LoadSQL(mysql, "tblitem_line")
+            Console.WriteLine("Itemline:" & dsITLine.Tables(0).Rows.Count)
+
+            For Each drITline As DataRow In dsITLine.Tables(0).Rows
+
+                tmpPapcut.Load_PaperCUts(drITline.Item("PAPERCUT_ID"))
+
+                SelectedPaPRoll = New PaperRoll
+
+                With SaveSL
+                    .ProductionID = dr.Item("Production_ID")
+                    .PAPID = tmpPapcut.PAPID
+                    .Paproll_serial = ""
+                    .Quantity = dr.Item("QTY") * drITline.Item("QTY")
+                    .Papercuts = tmpPapcut.papcut
+                    .papcut_Desc = tmpPapcut.papcutDescription
+                    .SubTotal_Length = .Quantity * tmpPapcut.papcut
+                    .Papcut_Code = tmpPapcut.PapCutcode
+
+                    .SaveSalesLine()
+                End With
+            Next
+
+
+            Dim mysql1 As String = "SELECT * FROM TBLPRO WHERE PRODUCTION_ID = '" & dr.Item("PRODUCTION_ID") & "'"
+            Dim ds1 As DataSet = LoadSQL(mysql1, "TBLPRO")
+
+            ds1.Tables(0).Rows(0).Item("Status") = 1
+
+            database.SaveEntry(ds1, False)
+
+        Next
+
+nextlineTodo:
+        For Each itm As ListViewItem In lvpapercuts.Items
+            mysql = "select * from tbl_Proline where status <> 1 and PapCut_Code ='" & itm.SubItems(6).Text & "'"
+            Dim dsPLine As DataSet = LoadSQL(mysql, "tbl_Proline")
+
+            For Each drP As DataRow In dsPLine.Tables(0).Rows
+                Dim SubTotal As Double = drP.Item("SUBTOTAL_LENGTH")
+
+                tmpPapcut.PapCutcode = itm.SubItems(6).Text
+                tmpPapcut.Load_papercutssssss() 'Load Paper selected Paper cuts
+
+                mysql = "select * from tblProllandPcuts where Pcut_ID = '" & tmpPapcut.PapcutID & "'"
+                Dim dsPROllCuts As DataSet = LoadSQL(mysql, "tblProllandPcuts")
+                Console.WriteLine("Paper cuts count:" & dsPROllCuts.Tables(0).Rows.Count) 'Check Paper cut if has many paper roll 
+
+                If dsPROllCuts.Tables(0).Rows.Count > 1 Then
+                    On Error Resume Next
+                Else
+                    drP("Paproll_SERIAL") = itm.SubItems(2).Text
+                    drP("Status") = 1
+
+                    database.SaveEntry(dsPLine, False) ' Update Sales Line status to 0 it means this paper cut already deducted to paper roll
+
+                    SelectedPaPRoll = New PaperRoll
+                    SelectedPaPRoll.PaperRollSErial = itm.SubItems(2).Text
+                    SelectedPaPRoll.Remaining = SubTotal * meter ' Deduct by meter to paper roll
+                    SelectedPaPRoll.Updatepaper() ' Deduct Paper Roll
+                End If
+            Next
+        Next
+    End Sub
+
+ 
 End Class

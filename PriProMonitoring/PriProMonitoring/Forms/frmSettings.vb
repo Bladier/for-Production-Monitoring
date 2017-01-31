@@ -20,7 +20,7 @@ Public Class frmSettings
         If txtChamber.Text = "" Then txtChamber.Focus() : Return False
         If txtpath.Text = "" Then txtpath.Focus() : Return False
         If txtPapercut.Text = "" Then txtPapercut.Focus() : Return False
-        If txtMagazine.Text = "" Then txtMagazine.Focus() : Return False
+        If txtPAPERROLL.Text = "" Then txtPAPERROLL.Focus() : Return False
         Return True
     End Function
 
@@ -86,7 +86,7 @@ Public Class frmSettings
 
             Me.Enabled = False
             LoadIMD()
-            UpdateMagazine()
+            UpdatePaperRoll()
             ImportPapercut()
 
             MsgBox("Data updated", MsgBoxStyle.Information, "Settings")
@@ -223,7 +223,7 @@ Public Class frmSettings
 
     Private Sub btnBrowseMagazine_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBrowseMagazine.Click
         OFDMagazine.ShowDialog()
-        txtMagazine.Text = OFDMagazine.FileName
+        txtPAPERROLL.Text = OFDMagazine.FileName
     End Sub
 
     Private Sub btnBrowsepapecut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBrowsepapecut.Click
@@ -289,6 +289,7 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
 
         If fileName = "" Then Exit Sub
 
+
         'Load PAPER ROLL
         Dim oXL As New Excel.Application
         Dim oWB As Excel.Workbook
@@ -321,7 +322,19 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
             End With
             'SAVEPAPERCUT.Save_Papercut()
             SAVEPAPERCUT.Update()
+
+            SAVEPAPERCUT.PapCutcode = oSheet.Cells(cnt, 3).value 'Load last paper ID
+            SAVEPAPERCUT.Load_papercutssssss() 'Load last paper ID
+
+            Dim saveProllandPcuts As New PapRollAndPapCut
+            With saveProllandPcuts
+                .PapRollID = SAVEPAPERCUT.gETPAPID
+                .PapcutID = SAVEPAPERCUT.PapcutID
+                .Save()
+            End With
         Next
+
+
 
         oSheet = Nothing
         oWB = Nothing
@@ -331,13 +344,13 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
     End Sub
 
 
-    Private Sub UpdateMagazine()
+    Private Sub UpdatePaperRoll()
         Dim fileName As String = OFDMagazine.FileName
         Dim isDone As Boolean = False
 
         If fileName = "" Then Exit Sub
 
-        'Load Excel
+        'Load Paper roll
         Dim oXL As New Excel.Application
         Dim oWB As Excel.Workbook
         Dim oSheet As Excel.Worksheet

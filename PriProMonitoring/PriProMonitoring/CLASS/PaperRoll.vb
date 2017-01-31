@@ -129,7 +129,7 @@
 #End Region
 
 #Region "Functions and Procedures"
-    Public Sub LoadItem(ByVal id As Integer)
+    Public Sub LoadProll(ByVal id As Integer)
         Dim mySql As String = String.Format("SELECT * FROM tblPaperRoll WHERE Paproll_ID = {0}", id)
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
@@ -151,7 +151,7 @@
             _status = .Item("Status")
             _Remaining = .Item("Remaining")
         End With
-    
+
     End Sub
 
     Public Sub SaveRoll()

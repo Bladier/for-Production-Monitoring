@@ -30,8 +30,6 @@ Partial Class frmProductionMonitoring
         Me.ProductionWatcher = New System.Windows.Forms.Timer(Me.components)
         Me.BGwatcher = New System.ComponentModel.BackgroundWorker()
         Me.ProductionTimer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.txtPaperRoll2 = New PriProMonitoring.watermark()
-        Me.txtpaperRoll1 = New PriProMonitoring.watermark()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txtSearch = New PriProMonitoring.watermark()
         Me.btnSearch = New System.Windows.Forms.Button()
@@ -45,6 +43,8 @@ Partial Class frmProductionMonitoring
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.txtPaperRoll2 = New PriProMonitoring.watermark()
+        Me.txtpaperRoll1 = New PriProMonitoring.watermark()
         Me.StatusStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -55,7 +55,7 @@ Partial Class frmProductionMonitoring
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.txtActiveMagazine, Me.StatusTimer})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 372)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(474, 26)
+        Me.StatusStrip1.Size = New System.Drawing.Size(481, 26)
         Me.StatusStrip1.TabIndex = 2
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -96,29 +96,6 @@ Partial Class frmProductionMonitoring
         '
         Me.ProductionTimer1.Interval = 1000
         '
-        'txtPaperRoll2
-        '
-        Me.txtPaperRoll2.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.txtPaperRoll2.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPaperRoll2.Location = New System.Drawing.Point(245, 65)
-        Me.txtPaperRoll2.Name = "txtPaperRoll2"
-        Me.txtPaperRoll2.Size = New System.Drawing.Size(214, 22)
-        Me.txtPaperRoll2.TabIndex = 14
-        Me.txtPaperRoll2.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtPaperRoll2.WatermarkText = "Paper roll"
-        '
-        'txtpaperRoll1
-        '
-        Me.txtpaperRoll1.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.txtpaperRoll1.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtpaperRoll1.Location = New System.Drawing.Point(16, 65)
-        Me.txtpaperRoll1.Name = "txtpaperRoll1"
-        Me.txtpaperRoll1.ReadOnly = True
-        Me.txtpaperRoll1.Size = New System.Drawing.Size(228, 22)
-        Me.txtpaperRoll1.TabIndex = 13
-        Me.txtpaperRoll1.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtpaperRoll1.WatermarkText = "Paper roll"
-        '
         'GroupBox1
         '
         Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.None
@@ -126,7 +103,7 @@ Partial Class frmProductionMonitoring
         Me.GroupBox1.Controls.Add(Me.btnSearch)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(16, 5)
+        Me.GroupBox1.Location = New System.Drawing.Point(19, 5)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(443, 57)
         Me.GroupBox1.TabIndex = 12
@@ -169,7 +146,7 @@ Partial Class frmProductionMonitoring
         Me.lvpapercuts.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvpapercuts.FullRowSelect = True
         Me.lvpapercuts.GridLines = True
-        Me.lvpapercuts.Location = New System.Drawing.Point(16, 90)
+        Me.lvpapercuts.Location = New System.Drawing.Point(19, 90)
         Me.lvpapercuts.Name = "lvpapercuts"
         Me.lvpapercuts.Size = New System.Drawing.Size(443, 272)
         Me.lvpapercuts.TabIndex = 15
@@ -183,7 +160,7 @@ Partial Class frmProductionMonitoring
         '
         'ColumnHeader2
         '
-        Me.ColumnHeader2.Text = "MagID"
+        Me.ColumnHeader2.Text = "PapID"
         Me.ColumnHeader2.Width = 0
         '
         'ColumnHeader3
@@ -216,12 +193,35 @@ Partial Class frmProductionMonitoring
         Me.ColumnHeader8.Text = "Paper Cut"
         Me.ColumnHeader8.Width = 436
         '
+        'txtPaperRoll2
+        '
+        Me.txtPaperRoll2.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.txtPaperRoll2.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPaperRoll2.Location = New System.Drawing.Point(248, 65)
+        Me.txtPaperRoll2.Name = "txtPaperRoll2"
+        Me.txtPaperRoll2.Size = New System.Drawing.Size(214, 22)
+        Me.txtPaperRoll2.TabIndex = 14
+        Me.txtPaperRoll2.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtPaperRoll2.WatermarkText = "Paper roll"
+        '
+        'txtpaperRoll1
+        '
+        Me.txtpaperRoll1.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.txtpaperRoll1.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtpaperRoll1.Location = New System.Drawing.Point(19, 65)
+        Me.txtpaperRoll1.Name = "txtpaperRoll1"
+        Me.txtpaperRoll1.ReadOnly = True
+        Me.txtpaperRoll1.Size = New System.Drawing.Size(228, 22)
+        Me.txtpaperRoll1.TabIndex = 13
+        Me.txtpaperRoll1.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtpaperRoll1.WatermarkText = "Paper roll"
+        '
         'frmProductionMonitoring
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(474, 398)
+        Me.ClientSize = New System.Drawing.Size(481, 398)
         Me.Controls.Add(Me.txtPaperRoll2)
         Me.Controls.Add(Me.txtpaperRoll1)
         Me.Controls.Add(Me.GroupBox1)
