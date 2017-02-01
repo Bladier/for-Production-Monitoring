@@ -55,32 +55,37 @@
         Dim saveAjustment As New SalesLine
         With saveAjustment
             For Each itm As ListViewItem In LVUnallocatedPapCut.Items
-                mysql = "select * from tbl_proline where papcut_code = '" & itm.SubItems(2).Text & "' " & _
+                If itm.SubItems(4).Text = "" Then
+                    On Error Resume Next
+                Else
+                    mysql = "select * from tbl_proline where papcut_code = '" & itm.SubItems(2).Text & "' " & _
                     "AND ID = '" & itm.SubItems(0).Text & "'"
-                Dim ds As DataSet = LoadSQL(mysql, "tbl_proline")
+                    Dim ds As DataSet = LoadSQL(mysql, "tbl_proline")
 
-                Dim SubTotal As Double = ds.Tables(0).Rows(0).Item("SUBTOTAL_LENGTH")
+                    Dim SubTotal As Double = ds.Tables(0).Rows(0).Item("SUBTOTAL_LENGTH")
 
-                Console.WriteLine("COUNT:" & ds.Tables(0).Rows.Count)
+                    Console.WriteLine("COUNT:" & ds.Tables(0).Rows.Count)
 
-                With ds.Tables(0).Rows(0)
-                    .Item("PAPROLL_SERIAL") = itm.SubItems(1).Text
-                    .Item("PAPROLL_SERIAL") = itm.SubItems(3).Text
-                    .Item("status") = 1
-                End With
-                database.SaveEntry(ds, False)
+                    With ds.Tables(0).Rows(0)
+                        .Item("PAPID") = itm.SubItems(1).Text
+                        .Item("PAPROLL_SERIAL") = itm.SubItems(4).Text
+                        .Item("status") = 1
+                    End With
+                    database.SaveEntry(ds, False)
 
 
-                SelectedPaPRoll = New PaperRoll
-                SelectedPaPRoll.PaperRollSErial = itm.SubItems(4).Text
-                SelectedPaPRoll.Remaining = SubTotal * Meter ' Deduct by meter to paper roll
-                SelectedPaPRoll.Updatepaper() ' Deduct Paper Roll
+                    SelectedPaPRoll = New PaperRoll
+                    SelectedPaPRoll.PaperRollSErial = itm.SubItems(4).Text
+                    SelectedPaPRoll.Remaining = SubTotal * Meter ' Deduct by meter to paper roll
+                    SelectedPaPRoll.Updatepaper() ' Deduct Paper Roll
+                End If
             Next
         End With
 
 
         MsgBox("Posted.", MsgBoxStyle.Information, "Post")
         LVUnallocatedPapCut.Items.Clear()
+        frmUnallocatedPapercut_Load(sender, e)
     End Sub
 
 

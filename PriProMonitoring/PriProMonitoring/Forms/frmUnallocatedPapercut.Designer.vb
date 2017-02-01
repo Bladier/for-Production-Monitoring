@@ -38,10 +38,10 @@ Partial Class frmUnallocatedPapercut
         Me.LVUnallocatedPapCut.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LVUnallocatedPapCut.FullRowSelect = True
         Me.LVUnallocatedPapCut.GridLines = True
-        Me.LVUnallocatedPapCut.Location = New System.Drawing.Point(12, 25)
+        Me.LVUnallocatedPapCut.Location = New System.Drawing.Point(12, 24)
         Me.LVUnallocatedPapCut.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LVUnallocatedPapCut.Name = "LVUnallocatedPapCut"
-        Me.LVUnallocatedPapCut.Size = New System.Drawing.Size(588, 378)
+        Me.LVUnallocatedPapCut.Size = New System.Drawing.Size(588, 379)
         Me.LVUnallocatedPapCut.TabIndex = 0
         Me.LVUnallocatedPapCut.UseCompatibleStateImageBehavior = False
         Me.LVUnallocatedPapCut.View = System.Windows.Forms.View.Details
@@ -98,7 +98,7 @@ Partial Class frmUnallocatedPapercut
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(616, 446)
+        Me.ClientSize = New System.Drawing.Size(615, 446)
         Me.Controls.Add(Me.btnCLose)
         Me.Controls.Add(Me.btnPost)
         Me.Controls.Add(Me.LVUnallocatedPapCut)
