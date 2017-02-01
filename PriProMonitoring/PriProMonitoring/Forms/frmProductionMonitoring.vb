@@ -11,6 +11,7 @@
     Dim mysql As String = String.Empty
     Dim tmpPapcut As New PaperCut
     Dim SaveSL As New SalesLine
+    Dim PRollMAIN As New PAPERROLLMAIN
 
     Private Sub frmProductionMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         '    Me.MaximizeBox = False
@@ -247,12 +248,10 @@
             For Each drITline As DataRow In dsITLine.Tables(0).Rows
 
                 tmpPapcut.Load_PaperCUts(drITline.Item("PAPERCUT_ID"))
-
                 SelectedPaPRoll = New PaperRoll
 
                 With SaveSL
                     .ProductionID = dr.Item("Production_ID")
-                    .PAPID = tmpPapcut.PAPID
                     .Paproll_serial = ""
                     .Quantity = dr.Item("QTY") * drITline.Item("QTY")
                     .Papercuts = tmpPapcut.papcut
@@ -283,19 +282,22 @@ nextlineTodo:
                 Dim SubTotal As Double = drP.Item("SUBTOTAL_LENGTH")
 
                 tmpPapcut.PapCutcode = itm.SubItems(6).Text
-                tmpPapcut.Load_papercutssssss() 'Load Paper selected Paper cuts
+                tmpPapcut.Load_pcuts() 'Load Paper selected Paper cuts
 
                 mysql = "select * from tblProllandPcuts where Pcut_ID = '" & tmpPapcut.PapcutID & "'"
                 Dim dsPROllCuts As DataSet = LoadSQL(mysql, "tblProllandPcuts")
                 Console.WriteLine("Paper cuts count:" & dsPROllCuts.Tables(0).Rows.Count) 'Check Paper cut if has many paper roll 
 
                 If dsPROllCuts.Tables(0).Rows.Count > 1 Then
-                    On Error Resume Next
-                Else
-                    drP("Paproll_SERIAL") = itm.SubItems(2).Text
-                    drP("Status") = 1
+                    drP("Paproll_SERIAL") = "Unallocated"
+                    database.SaveEntry(dsPLine, False)
 
-                    database.SaveEntry(dsPLine, False) ' Update Sales Line status to 0 it means this paper cut already deducted to paper roll
+                Else
+                    drP("PapID") = itm.SubItems(1).Text 'paper roll main ID
+                    drP("Paproll_SERIAL") = itm.SubItems(2).Text
+                    drP("Status") = 1 ' Update Sales Line status to 1 it means this paper cut already deducted to paper roll
+
+                    database.SaveEntry(dsPLine, False)
 
                     SelectedPaPRoll = New PaperRoll
                     SelectedPaPRoll.PaperRollSErial = itm.SubItems(2).Text

@@ -29,11 +29,12 @@ Partial Class frmUnallocatedPapercut
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnPost = New System.Windows.Forms.Button()
         Me.btnCLose = New System.Windows.Forms.Button()
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SuspendLayout()
         '
         'LVUnallocatedPapCut
         '
-        Me.LVUnallocatedPapCut.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
+        Me.LVUnallocatedPapCut.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader5, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
         Me.LVUnallocatedPapCut.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LVUnallocatedPapCut.FullRowSelect = True
         Me.LVUnallocatedPapCut.GridLines = True
@@ -87,6 +88,11 @@ Partial Class frmUnallocatedPapercut
         Me.btnCLose.Text = "&Close"
         Me.btnCLose.UseVisualStyleBackColor = True
         '
+        'ColumnHeader5
+        '
+        Me.ColumnHeader5.Text = "PapIDMain"
+        Me.ColumnHeader5.Width = 0
+        '
         'frmUnallocatedPapercut
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -111,4 +117,5 @@ Partial Class frmUnallocatedPapercut
     Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
     Friend WithEvents btnPost As System.Windows.Forms.Button
     Friend WithEvents btnCLose As System.Windows.Forms.Button
+    Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
 End Class

@@ -102,6 +102,17 @@
         End If
     End Sub
 
+    Public Function gETPAPID(ByVal papcode As String) As Integer
+
+        Dim mySql As String = "SELECT * FROM TBLPAPROLL_MAIN where papcode = '" & papcode & "'"
+        Dim ds As DataSet = LoadSQL(mySql, MainTable)
+
+        _PAPID = ds.Tables(MainTable).Rows(0).Item("PAPID")
+
+        Return _PAPID
+    End Function
+
+
 
     Public Function LoadPAPERID(ByVal PAPDESCR As String) As Integer
         Dim mysql = String.Format("SELECT * FROM " & MainTable & " WHERE PAPDESC = '{0}'", PAPDESCR)

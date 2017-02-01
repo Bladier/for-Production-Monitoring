@@ -50,6 +50,32 @@
 
     End Sub
 
+
+    Friend Sub update()
+        Dim mysql As String = "SELECT * FROM " & filldata & " where PRPC_ID = '" & _ID & "'"
+        Dim ds As DataSet = LoadSQL(mysql, filldata)
+
+        If ds.Tables(0).Rows.Count = 1 Then
+            With ds.Tables(0).Rows(0)
+                .Item("PROLL_ID") = _PapRollID
+                .Item("PCUT_ID") = _PapcutID
+            End With
+            database.SaveEntry(ds, False)
+        Else
+
+            Dim dsnewRow As DataRow
+            dsnewRow = ds.Tables(0).NewRow
+
+            With dsnewRow
+                .Item("PROLL_ID") = _PapRollID
+                .Item("PCUT_ID") = _PapcutID
+            End With
+
+            ds.Tables(0).Rows.Add(dsnewRow)
+            database.SaveEntry(ds)
+        End If
+    End Sub
+
     Friend Sub loadbyrow(ByVal dr As DataRow)
         With dr
             _ID = .Item("PRPC_ID")
@@ -60,6 +86,17 @@
 
     Friend Sub LoadProllandPCuts(ByVal ID As Integer)
         Dim mysql As String = "SELECT * FROM TBLPROLLANDPCUTS WHERE PCUT_ID = '" & ID & "'"
+        Dim ds As DataSet = LoadSQL(mysql, "TBLPROLLANDPCUTS")
+
+        If ds.Tables(0).Rows.Count = 0 Then Exit Sub
+
+        For Each dr As DataRow In ds.Tables(0).Rows
+            loadbyrow(dr)
+        Next
+    End Sub
+
+    Friend Sub GetID(ByVal prollID As Integer, ByVal pcutID As Integer)
+        Dim mysql As String = "SELECT * FROM TBLPROLLANDPCUTS WHERE pcut_ID = '" & pcutID & "' and proll_ID = '" & prollID & "'"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPROLLANDPCUTS")
 
         If ds.Tables(0).Rows.Count = 0 Then Exit Sub

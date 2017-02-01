@@ -86,8 +86,8 @@ Public Class frmMagazine
                 End If
 
             End With
-            PapercutModify.PAPID = frmMagazineList.LBLID.Text
-            PapercutModify.Update()
+            '     PapercutModify.PAPID = frmMagazineList.LBLID.Text
+            PapercutModify.SavepapCut()
         Next
         Magazinemodify.UpdateMagazine()
 

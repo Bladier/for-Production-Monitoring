@@ -13,16 +13,6 @@
         End Set
     End Property
 
-    Private _PAPID As Integer
-    Public Property PAPID() As Integer
-        Get
-            Return _PAPID
-        End Get
-        Set(ByVal value As Integer)
-            _PAPID = value
-        End Set
-    End Property
-
     Private _papcutDescription As String
     Public Property papcutDescription() As String
         Get
@@ -80,7 +70,6 @@
     Public Sub lOAD_PaperCut_row(ByVal dr As DataRow)
         With dr
             _PapcutID = .Item("PAPerCUT_ID")
-            _PAPID = .Item("PAPID")
             _PapCutcode = .Item("papCUt_CODE")
             _papcutDescription = .Item("PAPCUT_DESCRIPTION")
             _papcut = .Item("PAPERCUT")
@@ -100,36 +89,7 @@
         lOAD_PaperCut_row(ds.Tables(MainTable).Rows(0))
     End Sub
 
-    Public Sub Save_Papercut()
-
-        Dim mySql As String = String.Format("SELECT * FROM {0} ", MainTable)
-        Dim ds As DataSet = LoadSQL(mySql, MainTable)
-
-        Dim dsNewRow As DataRow
-        dsNewRow = ds.Tables(MainTable).NewRow
-        With dsNewRow
-            .Item("PAPID") = _PAPID
-            .Item("PAPCUT_CODE") = _PapCutcode
-            .Item("PAPCUT_DESCRIPTION") = _papcutDescription
-            .Item("PAPERCUT") = _papcut
-            .Item("UOM") = "Inch"
-        End With
-        ds.Tables(MainTable).Rows.Add(dsNewRow)
-        database.SaveEntry(ds)
-    End Sub
-
-    Public Function gETPAPID() As Integer
-
-        Dim mySql As String = "SELECT * FROM TBLPAPROLL_MAIN ORDER BY PAPID DESC ROWS 1"
-        Dim ds As DataSet = LoadSQL(mySql, MainTable)
-
-        _PAPID = ds.Tables(MainTable).Rows(0).Item("PAPID")
-
-        Return _PAPID
-    End Function
-
-
-    Public Sub Update()
+    Public Sub SavepapCut()
         Dim mySql As String = String.Format("SELECT * FROM {0} WHERE {1}= '{2}' ", MainTable, "Papcut_code", _PapCutcode)
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
@@ -144,7 +104,6 @@
             Dim dsNewRow As DataRow
             dsNewRow = ds.Tables(0).NewRow
             With dsNewRow
-                .Item("PAPID") = _PAPID
                 .Item("PAPCUT_CODE") = _PapCutcode
                 .Item("PAPCUT_DESCRIPTION") = _papcutDescription
                 .Item("PAPERCUT") = _papcut
@@ -156,7 +115,7 @@
     End Sub
 
 
-    Public Sub Load_papercutssssss()
+    Public Sub Load_pcuts()
         Dim mysql = String.Format("SELECT * FROM tblpapercut WHERE PAPCUT_CODE = '{0}'", _PapCutcode)
         Dim ds As DataSet = New DataSet
         ds = LoadSQL(mysql)
@@ -170,7 +129,6 @@
         lOAD_PaperCut_row(ds.Tables(0).Rows(0))
     End Sub
 
-   
 #End Region
 
 End Class

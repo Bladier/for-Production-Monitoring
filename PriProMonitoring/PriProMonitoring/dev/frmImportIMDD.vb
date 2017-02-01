@@ -75,7 +75,7 @@ Public Class frmImportIMDD
                 Dim tmpPaperCut As New PaperCut
 
                 tmpPaperCut.papcutDescription = oSheet.Cells(cnt, 2).Value
-                tmpPaperCut.Load_papercutssssss()
+                tmpPaperCut.Load_pcuts()
                 'itmLineSave.Load_Itmline()
 
                 itmLineSave.Item_ID = .ID

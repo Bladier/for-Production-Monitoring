@@ -262,7 +262,7 @@ Public Class frmSettings
 
                 ' tmpPaperCut.papcutDescription = oSheet.Cells(cnt, 2).Value
                 tmpPaperCut.PapCutcode = oSheet.Cells(cnt, 2).Value
-                tmpPaperCut.Load_papercutssssss()
+                tmpPaperCut.Load_pcuts()
                 'itmLineSave.Load_Itmline()
 
                 itmLineSave.Item_ID = .ID
@@ -305,36 +305,34 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
         Me.Enabled = False
         For cnt = 2 To MaxEntries
 
-            Dim MAGAZINESAVE As New PAPERROLLMAIN
+            Dim paproll As New PAPERROLLMAIN
 
-            With MAGAZINESAVE
+            With paproll
                 .PAPERCODE = oSheet.Cells(cnt, 1).Value
                 .PAPERDESCRIPTION = oSheet.Cells(cnt, 2).Value
             End With
-            MAGAZINESAVE.Save_Magazine()
+            paproll.Save_Magazine()
 
             Dim SAVEPAPERCUT As New PaperCut
             With SAVEPAPERCUT
-                .PAPID = .gETPAPID
+
                 .PapCutcode = oSheet.Cells(cnt, 3).Value
                 .papcutDescription = oSheet.Cells(cnt, 4).Value
                 .papcut = oSheet.Cells(cnt, 5).Value
-            End With
-            'SAVEPAPERCUT.Save_Papercut()
-            SAVEPAPERCUT.Update()
 
-            SAVEPAPERCUT.PapCutcode = oSheet.Cells(cnt, 3).value 'Load last paper ID
-            SAVEPAPERCUT.Load_papercutssssss() 'Load last paper ID
+            End With
+            SAVEPAPERCUT.SavepapCut()
+
+            SAVEPAPERCUT.PapCutcode = oSheet.Cells(cnt, 3).Value
+            SAVEPAPERCUT.Load_pcuts()
 
             Dim saveProllandPcuts As New PapRollAndPapCut
             With saveProllandPcuts
-                .PapRollID = SAVEPAPERCUT.gETPAPID
+                .PapRollID = paproll.gETPAPID(paproll.PAPERCODE) ' return paper roll ID
                 .PapcutID = SAVEPAPERCUT.PapcutID
                 .Save()
             End With
         Next
-
-
 
         oSheet = Nothing
         oWB = Nothing
@@ -365,26 +363,36 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
         Me.Enabled = False
         For cnt = 2 To MaxEntries
 
-            Dim MAGAZINESAVE As New PAPERROLLMAIN
+            Dim paproll As New PAPERROLLMAIN
 
-            With MAGAZINESAVE
+            With paproll
                 .PAPERCODE = oSheet.Cells(cnt, 1).Value
                 .PAPERDESCRIPTION = oSheet.Cells(cnt, 2).Value
             End With
-            MAGAZINESAVE.Save_Magazine()
+            paproll.Save_Magazine()
 
             Dim SAVEPAPERCUT As New PaperCut
 
             With SAVEPAPERCUT
-
-                .PAPID = MAGAZINESAVE.LoadPAPERID(MAGAZINESAVE.PAPERDESCRIPTION)
-
                 .PapCutcode = oSheet.Cells(cnt, 3).Value
                 .papcutDescription = oSheet.Cells(cnt, 4).Value
                 .papcut = oSheet.Cells(cnt, 5).Value
             End With
+            SAVEPAPERCUT.SavepapCut()
 
-            SAVEPAPERCUT.Update()
+            Dim saveProllandPcuts As New PapRollAndPapCut
+            paproll.gETPAPID(oSheet.Cells(cnt, 1).Value)
+
+            SAVEPAPERCUT.PapCutcode = oSheet.Cells(cnt, 3).Value
+            SAVEPAPERCUT.Load_pcuts()
+
+            saveProllandPcuts.GetID(paproll.PAPID, SAVEPAPERCUT.PapcutID)
+
+            With saveProllandPcuts
+                .PapRollID = paproll.PAPID
+                .PapcutID = SAVEPAPERCUT.PapcutID
+                .update()
+            End With
         Next
 
         oSheet = Nothing

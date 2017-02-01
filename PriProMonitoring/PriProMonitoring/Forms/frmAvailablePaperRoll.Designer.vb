@@ -26,11 +26,12 @@ Partial Class frmAvailablePaperRoll
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SuspendLayout()
         '
         'LvpaperRoll
         '
-        Me.LvpaperRoll.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
+        Me.LvpaperRoll.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader4, Me.ColumnHeader2, Me.ColumnHeader3})
         Me.LvpaperRoll.FullRowSelect = True
         Me.LvpaperRoll.GridLines = True
         Me.LvpaperRoll.Location = New System.Drawing.Point(11, 7)
@@ -56,6 +57,11 @@ Partial Class frmAvailablePaperRoll
         Me.ColumnHeader3.Text = "Serial"
         Me.ColumnHeader3.Width = 156
         '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "PAPIDMAIN"
+        Me.ColumnHeader4.Width = 0
+        '
         'frmAvailablePaperRoll
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -76,4 +82,5 @@ Partial Class frmAvailablePaperRoll
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
 End Class

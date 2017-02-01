@@ -7,12 +7,14 @@
     End Sub
 
     Private Sub LoadUnAllocatedsalesLine()
-        mysql = "select * from tbl_proline where status = 0 and PAPROLL_SERIAL IS NOT NULL"
+        mysql = "SELECT * FROM TBL_PROLINE WHERE PAPROLL_SERIAL = 'Unallocated'"
+
         Dim ds As DataSet = LoadSQL(mysql, "tbl_proline")
 
         For Each dr As DataRow In ds.Tables(0).Rows
             With dr
                 Dim lv As ListViewItem = LVUnallocatedPapCut.Items.Add(.Item("ID"))
+                lv.SubItems.Add("")
                 lv.SubItems.Add(.Item("PAPCUT_CODE"))
                 lv.SubItems.Add(.Item("PAPCUT_DESC"))
                 lv.SubItems.Add("")
@@ -23,13 +25,13 @@
     Private Sub LVUnallocatedPapCut_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LVUnallocatedPapCut.DoubleClick
         Dim selectedPaperCut As New PaperCut
 
-        selectedPaperCut.PapCutcode = LVUnallocatedPapCut.SelectedItems(0).SubItems(1).Text 'load papercut
+        selectedPaperCut.PapCutcode = LVUnallocatedPapCut.SelectedItems(0).SubItems(2).Text 'load papercut
 
-        selectedPaperCut.Load_papercutssssss()
+        selectedPaperCut.Load_pcuts()
 
         Console.WriteLine(selectedPaperCut.PapcutID)
 
-        mysql = "SELECT P.PRPC_ID,P.PROLL_ID,PM.PAPCODE,R.PAPROLL_SERIAL " & _
+        mysql = "SELECT P.PRPC_ID,PM.PAPID ,P.PROLL_ID,PM.PAPCODE,R.PAPROLL_SERIAL " & _
             "FROM TBLPROLLANDPCUTS P  " & _
             "INNER JOIN TBLPAPROLL_MAIN PM ON P.PROLL_ID = PM.PAPID " & _
             "LEFT JOIN TBLPAPERROLL R ON R.PAPIDS = P.PROLL_ID " & _
@@ -39,6 +41,7 @@
         frmAvailablePaperRoll.LvpaperRoll.Items.Clear()
         For Each dr As DataRow In ds.Tables(0).Rows
             Dim lv As ListViewItem = frmAvailablePaperRoll.LvpaperRoll.Items.Add(dr.Item("PROLL_ID"))
+            lv.SubItems.Add(dr.Item("PAPID"))
             lv.SubItems.Add(dr.Item("PAPCODE"))
             lv.SubItems.Add(dr.Item("PAPROLL_SERIAL"))
         Next
@@ -52,7 +55,7 @@
         Dim saveAjustment As New SalesLine
         With saveAjustment
             For Each itm As ListViewItem In LVUnallocatedPapCut.Items
-                mysql = "select * from tbl_proline where papcut_code = '" & itm.SubItems(1).Text & "' " & _
+                mysql = "select * from tbl_proline where papcut_code = '" & itm.SubItems(2).Text & "' " & _
                     "AND ID = '" & itm.SubItems(0).Text & "'"
                 Dim ds As DataSet = LoadSQL(mysql, "tbl_proline")
 
@@ -61,6 +64,7 @@
                 Console.WriteLine("COUNT:" & ds.Tables(0).Rows.Count)
 
                 With ds.Tables(0).Rows(0)
+                    .Item("PAPROLL_SERIAL") = itm.SubItems(1).Text
                     .Item("PAPROLL_SERIAL") = itm.SubItems(3).Text
                     .Item("status") = 1
                 End With
@@ -68,7 +72,7 @@
 
 
                 SelectedPaPRoll = New PaperRoll
-                SelectedPaPRoll.PaperRollSErial = itm.SubItems(3).Text
+                SelectedPaPRoll.PaperRollSErial = itm.SubItems(4).Text
                 SelectedPaPRoll.Remaining = SubTotal * Meter ' Deduct by meter to paper roll
                 SelectedPaPRoll.Updatepaper() ' Deduct Paper Roll
             Next
