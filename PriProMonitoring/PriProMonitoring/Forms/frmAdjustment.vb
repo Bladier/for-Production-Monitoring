@@ -6,11 +6,12 @@
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         If txtSearch.Text = "" Then Exit Sub
 
-        Dim MYSQL As String = "SELECT P.PAPERCUT_ID,P.PAPID,R.PAPROLL_SERIAL,STATUS,R.REMAINING," & _
-          "P.PAPERCUT,P.PAPCUT_CODE,P.PAPCUT_DESCRIPTION " & _
-          "FROM TBLPAPERCUT P INNER JOIN TBLPAPERROLL R ON P.PAPID = R.PAPIDS " & _
-          "INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID = P.PAPID " & _
-        String.Format("WHERE UPPER(PAPROLL_SERIAL) = UPPER('{0}') ORDER BY PAPERCUT_ID ASC ", txtSearch.Text)
+        Dim MYSQL As String = "SELECT C.PAPERCUT_ID,PM.PAPID,P.PAPROLL_SERIAL,P.STATUS,P.REMAINING," & _
+          "C.PAPERCUT,C.PAPCUT_CODE,C.PAPCUT_DESCRIPTION " & _
+          "FROM TBLPAPERROLL P INNER JOIN TBLPAPROLL_MAIN PM ON PM.PAPID = P.PAPIDS " & _
+          "INNER JOIN TBLPROLLANDPCUTS PR ON PR.PROLL_ID = PM.PAPID " & _
+            "INNER JOIN TBLPAPERCUT C ON C.PAPERCUT_ID = PR.PCUT_ID " & _
+        String.Format("WHERE UPPER(P.PAPROLL_SERIAL) = UPPER('{0}') ORDER BY C.PAPERCUT_ID ASC ", txtSearch.Text)
         Dim ds As DataSet = LoadSQL(MYSQL, "PAPERCUT")
 
         If ds.Tables(0).Rows.Count = 0 Then MsgBox("This paper roll doesn't existed" & vbCrLf & _
