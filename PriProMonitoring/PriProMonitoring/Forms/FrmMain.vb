@@ -46,9 +46,17 @@
     End Sub
 
     Private Sub FrmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Control.CheckForIllegalCrossThreadCalls = False
+        Me.Text = SysTitle & " | Version " & Me.GetType.Assembly.GetName.Version.ToString & IIf(mod_system.DEV_MODE, " <<DEVELOPER MODE>>", "")
+        Me.Text &= IIf(mod_system.PROTOTYPE, " !!PROTOTYPE!!", "")
 
-        'AddHandler TmpTimer.Tick, AddressOf SalesWatcher_Tick
+        If Not ConfiguringDB() Then MsgBox("DATABASE CONNECTION PROBLEM", MsgBoxStyle.Critical) : Exit Sub
+
+        Patch_if_Patchable()
+
+        If Not database.DBCompatibilityCheck() Then MsgBox("Please update the database version", MsgBoxStyle.Critical) : End
+
+        Control.CheckForIllegalCrossThreadCalls = False 'THREADING FOR BACKGROUND WORKER
+
         SalesWatcher.Start()
 
         NotYetLogin()

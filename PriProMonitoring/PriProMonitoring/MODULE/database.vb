@@ -29,10 +29,10 @@ Friend Module database
             con.Open()
         Catch ex As Exception
             con.Dispose()
-            'MsgBox(language(0) + vbCrLf + ex.Message.ToString, vbCritical, "Connecting Error")
-            'Log_Report(ex.Message.ToString)
-            'Log_Report(String.Format("User: {0}", fbUser))
-            'Log_Report(String.Format("Database: {0}", dbName))
+            MsgBox(language(0) + vbCrLf + ex.Message.ToString, vbCritical, "Connecting Error")
+            Log_Report(ex.Message.ToString)
+            Log_Report(String.Format("User: {0}", fbUser))
+            Log_Report(String.Format("Database: {0}", dbName))
             Exit Sub
         End Try
     End Sub

@@ -1,11 +1,10 @@
 ﻿Imports Microsoft.Office.Interop
 Module mod_system
   
-
+    Public SysTitle As String = "Printer Production Monitoring System"
     Public DEV_MODE As Boolean = False
     Public PROTOTYPE As Boolean = False
-    Public ADS_ESKIE As Boolean = False
-    Public ADS_SHOW As Boolean = False
+    Friend DBVERSION As String = ""
 
     Public CurrentDate As Date = Now
     Public POSuser As New ComputerUser
@@ -94,6 +93,21 @@ Module mod_system
         Return lastOfMonth
     End Function
 
+    Friend Function ConfiguringDB() As Boolean
+        If Not System.IO.File.Exists(dbName) Then
+            dbName = "PRIPRO.FDB"
+        End If
+
+        Try
+            Dim mySql As String = "SELECT * FROM TBLMAINTENANCE"
+            Dim ds As DataSet = LoadSQL(mySql)
+        Catch ex As Exception
+            MsgBox(ex.ToString, MsgBoxStyle.Critical, "Connection Problem")
+            Return False
+        End Try
+
+        Return True
+    End Function
 
 #Region "Log Module"
     Const LOG_FILE As String = "syslog.txt"
