@@ -1,5 +1,5 @@
 ﻿Imports System.Threading
-Public Class frmLoadMagazine
+Public Class frmInitializePaper
     Private MagazineStatus As Boolean = IIf(GetOption("Magazine") = "YES", True, False)
 
     Private Sub btnsearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnsearch.Click
@@ -41,7 +41,7 @@ Public Class frmLoadMagazine
             row.SubItems.Add(dr.Item("PAPDESC"))
             row.SubItems.Add(dr.Item("PAPROLL_SERIAL"))
         Next
-      
+
     End Sub
 
 
@@ -62,6 +62,7 @@ Public Class frmLoadMagazine
                 & vbCrLf & "Add one more PAPER ROLL.", MsgBoxStyle.Critical, "PAPER ROLL setup") : Exit Sub
             For Each itm As ListViewItem In lvPaproll.Items
                 UpdateRollstatus(itm.SubItems(4).Text, "1", itm.SubItems(2).Text)
+                savePapLog(itm.SubItems(0).Text)
             Next
         End If
 
@@ -91,4 +92,17 @@ Public Class frmLoadMagazine
     Private Sub txtserial_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtserial.KeyPress
         If isEnter(e) Then btnsearch.PerformClick()
     End Sub
+
+    Private Sub savePapLog(ByVal PaperRollID As Integer)
+        Dim getremaining As New PaperRoll
+        getremaining.LoadProll(PaperRollID)
+
+        Dim savelog As New PaperLoadLog
+        savelog.PaprollID = PaperRollID
+        savelog.loaded_by = CurrentUser
+        savelog.Remaining = getremaining.Remaining
+        savelog.Modname = "Paper roll Initialization"
+        savelog.SaveRoll()
+    End Sub
+ 
 End Class

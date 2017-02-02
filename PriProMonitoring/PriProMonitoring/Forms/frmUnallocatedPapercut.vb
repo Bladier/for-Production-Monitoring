@@ -41,7 +41,7 @@
         frmAvailablePaperRoll.LvpaperRoll.Items.Clear()
         For Each dr As DataRow In ds.Tables(0).Rows
             Dim lv As ListViewItem = frmAvailablePaperRoll.LvpaperRoll.Items.Add(dr.Item("PROLL_ID"))
-            lv.SubItems.Add(dr.Item("PAPID"))
+            lv.SubItems.Add(dr.Item("PAPID")) 'paper roll main ID
             lv.SubItems.Add(dr.Item("PAPCODE"))
             lv.SubItems.Add(dr.Item("PAPROLL_SERIAL"))
         Next
@@ -67,7 +67,7 @@
                     Console.WriteLine("COUNT:" & ds.Tables(0).Rows.Count)
 
                     With ds.Tables(0).Rows(0)
-                        .Item("PAPID") = itm.SubItems(1).Text
+                        .Item("PAPID") = itm.SubItems(1).Text 'paper roll main ID
                         .Item("PAPROLL_SERIAL") = itm.SubItems(4).Text
                         .Item("status") = 1
                     End With

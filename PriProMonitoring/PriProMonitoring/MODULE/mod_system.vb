@@ -9,6 +9,7 @@ Module mod_system
 
     Public CurrentDate As Date = Now
     Public POSuser As New ComputerUser
+    Public CurrentUser As String = POSuser.NAME
     Public Meter As Double = 0.0254 ' 1 inch = 0.0254
 
     Public ModName As String = ""

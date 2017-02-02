@@ -141,6 +141,21 @@
         clearFields()
     End Sub
 
+    Private Sub savePapLog(ByVal PaperRollID As Integer, ByVal remainings As Double)
+        Dim savelog As New PaperLoadLog
+        savelog.PaprollID = PaperRollID
+        savelog.loaded_by = CurrentUser
+        savelog.Remaining = remainings
+
+        If rbAdd.Checked = True Then
+            savelog.Modname = "Adjustment|" & rbAdd.Text
+        Else
+            savelog.Modname = "Adjustment|" & rbDeduct.Text
+        End If
+
+        savelog.SaveRoll()
+    End Sub
+
     Private Sub clearFields()
         txtSearch.Text = ""
         lvpapercuts.Items.Clear()
@@ -167,11 +182,13 @@
         If ds.Tables(fillData).Rows.Count = 1 Then
             With ds.Tables(fillData).Rows(0)
                 .Item("Updated_at") = Now
-                .Item("AddedBy") = FrmMain.statusUser.Text
+                .Item("AddedBy") = CurrentUser
                 .Item("Remaining") = OldLength + LengthP
             End With
             database.SaveEntry(ds, False)
         End If
+
+        savePapLog(papRollID, OldLength)
     End Sub
 
     Private Sub DeductToPaperRoll(ByVal papRollID As Integer, ByVal TotalLength As Double)
@@ -185,11 +202,13 @@
         If ds.Tables(fillData).Rows.Count = 1 Then
             With ds.Tables(fillData).Rows(0)
                 .Item("Updated_at") = Now
-                .Item("AddedBy") = FrmMain.statusUser.Text
+                .Item("AddedBy") = CurrentUser
                 .Item("Remaining") = OldLength - LengthP
             End With
             database.SaveEntry(ds, False)
         End If
+
+        savePapLog(papRollID, OldLength)
     End Sub
 
     'Private Function CalcTOtal(Optional ByVal emulsion As Integer = 0, Optional ByVal advance As Integer = 0 _

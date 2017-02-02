@@ -272,7 +272,7 @@
     End Sub
 
     Private Sub InitializePaperRollToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InitializePaperRollToolStripMenuItem.Click
-        frmLoadMagazine.Show()
+        frmInitializePaper.Show()
     End Sub
 
  Public Sub New()
@@ -286,5 +286,8 @@
     Private Sub ToolStripAdjusment_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripAdjusment.Click
         frmUnallocatedPapercut.Show()
     End Sub
+
+  
+
 
 End Class

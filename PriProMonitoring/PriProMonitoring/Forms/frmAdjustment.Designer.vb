@@ -26,7 +26,6 @@ Partial Class frmAdjustment
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.txtSearch = New PriProMonitoring.watermark()
         Me.lvpapercuts = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -46,9 +45,10 @@ Partial Class frmAdjustment
         Me.Label6 = New System.Windows.Forms.Label()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.txtRemarks = New PriProMonitoring.watermark()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtLength = New PriProMonitoring.watermark()
+        Me.txtRemarks = New PriProMonitoring.watermark()
+        Me.txtSearch = New PriProMonitoring.watermark()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -87,15 +87,6 @@ Partial Class frmAdjustment
         Me.GroupBox1.Size = New System.Drawing.Size(538, 38)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
-        '
-        'txtSearch
-        '
-        Me.txtSearch.Location = New System.Drawing.Point(53, 11)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(381, 21)
-        Me.txtSearch.TabIndex = 0
-        Me.txtSearch.WatermarkColor = System.Drawing.Color.DimGray
-        Me.txtSearch.WatermarkText = "Search paper roll serial . . ."
         '
         'lvpapercuts
         '
@@ -255,16 +246,6 @@ Partial Class frmAdjustment
         Me.Label5.TabIndex = 7
         Me.Label5.Text = "Remarks"
         '
-        'txtRemarks
-        '
-        Me.txtRemarks.Location = New System.Drawing.Point(64, 261)
-        Me.txtRemarks.Multiline = True
-        Me.txtRemarks.Name = "txtRemarks"
-        Me.txtRemarks.Size = New System.Drawing.Size(269, 64)
-        Me.txtRemarks.TabIndex = 3
-        Me.txtRemarks.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtRemarks.WatermarkText = "Remarks"
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -283,6 +264,25 @@ Partial Class frmAdjustment
         Me.txtLength.TabIndex = 2
         Me.txtLength.WatermarkColor = System.Drawing.Color.DimGray
         Me.txtLength.WatermarkText = "Length in inch"
+        '
+        'txtRemarks
+        '
+        Me.txtRemarks.Location = New System.Drawing.Point(64, 261)
+        Me.txtRemarks.Multiline = True
+        Me.txtRemarks.Name = "txtRemarks"
+        Me.txtRemarks.Size = New System.Drawing.Size(269, 64)
+        Me.txtRemarks.TabIndex = 3
+        Me.txtRemarks.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtRemarks.WatermarkText = "Remarks"
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Location = New System.Drawing.Point(53, 11)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(381, 21)
+        Me.txtSearch.TabIndex = 0
+        Me.txtSearch.WatermarkColor = System.Drawing.Color.DimGray
+        Me.txtSearch.WatermarkText = "Search paper roll serial . . ."
         '
         'frmAdjustment
         '

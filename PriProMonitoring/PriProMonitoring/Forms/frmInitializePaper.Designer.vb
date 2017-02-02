@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmLoadMagazine
+Partial Class frmInitializePaper
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -62,7 +62,7 @@ Partial Class frmLoadMagazine
         '
         'ColumnHeader2
         '
-        Me.ColumnHeader2.Text = "Mag_ID"
+        Me.ColumnHeader2.Text = "PapID"
         Me.ColumnHeader2.Width = 0
         '
         'ColumnHeader5
@@ -99,7 +99,7 @@ Partial Class frmLoadMagazine
         Me.txtserial.WatermarkColor = System.Drawing.Color.Gray
         Me.txtserial.WatermarkText = "Enter paper roll serial "
         '
-        'frmLoadMagazine
+        'frmInitializePaper
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -110,7 +110,7 @@ Partial Class frmLoadMagazine
         Me.Controls.Add(Me.txtserial)
         Me.Controls.Add(Me.btnsearch)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
-        Me.Name = "frmLoadMagazine"
+        Me.Name = "frmInitializePaper"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Load Paper Roll"
         Me.ResumeLayout(False)

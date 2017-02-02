@@ -92,6 +92,7 @@
         For Each dr As DataRow In ds.Tables(0).Rows
             LoadUserByRow(dr)
         Next
+        CurrentUser = _NAME
         Return True
     End Function
 

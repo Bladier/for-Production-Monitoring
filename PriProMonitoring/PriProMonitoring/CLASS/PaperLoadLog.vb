@@ -52,6 +52,16 @@
         End Set
     End Property
 
+    Private _Modname As String
+    Public Property Modname() As String
+        Get
+            Return _Modname
+        End Get
+        Set(ByVal value As String)
+            _Modname = value
+        End Set
+    End Property
+
 #End Region
 
 #Region "Functions and Procedures"
@@ -67,9 +77,10 @@
         With ds.Tables(0).Rows(0)
             _LogID = .Item("Log_ID")
             _PaprollID = .Item("Paproll_ID")
-            _loaded_by = .Item("USER")
+            _loaded_by = .Item("SysUser")
             _Created_at = .Item("Loaded_at")
             _Remaining = .Item("Remaining")
+            _Modname = .Item("Modname")
         End With
 
     End Sub
@@ -83,9 +94,10 @@
         dsNewRow = ds.Tables(0).NewRow
         With dsNewRow
             .Item("Paproll_ID") = _PaprollID
-            .Item("USER") = _loaded_by
+            .Item("SysUser") = _loaded_by
             .Item("Loaded_at") = Now
             .Item("Remaining") = _Remaining
+            .Item("Modname") = _Modname
         End With
         ds.Tables(0).Rows.Add(dsNewRow)
         database.SaveEntry(ds)
@@ -96,9 +108,10 @@
         With dr
             _LogID = .Item("Log_ID")
             _PaprollID = .Item("Paproll_ID")
-            _loaded_by = .Item("USER")
+            _loaded_by = .Item("SysUser")
             _Created_at = .Item("Loaded_at")
             _Remaining = .Item("Remaining")
+            _Modname = .Item("Modname")
         End With
 
     End Sub

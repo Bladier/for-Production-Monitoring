@@ -1,6 +1,7 @@
 ﻿Public Class frmPaperRolls
     Dim Chamber As Hashtable
     Private MagStatus As Boolean = IIf(GetOption("Magazine") = "YES", True, False)
+    Private NumChamber As Integer = GetOption("Number Chamber")
 
     Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
         If LvPaperRollList.Items.Count = 0 Then Exit Sub
@@ -18,10 +19,10 @@
         If Not MagStatus Then
 
             'Dim ChamberCount As Integer = GetOption("")
-            Dim count As Integer = frmLoadMagazine.lvPaproll.Items.Count
+            Dim count As Integer = frmInitializePaper.lvPaproll.Items.Count
             If count = 2 Then GoTo nextlineTodo
 
-            For Each it As ListViewItem In frmLoadMagazine.lvPaproll.Items
+            For Each it As ListViewItem In frmInitializePaper.lvPaproll.Items
                 Dim tmpChamTag As String = GetchamberTag(CboChamber.Text)
 
                 If it.SubItems(3).Text = LvPaperRollList.SelectedItems(0).SubItems(2).Text _
@@ -29,7 +30,7 @@
                     it.SubItems(2).Text = tmpChamTag Then Exit Sub
             Next
 
-            Dim row As ListViewItem = frmLoadMagazine.lvPaproll.Items.Add(LvPaperRollList.Items(0).Text)
+            Dim row As ListViewItem = frmInitializePaper.lvPaproll.Items.Add(LvPaperRollList.SelectedItems(0).SubItems(0).Text)
 
             row.SubItems.Add(LvPaperRollList.SelectedItems(0).SubItems(1).Text)
             row.SubItems.Add(GetchamberTag(CboChamber.Text))
@@ -37,7 +38,7 @@
             row.SubItems.Add(LvPaperRollList.SelectedItems(0).SubItems(3).Text)
 
 nextlineTodo:
-            frmLoadMagazine.Show()
+            frmInitializePaper.Show()
             Me.Close()
         Else
             If Not CHECKMAG_IFALREADYUSED() Then _
@@ -62,8 +63,9 @@ nextlineTodo:
     Private Sub savePapLog(ByVal PaperRollID As Integer)
         Dim savelog As New PaperLoadLog
         savelog.PaprollID = PaperRollID
-        savelog.loaded_by = FrmMain.statusUser.Text
+        savelog.loaded_by = CurrentUser
         savelog.Remaining = GetRemaining()
+        savelog.Modname = "Load Paper Roll"
         savelog.SaveRoll()
     End Sub
 
@@ -79,6 +81,19 @@ nextlineTodo:
         End If
         loadPaperRoll()
         CurrentLyUsed()
+
+        If NumChamber = 2 Then
+            If Not MagStatus Then
+                For Each itm As ListViewItem In frmInitializePaper.lvPaproll.Items
+                    If itm.SubItems(2).Text = "B" Then
+                        CboChamber.Items.Remove("Chamber 1")
+                    Else
+                        CboChamber.Items.Remove("Chamber 2")
+                    End If
+                Next
+            End If
+        End If
+
     End Sub
 
     Private Sub loadPaperRollSearch(ByVal papSerial As String, Optional ByVal mag As String = "")
@@ -133,8 +148,6 @@ nextlineTodo:
                 lv.SubItems.Add(dr.Item("Chamber"))
             End If
         Next
-
-nextlineTodo:
 
         MsgBox(count & " paper roll found.", MsgBoxStyle.Information)
     End Sub
@@ -300,19 +313,18 @@ nextlineTodo:
     End Sub
 
     Private Function GetActiveChamber() As String
-
-        Dim value As String
         Dim mysql As String = "SELECT * FROM TBLPAPERROLL P INNER JOIN TBLMACHINE M ON P.CHAMBER = M.CHAMBER_TAG " & _
             "WHERE PAPROLL_SERIAL = '" & LvPaperRollList.SelectedItems(0).SubItems(3).Text & " '"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
 
-        If ds.Tables(0).Rows.Count = 0 Then
+        Dim count As Integer = ds.Tables(0).Rows.Count
+
+        If count = 0 Then
             Return ""
         End If
 
-        value = ds.Tables(0).Rows(0).Item("Chamber")
+        Console.WriteLine(ds.Tables(0).Rows.Count)
 
-        Return value
+        Return ds.Tables(0).Rows(0).Item("Chamber")
     End Function
-
 End Class

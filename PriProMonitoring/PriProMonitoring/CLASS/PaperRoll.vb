@@ -170,6 +170,7 @@
             .Item("Addedby") = FrmMain.statusUser.Text
             .Item("Created_at") = Now
             .Item("status") = 0
+            .Item("Chamber") = ""
             .Item("Remaining") = _Remaining
         End With
         ds.Tables(0).Rows.Add(dsNewRow)

@@ -191,10 +191,10 @@
     <Compile Include="Forms\frmItemLookUp.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmLoadMagazine.Designer.vb">
-      <DependentUpon>frmLoadMagazine.vb</DependentUpon>
+    <Compile Include="Forms\frmInitializePaper.Designer.vb">
+      <DependentUpon>frmInitializePaper.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmLoadMagazine.vb">
+    <Compile Include="Forms\frmInitializePaper.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="dev\frmMagAndPapRollList.Designer.vb">
@@ -337,8 +337,8 @@
     <EmbeddedResource Include="Forms\frmItemLookUp.resx">
       <DependentUpon>frmItemLookUp.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLoadMagazine.resx">
-      <DependentUpon>frmLoadMagazine.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\frmInitializePaper.resx">
+      <DependentUpon>frmInitializePaper.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dev\frmMagAndPapRollList.resx">
       <DependentUpon>frmMagAndPapRollList.vb</DependentUpon>
