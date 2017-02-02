@@ -196,7 +196,7 @@
             .Item("Created_at") = _CreatedAT
             .Item("Total_adjustment") = _TotalAdjustment * Meter
             .Item("UOM") = _UOM
-            .Item("LENGTH_EXPOSE") = _LENGTH
+            .Item("LENGTH_EXPOSE") = _LENGTH * Meter
         End With
         ds.Tables(0).Rows.Add(dsNewRow)
         database.SaveEntry(ds)

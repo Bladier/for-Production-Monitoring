@@ -67,7 +67,7 @@
         With ds.Tables(0).Rows(0)
             _LogID = .Item("Log_ID")
             _PaprollID = .Item("Paproll_ID")
-            _loaded_by = .Item("Loaded_by")
+            _loaded_by = .Item("USER")
             _Created_at = .Item("Loaded_at")
             _Remaining = .Item("Remaining")
         End With
@@ -83,7 +83,7 @@
         dsNewRow = ds.Tables(0).NewRow
         With dsNewRow
             .Item("Paproll_ID") = _PaprollID
-            .Item("Loaded_by") = _loaded_by
+            .Item("USER") = _loaded_by
             .Item("Loaded_at") = Now
             .Item("Remaining") = _Remaining
         End With
@@ -96,7 +96,7 @@
         With dr
             _LogID = .Item("Log_ID")
             _PaprollID = .Item("Paproll_ID")
-            _loaded_by = .Item("Loaded_by")
+            _loaded_by = .Item("USER")
             _Created_at = .Item("Loaded_at")
             _Remaining = .Item("Remaining")
         End With

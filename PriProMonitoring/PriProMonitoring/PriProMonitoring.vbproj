@@ -421,6 +421,9 @@
     <Content Include="Custom-Icon-Design-Flatastic-9-Monitoring.ico" />
     <Content Include="obj\x86\Debug\PriProMonitoring.vbproj.FileListAbsolute.txt" />
     <Content Include="obj\x86\Debug\TempPE\My Project.Resources.Designer.vb.dll" />
+    <Content Include="Raw\1.jpg" />
+    <Content Include="Raw\23.jpg" />
+    <Content Include="Raw\Login.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\sampleSales\" />

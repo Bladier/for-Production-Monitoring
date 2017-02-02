@@ -35,7 +35,7 @@
             "FROM TBLPROLLANDPCUTS P  " & _
             "INNER JOIN TBLPAPROLL_MAIN PM ON P.PROLL_ID = PM.PAPID " & _
             "LEFT JOIN TBLPAPERROLL R ON R.PAPIDS = P.PROLL_ID " & _
-            "WHERE PCUT_ID = '" & selectedPaperCut.PapcutID & "' "
+            "WHERE PCUT_ID = '" & selectedPaperCut.PapcutID & "'"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPROLLANDPCUTS")
 
         frmAvailablePaperRoll.LvpaperRoll.Items.Clear()

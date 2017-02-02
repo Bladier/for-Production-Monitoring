@@ -245,7 +245,6 @@
             Me.Refresh()
             Exit Sub
         End If
-
         frmProductionMonitoring.Show()
     End Sub
 
@@ -287,4 +286,5 @@
     Private Sub ToolStripAdjusment_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripAdjusment.Click
         frmUnallocatedPapercut.Show()
     End Sub
+
 End Class

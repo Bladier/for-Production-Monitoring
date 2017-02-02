@@ -29,7 +29,6 @@
         FrmMain.ToolStripActiveUser.Text = "Welcome, " & loginUser.CODE
         MsgBox("Welcome " & loginUser.CODE)
 
-
         FrmMain.Show()
         FrmMain.NotYetLogin(False)
         Me.Close()
@@ -65,4 +64,5 @@
             btnExit.Text = "&Exit"
         End If
     End Sub
+
 End Class

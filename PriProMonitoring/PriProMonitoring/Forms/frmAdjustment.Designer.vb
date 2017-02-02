@@ -29,6 +29,7 @@ Partial Class frmAdjustment
         Me.txtSearch = New PriProMonitoring.watermark()
         Me.lvpapercuts = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -48,7 +49,6 @@ Partial Class frmAdjustment
         Me.txtRemarks = New PriProMonitoring.watermark()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtLength = New PriProMonitoring.watermark()
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -116,6 +116,11 @@ Partial Class frmAdjustment
         '
         Me.ColumnHeader1.Text = "ID"
         Me.ColumnHeader1.Width = 0
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "PAPIDMAIN"
+        Me.ColumnHeader2.Width = 0
         '
         'ColumnHeader3
         '
@@ -277,12 +282,7 @@ Partial Class frmAdjustment
         Me.txtLength.Size = New System.Drawing.Size(271, 21)
         Me.txtLength.TabIndex = 2
         Me.txtLength.WatermarkColor = System.Drawing.Color.DimGray
-        Me.txtLength.WatermarkText = "Length"
-        '
-        'ColumnHeader2
-        '
-        Me.ColumnHeader2.Text = "PAPIDMAIN"
-        Me.ColumnHeader2.Width = 0
+        Me.txtLength.WatermarkText = "Length in inch"
         '
         'frmAdjustment
         '
