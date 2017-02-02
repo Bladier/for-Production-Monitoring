@@ -33,13 +33,30 @@
             With SavepapEmp
 
                 .PAPROLLID = tmppaperRoll.PaprollID
-                .EMULSION = itm.SubItems(1).Text * 12
-                .ADVANCE = itm.SubItems(2).Text
-                .LASTOUT = itm.SubItems(3).Text
+
+                If itm.SubItems(1).Text = "" Then
+                    .EMULSION = 0.0
+                Else
+                    .EMULSION = itm.SubItems(1).Text * 12
+                End If
+
+                If itm.SubItems(2).Text = "" Then
+                    .ADVANCE = 0.0
+                Else
+                    .ADVANCE = itm.SubItems(2).Text
+                End If
+
+                If itm.SubItems(3).Text = "" Then
+                    .LASTOUT = 0.0
+                Else
+                    .LASTOUT = itm.SubItems(3).Text
+                End If
+
                 .UOM = "Inch"
                 .cREATEDAT = Now
                 .Declaredby = FrmMain.statusUser.Text
                 .SavePAPEmPTY()
+
                 SavepapEmp.EmpRoll(itm.SubItems(0).Text, "2")
 
                 tmpTotal = .EMULSION + .ADVANCE + .LASTOUT

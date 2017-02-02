@@ -29,6 +29,7 @@
         ToolStripProduction.Enabled = Not st
         ToolStripAddpaperroll.Enabled = Not st
         ToolStripAdjusment.Enabled = Not st
+        ToolStripMonitor.Enabled = Not st
 
         If Not st Then
             ToolStripLogin.Text = "&Log Out"
@@ -267,6 +268,8 @@
                 ToolStripAddpaperroll.PerformClick()
             Case Keys.F8
                 ToolStripAdjusment.PerformClick()
+            Case Keys.F9
+                ToolStripMonitor.PerformClick()
             Case Else
                 'Do Nothing
         End Select
@@ -295,7 +298,8 @@
         frmUnallocatedPapercut.Show()
     End Sub
 
-  
-
-
+    Private Sub ToolStripMonitor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMonitor.Click
+        frmMonitoring.Show()
+        frmMonitoring.TopMost = True
+    End Sub
 End Class

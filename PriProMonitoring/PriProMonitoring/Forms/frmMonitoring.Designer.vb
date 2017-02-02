@@ -26,11 +26,11 @@ Partial Class frmMonitoring
         Me.lvListEmptyRoll = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SuspendLayout()
         '
         'btnSearch
@@ -72,6 +72,11 @@ Partial Class frmMonitoring
         Me.ColumnHeader2.Text = "Paper Roll Serial"
         Me.ColumnHeader2.Width = 169
         '
+        'ColumnHeader5
+        '
+        Me.ColumnHeader5.Text = "Paper Cut Description"
+        Me.ColumnHeader5.Width = 177
+        '
         'ColumnHeader3
         '
         Me.ColumnHeader3.Text = "# of Prints"
@@ -101,11 +106,6 @@ Partial Class frmMonitoring
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Search"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'ColumnHeader5
-        '
-        Me.ColumnHeader5.Text = "Paper Cut Description"
-        Me.ColumnHeader5.Width = 177
         '
         'frmMonitoring
         '

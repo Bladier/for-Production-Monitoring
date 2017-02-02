@@ -6,7 +6,10 @@
 
 
     Private Sub frmEmptyPaperRollList_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.TopMost = True
+
         Dim fillData As String = "tblpaperRoll"
+
 
         If frmMonitoring.txtSearch.Text = "" Then
 

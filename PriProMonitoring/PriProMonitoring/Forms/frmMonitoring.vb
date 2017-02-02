@@ -8,7 +8,6 @@ Public Class frmMonitoring
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         frmEmptyPaperRollList.Show()
-
     End Sub
 
     Friend Sub PopulateCount(ByVal str As String)
@@ -38,6 +37,7 @@ Public Class frmMonitoring
             End With
         Next
     End Sub
+
 
 
 
