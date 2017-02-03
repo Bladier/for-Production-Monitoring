@@ -122,13 +122,26 @@
 
         If ds.Tables(0).Rows.Count <> 1 Then
             'MsgBox("Failed to load ItemCode", MsgBoxStyle.Critical)
-            Console.WriteLine("Failed to load paper cut description " & _PapCutcode)
+            Console.WriteLine("Failed to load paper cut code " & _PapCutcode)
             Exit Sub
         End If
 
         lOAD_PaperCut_row(ds.Tables(0).Rows(0))
     End Sub
 
+    Public Sub Load_pDesc()
+        Dim mysql = String.Format("SELECT * FROM tblpapercut WHERE PAPCUT_DESCRIPTION = '{0}'", _papcutDescription)
+        Dim ds As DataSet = New DataSet
+        ds = LoadSQL(mysql)
+
+        If ds.Tables(0).Rows.Count = 0 Then
+            'MsgBox("Failed to load ItemCode", MsgBoxStyle.Critical)
+            Console.WriteLine("Failed to load paper cut description " & _papcutDescription)
+            Exit Sub
+        End If
+
+        lOAD_PaperCut_row(ds.Tables(0).Rows(0))
+    End Sub
 #End Region
 
 End Class

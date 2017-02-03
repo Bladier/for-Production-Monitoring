@@ -1,6 +1,6 @@
 ﻿Public Class frmPaperRolls
     Dim Chamber As Hashtable
-    Private MagStatus As Boolean = IIf(GetOption("Magazine") = "YES", True, False)
+    Private PapStatus As Boolean = IIf(GetOption("Magazine") = "YES", True, False)
     Private NumChamber As Integer = GetOption("Number Chamber")
 
     Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
@@ -8,6 +8,18 @@
         If LvPaperRollList.SelectedItems.Count = 0 Then Exit Sub
 
         If ModName = "Empty paper roll" Then
+            'Selecting Paper roll to load after declaring paper roll empty
+            For Each itm As ListViewItem In frmDeclaration.lvPaperRoll.Items
+                If LvPaperRollList.SelectedItems(0).SubItems(3).Text = itm.SubItems(0).Text Then
+                    MsgBox("This paper roll was selected" & vbCrLf & _
+                         "to declare as empty. Try another paper roll to or add paper roll to load", _
+                         MsgBoxStyle.Critical, "Declare") : Exit Sub
+                End If
+            Next
+
+            If Not CHECKMAG_IFALREADYUSED() Then _
+               MsgBox("This Paper roll Currently in used", MsgBoxStyle.Critical, "Paper roll") : CboChamber.SelectedItem = Nothing : Exit Sub
+
             frmDeclaration.txtSearch.Text = LvPaperRollList.SelectedItems(0).SubItems(3).Text
             frmDeclaration.txtSearch.Focus()
             frmDeclaration.Show()
@@ -15,10 +27,10 @@
             Exit Sub
         End If
 
+        'Initialization 
         If CboChamber.Text = "" Then Exit Sub
-        If Not MagStatus Then
+        If Not PapStatus Then
 
-            'Dim ChamberCount As Integer = GetOption("")
             Dim count As Integer = frmInitializePaper.lvPaproll.Items.Count
             If count = 2 Then GoTo nextlineTodo
 
@@ -40,9 +52,12 @@
 nextlineTodo:
             frmInitializePaper.Show()
             Me.Close()
+
+
         Else
+            'Transaction process
             If Not CHECKMAG_IFALREADYUSED() Then _
-                MsgBox("This magazine Currently in used", MsgBoxStyle.Critical, "Magazine") : CboChamber.SelectedItem = Nothing : Exit Sub
+                MsgBox("This Paper roll Currently in used", MsgBoxStyle.Critical, "Paper roll") : CboChamber.SelectedItem = Nothing : Exit Sub
 
 
             RollstatInactive(LvPaperRollList.SelectedItems(0).SubItems(3).Text, _
@@ -83,7 +98,7 @@ nextlineTodo:
         CurrentLyUsed()
 
         If NumChamber = 2 Then
-            If Not MagStatus Then
+            If Not PapStatus Then
                 For Each itm As ListViewItem In frmInitializePaper.lvPaproll.Items
                     If itm.SubItems(2).Text = "B" Then
                         CboChamber.Items.Remove("Chamber 1")

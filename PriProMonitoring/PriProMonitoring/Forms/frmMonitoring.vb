@@ -32,13 +32,38 @@ Public Class frmMonitoring
                 lv.SubItems.Add(.Item("PAPROLL_SERIAL"))
                 lv.SubItems.Add(.Item("PAPCUT_DESC"))
                 lv.SubItems.Add(.Item("TOTAL"))
-
-
             End With
         Next
+
+        getRemaining()
     End Sub
 
 
+    Private Sub getRemaining()
+        Dim p_cuts As New PaperCut
+        Dim P_roll As New PaperRoll
 
+        Dim TotalPrints As Double = 0.0
+
+        For Each itm As ListViewItem In lvListEmptyRoll.Items
+            p_cuts.papcutDescription = itm.SubItems(2).Text
+            p_cuts.Load_pDesc() 'Load Paper Cut
+
+            P_roll.loadSerial(itm.SubItems(1).Text) 'Load Paper roll
+
+            Dim dblTotal As Double = 0
+            Dim dblTemp As Double
+
+            For Each lvItem As ListViewItem In lvListEmptyRoll.Items
+                If Double.TryParse(lvItem.SubItems(3).Text, dblTemp) Then
+                    dblTotal += dblTemp
+                End If
+            Next
+
+            Dim PCUT_Remaining As Integer = ((P_roll.TotalLength * OneMeter) - dblTotal) / p_cuts.papcut
+
+            itm.SubItems.Add(String.Format("{0}", Math.Round(PCUT_Remaining / p_cuts.papcut, 2)))
+        Next
+    End Sub
 
 End Class

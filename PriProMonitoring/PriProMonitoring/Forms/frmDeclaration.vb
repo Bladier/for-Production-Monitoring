@@ -19,7 +19,15 @@
         If lvPaperRoll.Items.Count = 0 Then Exit Sub
         If txtSearch.Text = "" Then Exit Sub
 
-        Dim ans As DialogResult = MsgBox("Do you want to Post?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
+        For Each itm As ListViewItem In lvPaperRoll.Items
+            If txtSearch.Text = itm.SubItems(0).Text Then
+                MsgBox("This paper roll was selected" & vbCrLf & _
+                     "to declare as empty. Try another paper roll", MsgBoxStyle.Critical, "Declare") : Exit Sub
+            End If
+        Next
+   
+
+        Dim ans As DialogResult = MsgBox("Do you want to Post?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information, "Declare")
         If ans = Windows.Forms.DialogResult.No Then Exit Sub
 
 
@@ -57,7 +65,7 @@
                 .Declaredby = FrmMain.statusUser.Text
                 .SavePAPEmPTY()
 
-                SavepapEmp.EmpRoll(itm.SubItems(0).Text, "2")
+                SavepapEmp.EmpRoll(itm.SubItems(0).Text, "2") 'Status will become 2 it means paper roll is empty
 
                 tmpTotal = .EMULSION + .ADVANCE + .LASTOUT
 
@@ -77,7 +85,7 @@
         End If
 
 
-        MsgBox("Posted", MsgBoxStyle.Information, "Post")
+        MsgBox("Posted.", MsgBoxStyle.Information, "Post")
         lvPaperRoll.Items.Clear()
         clearFields()
         frmDeclaration_Load(sender, e)
@@ -117,6 +125,13 @@
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         frmProductionMonitoring.Close()
+
+        For Each itm As ListViewItem In lvPaperRoll.Items
+            If txtSearch.Text = itm.SubItems(0).Text Then
+                MsgBox("This paper roll was selected" & vbCrLf & _
+                     "above. Try another paper roll to load", MsgBoxStyle.Critical, "Declare") : Exit Sub
+            End If
+        Next
 
         frmPaperRolls.txtsearch1.Text = txtSearch.Text
         frmPaperRolls.Show()

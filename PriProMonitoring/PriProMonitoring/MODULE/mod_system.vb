@@ -10,8 +10,10 @@ Module mod_system
     Public POSuser As New ComputerUser
     Public CurrentUser As String = POSuser.NAME
     Public Meter As Double = 0.0254 ' 1 inch = 0.0254
+    Public OneMeter As Double = 39.3701 ' 1 meter
 
     Public ModName As String = ""
+    Public Remaining_Per_Papercut As Double = 0.0
 
     Friend Function DigitOnly(ByVal e As System.Windows.Forms.KeyPressEventArgs, Optional ByVal isWhole As Boolean = False)
         Console.WriteLine("char: " & e.KeyChar & " -" & Char.IsDigit(e.KeyChar))

@@ -6,7 +6,6 @@
 
 
     Private Sub frmEmptyPaperRollList_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.TopMost = True
 
         Dim fillData As String = "tblpaperRoll"
 
@@ -30,9 +29,7 @@
                     lv.SubItems().Add(.Item("PAPROLL_SERIAL"))
                 End With
             Next
-
         Else
-
             Dim mysql As String = "SELECT P.PAPROLL_ID,R.PAPCODE,R.PAPDESC,P.PAPROLL_SERIAL "
             mysql &= vbCrLf & " FROM TBLPAPERROLL P	"
             mysql &= vbCrLf & " INNER JOIN TBLPAPROLL_MAIN R ON R.PAPID = P.PAPIDS "
@@ -74,5 +71,9 @@
         frmMonitoring.PopulateCount(serial)
         frmMonitoring.Show()
         Me.Hide()
+    End Sub
+
+    Private Sub Lvlist_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles Lvlist.KeyPress
+        If isEnter(e) Then Lvlist_DoubleClick(sender, e)
     End Sub
 End Class

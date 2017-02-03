@@ -35,6 +35,7 @@ Partial Class frmMonitoring
         '
         'btnSearch
         '
+        Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSearch.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSearch.Location = New System.Drawing.Point(605, 16)
         Me.btnSearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
@@ -47,10 +48,13 @@ Partial Class frmMonitoring
         'lvListEmptyRoll
         '
         Me.lvListEmptyRoll.Alignment = System.Windows.Forms.ListViewAlignment.SnapToGrid
+        Me.lvListEmptyRoll.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvListEmptyRoll.BackColor = System.Drawing.SystemColors.Window
         Me.lvListEmptyRoll.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lvListEmptyRoll.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader5, Me.ColumnHeader3, Me.ColumnHeader4})
-        Me.lvListEmptyRoll.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lvListEmptyRoll.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvListEmptyRoll.FullRowSelect = True
         Me.lvListEmptyRoll.GridLines = True
         Me.lvListEmptyRoll.Location = New System.Drawing.Point(27, 62)
@@ -70,12 +74,12 @@ Partial Class frmMonitoring
         'ColumnHeader2
         '
         Me.ColumnHeader2.Text = "Paper Roll Serial"
-        Me.ColumnHeader2.Width = 169
+        Me.ColumnHeader2.Width = 157
         '
         'ColumnHeader5
         '
         Me.ColumnHeader5.Text = "Paper Cut Description"
-        Me.ColumnHeader5.Width = 177
+        Me.ColumnHeader5.Width = 160
         '
         'ColumnHeader3
         '
@@ -84,11 +88,13 @@ Partial Class frmMonitoring
         '
         'ColumnHeader4
         '
-        Me.ColumnHeader4.Text = "Remainings"
+        Me.ColumnHeader4.Text = "Remaining Prints"
         Me.ColumnHeader4.Width = 253
         '
         'txtSearch
         '
+        Me.txtSearch.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtSearch.Location = New System.Drawing.Point(107, 23)
         Me.txtSearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtSearch.Name = "txtSearch"

@@ -15,4 +15,18 @@
         Me.TopMost = True
         frmUnallocatedPapercut.Enabled = False
     End Sub
+
+
+    Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
+        Select Case keyData
+            Case Keys.Escape
+                frmUnallocatedPapercut.Enabled = True
+                frmUnallocatedPapercut.Show()
+                Me.Close()
+            Case Else
+                'Do Nothing
+        End Select
+
+        Return MyBase.ProcessCmdKey(msg, keyData)
+    End Function
 End Class

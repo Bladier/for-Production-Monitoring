@@ -300,6 +300,5 @@
 
     Private Sub ToolStripMonitor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMonitor.Click
         frmMonitoring.Show()
-        frmMonitoring.TopMost = True
     End Sub
 End Class

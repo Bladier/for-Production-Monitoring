@@ -30,7 +30,7 @@
         selectedPaperCut.Load_pcuts()
 
         Console.WriteLine(selectedPaperCut.PapcutID)
-
+        dbOpen()
         mysql = "SELECT P.PRPC_ID,PM.PAPID ,P.PROLL_ID,PM.PAPCODE,R.PAPROLL_SERIAL " & _
             "FROM TBLPROLLANDPCUTS P  " & _
             "INNER JOIN TBLPAPROLL_MAIN PM ON P.PROLL_ID = PM.PAPID " & _
@@ -45,7 +45,7 @@
             lv.SubItems.Add(dr.Item("PAPCODE"))
             lv.SubItems.Add(dr.Item("PAPROLL_SERIAL"))
         Next
-
+        dbClose()
         frmAvailablePaperRoll.Show()
     End Sub
 
