@@ -13,7 +13,7 @@
         If frmMonitoring.txtSearch.Text = "" Then
 
             Dim mysql As String = "SELECT P.PAPROLL_ID,R.PAPCODE,R.PAPDESC,P.PAPROLL_SERIAL "
-            mysql &= vbCrLf & " FROM TBLPAPERROLL P	"
+            mysql &= vbCrLf & " FROM " & fillData & " P	"
             mysql &= vbCrLf & " INNER JOIN TBLPAPROLL_MAIN R ON R.PAPID = P.PAPIDS "
             mysql &= vbCrLf & "WHERE STATUS = '2' "
             Dim ds As DataSet = LoadSQL(mysql, fillData)

@@ -10,6 +10,11 @@ Public Class frmMonitoring
         frmEmptyPaperRollList.Show()
     End Sub
 
+    ''' <summary>
+    ''' THis function populate the total prints of every paper roll and its paper cuts
+    ''' </summary>
+    ''' <param name="str"></param>
+    ''' <remarks></remarks>
     Friend Sub PopulateCount(ByVal str As String)
         Dim mysql As String = "	SELECT P.PAPCODE,R.PAPROLL_SERIAL,PR.PAPCUT_DESC,	"
         mysql &= vbCrLf & "	SUM(PR.QUANTITY)AS TOTAL FROM tblPAPROLL_MAIN P	"
@@ -38,7 +43,10 @@ Public Class frmMonitoring
         getRemaining()
     End Sub
 
-
+    ''' <summary>
+    ''' calculate the remaining # of prints to be print
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub getRemaining()
         Dim p_cuts As New PaperCut
         Dim P_roll As New PaperRoll
@@ -55,14 +63,30 @@ Public Class frmMonitoring
             Dim dblTemp As Double
 
             For Each lvItem As ListViewItem In lvListEmptyRoll.Items
-                If Double.TryParse(lvItem.SubItems(3).Text, dblTemp) Then
-                    dblTotal += dblTemp
-                End If
+                Dim mysql As String = "SELECT P.PAPIDS,PC.PAPERCUT FROM TBLPAPERROLL P " & _
+                                      "INNER JOIN TBLPROLLANDPCUTS PRPC ON PRPC.PROLL_ID = P.PAPIDS " & _
+                                      "INNER JOIN TBLPAPERCUT PC ON PC.PAPERCUT_ID = PRPC.PCUT_ID " & _
+                                       "WHERE P.PAPROLL_SERIAL = '" & itm.SubItems(1).Text & "'"
+                Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
+
+                For Each dr As DataRow In ds.Tables(0).Rows
+                    Dim Papercut As Double = ds.Tables(0).Rows(0).Item("PAPERCUT")
+                    If Double.TryParse(lvItem.SubItems(3).Text, dblTemp) Then
+                        dblTotal += dblTemp * Papercut
+                    End If
+                Next
+
+              
+                Dim Total_Length As Double = P_roll.TotalLength * OneMeter ' Total lenght in Inches
+
+                Dim subtotal As Double = Total_Length - dblTotal
+                Dim PCUT_Remaining As Integer = subtotal / p_cuts.papcut
+
+                Console.WriteLine(PCUT_Remaining)
+                Console.WriteLine(Math.Round(PCUT_Remaining / p_cuts.papcut, 2))
+
+                itm.SubItems.Add(String.Format("{0}", Math.Round(PCUT_Remaining / p_cuts.papcut, 2))) 'Populate remaining # to be prints
             Next
-
-            Dim PCUT_Remaining As Integer = ((P_roll.TotalLength * OneMeter) - dblTotal) / p_cuts.papcut
-
-            itm.SubItems.Add(String.Format("{0}", Math.Round(PCUT_Remaining / p_cuts.papcut, 2)))
         Next
     End Sub
 
