@@ -16,13 +16,13 @@ Public Class frmMonitoring
     ''' <param name="str"></param>
     ''' <remarks></remarks>
     Friend Sub PopulateCount(ByVal str As String)
-        Dim mysql As String = "	SELECT P.PAPCODE,R.PAPROLL_SERIAL,PR.PAPCUT_DESC,	"
+        Dim mysql As String = "	SELECT P.PAPCODE,R.PAPROLL_SERIAL,PR.PAPCUT_DESC,PR.PAPERCUT,	"
         mysql &= vbCrLf & "	SUM(PR.QUANTITY)AS TOTAL FROM tblPAPROLL_MAIN P	"
         mysql &= vbCrLf & "	INNER JOIN TBLPAPERROLL R ON R.PAPIDS = P.PAPID	"
         mysql &= vbCrLf & "	LEFT JOIN TBL_PROLINE PR	"
         mysql &= vbCrLf & "	ON PR.PAPROLL_SERIAL = R.PAPROLL_SERIAL 	"
         mysql &= vbCrLf & "	WHERE R.PAPROLL_SERIAL = '" & str & "'"
-        mysql &= vbCrLf & "	GROUP BY PR.PAPCUT_DESC,P.PAPCODE,R.PAPROLL_SERIAL	"
+        mysql &= vbCrLf & "	GROUP BY PR.PAPCUT_DESC,P.PAPCODE,R.PAPROLL_SERIAL,PR.PAPERCUT	"
 
         Dim ds As DataSet = LoadSQL(mysql, "tblPAPROLL_MAIN")
 
@@ -36,6 +36,7 @@ Public Class frmMonitoring
                 Dim lv As ListViewItem = lvListEmptyRoll.Items.Add(.Item("PAPCODE"))
                 lv.SubItems.Add(.Item("PAPROLL_SERIAL"))
                 lv.SubItems.Add(.Item("PAPCUT_DESC"))
+                lv.SubItems.Add(.Item("PAPERCUT"))
                 lv.SubItems.Add(.Item("TOTAL"))
             End With
         Next
@@ -51,7 +52,8 @@ Public Class frmMonitoring
         Dim p_cuts As New PaperCut
         Dim P_roll As New PaperRoll
 
-        Dim TotalPrints As Double = 0.0
+        Dim Totallength As Double = 0.0
+        Dim dblTemp As Double
 
         For Each itm As ListViewItem In lvListEmptyRoll.Items
             p_cuts.papcutDescription = itm.SubItems(2).Text
@@ -59,35 +61,52 @@ Public Class frmMonitoring
 
             P_roll.loadSerial(itm.SubItems(1).Text) 'Load Paper roll
 
-            Dim dblTotal As Double = 0
-            Dim dblTemp As Double
+            For Each lvItm As ListViewItem In lvListEmptyRoll.Items
 
-            For Each lvItem As ListViewItem In lvListEmptyRoll.Items
-                Dim mysql As String = "SELECT P.PAPIDS,PC.PAPERCUT FROM TBLPAPERROLL P " & _
-                                      "INNER JOIN TBLPROLLANDPCUTS PRPC ON PRPC.PROLL_ID = P.PAPIDS " & _
-                                      "INNER JOIN TBLPAPERCUT PC ON PC.PAPERCUT_ID = PRPC.PCUT_ID " & _
-                                       "WHERE P.PAPROLL_SERIAL = '" & itm.SubItems(1).Text & "'"
-                Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
-
-                For Each dr As DataRow In ds.Tables(0).Rows
-                    Dim Papercut As Double = ds.Tables(0).Rows(0).Item("PAPERCUT")
-                    If Double.TryParse(lvItem.SubItems(3).Text, dblTemp) Then
-                        dblTotal += dblTemp * Papercut
-                    End If
-                Next
-
-              
-                Dim Total_Length As Double = P_roll.TotalLength * OneMeter ' Total lenght in Inches
-
-                Dim subtotal As Double = Total_Length - dblTotal
-                Dim PCUT_Remaining As Integer = subtotal / p_cuts.papcut
-
-                Console.WriteLine(PCUT_Remaining)
-                Console.WriteLine(Math.Round(PCUT_Remaining / p_cuts.papcut, 2))
-
-                itm.SubItems.Add(String.Format("{0}", Math.Round(PCUT_Remaining / p_cuts.papcut, 2))) 'Populate remaining # to be prints
+                dblTemp += lvItm.SubItems(3).Text * lvItm.SubItems(4).Text
             Next
+
+            Totallength = P_roll.TotalLength * OneMeter
+            Dim P_cut As Double = (Totallength - dblTemp) / itm.SubItems(4).Text
+
+
+            itm.SubItems.Add(P_cut)
+
+            'Dim dblTotal As Double = 0
+            'Dim dblTemp As Double
+            'Dim PC_Total As Double
+
+            'Dim mysql As String = "SELECT P.PAPIDS,PC.PAPERCUT FROM TBLPAPERROLL P " & _
+            '                        "INNER JOIN TBLPROLLANDPCUTS PRPC ON PRPC.PROLL_ID = P.PAPIDS " & _
+            '                        "INNER JOIN TBLPAPERCUT PC ON PC.PAPERCUT_ID = PRPC.PCUT_ID " & _
+            '                         "WHERE P.PAPROLL_SERIAL = '" & itm.SubItems(1).Text & "'"
+            'Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
+
+            'Dim Papercut As Double = ds.Tables(0).Rows(0).Item("PAPERCUT")
+
+            'For Each lvItem As ListViewItem In lvListEmptyRoll.Items
+            '    For Each dr As DataRow In ds.Tables(0).Rows
+
+            '        If Double.TryParse(lvItem.SubItems(3).Text, dblTemp) Then ' Quantity of every paper cut
+            '            dblTotal = dblTemp * Papercut
+            '        End If
+            '    Next
+
+            '    PC_Total += dblTotal
+
+
+            '    Dim Total_Length As Double = P_roll.TotalLength * OneMeter ' Total lenght in Inches
+
+            '    Dim subtotal As Double = Total_Length - dblTotal
+            '    Dim PCUT_Remaining As Integer = subtotal / p_cuts.papcut
+
+            '    Console.WriteLine(PCUT_Remaining)
+            '    Console.WriteLine(Math.Round(PCUT_Remaining / p_cuts.papcut, 2))
+
+            '    itm.SubItems.Add(String.Format("{0}", Math.Round(PCUT_Remaining / p_cuts.papcut, 2))) 'Populate remaining # to be prints
+            'Next
         Next
     End Sub
 
+    
 End Class

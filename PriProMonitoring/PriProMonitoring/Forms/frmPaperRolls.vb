@@ -87,7 +87,14 @@ nextlineTodo:
 
     
     Private Sub frmPaperRolls_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        If ModName = "Empty paper roll" Then btnAdd.Visible = True
+        If ModName = "Empty paper roll" Then
+            btnAdd.Visible = True
+            lblChamber.Visible = False
+            CboChamber.Visible = False
+        Else
+            btnAdd.Visible = False
+        End If
+
 
         LoadChamber()
         If txtsearch1.Text <> "" Then
@@ -342,4 +349,8 @@ nextlineTodo:
 
         Return ds.Tables(0).Rows(0).Item("Chamber")
     End Function
+
+    Private Sub frmPaperRolls_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+        ModName = ""
+    End Sub
 End Class

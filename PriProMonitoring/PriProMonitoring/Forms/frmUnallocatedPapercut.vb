@@ -23,6 +23,7 @@
     End Sub
 
     Private Sub LVUnallocatedPapCut_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LVUnallocatedPapCut.DoubleClick
+
         Dim selectedPaperCut As New PaperCut
 
         selectedPaperCut.PapCutcode = LVUnallocatedPapCut.SelectedItems(0).SubItems(2).Text 'load papercut
@@ -31,6 +32,7 @@
 
         Console.WriteLine(selectedPaperCut.PapcutID)
         dbOpen()
+
         mysql = "SELECT P.PRPC_ID,PM.PAPID ,P.PROLL_ID,PM.PAPCODE,R.PAPROLL_SERIAL " & _
             "FROM TBLPROLLANDPCUTS P  " & _
             "INNER JOIN TBLPAPROLL_MAIN PM ON P.PROLL_ID = PM.PAPID " & _

@@ -134,19 +134,23 @@
         Next
 
         frmPaperRolls.txtsearch1.Text = txtSearch.Text
-        frmPaperRolls.Show()
         ModName = "Empty paper roll"
+        frmPaperRolls.Show()
+
     End Sub
 
     Private Function CheckChamber() As Boolean
-        tmppaperRoll.loadSerial(cboPaperRollSerial.Text)
 
         Dim mysql As String = "SELECT * FROM TBLPAPERROLL WHERE STATUS <> 2 and chamber = 'B'"
-        Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
+        Try
+            Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
 
-        If ds.Tables(0).Rows.Count = 0 Then
-            Return False
-        End If
+            If ds.Tables(0).Rows.Count = 0 Then
+                Return False
+            End If
+        Catch ex As Exception
+            Return True
+        End Try
 
         Return True
     End Function
@@ -228,6 +232,6 @@
     End Sub
 
     Private Sub btnSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles btnSearch.KeyPress
-        If isEnter(e) Then btnPost.PerformClick()
+        If isEnter(e) Then btnSearch.PerformClick()
     End Sub
 End Class

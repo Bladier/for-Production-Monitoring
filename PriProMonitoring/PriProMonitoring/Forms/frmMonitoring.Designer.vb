@@ -31,16 +31,17 @@ Partial Class frmMonitoring
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SuspendLayout()
         '
         'btnSearch
         '
         Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSearch.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearch.Location = New System.Drawing.Point(605, 16)
+        Me.btnSearch.Location = New System.Drawing.Point(605, 9)
         Me.btnSearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(108, 37)
+        Me.btnSearch.Size = New System.Drawing.Size(108, 30)
         Me.btnSearch.TabIndex = 0
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
@@ -53,15 +54,15 @@ Partial Class frmMonitoring
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvListEmptyRoll.BackColor = System.Drawing.SystemColors.Window
         Me.lvListEmptyRoll.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lvListEmptyRoll.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader5, Me.ColumnHeader3, Me.ColumnHeader4})
+        Me.lvListEmptyRoll.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader3, Me.ColumnHeader4})
         Me.lvListEmptyRoll.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvListEmptyRoll.FullRowSelect = True
         Me.lvListEmptyRoll.GridLines = True
-        Me.lvListEmptyRoll.Location = New System.Drawing.Point(27, 62)
+        Me.lvListEmptyRoll.Location = New System.Drawing.Point(27, 42)
         Me.lvListEmptyRoll.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.lvListEmptyRoll.Name = "lvListEmptyRoll"
         Me.lvListEmptyRoll.ShowItemToolTips = True
-        Me.lvListEmptyRoll.Size = New System.Drawing.Size(687, 338)
+        Me.lvListEmptyRoll.Size = New System.Drawing.Size(687, 363)
         Me.lvListEmptyRoll.TabIndex = 1
         Me.lvListEmptyRoll.UseCompatibleStateImageBehavior = False
         Me.lvListEmptyRoll.View = System.Windows.Forms.View.Details
@@ -95,10 +96,10 @@ Partial Class frmMonitoring
         '
         Me.txtSearch.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSearch.Location = New System.Drawing.Point(107, 23)
+        Me.txtSearch.Location = New System.Drawing.Point(79, 12)
         Me.txtSearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(490, 22)
+        Me.txtSearch.Size = New System.Drawing.Size(520, 22)
         Me.txtSearch.TabIndex = 2
         '
         'Label1
@@ -106,12 +107,16 @@ Partial Class frmMonitoring
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label1.Location = New System.Drawing.Point(42, 27)
+        Me.Label1.Location = New System.Drawing.Point(27, 15)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(49, 16)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Search"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'ColumnHeader6
+        '
+        Me.ColumnHeader6.Text = "pAPCUT"
         '
         'frmMonitoring
         '
@@ -142,4 +147,5 @@ Partial Class frmMonitoring
     Friend WithEvents txtSearch As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader6 As System.Windows.Forms.ColumnHeader
 End Class
