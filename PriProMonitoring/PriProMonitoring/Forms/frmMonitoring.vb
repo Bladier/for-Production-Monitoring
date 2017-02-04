@@ -67,10 +67,10 @@ Public Class frmMonitoring
             Next
 
             Totallength = P_roll.TotalLength * OneMeter
-            Dim P_cut As Double = (Totallength - dblTemp) / itm.SubItems(4).Text
+            Dim P_cut As Double = (Totallength - dblTemp) / itm.SubItems(3).Text
 
 
-            itm.SubItems.Add(P_cut)
+            itm.SubItems.Add(Math.Round(P_cut, 2))
 
             'Dim dblTotal As Double = 0
             'Dim dblTemp As Double

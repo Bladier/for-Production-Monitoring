@@ -27,11 +27,11 @@ Partial Class frmMonitoring
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SuspendLayout()
         '
         'btnSearch
@@ -82,6 +82,11 @@ Partial Class frmMonitoring
         Me.ColumnHeader5.Text = "Paper Cut Description"
         Me.ColumnHeader5.Width = 160
         '
+        'ColumnHeader6
+        '
+        Me.ColumnHeader6.Text = "PAPER CUT"
+        Me.ColumnHeader6.Width = 0
+        '
         'ColumnHeader3
         '
         Me.ColumnHeader3.Text = "# of Prints"
@@ -113,10 +118,6 @@ Partial Class frmMonitoring
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Search"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'ColumnHeader6
-        '
-        Me.ColumnHeader6.Text = "pAPCUT"
         '
         'frmMonitoring
         '
