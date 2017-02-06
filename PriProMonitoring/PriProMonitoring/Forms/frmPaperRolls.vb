@@ -12,7 +12,7 @@
             For Each itm As ListViewItem In frmDeclaration.lvPaperRoll.Items
                 If LvPaperRollList.SelectedItems(0).SubItems(3).Text = itm.SubItems(0).Text Then
                     MsgBox("This paper roll was selected" & vbCrLf & _
-                         "to declare as empty. Try another paper roll to or add paper roll to load", _
+                         "to declare as empty. Try another paper roll or add paper roll to load", _
                          MsgBoxStyle.Critical, "Declare") : Exit Sub
                 End If
             Next

@@ -285,6 +285,7 @@
     <Compile Include="MODULE\database.vb" />
     <Compile Include="MODULE\formSwitch.vb" />
     <Compile Include="MODULE\mod_system.vb" />
+    <Compile Include="MODULE\PrintProduction.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

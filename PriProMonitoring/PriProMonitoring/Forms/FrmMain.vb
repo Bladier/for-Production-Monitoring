@@ -7,6 +7,7 @@
     Dim tmpdate As String
 
     Dim timerCounter As Integer = 30
+    Private CheckPStat As Boolean
 
     Friend Sub NotYetLogin(Optional ByVal st As Boolean = True)
         locked = IIf(GetOption("Locked") = "YES", True, False)
@@ -26,7 +27,7 @@
         AddItemToolStripMenuItem.Enabled = Not st
 
         'TootStripMenus
-        ToolStripProduction.Enabled = Not st
+        ToolStripChangePaperRoll.Enabled = Not st
         ToolStripAddpaperroll.Enabled = Not st
         ToolStripAdjusment.Enabled = Not st
         ToolStripMonitor.Enabled = Not st
@@ -40,6 +41,9 @@
             ToolStripLogin.ToolTipText = "Login"
             ToolStripActiveUser.ToolTipText = "No Acive user"
         End If
+
+
+
     End Sub
 
     Private Sub LoginToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -81,7 +85,7 @@
         frmItem.Show()
     End Sub
 
- 
+
     Private Sub AdjustmentToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AdjustmentToolStripMenuItem.Click
         frmAdjustment.Show()
     End Sub
@@ -95,7 +99,15 @@
         Counter.Stop()
         timerCounter = 0
         StatusCounter.Text = timerCounter
-        NewSalesLoad()
+
+        NewSalesLoad() 'Load Sales from POS
+
+        'Production allocate paper cut to it's paper roll
+        CheckPStat = IIf(GetOption("Magazine") = "YES", True, False)
+        If Not CheckPStat Then
+            Exit Sub
+        End If
+        PrintProduction.Production()
     End Sub
 
     Private Sub bgWorker_ProgressChanged(ByVal sender As System.Object, ByVal e As System.ComponentModel.ProgressChangedEventArgs) Handles bgWorker.ProgressChanged
@@ -188,8 +200,9 @@
                 End With
             End If
         End If
+
     End Sub
-  
+
 
     Private Sub bgWorker_RunWorkerCompleted(ByVal sender As System.Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bgWorker.RunWorkerCompleted
         SalesWatcher.Start()
@@ -197,7 +210,7 @@
         timerCounter = 30
     End Sub
 
-  
+
     Private Sub SettingsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SettingsToolStripMenuItem.Click
         frmSettings.Show()
     End Sub
@@ -246,14 +259,16 @@
         End If
     End Sub
 
-   
-    Private Sub ToolStripProduction_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripProduction.Click
+
+    Private Sub ToolStripProduction_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripChangePaperRoll.Click
         MagazineStatus = IIf(GetOption("Magazine") = "YES", True, False)
         If Not MagazineStatus Then
             MsgBox("You need to initialize magazine before to begin.", MsgBoxStyle.Exclamation, "Production")
             Me.Refresh()
             Exit Sub
         End If
+
+        frmProductionMonitoring.MdiParent = Me
         frmProductionMonitoring.Show()
     End Sub
 
@@ -263,7 +278,7 @@
             Case Keys.F5
                 ToolStripLogin.PerformClick()
             Case Keys.F6
-                ToolStripProduction.PerformClick()
+                ToolStripChangePaperRoll.PerformClick()
             Case Keys.F7
                 ToolStripAddpaperroll.PerformClick()
             Case Keys.F8
@@ -301,4 +316,5 @@
     Private Sub ToolStripMonitor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMonitor.Click
         frmMonitoring.Show()
     End Sub
+
 End Class

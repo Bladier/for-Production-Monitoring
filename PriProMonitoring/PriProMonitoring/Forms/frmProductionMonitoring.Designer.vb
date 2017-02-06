@@ -53,9 +53,9 @@ Partial Class frmProductionMonitoring
         '
         Me.StatusStrip1.BackgroundImage = CType(resources.GetObject("StatusStrip1.BackgroundImage"), System.Drawing.Image)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.txtActiveMagazine, Me.StatusTimer})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 372)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 403)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(481, 26)
+        Me.StatusStrip1.Size = New System.Drawing.Size(460, 26)
         Me.StatusStrip1.TabIndex = 2
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -103,15 +103,15 @@ Partial Class frmProductionMonitoring
         Me.GroupBox1.Controls.Add(Me.btnSearch)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(19, 5)
+        Me.GroupBox1.Location = New System.Drawing.Point(9, 5)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(443, 57)
+        Me.GroupBox1.Size = New System.Drawing.Size(443, 61)
         Me.GroupBox1.TabIndex = 12
         Me.GroupBox1.TabStop = False
         '
         'txtSearch
         '
-        Me.txtSearch.Location = New System.Drawing.Point(58, 20)
+        Me.txtSearch.Location = New System.Drawing.Point(58, 22)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(279, 21)
         Me.txtSearch.TabIndex = 0
@@ -122,9 +122,9 @@ Partial Class frmProductionMonitoring
         '
         Me.btnSearch.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSearch.Location = New System.Drawing.Point(346, 16)
+        Me.btnSearch.Location = New System.Drawing.Point(346, 17)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(91, 30)
+        Me.btnSearch.Size = New System.Drawing.Size(91, 32)
         Me.btnSearch.TabIndex = 1
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
@@ -132,7 +132,7 @@ Partial Class frmProductionMonitoring
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 23)
+        Me.Label1.Location = New System.Drawing.Point(6, 25)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(46, 15)
         Me.Label1.TabIndex = 6
@@ -146,9 +146,9 @@ Partial Class frmProductionMonitoring
         Me.lvpapercuts.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvpapercuts.FullRowSelect = True
         Me.lvpapercuts.GridLines = True
-        Me.lvpapercuts.Location = New System.Drawing.Point(19, 90)
+        Me.lvpapercuts.Location = New System.Drawing.Point(9, 97)
         Me.lvpapercuts.Name = "lvpapercuts"
-        Me.lvpapercuts.Size = New System.Drawing.Size(443, 272)
+        Me.lvpapercuts.Size = New System.Drawing.Size(443, 293)
         Me.lvpapercuts.TabIndex = 15
         Me.lvpapercuts.UseCompatibleStateImageBehavior = False
         Me.lvpapercuts.View = System.Windows.Forms.View.Details
@@ -197,7 +197,7 @@ Partial Class frmProductionMonitoring
         '
         Me.txtPaperRoll2.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtPaperRoll2.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPaperRoll2.Location = New System.Drawing.Point(248, 65)
+        Me.txtPaperRoll2.Location = New System.Drawing.Point(238, 70)
         Me.txtPaperRoll2.Name = "txtPaperRoll2"
         Me.txtPaperRoll2.Size = New System.Drawing.Size(214, 22)
         Me.txtPaperRoll2.TabIndex = 14
@@ -208,7 +208,7 @@ Partial Class frmProductionMonitoring
         '
         Me.txtpaperRoll1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtpaperRoll1.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtpaperRoll1.Location = New System.Drawing.Point(19, 65)
+        Me.txtpaperRoll1.Location = New System.Drawing.Point(9, 70)
         Me.txtpaperRoll1.Name = "txtpaperRoll1"
         Me.txtpaperRoll1.ReadOnly = True
         Me.txtpaperRoll1.Size = New System.Drawing.Size(228, 22)
@@ -218,15 +218,17 @@ Partial Class frmProductionMonitoring
         '
         'frmProductionMonitoring
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 14.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(481, 398)
+        Me.ClientSize = New System.Drawing.Size(460, 429)
         Me.Controls.Add(Me.txtPaperRoll2)
         Me.Controls.Add(Me.txtpaperRoll1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.lvpapercuts)
         Me.Controls.Add(Me.StatusStrip1)
+        Me.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "frmProductionMonitoring"
