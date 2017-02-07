@@ -22,7 +22,7 @@ Partial Class frmPaperRoll
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.CboMagazine = New System.Windows.Forms.ComboBox()
+        Me.CboPaperRoll = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -39,14 +39,14 @@ Partial Class frmPaperRoll
         Me.Label8 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'CboMagazine
+        'CboPaperRoll
         '
-        Me.CboMagazine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CboMagazine.FormattingEnabled = True
-        Me.CboMagazine.Location = New System.Drawing.Point(117, 18)
-        Me.CboMagazine.Name = "CboMagazine"
-        Me.CboMagazine.Size = New System.Drawing.Size(173, 23)
-        Me.CboMagazine.TabIndex = 0
+        Me.CboPaperRoll.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CboPaperRoll.FormattingEnabled = True
+        Me.CboPaperRoll.Location = New System.Drawing.Point(117, 18)
+        Me.CboPaperRoll.Name = "CboPaperRoll"
+        Me.CboPaperRoll.Size = New System.Drawing.Size(173, 23)
+        Me.CboPaperRoll.TabIndex = 0
         '
         'Label1
         '
@@ -206,7 +206,7 @@ Partial Class frmPaperRoll
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.CboMagazine)
+        Me.Controls.Add(Me.CboPaperRoll)
         Me.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmPaperRoll"
@@ -216,7 +216,7 @@ Partial Class frmPaperRoll
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents CboMagazine As System.Windows.Forms.ComboBox
+    Friend WithEvents CboPaperRoll As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label

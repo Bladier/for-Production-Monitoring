@@ -68,9 +68,9 @@
 #End Region
 
 #Region "procedures and functions"
-    Friend Sub lOadItem(ByVal ID As Integer)
-        mysql = "SELECT * FROM ITEM WHERE ITEM_ID =" & ID
-        Dim ds As DataSet = LoadSQL(mysql, "Item")
+    Friend Sub lOad_Pro(ByVal ID As String)
+        mysql = "SELECT * FROM " & filldata & " WHERE SALESID = '" & ID & "'"
+        Dim ds As DataSet = LoadSQL(mysql, filldata)
 
         If ds.Tables(0).Rows.Count <= 0 Then
             MsgBox("Unable to load sales", MsgBoxStyle.Information)
@@ -94,7 +94,7 @@
             _Description = .Item("Description")
             _SalesID = .Item("SalesID")
             _status = .Item("status")
-            _QTY = .Item("Quantity")
+            _QTY = .Item("QTY")
 
         End With
     End Sub
@@ -130,7 +130,18 @@
         End If
     End Sub
 
+    Public Sub update()
 
+        mysql = "SELECT * FROM " & filldata & " where SalesID = '" & _SalesID & "'"
+        Dim ds As DataSet = LoadSQL(mysql, filldata)
+        If ds.Tables(filldata).Rows.Count = 1 Then
+            With ds.Tables(filldata).Rows(0)
+
+                .Item("Status") = 1
+            End With
+            database.SaveEntry(ds, False)
+        End If
+    End Sub
 #End Region
 
 End Class

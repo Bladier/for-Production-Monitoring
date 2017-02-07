@@ -22,7 +22,7 @@
 
         Dim PaprollSave As New PaperRoll
         With PaprollSave
-            .PAPID = gETPAPID(CboMagazine.Text)
+            .PAPID = gETPAPID(CboPaperRoll.Text)
             .PaperRollSErial = txtSerial.Text
             .OuterDiameter = txtOuterDiameter.Text
             .Thickness = txtPaperThickness.Text
@@ -47,7 +47,7 @@
     End Sub
 
     Private Sub clearFields()
-        CboMagazine.SelectedItem = Nothing
+        CboPaperRoll.SelectedItem = Nothing
         txtOuterDiameter.Text = ""
         txtPaperThickness.Text = ""
         txtSerial.Text = ""
@@ -55,7 +55,7 @@
     End Sub
 
     Private Function isValid() As Boolean
-        If CboMagazine.Text = "" Then CboMagazine.Focus() : Return False
+        If CboPaperRoll.Text = "" Then CboPaperRoll.Focus() : Return False
         If txtSerial.Text = "" Then txtSerial.Focus() : Return False
         If txtOuterDiameter.Text = "" Then txtOuterDiameter.Focus() : Return False
         If txtPaperThickness.Text = "" Then txtPaperThickness.Focus() : Return False
@@ -73,7 +73,7 @@
         Dim ds As DataSet = LoadSQL(mySql)
 
         PAP = New Hashtable
-        CboMagazine.Items.Clear()
+        CboPaperRoll.Items.Clear()
         Dim tmpName As String, tmpID As Integer
 
         For Each dr As DataRow In ds.Tables(0).Rows
@@ -82,7 +82,7 @@
                 tmpName = .Item("PAPCODE")
             End With
             PAP.Add(tmpID, tmpName)
-            CboMagazine.Items.Add(tmpName)
+            CboPaperRoll.Items.Add(tmpName)
         Next
 
     End Sub

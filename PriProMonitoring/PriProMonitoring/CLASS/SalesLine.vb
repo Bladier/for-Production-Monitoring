@@ -118,7 +118,7 @@
 
 #Region "procedures and functions"
     Friend Sub lOadItem(ByVal ID As Integer)
-        mysql = "SELECT * FROM tblItem_line WHERE ID =" & ID
+        mysql = "SELECT * FROM " & filldata & " WHERE ID =" & ID
         Dim ds As DataSet = LoadSQL(mysql, "Item")
 
         If ds.Tables(0).Rows.Count <= 0 Then
@@ -193,6 +193,21 @@
         End If
     End Sub
 
+
+    Friend Sub lOad_LAST_SalesLines()
+        mysql = "SELECT * FROM " & filldata & " ORDER by ID DESC ROWS 1"
+        Dim ds As DataSet = LoadSQL(mysql, "Item")
+
+        If ds.Tables(0).Rows.Count <= 0 Then
+            MsgBox("Unable to load sales line.", MsgBoxStyle.Information)
+            Exit Sub
+        End If
+
+        For Each dr As DataRow In ds.Tables(0).Rows
+            lOadItemByrow(dr)
+        Next
+
+    End Sub
 #End Region
 
 End Class
