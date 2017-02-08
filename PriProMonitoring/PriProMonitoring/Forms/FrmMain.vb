@@ -268,8 +268,8 @@
             Exit Sub
         End If
 
-        frmProductionMonitoring.MdiParent = Me
-        frmProductionMonitoring.Show()
+        frmChangePaperRoll.MdiParent = Me
+        frmChangePaperRoll.Show()
     End Sub
 
 

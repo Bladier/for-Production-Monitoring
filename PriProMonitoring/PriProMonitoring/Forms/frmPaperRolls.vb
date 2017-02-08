@@ -7,26 +7,6 @@
         If LvPaperRollList.Items.Count = 0 Then Exit Sub
         If LvPaperRollList.SelectedItems.Count = 0 Then Exit Sub
 
-        If ModName = "Empty paper roll" Then
-            'Selecting Paper roll to load after declaring paper roll empty
-            For Each itm As ListViewItem In frmDeclaration.lvPaperRoll.Items
-                If LvPaperRollList.SelectedItems(0).SubItems(3).Text = itm.SubItems(0).Text Then
-                    MsgBox("This paper roll was selected" & vbCrLf & _
-                         "to declare as empty. Try another paper roll or add paper roll to load", _
-                         MsgBoxStyle.Critical, "Declare") : Exit Sub
-                End If
-            Next
-
-            If Not CHECKMAG_IFALREADYUSED() Then _
-               MsgBox("This Paper roll Currently in used", MsgBoxStyle.Critical, "Paper roll") : CboChamber.SelectedItem = Nothing : Exit Sub
-
-            frmDeclaration.txtSearch.Text = LvPaperRollList.SelectedItems(0).SubItems(3).Text
-            frmDeclaration.txtSearch.Focus()
-            frmDeclaration.Show()
-            Me.Close()
-            Exit Sub
-        End If
-
         'Initialization 
         If CboChamber.Text = "" Then Exit Sub
         If Not PapStatus Then
@@ -55,7 +35,7 @@ nextlineTodo:
 
 
         Else
-            'Transaction process
+            'change paper roll
             If Not CHECKMAG_IFALREADYUSED() Then _
                 MsgBox("This Paper roll Currently in used", MsgBoxStyle.Critical, "Paper roll") : CboChamber.SelectedItem = Nothing : Exit Sub
 
@@ -66,9 +46,8 @@ nextlineTodo:
             UpdateRollstatus(LvPaperRollList.SelectedItems(0).SubItems(3).Text, 1) ' update new load to 1
             savePapLog(LvPaperRollList.SelectedItems(0).SubItems(0).Text) 'save paper log
 
-            frmProductionMonitoring.txtpaperRoll1.Text = LvPaperRollList.SelectedItems(0).SubItems(3).Text
+            'frmProductionMonitoring.txtpaperRoll1.Text = LvPaperRollList.SelectedItems(0).SubItems(3).Text
 
-            frmProductionMonitoring.Show()
             Me.Close()
 
         End If
@@ -87,14 +66,6 @@ nextlineTodo:
 
     
     Private Sub frmPaperRolls_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        If ModName = "Empty paper roll" Then
-            btnAdd.Visible = True
-            lblChamber.Visible = False
-            CboChamber.Visible = False
-        Else
-            btnAdd.Visible = False
-        End If
-
 
         LoadChamber()
         If txtsearch1.Text <> "" Then
@@ -115,6 +86,7 @@ nextlineTodo:
                 Next
             End If
         End If
+
 
     End Sub
 
@@ -171,7 +143,7 @@ nextlineTodo:
             End If
         Next
 
-        MsgBox(count & " paper roll found.", MsgBoxStyle.Information)
+        MsgBox(count & " paper roll found.", MsgBoxStyle.Information, "Paper roll List")
     End Sub
 
     Private Sub LoadChamber()
@@ -353,4 +325,6 @@ nextlineTodo:
     Private Sub frmPaperRolls_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
         ModName = ""
     End Sub
+
+
 End Class

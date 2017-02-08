@@ -33,15 +33,7 @@
 
         PaprollSave.SaveRoll()
 
-        If ModName = "Empty paper roll" Then
-            frmDeclaration.txtSearch.Text = txtSerial.Text
-            frmDeclaration.txtSearch.Focus()
-            frmDeclaration.Show()
-            Me.Close()
-            Exit Sub
-        End If
-
-        MsgBox("Paper Roll Saved", MsgBoxStyle.Information)
+        MsgBox("Paper Roll Saved", MsgBoxStyle.Information, "Save")
         clearFields()
 
     End Sub

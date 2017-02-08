@@ -37,16 +37,12 @@ Partial Class frmDeclaration
         Me.cboPaperRollSerial = New System.Windows.Forms.ComboBox()
         Me.btnPost = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.btnSearch = New System.Windows.Forms.Button()
-        Me.txtSearch = New PriProMonitoring.watermark()
         Me.lvPaperRoll = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -66,7 +62,7 @@ Partial Class frmDeclaration
         Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.GroupBox1.Location = New System.Drawing.Point(14, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(508, 168)
+        Me.GroupBox1.Size = New System.Drawing.Size(508, 143)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Search paper serial"
@@ -76,7 +72,7 @@ Partial Class frmDeclaration
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label4.Location = New System.Drawing.Point(263, 91)
+        Me.Label4.Location = New System.Drawing.Point(263, 81)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(35, 18)
         Me.Label4.TabIndex = 21
@@ -85,7 +81,7 @@ Partial Class frmDeclaration
         'btnRemove
         '
         Me.btnRemove.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.btnRemove.Location = New System.Drawing.Point(409, 125)
+        Me.btnRemove.Location = New System.Drawing.Point(409, 107)
         Me.btnRemove.Name = "btnRemove"
         Me.btnRemove.Size = New System.Drawing.Size(87, 30)
         Me.btnRemove.TabIndex = 5
@@ -97,7 +93,7 @@ Partial Class frmDeclaration
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label6.Location = New System.Drawing.Point(263, 122)
+        Me.Label6.Location = New System.Drawing.Point(263, 104)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(35, 18)
         Me.Label6.TabIndex = 20
@@ -107,7 +103,7 @@ Partial Class frmDeclaration
         '
         Me.Label1.AutoSize = True
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label1.Location = New System.Drawing.Point(14, 62)
+        Me.Label1.Location = New System.Drawing.Point(14, 56)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(60, 15)
         Me.Label1.TabIndex = 16
@@ -115,7 +111,7 @@ Partial Class frmDeclaration
         '
         'txtEmulsion
         '
-        Me.txtEmulsion.Location = New System.Drawing.Point(80, 58)
+        Me.txtEmulsion.Location = New System.Drawing.Point(80, 52)
         Me.txtEmulsion.Name = "txtEmulsion"
         Me.txtEmulsion.Size = New System.Drawing.Size(177, 21)
         Me.txtEmulsion.TabIndex = 1
@@ -126,7 +122,7 @@ Partial Class frmDeclaration
         '
         Me.Label2.AutoSize = True
         Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label2.Location = New System.Drawing.Point(14, 92)
+        Me.Label2.Location = New System.Drawing.Point(14, 82)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(53, 15)
         Me.Label2.TabIndex = 17
@@ -134,7 +130,7 @@ Partial Class frmDeclaration
         '
         'txtlastout
         '
-        Me.txtlastout.Location = New System.Drawing.Point(81, 121)
+        Me.txtlastout.Location = New System.Drawing.Point(81, 103)
         Me.txtlastout.Name = "txtlastout"
         Me.txtlastout.Size = New System.Drawing.Size(177, 21)
         Me.txtlastout.TabIndex = 3
@@ -143,7 +139,7 @@ Partial Class frmDeclaration
         '
         'txtAdvance
         '
-        Me.txtAdvance.Location = New System.Drawing.Point(80, 88)
+        Me.txtAdvance.Location = New System.Drawing.Point(80, 78)
         Me.txtAdvance.Name = "txtAdvance"
         Me.txtAdvance.Size = New System.Drawing.Size(177, 21)
         Me.txtAdvance.TabIndex = 2
@@ -154,7 +150,7 @@ Partial Class frmDeclaration
         '
         Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label3.Location = New System.Drawing.Point(15, 125)
+        Me.Label3.Location = New System.Drawing.Point(15, 107)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(48, 15)
         Me.Label3.TabIndex = 18
@@ -163,7 +159,7 @@ Partial Class frmDeclaration
         'btnAdd
         '
         Me.btnAdd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.btnAdd.Location = New System.Drawing.Point(322, 125)
+        Me.btnAdd.Location = New System.Drawing.Point(322, 107)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(87, 31)
         Me.btnAdd.TabIndex = 4
@@ -184,62 +180,29 @@ Partial Class frmDeclaration
         'btnPost
         '
         Me.btnPost.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.btnPost.Location = New System.Drawing.Point(342, 463)
+        Me.btnPost.Location = New System.Drawing.Point(340, 357)
         Me.btnPost.Name = "btnPost"
         Me.btnPost.Size = New System.Drawing.Size(87, 35)
-        Me.btnPost.TabIndex = 3
+        Me.btnPost.TabIndex = 2
         Me.btnPost.Text = "&Post"
         Me.btnPost.UseVisualStyleBackColor = True
         '
         'btnClose
         '
         Me.btnClose.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.btnClose.Location = New System.Drawing.Point(435, 463)
+        Me.btnClose.Location = New System.Drawing.Point(433, 357)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(87, 35)
-        Me.btnClose.TabIndex = 4
+        Me.btnClose.TabIndex = 3
         Me.btnClose.Text = "&Close"
         Me.btnClose.UseVisualStyleBackColor = True
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.btnSearch)
-        Me.GroupBox3.Controls.Add(Me.txtSearch)
-        Me.GroupBox3.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.GroupBox3.Location = New System.Drawing.Point(12, 396)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(510, 61)
-        Me.GroupBox3.TabIndex = 2
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Search paper roll to load"
-        '
-        'btnSearch
-        '
-        Me.btnSearch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.btnSearch.Location = New System.Drawing.Point(417, 18)
-        Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(87, 29)
-        Me.btnSearch.TabIndex = 1
-        Me.btnSearch.Text = "&Search"
-        Me.btnSearch.UseVisualStyleBackColor = True
-        '
-        'txtSearch
-        '
-        Me.txtSearch.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch.Location = New System.Drawing.Point(6, 21)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(405, 22)
-        Me.txtSearch.TabIndex = 0
-        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSearch.WatermarkText = "Search paper roll .  . . "
         '
         'lvPaperRoll
         '
         Me.lvPaperRoll.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
         Me.lvPaperRoll.FullRowSelect = True
         Me.lvPaperRoll.GridLines = True
-        Me.lvPaperRoll.Location = New System.Drawing.Point(12, 179)
+        Me.lvPaperRoll.Location = New System.Drawing.Point(12, 149)
         Me.lvPaperRoll.Name = "lvPaperRoll"
         Me.lvPaperRoll.Size = New System.Drawing.Size(510, 202)
         Me.lvPaperRoll.TabIndex = 1
@@ -271,9 +234,8 @@ Partial Class frmDeclaration
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(538, 502)
+        Me.ClientSize = New System.Drawing.Size(531, 398)
         Me.Controls.Add(Me.lvPaperRoll)
-        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btnPost)
         Me.Controls.Add(Me.GroupBox1)
@@ -285,8 +247,6 @@ Partial Class frmDeclaration
         Me.Text = "Declare Empty Roll"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -294,9 +254,6 @@ Partial Class frmDeclaration
     Friend WithEvents btnPost As System.Windows.Forms.Button
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents cboPaperRollSerial As System.Windows.Forms.ComboBox
-    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents btnSearch As System.Windows.Forms.Button
-    Friend WithEvents txtSearch As PriProMonitoring.watermark
     Friend WithEvents btnAdd As System.Windows.Forms.Button
     Friend WithEvents lvPaperRoll As System.Windows.Forms.ListView
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader

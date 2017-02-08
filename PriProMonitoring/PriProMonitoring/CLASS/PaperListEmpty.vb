@@ -161,7 +161,7 @@
     Public Function PopulateSerial() As List(Of String)
 
         Dim serial As New List(Of String)()
-        Dim mysql As String = "SELECT * FROM TBLPAPERROLL WHERE STATUS <> 2 ORDER BY PAPROLL_ID "
+        Dim mysql As String = "SELECT * FROM TBLPAPERROLL WHERE STATUS <> 2 AND STATUS <> 1 ORDER BY PAPROLL_ID "
         Dim ds As DataSet = LoadSQL(mysql, "tblpaperroll")
 
         For Each dr As DataRow In ds.Tables(0).Rows

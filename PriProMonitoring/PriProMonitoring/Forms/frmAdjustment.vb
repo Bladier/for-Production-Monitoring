@@ -84,7 +84,12 @@
             .Remarks = txtRemarks.Text
             .CreatedAT = Now
             .UOM = "m"
-            .LENGTH = txtLength.Text
+
+            If txtLength.Text = "" Then
+                .LENGTH = 0.0
+            Else
+                .LENGTH = txtLength.Text
+            End If
 
             For Each itms As ListViewItem In lvpapercuts.Items
                 If itms.SubItems(8).Text = "" Then
@@ -106,18 +111,21 @@
             saveAdjLine = New adjustmentLine
             With saveAdjLine
 
-                If itm.SubItems(8).Text = "" Then On Error Resume Next
-
-                .PaperCut_ID = itm.SubItems(0).Text
-                .PapcutCode = itm.SubItems(6).Text
-                .QTY = itm.SubItems(8).Text
-
-                If rbAdd.Checked = True Then
-                    .adjustType = rbAdd.Text
+                If itm.SubItems(8).Text = "" Then
+                    On Error Resume Next
                 Else
-                    .adjustType = rbDeduct.Text
-                End If
 
+
+                    .PaperCut_ID = itm.SubItems(0).Text
+                    .PapcutCode = itm.SubItems(6).Text
+                    .QTY = itm.SubItems(8).Text
+
+                    If rbAdd.Checked = True Then
+                        .adjustType = rbAdd.Text
+                    Else
+                        .adjustType = rbDeduct.Text
+                    End If
+                End If
             End With
             ColAdjLine.Add(saveAdjLine)
 
@@ -132,9 +140,9 @@
 
 
         If rbAdd.Checked = True Then
-            AddToPaperRoll(tmppapSerial.PaprollID, TotalAdj)
+            AddToPaperRoll(tmppapSerial.PaprollID, TotalAdj) 'add
         Else
-            DeductToPaperRoll(tmppapSerial.PaprollID, tmptotal)
+            DeductToPaperRoll(tmppapSerial.PaprollID, tmptotal) 'Deduct
         End If
 
         MsgBox("Successfully saved.", MsgBoxStyle.Information, "Adjustment")

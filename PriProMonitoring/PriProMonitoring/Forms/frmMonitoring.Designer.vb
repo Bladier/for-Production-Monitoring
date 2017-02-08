@@ -32,13 +32,14 @@ Partial Class frmMonitoring
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SuspendLayout()
         '
         'btnSearch
         '
         Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSearch.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearch.Location = New System.Drawing.Point(605, 9)
+        Me.btnSearch.Location = New System.Drawing.Point(708, 9)
         Me.btnSearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(108, 30)
@@ -54,7 +55,7 @@ Partial Class frmMonitoring
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvListEmptyRoll.BackColor = System.Drawing.SystemColors.Window
         Me.lvListEmptyRoll.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lvListEmptyRoll.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader3, Me.ColumnHeader4})
+        Me.lvListEmptyRoll.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader5, Me.ColumnHeader7, Me.ColumnHeader6, Me.ColumnHeader3, Me.ColumnHeader4})
         Me.lvListEmptyRoll.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvListEmptyRoll.FullRowSelect = True
         Me.lvListEmptyRoll.GridLines = True
@@ -62,7 +63,7 @@ Partial Class frmMonitoring
         Me.lvListEmptyRoll.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.lvListEmptyRoll.Name = "lvListEmptyRoll"
         Me.lvListEmptyRoll.ShowItemToolTips = True
-        Me.lvListEmptyRoll.Size = New System.Drawing.Size(687, 363)
+        Me.lvListEmptyRoll.Size = New System.Drawing.Size(790, 363)
         Me.lvListEmptyRoll.TabIndex = 1
         Me.lvListEmptyRoll.UseCompatibleStateImageBehavior = False
         Me.lvListEmptyRoll.View = System.Windows.Forms.View.Details
@@ -104,7 +105,7 @@ Partial Class frmMonitoring
         Me.txtSearch.Location = New System.Drawing.Point(79, 12)
         Me.txtSearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(520, 22)
+        Me.txtSearch.Size = New System.Drawing.Size(623, 22)
         Me.txtSearch.TabIndex = 2
         '
         'Label1
@@ -119,12 +120,17 @@ Partial Class frmMonitoring
         Me.Label1.Text = "Search"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'ColumnHeader7
+        '
+        Me.ColumnHeader7.Text = "PAPCUT_CODE"
+        Me.ColumnHeader7.Width = 0
+        '
         'frmMonitoring
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(735, 418)
+        Me.ClientSize = New System.Drawing.Size(838, 418)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtSearch)
         Me.Controls.Add(Me.lvListEmptyRoll)
@@ -149,4 +155,5 @@ Partial Class frmMonitoring
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader6 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader7 As System.Windows.Forms.ColumnHeader
 End Class

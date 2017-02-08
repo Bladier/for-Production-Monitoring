@@ -3,6 +3,8 @@
     Dim tmpTotal As Double = 0.0
     Dim getChamberNum As Integer = GetOption("Number Chamber")
 
+    Dim SavepapEmp As New PaperListEmpty
+
     Private Sub txtEmulsion_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         DigitOnly(e)
     End Sub
@@ -17,21 +19,12 @@
 
     Private Sub btnPost_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPost.Click
         If lvPaperRoll.Items.Count = 0 Then Exit Sub
-        If txtSearch.Text = "" Then Exit Sub
-
-        For Each itm As ListViewItem In lvPaperRoll.Items
-            If txtSearch.Text = itm.SubItems(0).Text Then
-                MsgBox("This paper roll was selected" & vbCrLf & _
-                     "to declare as empty. Try another paper roll", MsgBoxStyle.Critical, "Declare") : Exit Sub
-            End If
-        Next
-   
 
         Dim ans As DialogResult = MsgBox("Do you want to Post?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information, "Declare")
         If ans = Windows.Forms.DialogResult.No Then Exit Sub
 
 
-        Dim SavepapEmp As New PaperListEmpty
+
         Dim tmpParRoll As New PaperRoll
 
         For Each itm As ListViewItem In lvPaperRoll.Items
@@ -73,22 +66,11 @@
             End With
         Next
 
-
-        If getChamberNum = 2 Then
-            If CheckChamber() Then
-                SavepapEmp.EmpRoll(txtSearch.Text, "1", "C")
-            Else
-                SavepapEmp.EmpRoll(txtSearch.Text, "1", "B")
-            End If
-        Else
-            SavepapEmp.EmpRoll(txtSearch.Text, "1", "B")
-        End If
-
-
         MsgBox("Posted.", MsgBoxStyle.Information, "Post")
         lvPaperRoll.Items.Clear()
-        clearFields()
+        cboPaperRollSerial.Items.Clear()
         frmDeclaration_Load(sender, e)
+        clearFields()
     End Sub
 
     Private Sub clearFields()
@@ -100,7 +82,7 @@
     End Sub
 
     Private Sub Disabled()
-        Me.MaximumSize = New Size(554, 540)
+        Me.MaximumSize = New Size(554, 436)
         Me.MinimumSize = Me.MaximumSize
     End Sub
 
@@ -111,6 +93,7 @@
         For Each serial In tmplist.PopulateSerial()
             cboPaperRollSerial.Items.Add(serial)
         Next
+
     End Sub
 
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
@@ -123,34 +106,39 @@
         End If
     End Sub
 
-    Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
-        frmProductionMonitoring.Close()
+    Private Function Check_if_loaded(ByVal serial As String) As Boolean
+        Dim mysql As String = "SELECT * FROM TBLPAPERROLL WHERE PAPROLL_SERIAL = '" & serial & "' " & _
+                              "and status = '1'"
+        Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
 
-        For Each itm As ListViewItem In lvPaperRoll.Items
-            If txtSearch.Text = itm.SubItems(0).Text Then
-                MsgBox("This paper roll was selected" & vbCrLf & _
-                     "above. Try another paper roll to load", MsgBoxStyle.Critical, "Declare") : Exit Sub
-            End If
-        Next
-
-        frmPaperRolls.txtsearch1.Text = txtSearch.Text
-        ModName = "Empty paper roll"
-        frmPaperRolls.Show()
-
-    End Sub
-
-    Private Function CheckChamber() As Boolean
-
-        Dim mysql As String = "SELECT * FROM TBLPAPERROLL WHERE STATUS <> 2 and chamber = 'B'"
         Try
-            Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
-
             If ds.Tables(0).Rows.Count = 0 Then
                 Return False
             End If
         Catch ex As Exception
             Return True
         End Try
+       
+        Return True
+    End Function
+
+
+    Private Function CheckChamber() As Boolean
+        Dim ret As Boolean = True
+
+        Dim mysql As String = "SELECT * FROM TBLPAPERROLL WHERE STATUS <> 2 and chamber = 'B'"
+        Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
+
+        Try
+            If ds.Tables(0).Rows.Count = 0 Then
+                Return Not ret
+            End If
+        Catch ex As Exception
+
+            Return ret
+        End Try
+
+        SavepapEmp.EmpRoll(ds.Tables(0).Rows(0).Item("PAPROLL_SERIAL"), 0)
 
         Return True
     End Function
@@ -158,6 +146,7 @@
     Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
         If cboPaperRollSerial.Text = "" Then cboPaperRollSerial.Focus() : Exit Sub
         If txtAdvance.Text = "" And txtEmulsion.Text = "" And txtlastout.Text = "" Then txtEmulsion.Focus() : Exit Sub
+
 
         If btnAdd.Text = "Update" Then
             lvPaperRoll.SelectedItems(0).SubItems(0).Text = cboPaperRollSerial.Text
@@ -215,10 +204,6 @@
         End If
     End Sub
 
-    Private Sub txtSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
-        If isEnter(e) Then btnSearch.PerformClick()
-    End Sub
-
     Private Sub txtEmulsion_KeyPress_1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtEmulsion.KeyPress
         DigitOnly(e)
     End Sub
@@ -231,7 +216,7 @@
         DigitOnly(e)
     End Sub
 
-    Private Sub btnSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles btnSearch.KeyPress
-        If isEnter(e) Then btnSearch.PerformClick()
+    Private Sub lvPaperRoll_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles lvPaperRoll.KeyPress
+        If isEnter(e) Then btnPost.PerformClick()
     End Sub
 End Class
