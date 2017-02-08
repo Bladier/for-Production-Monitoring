@@ -3,6 +3,7 @@
     Dim tmpPapcut As New PaperCut
     Dim SaveSL As New SalesLine
     Dim SelectedPaPRoll As PaperRoll
+    Dim mysql As String = String.Empty
 
     Public Sub Production()
         Dim mysql As String = "SELECT * FROM TBLPRO WHERE STATUS = '0'"
@@ -52,65 +53,72 @@
 
 nextlineTodo:
 
-        Dim mysqlPCUTViews As String = "SELECT * FROM papercut order by PAPID"
-        Dim dsPCUTviews As DataSet = LoadSQL(mysqlPCUTViews, "papercut")
+        mysql = "select * from tbl_Proline where status <> 1"
+        Dim dsPLine As DataSet = LoadSQL(mysql, "tbl_Proline")
 
-        For Each drPCUTviews As DataRow In dsPCUTviews.Tables(0).Rows
-            With drPCUTviews
-                mysql = "select * from tbl_Proline where status <> 1 and PapCut_Code ='" & .Item("PapCut_Code") & "'"
-                Dim dsPLine As DataSet = LoadSQL(mysql, "tbl_Proline")
+        For Each dr As DataRow In dsPLine.Tables(0).Rows
+            Dim subtotal As Double = dr.Item("PAPERCUT")
 
-                For Each drP As DataRow In dsPLine.Tables(0).Rows
-                    Dim SubTotal As Double = drP.Item("SUBTOTAL_LENGTH")
+            mysql = "SELECT PR.PROLL_ID,PR.PCUT_ID,P.PAPERCUT,P.PAPCUT_CODE " & _
+                    " FROM TBLPROLLANDPCUTS PR " & _
+                    "INNER JOIN TBLPAPERCUT P ON P.PAPERCUT_ID = PR.PCUT_ID " & _
+                   " WHERE PAPCUT_CODE = '" & dr.Item("PAPCUT_CODE") & "'"
 
-                    tmpPapcut.PapCutcode = .Item("PapCut_Code")
-                    tmpPapcut.Load_pcuts() 'Load Paper selected Paper cuts
+            Dim ds1 As DataSet = LoadSQL(mysql, "TBLPROLLANDPCUTS")
 
-                    mysql = "select * from tblProllandPcuts where Pcut_ID = '" & tmpPapcut.PapcutID & "'"
-                    Dim dsPROllCuts As DataSet = LoadSQL(mysql, "tblProllandPcuts")
-                    Console.WriteLine("Paper cuts count:" & dsPROllCuts.Tables(0).Rows.Count) 'Check Paper cut if has many paper roll 
+            If ds1.Tables(0).Rows.Count > 1 Then
 
-                    If dsPROllCuts.Tables(0).Rows.Count > 1 Then
-                        For Each drProll As DataRow In dsPROllCuts.Tables(0).Rows
+                For Each drPC As DataRow In ds1.Tables(0).Rows
+                    Dim mysqlProll As String = "SELECT * FROM TBLPAPERROLL WHERE PAPIDS ='" & drPC.Item("Proll_ID") & "' " & _
+                           "and status  = '1'"
+                    Dim dsProll As DataSet = LoadSQL(mysqlProll, "TBLPAPERROLL")
 
-                            Dim mysqlProll As String = "SELECT * FROM TBLPAPERROLL WHERE PAPIDS ='" & drProll.Item("Proll_ID") & "' " & _
-                             "and status  = '1'"
-                            Dim dsProll As DataSet = LoadSQL(mysqlProll, "TBLPAPERROLL")
 
-                            If dsProll.Tables(0).Rows.Count = 0 Then
-                                drP("PapID") = 0
-                                drP("Paproll_SERIAL") = "Unallocated"
-                                database.SaveEntry(dsPLine, False)
-                                On Error Resume Next
-                            Else
-                                drP("PapID") = dsProll.Tables(0).Rows(0).Item("PAPIDS")
-                                drP("Paproll_SERIAL") = dsProll.Tables(0).Rows(0).Item("PAPROLL_SERIAL")
-                                drP("Status") = 1 ' 
-                                database.SaveEntry(dsPLine, False)
-
-                                SelectedPaPRoll = New PaperRoll
-                                SelectedPaPRoll.PaperRollSErial = dsProll.Tables(0).Rows(0).Item("PAPROLL_SERIAL")
-                                SelectedPaPRoll.Remaining = SubTotal * Meter ' Deduct by meter to paper roll
-                                SelectedPaPRoll.Updatepaper() ' Deduct Paper Roll
-                                Exit For
-                            End If
-                        Next
-
+                    If dsProll.Tables(0).Rows.Count = 0 Then
+                        With dr
+                            .Item("PapID") = 0
+                            .Item("Paproll_SERIAL") = "Unallocated"
+                            database.SaveEntry(dsPLine, False)
+                            On Error Resume Next
+                        End With
                     Else
-                        drP("PapID") = .Item("PAPID") 'paper roll main ID
-                        drP("Paproll_SERIAL") = .Item("Paproll_SERIAL")
-                        drP("Status") = 1 ' Update Sales Line status to 1 it means this paper cut already deducted to paper roll
+                        With dr
+                            .Item("PapID") = dsProll.Tables(0).Rows(0).Item("PAPROLL_ID")
+                            .Item("Paproll_SERIAL") = dsProll.Tables(0).Rows(0).Item("PAPROLL_SERIAL")
+                            .Item("Status") = 1 ' 
+                            database.SaveEntry(dsPLine, False)
+
+                            SelectedPaPRoll = New PaperRoll
+                            SelectedPaPRoll.PaperRollSErial = dsProll.Tables(0).Rows(0).Item("PAPROLL_SERIAL")
+                            SelectedPaPRoll.Remaining = subtotal * Meter ' Deduct by meter to paper roll
+                            SelectedPaPRoll.Updatepaper() ' Deduct Paper Roll
+                            Exit For
+                        End With
+                    End If
+                Next
+            Else
+
+                Dim mysqlProll As String = "SELECT * FROM TBLPAPERROLL WHERE PAPIDS ='" & ds1.Tables(0).Rows(0).Item("Proll_ID") & "' " & _
+                          "and status  = '1'"
+                Dim dsProll As DataSet = LoadSQL(mysqlProll, "TBLPAPERROLL")
+
+                If dsProll.Tables(0).Rows.Count = 0 Then
+                    On Error Resume Next
+                Else
+                    With dr
+                        .Item("PapID") = dsProll.Tables(0).Rows(0).Item("PAPROLL_ID") 'paper roll main ID
+                        .Item("Paproll_SERIAL") = dsProll.Tables(0).Rows(0).Item("Paproll_SERIAL")
+                        .Item("Status") = 1 ' Update Sales Line status to 1 it means this paper cut already deducted to paper roll
 
                         database.SaveEntry(dsPLine, False)
 
                         SelectedPaPRoll = New PaperRoll
                         SelectedPaPRoll.PaperRollSErial = .Item("Paproll_SERIAL")
-                        SelectedPaPRoll.Remaining = SubTotal * Meter ' Deduct by meter to paper roll
+                        SelectedPaPRoll.Remaining = subtotal * Meter ' Deduct by meter to paper roll
                         SelectedPaPRoll.Updatepaper() ' Deduct Paper Roll
-                    End If
-                Next
-            End With
+                    End With
+                End If
+            End If
         Next
-
     End Sub
 End Module

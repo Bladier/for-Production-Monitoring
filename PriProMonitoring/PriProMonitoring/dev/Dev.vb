@@ -178,7 +178,8 @@
     End Sub
 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
-        NewSalesLoad()
+        PrintProduction.Production()
+        'NewSalesLoad()
     End Sub
 
 
@@ -243,7 +244,6 @@
                             End If
                         End If
 
-                       
                     Next
 
                     Dim updatemainTainance As New GetSalesID
@@ -379,6 +379,7 @@ nextlineTODO:
                         Next
 
                     Else
+
                         drP("PapID") = dsProll1.Tables(0).Rows(0).Item("PAPROLL_ID") 'paper roll main ID
                         drP("Paproll_SERIAL") = dsProll1.Tables(0).Rows(0).Item("Paproll_SERIAL")
                         drP("Status") = 1 ' Update Sales Line status to 1 it means this paper cut already deducted to paper roll
@@ -496,4 +497,6 @@ nextlineTODO:
     '                        .SalesID = .SalesID
     '                        .status = 1
     '                        SaveSales.update()
+
+   
 End Class
