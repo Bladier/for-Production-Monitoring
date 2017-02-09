@@ -7,6 +7,7 @@ Public Class frmMonitoring
     Private ParCuts_ALL_ht As Hashtable
 
     Dim TotalPrints As Integer = 0
+    Dim subTotal As Integer = 0
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         lvListEmptyRoll.Items.Clear()
@@ -37,42 +38,98 @@ Public Class frmMonitoring
         For Each dr As DataRow In ds.Tables(0).Rows
             With dr
 
-                Dim MYSQL1 As String = "SELECT  A.PAPROLL_SERIAL,AL.PAPCUT_CODE,AL.QUANTITY, " & _
-                               " AL.ADJUSTMENT_TYPE FROM TBLADJUSTMENT A INNER JOIN TBLADJUSTMENT_LINE AL " & _
-                               String.Format("ON A.ADJUSTMENTID = AL.ADJUSTMENT_ID WHERE A.PAPROLL_SERIAL = '{0}' " & _
-                                             "AND PAPCUT_CODE = '{1}'", .Item("PAPROLL_SERIAL"), .Item("PAPCUT_CODE"))
+                Dim MYSQL1 As String = " SELECT  A.PAPROLL_SERIAL,AL.PAPCUT_CODE,SUM(AL.QUANTITY) AS QTY, " & _
+                                       " AL.ADJUSTMENT_TYPE FROM TBLADJUSTMENT A INNER JOIN TBLADJUSTMENT_LINE AL " & _
+                                       String.Format("ON A.ADJUSTMENTID = AL.ADJUSTMENT_ID WHERE A.PAPROLL_SERIAL = '{0}' " & _
+                                       "AND PAPCUT_CODE = '{1}'", .Item("PAPROLL_SERIAL"), .Item("PAPCUT_CODE")) & _
+                                       " GROUP BY A.PAPROLL_SERIAL,AL.PAPCUT_CODE,AL.QUANTITY,AL.ADJUSTMENT_TYPE " & _
+                                       "ORDER BY AL.ADJUSTMENT_TYPE ASC"
+
                 Dim dsad As DataSet = LoadSQL(MYSQL1, "TBLADJUSTMENT")
 
                 If dsad.Tables(0).Rows.Count = 0 Then
                     On Error Resume Next
                 Else
-                    With dsad.Tables(0).Rows(0)
-                        If .Item("ADJUSTMENT_TYPE") = "Deduct" Then
-                            TotalPrints = dr.Item("TOTAL") - .Item("QUANTITY")
+                    Dim max As Integer = dsad.Tables(0).Rows.Count
+
+                    If max = 1 Then
+                        For Each dr_Admnt As DataRow In dsad.Tables(0).Rows
+                            With dr_Admnt
+                                If dr_Admnt.Item("ADJUSTMENT_TYPE") = "Deduct" Then
+
+                                    TotalPrints += dr_Admnt.Item("QTY")
+                                    max -= 1
+                                    If max = 0 Then
+                                        TotalPrints = dr.Item("Total") - TotalPrints
+                                    End If
+
+                                Else
+
+                                    TotalPrints += dr_Admnt.Item("QTY")
+                                    max -= 1
+                                    If max = 0 Then
+                                        TotalPrints = dr.Item("Total") + TotalPrints
+                                    End If
+
+                                End If
+                            End With
+                        Next
+
+                        Dim lv As ListViewItem = lvListEmptyRoll.Items.Add(.Item("PAPCODE"))
+                        lv.SubItems.Add(.Item("PAPROLL_SERIAL"))
+                        lv.SubItems.Add(.Item("PAPCUT_DESC"))
+                        lv.SubItems.Add(.Item("PAPCUT_CODE"))
+                        lv.SubItems.Add(.Item("PAPERCUT"))
+
+                        If dsad.Tables(0).Rows.Count = 0 Then
+                            lv.SubItems.Add(dr.Item("TOTAL"))
                         Else
-                            TotalPrints = dr.Item("TOTAL") + .Item("QUANTITY")
+                            lv.SubItems.Add(TotalPrints)
+                            TotalPrints = 0
                         End If
 
-                    End With
+                    Else
+                        For Each dr_Admnt As DataRow In dsad.Tables(0).Rows
+                            With dr_Admnt
+                                If dr_Admnt.Item("ADJUSTMENT_TYPE") = "Deduct" Then
+
+                                    TotalPrints = dr_Admnt.Item("QTY")
+                                    
+                                    TotalPrints = subTotal - TotalPrints
+                                Else
+
+                                    TotalPrints = dr_Admnt.Item("QTY")
+                                    TotalPrints = dr.Item("Total") + TotalPrints
+
+                                    subTotal = TotalPrints
+                                    TotalPrints = 0
+
+                                End If
+                            End With
+                        Next
+
+                        Dim lv1 As ListViewItem = lvListEmptyRoll.Items.Add(.Item("PAPCODE"))
+                        lv1.SubItems.Add(.Item("PAPROLL_SERIAL"))
+                        lv1.SubItems.Add(.Item("PAPCUT_DESC"))
+                        lv1.SubItems.Add(.Item("PAPCUT_CODE"))
+                        lv1.SubItems.Add(.Item("PAPERCUT"))
+
+                        If dsad.Tables(0).Rows.Count = 0 Then
+                            lv1.SubItems.Add(dr.Item("TOTAL"))
+                        Else
+                            lv1.SubItems.Add(TotalPrints)
+                            TotalPrints = 0
+                        End If
+                    End If
+                   
                 End If
-
-
-                Dim lv As ListViewItem = lvListEmptyRoll.Items.Add(.Item("PAPCODE"))
-                lv.SubItems.Add(.Item("PAPROLL_SERIAL"))
-                lv.SubItems.Add(.Item("PAPCUT_DESC"))
-                lv.SubItems.Add(.Item("PAPCUT_CODE"))
-                lv.SubItems.Add(.Item("PAPERCUT"))
-
-                If dsad.Tables(0).Rows.Count = 0 Then
-                    lv.SubItems.Add(.Item("TOTAL"))
-                Else
-                    lv.SubItems.Add(TotalPrints)
-                End If
+               
             End With
         Next
 
         getRemaining()
     End Sub
+
 
     ''' <summary>
     ''' calculate the remaining # of prints to be print
@@ -98,9 +155,10 @@ Public Class frmMonitoring
             Dim P_cut As Double = (Totallength - dblTemp) / itm.SubItems(4).Text
 
 
-            itm.SubItems.Add(Math.Round(P_cut, 0))
+            itm.SubItems.Add(Math.Round(P_cut, 2))
             dblTemp = 0.0
         Next
     End Sub
 
+  
 End Class

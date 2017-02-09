@@ -57,7 +57,7 @@ nextlineTodo:
         Dim dsPLine As DataSet = LoadSQL(mysql, "tbl_Proline")
 
         For Each dr As DataRow In dsPLine.Tables(0).Rows
-            Dim subtotal As Double = dr.Item("PAPERCUT")
+            Dim subtotal As Double = dr.Item("SubTotal_Length")
 
             mysql = "SELECT PR.PROLL_ID,PR.PCUT_ID,P.PAPERCUT,P.PAPCUT_CODE " & _
                     " FROM TBLPROLLANDPCUTS PR " & _

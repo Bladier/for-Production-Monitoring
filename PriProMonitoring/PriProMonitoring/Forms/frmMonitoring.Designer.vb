@@ -27,12 +27,12 @@ Partial Class frmMonitoring
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SuspendLayout()
         '
         'btnSearch
@@ -42,8 +42,8 @@ Partial Class frmMonitoring
         Me.btnSearch.Location = New System.Drawing.Point(708, 9)
         Me.btnSearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(108, 30)
-        Me.btnSearch.TabIndex = 0
+        Me.btnSearch.Size = New System.Drawing.Size(109, 30)
+        Me.btnSearch.TabIndex = 1
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
@@ -64,7 +64,7 @@ Partial Class frmMonitoring
         Me.lvListEmptyRoll.Name = "lvListEmptyRoll"
         Me.lvListEmptyRoll.ShowItemToolTips = True
         Me.lvListEmptyRoll.Size = New System.Drawing.Size(790, 363)
-        Me.lvListEmptyRoll.TabIndex = 1
+        Me.lvListEmptyRoll.TabIndex = 2
         Me.lvListEmptyRoll.UseCompatibleStateImageBehavior = False
         Me.lvListEmptyRoll.View = System.Windows.Forms.View.Details
         '
@@ -82,6 +82,11 @@ Partial Class frmMonitoring
         '
         Me.ColumnHeader5.Text = "Paper Cut Description"
         Me.ColumnHeader5.Width = 160
+        '
+        'ColumnHeader7
+        '
+        Me.ColumnHeader7.Text = "PAPCUT_CODE"
+        Me.ColumnHeader7.Width = 0
         '
         'ColumnHeader6
         '
@@ -106,7 +111,7 @@ Partial Class frmMonitoring
         Me.txtSearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(623, 22)
-        Me.txtSearch.TabIndex = 2
+        Me.txtSearch.TabIndex = 0
         '
         'Label1
         '
@@ -119,11 +124,6 @@ Partial Class frmMonitoring
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Search"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'ColumnHeader7
-        '
-        Me.ColumnHeader7.Text = "PAPCUT_CODE"
-        Me.ColumnHeader7.Width = 0
         '
         'frmMonitoring
         '

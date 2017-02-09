@@ -222,7 +222,7 @@ nextlineTodo:
     Private Function CHECKMAG_IFALREADYUSED() As Boolean
         Dim mysql As String = "SELECT paproll_ID,paproll_serial,chamber,M.PAPID,M.PAPDESC " & _
                               "FROM TBLPAPERROLL INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID =TBLPAPERROLL.PAPIDS " & _
-                              "WHERE PAPID = '" & LvPaperRollList.SelectedItems(0).SubItems(1).Text & "' " & _
+                              "WHERE paproll_serial = '" & LvPaperRollList.SelectedItems(0).SubItems(3).Text & "' " & _
                               "AND STATUS ='1' " & _
                               "group by PAPID,paproll_ID,paproll_serial,chamber,M.PAPDESC"
         Try

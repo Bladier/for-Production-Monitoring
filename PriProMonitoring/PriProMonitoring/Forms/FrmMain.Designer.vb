@@ -55,6 +55,7 @@ Partial Class FrmMain
         Me.ToolStripAdjusment = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMonitor = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -245,7 +246,7 @@ Partial Class FrmMain
         Me.ToolStrip1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStrip1.GripMargin = New System.Windows.Forms.Padding(2, 10, 10, 10)
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLogin, Me.ToolStripSeparator1, Me.ToolStripActiveUser, Me.ToolStripChangePaperRoll, Me.ToolStripSeparator2, Me.ToolStripAddpaperroll, Me.ToolStripAdjusment, Me.ToolStripSeparator3, Me.ToolStripMonitor})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLogin, Me.ToolStripSeparator1, Me.ToolStripActiveUser, Me.ToolStripChangePaperRoll, Me.ToolStripSeparator2, Me.ToolStripAddpaperroll, Me.ToolStripSeparator4, Me.ToolStripAdjusment, Me.ToolStripSeparator3, Me.ToolStripMonitor})
         Me.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
         Me.ToolStrip1.Name = "ToolStrip1"
@@ -329,6 +330,11 @@ Partial Class FrmMain
         Me.ToolStripMonitor.Text = "Summary"
         Me.ToolStripMonitor.ToolTipText = "Monitoring"
         '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 50)
+        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -386,4 +392,5 @@ Partial Class FrmMain
     Friend WithEvents ToolStripAdjusment As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripMonitor As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
 End Class
