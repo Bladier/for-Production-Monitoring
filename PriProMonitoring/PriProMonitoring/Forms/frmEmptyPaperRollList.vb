@@ -6,7 +6,10 @@
 
 
     Private Sub frmEmptyPaperRollList_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        LOAD_ALL_PAPER_LIST_EMPTY()
+    End Sub
 
+    Private Sub LOAD_ALL_PAPER_LIST_EMPTY()
         Dim fillData As String = "tblpaperRoll"
 
 
@@ -41,15 +44,14 @@
             For Each dr As DataRow In ds.Tables(0).Rows
                 With dr
                     Dim lv As ListViewItem = Lvlist.Items.Add(.Item("PAPROLL_ID"))
-                    lv.SubItems().Add(.Item("PAPCODE"))
-                    lv.SubItems().Add(.Item("PAPDESC"))
-                    lv.SubItems().Add(.Item("PAPROLL_SERIAL"))
+                    lv.SubItems.Add(.Item("PAPCODE"))
+                    lv.SubItems.Add(.Item("PAPDESC"))
+                    lv.SubItems.Add(.Item("PAPROLL_SERIAL"))
                 End With
             Next
         End If
 
     End Sub
-   
     Private Sub Lvlist_MouseClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Lvlist.MouseClick
         Me.Text = Lvlist.SelectedItems(0).SubItems(3).Text
     End Sub

@@ -52,10 +52,11 @@ Partial Class FrmMain
         Me.ToolStripChangePaperRoll = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripAddpaperroll = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripAdjusment = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMonitor = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -135,6 +136,7 @@ Partial Class FrmMain
         Me.statusDateandTime.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
                     Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
                     Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.statusDateandTime.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken
         Me.statusDateandTime.Image = CType(resources.GetObject("statusDateandTime.Image"), System.Drawing.Image)
         Me.statusDateandTime.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.statusDateandTime.Margin = New System.Windows.Forms.Padding(0, 0, 0, 2)
@@ -149,6 +151,7 @@ Partial Class FrmMain
         Me.statusUser.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
                     Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
                     Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.statusUser.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken
         Me.statusUser.Image = CType(resources.GetObject("statusUser.Image"), System.Drawing.Image)
         Me.statusUser.Margin = New System.Windows.Forms.Padding(0, 0, 0, 2)
         Me.statusUser.Name = "statusUser"
@@ -163,6 +166,7 @@ Partial Class FrmMain
         Me.StatusCounter.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
                     Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
                     Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.StatusCounter.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken
         Me.StatusCounter.Image = CType(resources.GetObject("StatusCounter.Image"), System.Drawing.Image)
         Me.StatusCounter.Margin = New System.Windows.Forms.Padding(0)
         Me.StatusCounter.Name = "StatusCounter"
@@ -175,6 +179,7 @@ Partial Class FrmMain
         Me.lblToolStripStatus.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
                     Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
                     Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.lblToolStripStatus.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken
         Me.lblToolStripStatus.Margin = New System.Windows.Forms.Padding(0, 0, 0, 2)
         Me.lblToolStripStatus.Name = "lblToolStripStatus"
         Me.lblToolStripStatus.Size = New System.Drawing.Size(49, 24)
@@ -195,6 +200,7 @@ Partial Class FrmMain
         Me.ToolStripStatusSalesMessage.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
                     Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
                     Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.ToolStripStatusSalesMessage.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken
         Me.ToolStripStatusSalesMessage.Margin = New System.Windows.Forms.Padding(0)
         Me.ToolStripStatusSalesMessage.Name = "ToolStripStatusSalesMessage"
         Me.ToolStripStatusSalesMessage.Size = New System.Drawing.Size(45, 26)
@@ -294,8 +300,9 @@ Partial Class FrmMain
         '
         'ToolStripSeparator2
         '
+        Me.ToolStripSeparator2.AutoSize = False
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 50)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(10, 50)
         '
         'ToolStripAddpaperroll
         '
@@ -305,6 +312,12 @@ Partial Class FrmMain
         Me.ToolStripAddpaperroll.Size = New System.Drawing.Size(119, 47)
         Me.ToolStripAddpaperroll.Text = "Add Paper Roll"
         Me.ToolStripAddpaperroll.ToolTipText = "F7 ""Short cut key"""
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.AutoSize = False
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(10, 50)
         '
         'ToolStripAdjusment
         '
@@ -317,8 +330,9 @@ Partial Class FrmMain
         '
         'ToolStripSeparator3
         '
+        Me.ToolStripSeparator3.AutoSize = False
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 50)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(10, 50)
         '
         'ToolStripMonitor
         '
@@ -330,10 +344,14 @@ Partial Class FrmMain
         Me.ToolStripMonitor.Text = "Summary"
         Me.ToolStripMonitor.ToolTipText = "Monitoring"
         '
-        'ToolStripSeparator4
+        'Panel1
         '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 50)
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(0, 74)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(1003, 476)
+        Me.Panel1.TabIndex = 11
         '
         'FrmMain
         '
@@ -342,6 +360,7 @@ Partial Class FrmMain
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1003, 576)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
@@ -393,4 +412,5 @@ Partial Class FrmMain
     Friend WithEvents ToolStripMonitor As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
 End Class

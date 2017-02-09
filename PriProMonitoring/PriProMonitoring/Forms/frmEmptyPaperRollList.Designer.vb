@@ -43,7 +43,7 @@ Partial Class frmEmptyPaperRollList
         Me.Lvlist.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Lvlist.Name = "Lvlist"
         Me.Lvlist.ShowItemToolTips = True
-        Me.Lvlist.Size = New System.Drawing.Size(723, 386)
+        Me.Lvlist.Size = New System.Drawing.Size(824, 432)
         Me.Lvlist.TabIndex = 2
         Me.Lvlist.UseCompatibleStateImageBehavior = False
         Me.Lvlist.View = System.Windows.Forms.View.Details
@@ -73,14 +73,16 @@ Partial Class frmEmptyPaperRollList
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(723, 386)
+        Me.ClientSize = New System.Drawing.Size(824, 432)
         Me.Controls.Add(Me.Lvlist)
         Me.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MaximizeBox = False
         Me.Name = "frmEmptyPaperRollList"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "List of Declared Empty Paper Roll"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
 
     End Sub

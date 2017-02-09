@@ -3,6 +3,7 @@
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         frmPaperRolls.txtsearch1.Text = txtSearch.Text
         frmPaperRolls.Show()
+        txtSearch.Text = ""
     End Sub
 
 

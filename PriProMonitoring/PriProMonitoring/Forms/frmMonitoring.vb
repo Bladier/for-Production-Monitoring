@@ -11,6 +11,22 @@ Public Class frmMonitoring
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         lvListEmptyRoll.Items.Clear()
+
+        Dim formNames As New List(Of String)
+        For Each Form In My.Application.OpenForms
+            If Form.Name <> "FrmMain" Or Not Form.name <> "frmEmptyPaperRollList" Then
+                formNames.Add(Form.Name)
+            End If
+        Next
+        For Each currentFormName As String In formNames
+            Application.OpenForms(currentFormName).Close()
+        Next
+
+        frmEmptyPaperRollList.TopLevel = False
+        FrmMain.Panel1.Controls.Add(frmEmptyPaperRollList)
+        frmEmptyPaperRollList.Show()
+
+
         frmEmptyPaperRollList.Show()
     End Sub
 
@@ -20,13 +36,12 @@ Public Class frmMonitoring
     ''' <param name="str"></param>
     ''' <remarks></remarks>
     Friend Sub PopulateCount(ByVal str As String)
-        Dim mysql As String = "	SELECT P.PAPCODE,R.PAPROLL_SERIAL,PR.PAPCUT_DESC,PR.PAPCUT_CODE,PR.PAPERCUT,	"
-        mysql &= vbCrLf & "	SUM(PR.QUANTITY)AS TOTAL FROM tblPAPROLL_MAIN P	"
-        mysql &= vbCrLf & "	INNER JOIN TBLPAPERROLL R ON R.PAPIDS = P.PAPID	"
-        mysql &= vbCrLf & "	LEFT JOIN TBL_PROLINE PR	"
-        mysql &= vbCrLf & "	ON PR.PAPROLL_SERIAL = R.PAPROLL_SERIAL 	"
-        mysql &= vbCrLf & "	WHERE R.PAPROLL_SERIAL = '" & str & "'"
-        mysql &= vbCrLf & "	GROUP BY PR.PAPCUT_DESC,P.PAPCODE,R.PAPROLL_SERIAL,PR.PAPERCUT,PR.PAPCUT_CODE	"
+        Dim mysql As String = "	SELECT P.PAPCODE,R.PAPROLL_SERIAL,PR.PAPCUT_DESC,PR.PAPCUT_CODE,	"
+        mysql &= vbCrLf & "	PR.PAPERCUT,SUM(PR.QUANTITY)AS TOTAL FROM TBL_PROLINE PR	"
+        mysql &= vbCrLf & "	INNER JOIN TBLPAPERROLL R ON R.PAPROLL_SERIAL = PR.PAPROLL_SERIAL	"
+        mysql &= vbCrLf & "	INNER JOIN TBLPAPROLL_MAIN P ON P.PAPID=R.PAPIDS	"
+        mysql &= vbCrLf & "	WHERE R.PAPROLL_SERIAL = '" & str & "' "
+        mysql &= vbCrLf & "	GROUP BY P.PAPCODE,R.PAPROLL_SERIAL,PR.PAPCUT_DESC,PR.PAPCUT_CODE,PR.PAPERCUT	"
 
         Dim ds As DataSet = LoadSQL(mysql, "tblPAPROLL_MAIN")
 
@@ -48,7 +63,13 @@ Public Class frmMonitoring
                 Dim dsad As DataSet = LoadSQL(MYSQL1, "TBLADJUSTMENT")
 
                 If dsad.Tables(0).Rows.Count = 0 Then
-                    On Error Resume Next
+                    Dim lv As ListViewItem = lvListEmptyRoll.Items.Add(.Item("PAPCODE"))
+                    lv.SubItems.Add(.Item("PAPROLL_SERIAL"))
+                    lv.SubItems.Add(.Item("PAPCUT_DESC"))
+                    lv.SubItems.Add(.Item("PAPCUT_CODE"))
+                    lv.SubItems.Add(.Item("PAPERCUT"))
+                    lv.SubItems.Add(dr.Item("TOTAL"))
+
                 Else
                     Dim max As Integer = dsad.Tables(0).Rows.Count
 
@@ -94,7 +115,7 @@ Public Class frmMonitoring
                                 If dr_Admnt.Item("ADJUSTMENT_TYPE") = "Deduct" Then
 
                                     TotalPrints = dr_Admnt.Item("QTY")
-                                    
+
                                     TotalPrints = subTotal - TotalPrints
                                 Else
 
@@ -121,9 +142,9 @@ Public Class frmMonitoring
                             TotalPrints = 0
                         End If
                     End If
-                   
+
                 End If
-               
+
             End With
         Next
 
@@ -160,5 +181,6 @@ Public Class frmMonitoring
         Next
     End Sub
 
+  
   
 End Class

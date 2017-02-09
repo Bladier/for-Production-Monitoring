@@ -57,6 +57,9 @@ Partial Class frmPaperRolls
         '
         'LvPaperRollList
         '
+        Me.LvPaperRollList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LvPaperRollList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader1})
         Me.LvPaperRollList.Font = New System.Drawing.Font("MS Reference Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LvPaperRollList.FullRowSelect = True
@@ -64,7 +67,7 @@ Partial Class frmPaperRolls
         Me.LvPaperRollList.Location = New System.Drawing.Point(12, 87)
         Me.LvPaperRollList.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LvPaperRollList.Name = "LvPaperRollList"
-        Me.LvPaperRollList.Size = New System.Drawing.Size(432, 214)
+        Me.LvPaperRollList.Size = New System.Drawing.Size(810, 257)
         Me.LvPaperRollList.TabIndex = 1
         Me.LvPaperRollList.UseCompatibleStateImageBehavior = False
         Me.LvPaperRollList.View = System.Windows.Forms.View.Details
@@ -82,24 +85,24 @@ Partial Class frmPaperRolls
         'ColumnHeader4
         '
         Me.ColumnHeader4.Text = "Description"
-        Me.ColumnHeader4.Width = 142
+        Me.ColumnHeader4.Width = 270
         '
         'ColumnHeader5
         '
         Me.ColumnHeader5.Text = "Paper Roll"
-        Me.ColumnHeader5.Width = 129
+        Me.ColumnHeader5.Width = 201
         '
         'ColumnHeader1
         '
         Me.ColumnHeader1.Text = "Chamber"
-        Me.ColumnHeader1.Width = 157
+        Me.ColumnHeader1.Width = 135
         '
         'btnSelect
         '
-        Me.btnSelect.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSelect.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSelect.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSelect.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnSelect.Location = New System.Drawing.Point(444, 309)
+        Me.btnSelect.Location = New System.Drawing.Point(640, 387)
         Me.btnSelect.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnSelect.Name = "btnSelect"
         Me.btnSelect.Size = New System.Drawing.Size(90, 42)
@@ -109,10 +112,10 @@ Partial Class frmPaperRolls
         '
         'btnClose
         '
-        Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnClose.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClose.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnClose.Location = New System.Drawing.Point(535, 309)
+        Me.btnClose.Location = New System.Drawing.Point(731, 387)
         Me.btnClose.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(90, 42)
@@ -122,11 +125,12 @@ Partial Class frmPaperRolls
         '
         'CboChamber
         '
+        Me.CboChamber.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.CboChamber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CboChamber.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.CboChamber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CboChamber.FormattingEnabled = True
-        Me.CboChamber.Location = New System.Drawing.Point(451, 184)
+        Me.CboChamber.Location = New System.Drawing.Point(83, 348)
         Me.CboChamber.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.CboChamber.Name = "CboChamber"
         Me.CboChamber.Size = New System.Drawing.Size(163, 23)
@@ -135,10 +139,13 @@ Partial Class frmPaperRolls
         '
         'lblChamber
         '
+        Me.lblChamber.AllowDrop = True
+        Me.lblChamber.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblChamber.AutoSize = True
         Me.lblChamber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblChamber.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblChamber.Location = New System.Drawing.Point(450, 162)
+        Me.lblChamber.Location = New System.Drawing.Point(13, 348)
         Me.lblChamber.Name = "lblChamber"
         Me.lblChamber.Size = New System.Drawing.Size(63, 16)
         Me.lblChamber.TabIndex = 5
@@ -146,10 +153,10 @@ Partial Class frmPaperRolls
         '
         'btnAdd
         '
-        Me.btnAdd.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnAdd.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAdd.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnAdd.Location = New System.Drawing.Point(15, 309)
+        Me.btnAdd.Location = New System.Drawing.Point(12, 387)
         Me.btnAdd.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(119, 42)
@@ -159,31 +166,33 @@ Partial Class frmPaperRolls
         '
         'GroupBox1
         '
-        Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.txtsearch1)
         Me.GroupBox1.Controls.Add(Me.btnSearch1)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(13, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(608, 57)
+        Me.GroupBox1.Size = New System.Drawing.Size(807, 57)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
         'txtsearch1
         '
+        Me.txtsearch1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtsearch1.Location = New System.Drawing.Point(58, 21)
         Me.txtsearch1.Name = "txtsearch1"
-        Me.txtsearch1.Size = New System.Drawing.Size(443, 21)
+        Me.txtsearch1.Size = New System.Drawing.Size(642, 21)
         Me.txtsearch1.TabIndex = 0
         Me.txtsearch1.WatermarkColor = System.Drawing.Color.Gray
         Me.txtsearch1.WatermarkText = "Search"
         '
         'btnSearch1
         '
-        Me.btnSearch1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSearch1.Location = New System.Drawing.Point(507, 16)
+        Me.btnSearch1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSearch1.Location = New System.Drawing.Point(706, 16)
         Me.btnSearch1.Name = "btnSearch1"
         Me.btnSearch1.Size = New System.Drawing.Size(95, 30)
         Me.btnSearch1.TabIndex = 1
@@ -204,7 +213,7 @@ Partial Class frmPaperRolls
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(635, 357)
+        Me.ClientSize = New System.Drawing.Size(834, 442)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.lblChamber)
@@ -213,9 +222,11 @@ Partial Class frmPaperRolls
         Me.Controls.Add(Me.btnSelect)
         Me.Controls.Add(Me.LvPaperRollList)
         Me.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "frmPaperRolls"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Paper List"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()

@@ -46,10 +46,7 @@ nextlineTodo:
             UpdateRollstatus(LvPaperRollList.SelectedItems(0).SubItems(3).Text, 1) ' update new load to 1
             savePapLog(LvPaperRollList.SelectedItems(0).SubItems(0).Text) 'save paper log
 
-            'frmProductionMonitoring.txtpaperRoll1.Text = LvPaperRollList.SelectedItems(0).SubItems(3).Text
-
-            Me.Close()
-
+            frmPaperRolls_Load(sender, e)
         End If
 
     End Sub
@@ -90,10 +87,10 @@ nextlineTodo:
 
     End Sub
 
-    Private Sub loadPaperRollSearch(ByVal papSerial As String, Optional ByVal mag As String = "")
+    Private Sub loadPaperRollSearch(ByVal papSerial As String, Optional ByVal pap As String = "")
         Dim mysql As String = "SELECT P.PAPROLL_ID,P.PAPIDS,M.PAPDESC,P.PAPROLL_SERIAL,P.Chamber FROM TBLPAPERROLL P " & _
                               "INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID = P.PAPIDS " & _
-                              "WHERE UPPER(P.PAPROLL_SERIAL) = UPPER('" & papSerial & "') OR UPPER(M.PAPDESC) = UPPER('" & mag & "')" & _
+                              "WHERE UPPER(P.PAPROLL_SERIAL) = UPPER('" & papSerial & "') OR UPPER(M.PAPDESC) = UPPER('" & pap & "')" & _
                               "and status <> '2'"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
         Dim count As Integer = ds.Tables(0).Rows.Count
@@ -128,7 +125,7 @@ nextlineTodo:
         Dim ds As DataSet = LoadSQL(mysql, "TBL")
         Dim count As Integer = ds.Tables(0).Rows.Count
 
-
+        LvPaperRollList.Items.Clear()
         For Each dr As DataRow In ds.Tables(0).Rows
             Dim tmpID As Integer = dr.Item("Paproll_ID")
             Dim lv As ListViewItem = LvPaperRollList.Items.Add(tmpID)
@@ -143,7 +140,6 @@ nextlineTodo:
             End If
         Next
 
-        MsgBox(count & " paper roll found.", MsgBoxStyle.Information, "Paper roll List")
     End Sub
 
     Private Sub LoadChamber()
@@ -322,9 +318,17 @@ nextlineTodo:
         Return ds.Tables(0).Rows(0).Item("Chamber")
     End Function
 
-    Private Sub frmPaperRolls_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
-        ModName = ""
-    End Sub
+    Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
+        Select Case keyData
+            Case Keys.Escape
+                Me.Close()
+            Case Else
+                'Do Nothing
+        End Select
+
+        Return MyBase.ProcessCmdKey(msg, keyData)
+    End Function
+
 
 
 End Class

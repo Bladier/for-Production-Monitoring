@@ -268,8 +268,21 @@
             Exit Sub
         End If
 
-        frmChangePaperRoll.MdiParent = Me
-        frmChangePaperRoll.Show()
+        Dim formNames As New List(Of String)
+        For Each Form In My.Application.OpenForms
+            If Form.Name <> "FrmMain" Or Not Form.name <> "frmPaperRolls" Then
+                formNames.Add(Form.Name)
+            End If
+        Next
+        For Each currentFormName As String In formNames
+            Application.OpenForms(currentFormName).Close()
+        Next
+
+        frmPaperRolls.TopLevel = False
+        Panel1.Controls.Add(frmPaperRolls)
+        frmPaperRolls.Show()
+        'frmPaperRolls.MdiParent = Me
+        'frmPaperRolls.Show()
     End Sub
 
 
@@ -294,27 +307,83 @@
 
 
     Private Sub ToolStripAddpaperroll_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripAddpaperroll.Click
+
+
+        Dim formNames As New List(Of String)
+        For Each Form In My.Application.OpenForms
+            If Form.Name <> "FrmMain" Or Not Form.name <> "frmPaperRoll" Then
+                formNames.Add(Form.Name)
+            End If
+        Next
+        For Each currentFormName As String In formNames
+            Application.OpenForms(currentFormName).Close()
+        Next
+
+        frmPaperRoll.TopLevel = False
+        Panel1.Controls.Add(frmPaperRoll)
         frmPaperRoll.Show()
     End Sub
 
     Private Sub InitializePaperRollToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InitializePaperRollToolStripMenuItem.Click
+        Dim formNames As New List(Of String)
+        For Each Form In My.Application.OpenForms
+            If Form.Name <> "FrmMain" Or Not Form.name <> "frmInitializePaper" Then
+                formNames.Add(Form.Name)
+            End If
+        Next
+        For Each currentFormName As String In formNames
+            Application.OpenForms(currentFormName).Close()
+        Next
+
+        frmInitializePaper.TopLevel = False
+        Panel1.Controls.Add(frmInitializePaper)
         frmInitializePaper.Show()
+
     End Sub
 
  Public Sub New()
         MyBase.New()
         InitializeComponent()
-        Me.MaximumSize = New Size(800, 600)
+        Me.MaximumSize = New Size(850, 600)
         Me.StartPosition = FormStartPosition.CenterScreen
     End Sub
 
  
     Private Sub ToolStripAdjusment_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripAdjusment.Click
+
+        Dim formNames As New List(Of String)
+        For Each Form In My.Application.OpenForms
+            If Form.Name <> "FrmMain" Or Not Form.name <> "frmUnallocatedPapercut" Then
+                formNames.Add(Form.Name)
+            End If
+        Next
+        For Each currentFormName As String In formNames
+            Application.OpenForms(currentFormName).Close()
+        Next
+
+        frmUnallocatedPapercut.TopLevel = False
+        Panel1.Controls.Add(frmUnallocatedPapercut)
         frmUnallocatedPapercut.Show()
+
+
+
     End Sub
 
     Private Sub ToolStripMonitor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMonitor.Click
+        Dim formNames As New List(Of String)
+        For Each Form In My.Application.OpenForms
+            If Form.Name <> "FrmMain" Or Not Form.name <> "frmMonitoring" Then
+                formNames.Add(Form.Name)
+            End If
+        Next
+        For Each currentFormName As String In formNames
+            Application.OpenForms(currentFormName).Close()
+        Next
+
+        frmMonitoring.TopLevel = False
+        Panel1.Controls.Add(frmMonitoring)
         frmMonitoring.Show()
+
     End Sub
 
 End Class

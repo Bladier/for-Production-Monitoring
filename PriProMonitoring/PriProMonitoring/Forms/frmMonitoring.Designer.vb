@@ -39,7 +39,7 @@ Partial Class frmMonitoring
         '
         Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSearch.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearch.Location = New System.Drawing.Point(708, 9)
+        Me.btnSearch.Location = New System.Drawing.Point(694, 9)
         Me.btnSearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(109, 30)
@@ -63,7 +63,7 @@ Partial Class frmMonitoring
         Me.lvListEmptyRoll.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.lvListEmptyRoll.Name = "lvListEmptyRoll"
         Me.lvListEmptyRoll.ShowItemToolTips = True
-        Me.lvListEmptyRoll.Size = New System.Drawing.Size(790, 363)
+        Me.lvListEmptyRoll.Size = New System.Drawing.Size(776, 377)
         Me.lvListEmptyRoll.TabIndex = 2
         Me.lvListEmptyRoll.UseCompatibleStateImageBehavior = False
         Me.lvListEmptyRoll.View = System.Windows.Forms.View.Details
@@ -110,7 +110,7 @@ Partial Class frmMonitoring
         Me.txtSearch.Location = New System.Drawing.Point(79, 12)
         Me.txtSearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(623, 22)
+        Me.txtSearch.Size = New System.Drawing.Size(609, 22)
         Me.txtSearch.TabIndex = 0
         '
         'Label1
@@ -130,17 +130,19 @@ Partial Class frmMonitoring
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(838, 418)
+        Me.ClientSize = New System.Drawing.Size(824, 432)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtSearch)
         Me.Controls.Add(Me.lvListEmptyRoll)
         Me.Controls.Add(Me.btnSearch)
         Me.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "frmMonitoring"
         Me.Text = "Monitoring"
         Me.TransparencyKey = System.Drawing.SystemColors.ActiveCaption
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
