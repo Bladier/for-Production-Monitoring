@@ -111,6 +111,20 @@ Module mod_system
         Return True
     End Function
 
+    Public Sub CloseForms(ByVal frm As String)
+
+        Dim formNames As New List(Of String)
+        For Each Form In My.Application.OpenForms
+            If Form.Name <> "FrmMain" Or Not Form.name <> frm Then
+                formNames.Add(Form.Name)
+            End If
+        Next
+        For Each currentFormName As String In formNames
+            Application.OpenForms(currentFormName).Close()
+        Next
+    End Sub
+   
+
 #Region "Log Module"
     Const LOG_FILE As String = "syslog.txt"
     Private Sub CreateLog()

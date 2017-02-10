@@ -243,15 +243,7 @@
             Dim ans As DialogResult = MsgBox("Do you want to LOGOUT?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information, "Logout")
             If ans = Windows.Forms.DialogResult.No Then Exit Sub
 
-            Dim formNames As New List(Of String)
-            For Each Form In My.Application.OpenForms
-                If Form.Name <> "FrmMain" Or Not Form.name <> "Login" Then
-                    formNames.Add(Form.Name)
-                End If
-            Next
-            For Each currentFormName As String In formNames
-                Application.OpenForms(currentFormName).Close()
-            Next
+            CloseForms("Login")
 
             MsgBox("Thank you!", MsgBoxStyle.Information, "Logout")
             locked = IIf(GetOption("Locked") = "YES", True, False)
@@ -271,15 +263,7 @@
             Exit Sub
         End If
 
-        Dim formNames As New List(Of String)
-        For Each Form In My.Application.OpenForms
-            If Form.Name <> "FrmMain" Or Not Form.name <> "frmPaperRolls" Then
-                formNames.Add(Form.Name)
-            End If
-        Next
-        For Each currentFormName As String In formNames
-            Application.OpenForms(currentFormName).Close()
-        Next
+        CloseForms("frmPaperRolls")
 
         frmPaperRolls.TopLevel = False
         Panel1.Controls.Add(frmPaperRolls)
@@ -311,16 +295,7 @@
 
     Private Sub ToolStripAddpaperroll_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripAddpaperroll.Click
 
-
-        Dim formNames As New List(Of String)
-        For Each Form In My.Application.OpenForms
-            If Form.Name <> "FrmMain" Or Not Form.name <> "frmPaperRoll" Then
-                formNames.Add(Form.Name)
-            End If
-        Next
-        For Each currentFormName As String In formNames
-            Application.OpenForms(currentFormName).Close()
-        Next
+        CloseForms("frmPaperRoll")
 
         frmPaperRoll.TopLevel = False
         Panel1.Controls.Add(frmPaperRoll)
@@ -328,15 +303,7 @@
     End Sub
 
     Private Sub InitializePaperRollToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InitializePaperRollToolStripMenuItem.Click
-        Dim formNames As New List(Of String)
-        For Each Form In My.Application.OpenForms
-            If Form.Name <> "FrmMain" Or Not Form.name <> "frmInitializePaper" Then
-                formNames.Add(Form.Name)
-            End If
-        Next
-        For Each currentFormName As String In formNames
-            Application.OpenForms(currentFormName).Close()
-        Next
+        CloseForms("frmInitializePaper")
 
         frmInitializePaper.TopLevel = False
         Panel1.Controls.Add(frmInitializePaper)
@@ -354,34 +321,17 @@
  
     Private Sub ToolStripAdjusment_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripAdjusment.Click
 
-        Dim formNames As New List(Of String)
-        For Each Form In My.Application.OpenForms
-            If Form.Name <> "FrmMain" Or Not Form.name <> "frmUnallocatedPapercut" Then
-                formNames.Add(Form.Name)
-            End If
-        Next
-        For Each currentFormName As String In formNames
-            Application.OpenForms(currentFormName).Close()
-        Next
+        CloseForms("frmUnallocatedPapercut")
 
         frmUnallocatedPapercut.TopLevel = False
         Panel1.Controls.Add(frmUnallocatedPapercut)
         frmUnallocatedPapercut.Show()
 
-
-
     End Sub
 
     Private Sub ToolStripMonitor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMonitor.Click
-        Dim formNames As New List(Of String)
-        For Each Form In My.Application.OpenForms
-            If Form.Name <> "FrmMain" Or Not Form.name <> "frmMonitoring" Then
-                formNames.Add(Form.Name)
-            End If
-        Next
-        For Each currentFormName As String In formNames
-            Application.OpenForms(currentFormName).Close()
-        Next
+
+        CloseForms("frmMonitoring")
 
         frmMonitoring.TopLevel = False
         Panel1.Controls.Add(frmMonitoring)

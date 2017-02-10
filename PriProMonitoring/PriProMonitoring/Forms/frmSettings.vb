@@ -411,4 +411,16 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
     Private Sub frmSettings_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
         FrmMain.Enabled = True
     End Sub
+
+
+    Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
+        Select Case keyData
+            Case Keys.Escape
+                Me.Close()
+            Case Else
+                Me.Close()
+        End Select
+
+        Return MyBase.ProcessCmdKey(msg, keyData)
+    End Function
 End Class
