@@ -96,6 +96,7 @@
         End With
     End Sub
 
+
     Friend Sub LoadExistItemLine(ByVal id As Integer)
         Dim mySql As String = String.Format("SELECT * FROM tblitem_line WHERE ITEM_ID = {0}", id)
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
@@ -149,7 +150,8 @@
     End Sub
 
     Public Sub Update_ItemLine()
-        Dim mySql As String = String.Format("SELECT * FROM {0} WHERE {1}= {2} ", MainTable, "itemLine_ID", _PaperCut_ID)
+       
+        Dim mySql As String = String.Format("SELECT * FROM {0} WHERE {1}= '{2}'", MainTable, "itemLine_ID", _itemLineID)
         Dim ds As DataSet = LoadSQL(mySql, MainTable)
 
         If ds.Tables(0).Rows.Count = 1 Then

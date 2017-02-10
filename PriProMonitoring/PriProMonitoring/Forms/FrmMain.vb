@@ -82,6 +82,7 @@
     End Sub
 
     Private Sub AddItemToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddItemToolStripMenuItem.Click
+        Me.Enabled = False
         frmItem.Show()
     End Sub
 
@@ -212,6 +213,7 @@
 
 
     Private Sub SettingsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SettingsToolStripMenuItem.Click
+        Me.Enabled = False
         frmSettings.Show()
     End Sub
 
@@ -261,6 +263,7 @@
 
 
     Private Sub ToolStripProduction_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripChangePaperRoll.Click
+
         MagazineStatus = IIf(GetOption("Magazine") = "YES", True, False)
         If Not MagazineStatus Then
             MsgBox("You need to initialize magazine before to begin.", MsgBoxStyle.Exclamation, "Production")

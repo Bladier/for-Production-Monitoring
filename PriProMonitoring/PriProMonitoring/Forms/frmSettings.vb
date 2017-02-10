@@ -78,6 +78,7 @@ Public Class frmSettings
             End If
 
             MsgBox("New branch has been setup", MsgBoxStyle.Information, "Setup")
+            FrmMain.Enabled = True
             FrmMain.NotYetLogin()
             Me.Enabled = True
             Me.Close()
@@ -90,6 +91,7 @@ Public Class frmSettings
             ImportPapercut()
 
             MsgBox("Data updated", MsgBoxStyle.Information, "Settings")
+            FrmMain.Enabled = True
             Me.Enabled = True
             Me.Close()
         End If
@@ -404,5 +406,9 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
 
     Private Sub txtChamber_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtChamber.KeyPress
         DigitOnly(e)
+    End Sub
+
+    Private Sub frmSettings_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+        FrmMain.Enabled = True
     End Sub
 End Class

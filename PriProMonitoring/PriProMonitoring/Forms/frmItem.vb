@@ -3,6 +3,9 @@
     Dim saveitemLine As ItemLine
     Dim selectedItm As item
 
+    Dim selectedPaperCut As New PaperCut
+
+    Dim itm_line As Hashtable
 
     Friend Sub Loaditm(ByVal itm As item)
         If itm.ItemCode = "" Then Exit Sub
@@ -18,15 +21,16 @@
         btnUpdate.Enabled = True
 
 
-        Dim mysql As String = "SELECT P.PAPERCUT_ID,P.PAPCUT_CODE,P.PAPCUT_DESCRIPTION,L.QTY " & _
+        Dim mysql As String = "SELECT P.PAPERCUT_ID,P.PAPCUT_CODE,P.PAPCUT_DESCRIPTION,L.QTY,L.ItemLine_ID " & _
                                "FROM TBLITEM_LINE L LEFT JOIN TBLPAPERCUT P ON L.PAPERCUT_ID=P.PAPERCUT_ID " & _
                                " WHERE L.ITEM_ID = '" & itm.ID & "'"
         Dim ds As DataSet = LoadSQL(mysql, "TBLITEM_LINE")
 
         dgPapercuts.Rows.Clear()
+
         For Each dr As DataRow In ds.Tables(0).Rows
             With dr
-                dgPapercuts.Rows.Add(.Item(0), .Item(1), .Item(2), .Item(3))
+                dgPapercuts.Rows.Add(.Item(0), .Item(1), .Item(2), .Item(3), .Item(4))
             End With
         Next
 
@@ -113,8 +117,8 @@
         End With
 
         Dim ItemLineModidy As New ItemLine
-        For Each row As DataGridViewRow In dgPapercuts.Rows
 
+        For Each row As DataGridViewRow In dgPapercuts.Rows
             With ItemLineModidy
                 .PaperCut_ID = row.Cells(0).Value
                 .QTY = row.Cells(3).Value
@@ -125,9 +129,14 @@
                 End If
 
             End With
-            ItemLineModidy.Item_ID = frmItemLookUp.Label1.Text
+
+            ItemLineModidy.itemLineID = row.Cells(4).Value
+            ItemLineModidy.Item_ID = itemModify.ID
+
             ItemLineModidy.Update_ItemLine()
+
         Next
+
         itemModify.UpdateITEM()
 
         MsgBox("Item Updated", MsgBoxStyle.Information)
@@ -236,4 +245,10 @@
 
         Return MyBase.ProcessCmdKey(msg, keyData)
     End Function
+
+    Private Sub frmItem_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+        FrmMain.Enabled = True
+    End Sub
+
+  
 End Class

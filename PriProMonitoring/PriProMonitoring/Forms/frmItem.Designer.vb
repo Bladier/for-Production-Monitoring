@@ -29,20 +29,21 @@ Partial Class frmItem
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.dgPapercuts = New System.Windows.Forms.DataGridView()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.btnUpdate = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnSearchIMD = New System.Windows.Forms.Button()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txtSearchIMD = New PriProMonitoring.watermark()
+        Me.txtSearch = New PriProMonitoring.watermark()
+        Me.txtRemarks = New PriProMonitoring.watermark()
+        Me.txtDescription = New PriProMonitoring.watermark()
+        Me.txtCode = New PriProMonitoring.watermark()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.btnUpdate = New System.Windows.Forms.Button()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.txtSearch = New PriProMonitoring.watermark()
-        Me.btnSearchIMD = New System.Windows.Forms.Button()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.txtSearchIMD = New PriProMonitoring.watermark()
-        Me.txtRemarks = New PriProMonitoring.watermark()
-        Me.txtDescription = New PriProMonitoring.watermark()
-        Me.txtCode = New PriProMonitoring.watermark()
+        Me.Column5 = New System.Windows.Forms.DataGridViewButtonColumn()
         CType(Me.dgPapercuts, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -112,36 +113,12 @@ Partial Class frmItem
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgPapercuts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgPapercuts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgPapercuts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
+        Me.dgPapercuts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
         Me.dgPapercuts.Location = New System.Drawing.Point(6, 47)
         Me.dgPapercuts.Name = "dgPapercuts"
         Me.dgPapercuts.RowHeadersVisible = False
         Me.dgPapercuts.Size = New System.Drawing.Size(466, 234)
         Me.dgPapercuts.TabIndex = 2
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "ID"
-        Me.Column1.Name = "Column1"
-        Me.Column1.Width = 5
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Paper Cut"
-        Me.Column2.Name = "Column2"
-        Me.Column2.Width = 120
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Description"
-        Me.Column3.Name = "Column3"
-        Me.Column3.Width = 240
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Quantity"
-        Me.Column4.Name = "Column4"
-        Me.Column4.Width = 120
         '
         'Label3
         '
@@ -178,16 +155,6 @@ Partial Class frmItem
         Me.GroupBox1.TabIndex = 3
         Me.GroupBox1.TabStop = False
         '
-        'txtSearch
-        '
-        Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch.Location = New System.Drawing.Point(5, 18)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(396, 21)
-        Me.txtSearch.TabIndex = 0
-        Me.txtSearch.WatermarkColor = System.Drawing.Color.DimGray
-        Me.txtSearch.WatermarkText = "Search Paper Cut or Description . . ."
-        '
         'btnSearchIMD
         '
         Me.btnSearchIMD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -217,6 +184,16 @@ Partial Class frmItem
         Me.txtSearchIMD.TabIndex = 0
         Me.txtSearchIMD.WatermarkColor = System.Drawing.Color.Gray
         Me.txtSearchIMD.WatermarkText = "Search itemcode from IMD . . ."
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSearch.Location = New System.Drawing.Point(5, 20)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(396, 21)
+        Me.txtSearch.TabIndex = 0
+        Me.txtSearch.WatermarkColor = System.Drawing.Color.DimGray
+        Me.txtSearch.WatermarkText = "Search Paper Cut or Description . . ."
         '
         'txtRemarks
         '
@@ -249,6 +226,39 @@ Partial Class frmItem
         Me.txtCode.TabIndex = 0
         Me.txtCode.WatermarkColor = System.Drawing.Color.Gray
         Me.txtCode.WatermarkText = "IMD 00001"
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "ID"
+        Me.Column1.Name = "Column1"
+        Me.Column1.Visible = False
+        Me.Column1.Width = 20
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Paper Cut"
+        Me.Column2.Name = "Column2"
+        Me.Column2.Width = 120
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Description"
+        Me.Column3.Name = "Column3"
+        Me.Column3.Width = 240
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Quantity"
+        Me.Column4.Name = "Column4"
+        Me.Column4.Width = 120
+        '
+        'Column5
+        '
+        Me.Column5.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Column5.HeaderText = "ItmLineID"
+        Me.Column5.Name = "Column5"
+        Me.Column5.Visible = False
+        Me.Column5.Width = 30
         '
         'frmItem
         '
@@ -284,10 +294,6 @@ Partial Class frmItem
     Friend WithEvents txtCode As PriProMonitoring.watermark
     Friend WithEvents txtDescription As PriProMonitoring.watermark
     Friend WithEvents dgPapercuts As System.Windows.Forms.DataGridView
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents txtRemarks As PriProMonitoring.watermark
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents btnUpdate As System.Windows.Forms.Button
@@ -295,4 +301,9 @@ Partial Class frmItem
     Friend WithEvents btnSearchIMD As System.Windows.Forms.Button
     Friend WithEvents txtSearchIMD As PriProMonitoring.watermark
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewButtonColumn
 End Class

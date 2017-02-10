@@ -64,12 +64,25 @@
 
     Private Sub Lvlist_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Lvlist.DoubleClick
         If Lvlist.Items.Count = 0 Then Exit Sub
+        If Lvlist.SelectedItems.Count = 0 Then Exit Sub
         If Lvlist.SelectedItems.Count = 0 Then
             Lvlist.Items(0).Focused = True
         End If
 
         Dim serial As String = Lvlist.SelectedItems(0).SubItems(3).Text
 
+        Dim formNames As New List(Of String)
+        For Each Form In My.Application.OpenForms
+            If Form.Name <> "FrmMain" Or Not Form.name <> "frmMonitoring" Then
+                formNames.Add(Form.Name)
+            End If
+        Next
+        For Each currentFormName As String In formNames
+            Application.OpenForms(currentFormName).Close()
+        Next
+
+        frmMonitoring.TopLevel = False
+        FrmMain.Panel1.Controls.Add(frmMonitoring)
         frmMonitoring.PopulateCount(serial)
         frmMonitoring.Show()
         Me.Hide()

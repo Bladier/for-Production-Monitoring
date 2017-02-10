@@ -2,7 +2,7 @@
     Dim papcuts As Hashtable
     Dim selectedPap As PaperCut
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
-        loadPapercut()
+        'loadPapercut()
     End Sub
 
     Private Sub loadPapercut()
@@ -65,7 +65,7 @@
         frmItem.dgPapercuts.Rows.Add(selectedPap.PapcutID, selectedPap.PapCutcode, selectedPap.papcutDescription)
 
         frmItem.Show()
-        Me.Close()
+        Me.Hide()
     End Sub
 
     Private Sub txtSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
