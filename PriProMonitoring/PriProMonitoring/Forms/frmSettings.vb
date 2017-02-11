@@ -59,7 +59,7 @@ Public Class frmSettings
             txtVersion.Text = GetOptionpPOS("Version")
 
             LoadIMD() ' lOADING IMD
-            ImportPaperRoll() 'ImportMagazine
+            ImportPaperRoll() 'Paper roll
             ImportPapercut() 'ImportPapercut
             GetLastSales() 'Setup sales
 
@@ -312,20 +312,21 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
             With paproll
                 .PAPERCODE = oSheet.Cells(cnt, 1).Value
                 .PAPERDESCRIPTION = oSheet.Cells(cnt, 2).Value
+                .ChamberDesc = oSheet.Cells(cnt, 3).Value
             End With
             paproll.Save_Magazine()
 
             Dim SAVEPAPERCUT As New PaperCut
             With SAVEPAPERCUT
 
-                .PapCutcode = oSheet.Cells(cnt, 3).Value
-                .papcutDescription = oSheet.Cells(cnt, 4).Value
-                .papcut = oSheet.Cells(cnt, 5).Value
+                .PapCutcode = oSheet.Cells(cnt, 4).Value
+                .papcutDescription = oSheet.Cells(cnt, 5).Value
+                .papcut = oSheet.Cells(cnt, 6).Value
 
             End With
             SAVEPAPERCUT.SavepapCut()
 
-            SAVEPAPERCUT.PapCutcode = oSheet.Cells(cnt, 3).Value
+            SAVEPAPERCUT.PapCutcode = oSheet.Cells(cnt, 4).Value
             SAVEPAPERCUT.Load_pcuts()
 
             Dim saveProllandPcuts As New PapRollAndPapCut
@@ -370,22 +371,23 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
             With paproll
                 .PAPERCODE = oSheet.Cells(cnt, 1).Value
                 .PAPERDESCRIPTION = oSheet.Cells(cnt, 2).Value
+                .PAPERDESCRIPTION = oSheet.Cells(cnt, 3).Value
             End With
             paproll.Save_Magazine()
 
             Dim SAVEPAPERCUT As New PaperCut
 
             With SAVEPAPERCUT
-                .PapCutcode = oSheet.Cells(cnt, 3).Value
-                .papcutDescription = oSheet.Cells(cnt, 4).Value
-                .papcut = oSheet.Cells(cnt, 5).Value
+                .PapCutcode = oSheet.Cells(cnt, 4).Value
+                .papcutDescription = oSheet.Cells(cnt, 5).Value
+                .papcut = oSheet.Cells(cnt, 6).Value
             End With
             SAVEPAPERCUT.SavepapCut()
 
             Dim saveProllandPcuts As New PapRollAndPapCut
             paproll.gETPAPID(oSheet.Cells(cnt, 1).Value)
 
-            SAVEPAPERCUT.PapCutcode = oSheet.Cells(cnt, 3).Value
+            SAVEPAPERCUT.PapCutcode = oSheet.Cells(cnt, 4).Value
             SAVEPAPERCUT.Load_pcuts()
 
             saveProllandPcuts.GetID(paproll.PAPID, SAVEPAPERCUT.PapcutID)
@@ -418,7 +420,7 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
             Case Keys.Escape
                 Me.Close()
             Case Else
-                Me.Close()
+                Return False
         End Select
 
         Return MyBase.ProcessCmdKey(msg, keyData)

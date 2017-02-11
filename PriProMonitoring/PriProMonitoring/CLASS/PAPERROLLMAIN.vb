@@ -33,6 +33,16 @@
         End Set
     End Property
 
+    Private _ChamberDesc As String
+    Public Property ChamberDesc() As String
+        Get
+            Return _ChamberDesc
+        End Get
+        Set(ByVal value As String)
+            _ChamberDesc = value
+        End Set
+    End Property
+
 
     Private _PaperCuts As CollectionPaperCut
     Public Property PaperCuts() As CollectionPaperCut
@@ -60,6 +70,7 @@
             _PAPID = .Item("PAPID")
             _PAPERCODE = .Item("PAPCODE")
             _PAPERDESCRIPTION = .Item("PAPDESC")
+            _ChamberDesc = .Item("ChamberDesc")
         End With
 
 
@@ -86,6 +97,7 @@
             With ds.Tables(MainTable).Rows(0)
                 .Item("PAPCODE") = _PAPERCODE
                 .Item("PAPDESC") = _PAPERDESCRIPTION
+                .Item("ChamberDesc") = _ChamberDesc
             End With
             database.SaveEntry(ds, False)
 
@@ -96,6 +108,7 @@
             With dsNewRow
                 .Item("PAPCODE") = _PAPERCODE
                 .Item("PAPDESC") = _PAPERDESCRIPTION
+                .Item("ChamberDesc") = _ChamberDesc
             End With
             ds.Tables(0).Rows.Add(dsNewRow)
             database.SaveEntry(ds)
@@ -136,7 +149,7 @@
             _PAPID = .Item("PAPID")
             _PAPERCODE = .Item("PAPCODE")
             _PAPERDESCRIPTION = .Item("PAPDESC")
-
+            _ChamberDesc = .Item("ChamberDesc")
         End With
 
     End Sub
@@ -153,6 +166,7 @@
         With ds.Tables(MainTable).Rows(0)
             .Item("PAPCODE") = _PAPERCODE
             .Item("PAPDESC") = _PAPERDESCRIPTION
+            .Item("ChamberDesc") = _ChamberDesc
         End With
         database.SaveEntry(ds, False)
     End Sub

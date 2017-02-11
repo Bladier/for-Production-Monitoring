@@ -263,11 +263,11 @@
             Exit Sub
         End If
 
-        CloseForms("frmPaperRolls")
+        CloseForms("frmPaperRoll_List_Chamber")
 
-        frmPaperRolls.TopLevel = False
-        Panel1.Controls.Add(frmPaperRolls)
-        frmPaperRolls.Show()
+        frmPaperRoll_List_Chamber.TopLevel = False
+        Panel1.Controls.Add(frmPaperRoll_List_Chamber)
+        frmPaperRoll_List_Chamber.Show()
         'frmPaperRolls.MdiParent = Me
         'frmPaperRolls.Show()
     End Sub
@@ -303,11 +303,11 @@
     End Sub
 
     Private Sub InitializePaperRollToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InitializePaperRollToolStripMenuItem.Click
-        CloseForms("frmInitializePaper")
+        CloseForms("frmLoadingPaper")
 
-        frmInitializePaper.TopLevel = False
-        Panel1.Controls.Add(frmInitializePaper)
-        frmInitializePaper.Show()
+        frmLoadingPaper.TopLevel = False
+        Panel1.Controls.Add(frmLoadingPaper)
+        frmLoadingPaper.Show()
 
     End Sub
 

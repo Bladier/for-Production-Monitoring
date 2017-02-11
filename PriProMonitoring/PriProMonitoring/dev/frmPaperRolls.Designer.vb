@@ -130,7 +130,7 @@ Partial Class frmPaperRolls
         Me.CboChamber.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.CboChamber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CboChamber.FormattingEnabled = True
-        Me.CboChamber.Location = New System.Drawing.Point(83, 348)
+        Me.CboChamber.Location = New System.Drawing.Point(661, 348)
         Me.CboChamber.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.CboChamber.Name = "CboChamber"
         Me.CboChamber.Size = New System.Drawing.Size(163, 23)
@@ -145,7 +145,7 @@ Partial Class frmPaperRolls
         Me.lblChamber.AutoSize = True
         Me.lblChamber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblChamber.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblChamber.Location = New System.Drawing.Point(13, 348)
+        Me.lblChamber.Location = New System.Drawing.Point(591, 348)
         Me.lblChamber.Name = "lblChamber"
         Me.lblChamber.Size = New System.Drawing.Size(63, 16)
         Me.lblChamber.TabIndex = 5

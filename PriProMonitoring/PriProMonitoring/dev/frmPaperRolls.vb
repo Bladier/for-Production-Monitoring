@@ -63,7 +63,7 @@ nextlineTodo:
 
     
     Private Sub frmPaperRolls_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+      
         LoadChamber()
         If txtsearch1.Text <> "" Then
             btnSearch1.PerformClick()

@@ -144,6 +144,18 @@
     <Compile Include="dev\Dev.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frmLoadingPaper.Designer.vb">
+      <DependentUpon>frmLoadingPaper.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLoadingPaper.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPaperRoll_List_Chamber.Designer.vb">
+      <DependentUpon>frmPaperRoll_List_Chamber.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPaperRoll_List_Chamber.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmAdjustment.Designer.vb">
       <DependentUpon>frmAdjustment.vb</DependentUpon>
     </Compile>
@@ -198,10 +210,10 @@
     <Compile Include="Forms\frmItemLookUp.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmInitializePaper.Designer.vb">
+    <Compile Include="dev\frmInitializePaper.Designer.vb">
       <DependentUpon>frmInitializePaper.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmInitializePaper.vb">
+    <Compile Include="dev\frmInitializePaper.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="dev\frmMagAndPapRollList.Designer.vb">
@@ -234,10 +246,10 @@
     <Compile Include="Forms\frmPaperRoll.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmPaperRolls.Designer.vb">
+    <Compile Include="dev\frmPaperRolls.Designer.vb">
       <DependentUpon>frmPaperRolls.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmPaperRolls.vb">
+    <Compile Include="dev\frmPaperRolls.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmProductionMonitoring.Designer.vb">
@@ -321,6 +333,12 @@
     <EmbeddedResource Include="dev\Dev.resx">
       <DependentUpon>Dev.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLoadingPaper.resx">
+      <DependentUpon>frmLoadingPaper.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPaperRoll_List_Chamber.resx">
+      <DependentUpon>frmPaperRoll_List_Chamber.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAdjustment.resx">
       <DependentUpon>frmAdjustment.vb</DependentUpon>
     </EmbeddedResource>
@@ -348,7 +366,7 @@
     <EmbeddedResource Include="Forms\frmItemLookUp.resx">
       <DependentUpon>frmItemLookUp.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmInitializePaper.resx">
+    <EmbeddedResource Include="dev\frmInitializePaper.resx">
       <DependentUpon>frmInitializePaper.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dev\frmMagAndPapRollList.resx">
@@ -369,7 +387,7 @@
     <EmbeddedResource Include="Forms\frmPaperRoll.resx">
       <DependentUpon>frmPaperRoll.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmPaperRolls.resx">
+    <EmbeddedResource Include="dev\frmPaperRolls.resx">
       <DependentUpon>frmPaperRolls.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProductionMonitoring.resx">
