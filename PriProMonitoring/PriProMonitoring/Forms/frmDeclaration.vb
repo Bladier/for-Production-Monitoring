@@ -219,4 +219,16 @@
     Private Sub lvPaperRoll_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles lvPaperRoll.KeyPress
         If isEnter(e) Then btnPost.PerformClick()
     End Sub
+
+
+    Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
+        Select Case keyData
+            Case Keys.Escape
+                btnClose.PerformClick()
+            Case Else
+                'Do Nothing
+        End Select
+
+        Return MyBase.ProcessCmdKey(msg, keyData)
+    End Function
 End Class

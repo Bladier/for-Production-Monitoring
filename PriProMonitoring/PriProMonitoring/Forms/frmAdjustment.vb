@@ -252,7 +252,7 @@
     'End Sub
 
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
-
+        Me.Close()
     End Sub
 
     Private Sub txtLength_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtLength.KeyPress
@@ -264,4 +264,19 @@
     End Sub
 
   
+    Private Sub frmAdjustment_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        txtSearch.Focus()
+    End Sub
+
+
+    Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
+        Select Case keyData
+            Case Keys.Escape
+                btnClose.PerformClick()
+            Case Else
+                'Do Nothing
+        End Select
+
+        Return MyBase.ProcessCmdKey(msg, keyData)
+    End Function
 End Class

@@ -102,7 +102,7 @@ Partial Class frmPaperRoll
         Me.txtOuterDiameter.Location = New System.Drawing.Point(117, 75)
         Me.txtOuterDiameter.Name = "txtOuterDiameter"
         Me.txtOuterDiameter.Size = New System.Drawing.Size(173, 21)
-        Me.txtOuterDiameter.TabIndex = 3
+        Me.txtOuterDiameter.TabIndex = 2
         Me.txtOuterDiameter.WatermarkColor = System.Drawing.Color.Gray
         Me.txtOuterDiameter.WatermarkText = "OUter Diameter"
         '
@@ -111,7 +111,7 @@ Partial Class frmPaperRoll
         Me.txtSpoolDiameter.Location = New System.Drawing.Point(117, 103)
         Me.txtSpoolDiameter.Name = "txtSpoolDiameter"
         Me.txtSpoolDiameter.Size = New System.Drawing.Size(173, 21)
-        Me.txtSpoolDiameter.TabIndex = 4
+        Me.txtSpoolDiameter.TabIndex = 3
         Me.txtSpoolDiameter.Text = "8.5"
         Me.txtSpoolDiameter.WatermarkColor = System.Drawing.Color.Gray
         Me.txtSpoolDiameter.WatermarkText = "Spool Diameter"
@@ -121,7 +121,7 @@ Partial Class frmPaperRoll
         Me.txtPaperThickness.Location = New System.Drawing.Point(117, 132)
         Me.txtPaperThickness.Name = "txtPaperThickness"
         Me.txtPaperThickness.Size = New System.Drawing.Size(173, 21)
-        Me.txtPaperThickness.TabIndex = 5
+        Me.txtPaperThickness.TabIndex = 4
         Me.txtPaperThickness.WatermarkColor = System.Drawing.Color.Gray
         Me.txtPaperThickness.WatermarkText = "Paper Thickness"
         '
@@ -130,7 +130,7 @@ Partial Class frmPaperRoll
         Me.btnsave.Location = New System.Drawing.Point(164, 158)
         Me.btnsave.Name = "btnsave"
         Me.btnsave.Size = New System.Drawing.Size(75, 24)
-        Me.btnsave.TabIndex = 6
+        Me.btnsave.TabIndex = 5
         Me.btnsave.Text = "&Save"
         Me.btnsave.UseVisualStyleBackColor = True
         '
@@ -139,7 +139,7 @@ Partial Class frmPaperRoll
         Me.btnClose.Location = New System.Drawing.Point(245, 158)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 24)
-        Me.btnClose.TabIndex = 7
+        Me.btnClose.TabIndex = 6
         Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '

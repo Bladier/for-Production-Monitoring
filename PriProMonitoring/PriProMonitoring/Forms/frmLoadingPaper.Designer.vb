@@ -44,7 +44,7 @@ Partial Class frmLoadingPaper
         Me.lvpapList.Location = New System.Drawing.Point(12, 53)
         Me.lvpapList.Name = "lvpapList"
         Me.lvpapList.Size = New System.Drawing.Size(391, 97)
-        Me.lvpapList.TabIndex = 1
+        Me.lvpapList.TabIndex = 0
         Me.lvpapList.UseCompatibleStateImageBehavior = False
         Me.lvpapList.View = System.Windows.Forms.View.Details
         '
@@ -74,7 +74,7 @@ Partial Class frmLoadingPaper
         Me.btnsetup.Location = New System.Drawing.Point(247, 156)
         Me.btnsetup.Name = "btnsetup"
         Me.btnsetup.Size = New System.Drawing.Size(75, 23)
-        Me.btnsetup.TabIndex = 2
+        Me.btnsetup.TabIndex = 1
         Me.btnsetup.Text = "Setup"
         Me.btnsetup.UseVisualStyleBackColor = True
         '
@@ -83,7 +83,7 @@ Partial Class frmLoadingPaper
         Me.btnClose.Location = New System.Drawing.Point(328, 156)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 23)
-        Me.btnClose.TabIndex = 3
+        Me.btnClose.TabIndex = 2
         Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '

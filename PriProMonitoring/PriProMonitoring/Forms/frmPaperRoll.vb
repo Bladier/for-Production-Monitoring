@@ -56,6 +56,7 @@
     End Function
 
     Private Sub frmPaperRoll_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        CboPaperRoll.Focus()
         lOADPAPROLL()
 
     End Sub

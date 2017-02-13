@@ -258,7 +258,7 @@ Partial Class FrmMain
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
         Me.ToolStrip1.Size = New System.Drawing.Size(1003, 50)
-        Me.ToolStrip1.TabIndex = 9
+        Me.ToolStrip1.TabIndex = 1
         '
         'ToolStripLogin
         '
@@ -351,7 +351,7 @@ Partial Class FrmMain
         Me.Panel1.Location = New System.Drawing.Point(0, 74)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1003, 476)
-        Me.Panel1.TabIndex = 11
+        Me.Panel1.TabIndex = 2
         '
         'FrmMain
         '

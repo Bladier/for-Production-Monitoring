@@ -63,13 +63,13 @@
     End Sub
 
     Private Sub frmLoadingPaper_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+        txtSearch.Focus()
     End Sub
 
 
     Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
         Select Case keyData
-            Case Keys.F1
+            Case Keys.Escape
                 btnClose.PerformClick()
             Case Else
                 'Do Nothing
