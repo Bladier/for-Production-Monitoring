@@ -42,7 +42,8 @@
             ToolStripActiveUser.ToolTipText = "No Acive user"
         End If
 
-
+        'reports
+        ProductionToolstrip.Enabled = Not st
 
     End Sub
 
@@ -339,4 +340,7 @@
 
     End Sub
 
+    Private Sub ProductionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductionToolstrip.Click
+        frmQDate.Show()
+    End Sub
 End Class
