@@ -3,9 +3,17 @@
     Dim mysql As String = String.Empty
     Dim ds As New DataSet
 
+    Private get_Chamber_Num As Integer = GetOption("Number Chamber")
+
     Dim CHAMBER As String
 
     Private Sub frmPaperRoll_List_Chamber_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        If get_Chamber_Num = 1 Then
+            rbChamberC.Visible = False
+            rbChamberB.Checked = True
+        End If
+
+
         If txtsearch1.Text <> "" Then
             btnSearch1.PerformClick()
             Exit Sub
@@ -20,7 +28,7 @@
             CHAMBER = rbChamberC.Text
         End If
 
-        Dim mysql As String = "SELECT P.PAPROLL_ID,P.PAPIDS,M.PAPDESC,P.PAPROLL_SERIAL,P.Chamber FROM TBLPAPERROLL P " & _
+        Dim mysql As String = "SELECT P.PAPROLL_ID,P.PAPIDS,M.PAPDESC,P.PAPROLL_SERIAL FROM TBLPAPERROLL P " & _
                               "INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID = P.PAPIDS where P.STATUS <> '2' " & _
                               "AND M.CHAMBERDESC = '" & CHAMBER & "'"
 
@@ -61,8 +69,6 @@
     Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
         If LvPaperRollList.SelectedItems.Count = 0 Then Exit Sub
 
-        If rbChamberB.Checked = False And rbChamberC.Checked = False Then Exit Sub
-
         'Initialization
         If Not PapStatus Then
 
@@ -73,12 +79,14 @@
             lv.SubItems.Add(LvPaperRollList.SelectedItems(0).SubItems(3).Text)
             lv.SubItems.Add(LvPaperRollList.SelectedItems(0).SubItems(1).Text)
 
-            Exit Sub
             Me.Close()
+            Exit Sub
         End If
 
         ' Change paper roll
-        If Not Chamber_check1(LvPaperRollList.SelectedItems(0).SubItems(1).Text) Then
+        If rbChamberB.Checked = False And rbChamberC.Checked = False Then Exit Sub
+
+        If Not Chamber_check1(LvPaperRollList.SelectedItems(0).SubItems(0).Text) Then
 
             RollstatInactive(0) 'update last load to 0
 
@@ -165,9 +173,8 @@
 
 
     Private Function Chamber_check1(ByVal id As Integer) As Boolean
-
         mysql = "SELECT * FROM TBLPAPERROLL P INNER JOIN TBLPAPROLL_MAIN PM " & _
-               "ON P.PAPIDS =PM.PAPID WHERE PM.PAPID ='" & id & "' AND STATUS = '1'"
+               "ON P.PAPIDS =PM.PAPID WHERE P.PAPROLL_ID ='" & id & "' AND STATUS = '1'"
         ds = LoadSQL(mysql, "TBLPAPERROLL")
 
 
@@ -175,13 +182,6 @@
             MsgBox("This paper roll currently loaded.", MsgBoxStyle.Information, "Load")
             Return True
         End If
-
-
-        Dim mysql1 As String = "SELECT * FROM TBLPAPROLL_MAIN PM INNER JOIN TBLPAPERROLL P ON P.PAPIDS = PM.PAPID " & _
-                                "WHERE PAPID = '" & id & "' " & _
-                               "AND PAPDESC = '" & LvPaperRollList.SelectedItems(0).SubItems(2).Text & "' " & _
-                               "AND P.STATUS = 1"
-        ds = LoadSQL(mysql1, "TBLPAPROLL_MAIN")
 
         Try
             If ds.Tables(0).Rows.Count = 0 Then
@@ -228,7 +228,6 @@
         Else
             loadPaperRollSearch(txtsearch1.Text)
         End If
-
     End Sub
 
     Private Sub rbChamberC_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rbChamberC.CheckedChanged
@@ -304,11 +303,17 @@
     Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
         Select Case keyData
             Case Keys.Escape
-                Me.Close()
+                btnClose.PerformClick()
             Case Else
                 'Do Nothing
         End Select
 
         Return MyBase.ProcessCmdKey(msg, keyData)
     End Function
+
+    Private Sub txtsearch1_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtsearch1.KeyPress
+        If isEnter(e) Then
+            btnSearch1.PerformClick()
+        End If
+    End Sub
 End Class

@@ -44,6 +44,7 @@ Public Class frmMonitoring
         mysql &= vbCrLf & "	GROUP BY P.PAPCODE,R.PAPROLL_SERIAL,PR.PAPCUT_DESC,PR.PAPCUT_CODE,PR.PAPERCUT	"
 
         Dim ds As DataSet = LoadSQL(mysql, "tblPAPROLL_MAIN")
+        If ds.Tables(0).Rows.Count = 0 Then Exit Sub
 
         Dim TMPPAPDESC As String = IIf(IsDBNull(ds.Tables(0).Rows(0).Item("PAPCUT_DESC")), "", ds.Tables(0).Rows(0).Item("PAPCUT_DESC"))
 

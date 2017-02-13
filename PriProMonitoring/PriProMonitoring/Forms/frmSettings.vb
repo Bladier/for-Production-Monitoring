@@ -312,7 +312,11 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
             With paproll
                 .PAPERCODE = oSheet.Cells(cnt, 1).Value
                 .PAPERDESCRIPTION = oSheet.Cells(cnt, 2).Value
-                .ChamberDesc = oSheet.Cells(cnt, 3).Value
+                If txtChamber.Text = 1 Then
+                    .ChamberDesc = "Chamber B"
+                Else
+                    .ChamberDesc = oSheet.Cells(cnt, 3).Value
+                End If
             End With
             paproll.Save_Magazine()
 
@@ -371,7 +375,11 @@ NextToExit: MsgBox("Please load IMD First!", MsgBoxStyle.Critical, "Import")
             With paproll
                 .PAPERCODE = oSheet.Cells(cnt, 1).Value
                 .PAPERDESCRIPTION = oSheet.Cells(cnt, 2).Value
-                .PAPERDESCRIPTION = oSheet.Cells(cnt, 3).Value
+                If txtChamber.Text = 1 Then
+                    .ChamberDesc = "Chamber B"
+                Else
+                    .ChamberDesc = oSheet.Cells(cnt, 3).Value
+                End If
             End With
             paproll.Save_Magazine()
 

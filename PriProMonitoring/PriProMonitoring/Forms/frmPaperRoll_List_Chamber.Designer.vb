@@ -30,7 +30,6 @@ Partial Class frmPaperRoll_List_Chamber
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txtsearch1 = New PriProMonitoring.watermark()
         Me.btnSearch1 = New System.Windows.Forms.Button()
@@ -68,7 +67,7 @@ Partial Class frmPaperRoll_List_Chamber
         Me.LvPaperRollList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LvPaperRollList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader1})
+        Me.LvPaperRollList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5})
         Me.LvPaperRollList.Font = New System.Drawing.Font("MS Reference Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LvPaperRollList.FullRowSelect = True
         Me.LvPaperRollList.GridLines = True
@@ -94,17 +93,12 @@ Partial Class frmPaperRoll_List_Chamber
         'ColumnHeader4
         '
         Me.ColumnHeader4.Text = "Description"
-        Me.ColumnHeader4.Width = 270
+        Me.ColumnHeader4.Width = 414
         '
         'ColumnHeader5
         '
         Me.ColumnHeader5.Text = "Paper Roll"
-        Me.ColumnHeader5.Width = 201
-        '
-        'ColumnHeader1
-        '
-        Me.ColumnHeader1.Text = "Chamber"
-        Me.ColumnHeader1.Width = 135
+        Me.ColumnHeader5.Width = 396
         '
         'GroupBox1
         '
@@ -223,7 +217,6 @@ Partial Class frmPaperRoll_List_Chamber
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents txtsearch1 As PriProMonitoring.watermark
     Friend WithEvents btnSearch1 As System.Windows.Forms.Button

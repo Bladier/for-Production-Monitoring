@@ -142,7 +142,7 @@
             Case Keys.Escape
                 Me.Close()
             Case Else
-                Me.Close()
+
         End Select
 
         Return MyBase.ProcessCmdKey(msg, keyData)
