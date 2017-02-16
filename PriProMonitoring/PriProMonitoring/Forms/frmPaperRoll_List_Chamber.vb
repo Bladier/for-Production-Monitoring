@@ -14,6 +14,11 @@
             rbChamberB.Checked = True
         End If
 
+        If ModName = "Paper roll Edit" Then
+            btnView.Visible = True
+        Else
+            btnView.Visible = False
+        End If
 
         If txtsearch1.Text <> "" Then
             btnSearch1.PerformClick()
@@ -307,5 +312,18 @@
         If isEnter(e) Then
             btnSearch1.PerformClick()
         End If
+    End Sub
+
+    Private Sub btnView_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnView.Click
+        If LvPaperRollList.Items.Count = 0 Then Exit Sub
+
+        Dim idx As Integer = LvPaperRollList.FocusedItem.Text
+
+        Dim selected_paper As New PaperRoll
+        selected_paper.LoadProll(idx)
+
+        frmPaperRoll.LoadPaper_Roll(selected_paper)
+        frmPaperRoll.Show()
+        Me.Close()
     End Sub
 End Class

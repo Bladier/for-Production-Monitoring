@@ -26,6 +26,8 @@ Partial Class frmPaperRoll_List_Chamber
         Me.btnClose = New System.Windows.Forms.Button()
         Me.btnSelect = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnSearch1 = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.rbChamberC = New System.Windows.Forms.RadioButton()
         Me.rbChamberB = New System.Windows.Forms.RadioButton()
@@ -35,8 +37,7 @@ Partial Class frmPaperRoll_List_Chamber
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.LvPaperRollList = New System.Windows.Forms.ListView()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnSearch1 = New System.Windows.Forms.Button()
+        Me.btnView = New System.Windows.Forms.Button()
         Me.txtsearch1 = New PriProMonitoring.watermark()
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -75,6 +76,25 @@ Partial Class frmPaperRoll_List_Chamber
         Me.GroupBox1.Size = New System.Drawing.Size(817, 43)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
+        '
+        'btnSearch1
+        '
+        Me.btnSearch1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSearch1.Location = New System.Drawing.Point(716, 10)
+        Me.btnSearch1.Name = "btnSearch1"
+        Me.btnSearch1.Size = New System.Drawing.Size(95, 30)
+        Me.btnSearch1.TabIndex = 1
+        Me.btnSearch1.Text = "Search"
+        Me.btnSearch1.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(6, 17)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(46, 15)
+        Me.Label1.TabIndex = 6
+        Me.Label1.Text = "Search"
         '
         'Panel1
         '
@@ -159,24 +179,15 @@ Partial Class frmPaperRoll_List_Chamber
         Me.LvPaperRollList.UseCompatibleStateImageBehavior = False
         Me.LvPaperRollList.View = System.Windows.Forms.View.Details
         '
-        'Label1
+        'btnView
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 17)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(46, 15)
-        Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Search"
-        '
-        'btnSearch1
-        '
-        Me.btnSearch1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSearch1.Location = New System.Drawing.Point(716, 10)
-        Me.btnSearch1.Name = "btnSearch1"
-        Me.btnSearch1.Size = New System.Drawing.Size(95, 30)
-        Me.btnSearch1.TabIndex = 1
-        Me.btnSearch1.Text = "Search"
-        Me.btnSearch1.UseVisualStyleBackColor = True
+        Me.btnView.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnView.Location = New System.Drawing.Point(3, 390)
+        Me.btnView.Name = "btnView"
+        Me.btnView.Size = New System.Drawing.Size(95, 30)
+        Me.btnView.TabIndex = 3
+        Me.btnView.Text = "&View"
+        Me.btnView.UseVisualStyleBackColor = True
         '
         'txtsearch1
         '
@@ -195,12 +206,14 @@ Partial Class frmPaperRoll_List_Chamber
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(824, 432)
+        Me.Controls.Add(Me.btnView)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btnSelect)
         Me.Controls.Add(Me.LvPaperRollList)
         Me.Controls.Add(Me.GroupBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.Name = "frmPaperRoll_List_Chamber"
         Me.Text = "PaperRoll List Chamber"
         Me.GroupBox1.ResumeLayout(False)
@@ -225,4 +238,5 @@ Partial Class frmPaperRoll_List_Chamber
     Friend WithEvents txtsearch1 As PriProMonitoring.watermark
     Friend WithEvents btnSearch1 As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents btnView As System.Windows.Forms.Button
 End Class
