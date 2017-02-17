@@ -6,6 +6,10 @@
 
     Dim selected_paper As PaperRoll
 
+    Friend seletected_serial As String
+
+    Dim subTOtal_length As Double = 0.0
+
     Friend Sub LoadPaper_Roll(ByVal pap As PaperRoll)
         If pap.PaperRollSErial = "" Then Exit Sub
 
@@ -27,7 +31,6 @@
         Else
             UpdateS()
         End If
-
     End Sub
 
     Private Sub SavePapRoll()
@@ -65,6 +68,7 @@
         Dim ans As DialogResult = MsgBox("Do you want to update this paper roll?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
         If ans = Windows.Forms.DialogResult.No Then Exit Sub
 
+        subTOtal_length = Get_Prints_To_Deduct(seletected_serial)
         Dim Paproll_Update As New PaperRoll
         With Paproll_Update
             .PAPID = gETPAPID(CboPaperRoll.Text)
@@ -73,7 +77,7 @@
             .Thickness = txtPaperThickness.Text
             .SpoolDiameter = txtSpoolDiameter.Text
             .TotalLength = CalcuteTotalength(txtOuterDiameter.Text, txtPaperThickness.Text, txtSpoolDiameter.Text)
-            .Remaining = CalcuteTotalength(txtOuterDiameter.Text, txtPaperThickness.Text, txtSpoolDiameter.Text)
+            .Remaining = CalcuteTotalength(txtOuterDiameter.Text, txtPaperThickness.Text, txtSpoolDiameter.Text) - subTOtal_length
         End With
 
         Paproll_Update.Update_roll()
@@ -246,6 +250,19 @@
 
 
     Private Function Get_Prints_To_Deduct(ByVal ser As String) As Double
-        Dim mysql As String = "SELECT * FROM TBL_PROLINE WHERE "
+        Dim total As Double = 0.0
+        Dim mysql As String = "SELECT paproll_serial,sum(SubTotal_Length)as Total FROM TBL_PROLINE WHERE PAPROLL_SERIAL = '" & ser & "' " & _
+                              "GROUP BY PAPROLL_SERIAL"
+        Dim ds As DataSet = LoadSQL(mysql, "tbl_proline")
+
+        Try
+            If ds.Tables(0).Rows.Count > 0 Then
+                total = ds.Tables(0).Rows(0).Item("Total") * Meter
+            End If
+        Catch ex As Exception
+            Return total
+        End Try
+
+        Return total
     End Function
 End Class

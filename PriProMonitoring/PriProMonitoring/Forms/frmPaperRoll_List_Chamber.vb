@@ -61,7 +61,7 @@
                               "INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID = P.PAPIDS where P.STATUS <> '2'"
 
         Dim ds As DataSet = LoadSQL(mysql, "TBL")
-        Dim count As Integer = ds.Tables(0).Rows.Count
+
 
         LvPaperRollList.Items.Clear()
         For Each dr As DataRow In ds.Tables(0).Rows
@@ -316,11 +316,14 @@
 
     Private Sub btnView_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnView.Click
         If LvPaperRollList.Items.Count = 0 Then Exit Sub
+        If LvPaperRollList.SelectedItems.Count = 0 Then Exit Sub
 
         Dim idx As Integer = LvPaperRollList.FocusedItem.Text
 
         Dim selected_paper As New PaperRoll
         selected_paper.LoadProll(idx)
+
+        frmPaperRoll.seletected_serial = LvPaperRollList.SelectedItems(0).SubItems(3).Text
 
         frmPaperRoll.LoadPaper_Roll(selected_paper)
         frmPaperRoll.Show()

@@ -65,7 +65,7 @@
         With dr
             _CODE = .Item("Code")
             _NAME = .Item("NAME")
-            _USERID = .Item("USERID")
+            _USERID = IIf(IsDBNull(.Item("UserID")), "", .Item("UserID"))
             _password = .Item("PASSWD")
             _GRPType = .Item("GRPTYPE")
         End With
