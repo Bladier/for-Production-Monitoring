@@ -48,7 +48,7 @@ Partial Class frmQDate
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(267, 232)
+        Me.ClientSize = New System.Drawing.Size(273, 228)
         Me.Controls.Add(Me.btnGenerate)
         Me.Controls.Add(Me.MonCal)
         Me.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

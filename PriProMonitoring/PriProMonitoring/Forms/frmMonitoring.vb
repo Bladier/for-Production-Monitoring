@@ -155,7 +155,8 @@ Public Class frmMonitoring
 
     ''' <summary>
     ''' calculate the remaining # of prints to be print
-    ''' </summary>
+    ''' </summary>lvItm.subItems(5).text = TOtal number of prints
+    ''' lvItm.subItems(4).text =  Paper cut
     ''' <remarks></remarks>
     Private Sub getRemaining()
 
@@ -199,7 +200,5 @@ Public Class frmMonitoring
         Return MyBase.ProcessCmdKey(msg, keyData)
     End Function
 
-    Private Sub frmMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-    End Sub
+   
 End Class
