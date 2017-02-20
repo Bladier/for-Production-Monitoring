@@ -139,6 +139,7 @@
     <Compile Include="CLASS\production.vb" />
     <Compile Include="CLASS\Reporting.vb" />
     <Compile Include="CLASS\Sales.vb" />
+    <Compile Include="MODULE\security.vb" />
     <Compile Include="dev\Dev.Designer.vb">
       <DependentUpon>Dev.vb</DependentUpon>
     </Compile>

@@ -7,9 +7,8 @@ Public Class frmSettings
     Dim tmplastSalesID As String
     Dim tmpdate As String
 
-
-
     Dim tmpchamber As New Chamber
+    Dim save_all_user As New ComputerUser
 
     Private Sub Disabled()
         Me.MaximumSize = New Size(689, 271)

@@ -4,6 +4,7 @@
     Private mySql As String = String.Empty
 
 #Region "Properties"
+
     Private _CODE As String
     Public Property CODE() As String
         Get
@@ -55,6 +56,7 @@
         End Set
     End Property
 
+  
 #End Region
 
 #Region "Procedures and Functions"
@@ -123,9 +125,6 @@
     End Function
 
 
-    'Public Function CheckUserType(ByVal Fname As String) As Boolean
-    '    Dim mysql As String = "SELECT * FROM " & fillData & " WHERE NAME = '" & Fname & "'"
-    '    Dim ds As 
-    'End Function
+
 #End Region
 End Class
