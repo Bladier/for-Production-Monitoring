@@ -57,6 +57,8 @@
 
         PaprollSave.SaveRoll()
 
+        savePapLog("Add paper roll")
+
         MsgBox("Paper Roll Saved", MsgBoxStyle.Information, "Save")
         clearFields()
 
@@ -81,11 +83,40 @@
         End With
 
         Paproll_Update.Update_roll()
+        savePapLog("Update paper roll")
 
         MsgBox("Paper Roll updated", MsgBoxStyle.Information, "Update")
         clearFields()
         disable()
     End Sub
+
+
+    Private Sub savePapLog(ByVal mod_name As String)
+        Dim savelog As New PaperLoadLog
+        Dim seletect_paperRoll As New PaperRoll
+        seletect_paperRoll.loadSerial(txtSerial.Text)
+
+        savelog.PaprollID = seletect_paperRoll.PaprollID
+        savelog.loaded_by = CurrentUser
+        savelog.Remaining = GetRemaining()
+        savelog.Modname = mod_name
+        savelog.SaveRoll()
+    End Sub
+
+    Private Function GetRemaining() As Double
+        Dim value As Double
+        Dim mysql As String = "SELECT * FROM TBLPAPERROLL " & _
+            "WHERE PAPROLL_SERIAL = '" & txtSerial.Text & " '"
+        Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
+
+        value = ds.Tables(0).Rows(0).Item("Remaining")
+
+        If ds.Tables(0).Rows.Count = 0 Then
+            Return 0
+        End If
+
+        Return value
+    End Function
 
     Private Sub clearFields()
         CboPaperRoll.SelectedItem = Nothing
