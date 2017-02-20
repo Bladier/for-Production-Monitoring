@@ -251,6 +251,7 @@
             NotYetLogin()
             Login.Show()
             statusUser.Text = "User"
+            ToolStripActiveUser.Text = "User"
         End If
     End Sub
 
