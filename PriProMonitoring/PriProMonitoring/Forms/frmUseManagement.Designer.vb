@@ -72,7 +72,7 @@ Partial Class frmUseManagement
         Me.CHKshowpassword.Location = New System.Drawing.Point(10, 243)
         Me.CHKshowpassword.Name = "CHKshowpassword"
         Me.CHKshowpassword.Size = New System.Drawing.Size(120, 20)
-        Me.CHKshowpassword.TabIndex = 12
+        Me.CHKshowpassword.TabIndex = 6
         Me.CHKshowpassword.Text = "Show Password"
         Me.CHKshowpassword.UseVisualStyleBackColor = True
         '
@@ -81,7 +81,7 @@ Partial Class frmUseManagement
         Me.txtpassword2.Location = New System.Drawing.Point(125, 125)
         Me.txtpassword2.Name = "txtpassword2"
         Me.txtpassword2.Size = New System.Drawing.Size(195, 22)
-        Me.txtpassword2.TabIndex = 11
+        Me.txtpassword2.TabIndex = 3
         Me.txtpassword2.UseSystemPasswordChar = True
         '
         'Label6
@@ -101,7 +101,7 @@ Partial Class frmUseManagement
         Me.cboStatus.Location = New System.Drawing.Point(125, 194)
         Me.cboStatus.Name = "cboStatus"
         Me.cboStatus.Size = New System.Drawing.Size(195, 24)
-        Me.cboStatus.TabIndex = 9
+        Me.cboStatus.TabIndex = 5
         '
         'Label5
         '
@@ -129,14 +129,14 @@ Partial Class frmUseManagement
         Me.CBoUSerType.Location = New System.Drawing.Point(125, 158)
         Me.CBoUSerType.Name = "CBoUSerType"
         Me.CBoUSerType.Size = New System.Drawing.Size(195, 24)
-        Me.CBoUSerType.TabIndex = 6
+        Me.CBoUSerType.TabIndex = 4
         '
         'txtpassword1
         '
         Me.txtpassword1.Location = New System.Drawing.Point(125, 91)
         Me.txtpassword1.Name = "txtpassword1"
         Me.txtpassword1.Size = New System.Drawing.Size(195, 22)
-        Me.txtpassword1.TabIndex = 5
+        Me.txtpassword1.TabIndex = 2
         Me.txtpassword1.UseSystemPasswordChar = True
         '
         'Label3
@@ -153,7 +153,7 @@ Partial Class frmUseManagement
         Me.txtFullname.Location = New System.Drawing.Point(125, 56)
         Me.txtFullname.Name = "txtFullname"
         Me.txtFullname.Size = New System.Drawing.Size(195, 22)
-        Me.txtFullname.TabIndex = 3
+        Me.txtFullname.TabIndex = 1
         '
         'Label2
         '
@@ -169,7 +169,7 @@ Partial Class frmUseManagement
         Me.txtusername.Location = New System.Drawing.Point(125, 22)
         Me.txtusername.Name = "txtusername"
         Me.txtusername.Size = New System.Drawing.Size(195, 22)
-        Me.txtusername.TabIndex = 1
+        Me.txtusername.TabIndex = 0
         '
         'Label1
         '
@@ -188,7 +188,7 @@ Partial Class frmUseManagement
         Me.lvUsers.Location = New System.Drawing.Point(12, 12)
         Me.lvUsers.Name = "lvUsers"
         Me.lvUsers.Size = New System.Drawing.Size(274, 299)
-        Me.lvUsers.TabIndex = 0
+        Me.lvUsers.TabIndex = 4
         Me.lvUsers.UseCompatibleStateImageBehavior = False
         Me.lvUsers.View = System.Windows.Forms.View.Details
         '
@@ -216,7 +216,7 @@ Partial Class frmUseManagement
         Me.btnClose.Location = New System.Drawing.Point(579, 317)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 33)
-        Me.btnClose.TabIndex = 2
+        Me.btnClose.TabIndex = 3
         Me.btnClose.Text = "&Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
@@ -225,7 +225,7 @@ Partial Class frmUseManagement
         Me.btnEdit.Location = New System.Drawing.Point(500, 317)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(75, 33)
-        Me.btnEdit.TabIndex = 3
+        Me.btnEdit.TabIndex = 2
         Me.btnEdit.Text = "&Edit"
         Me.btnEdit.UseVisualStyleBackColor = True
         '

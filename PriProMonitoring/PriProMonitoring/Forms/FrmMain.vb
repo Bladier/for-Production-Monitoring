@@ -16,6 +16,7 @@
         AdjustmentToolStripMenuItem.Enabled = Not st
         PaperEmptyDeclarationToolStripMenuItem.Enabled = Not st
         InitializePaperRollToolStripMenuItem.Enabled = Not st
+        UserManagementToolStripMenuItem.Enabled = Not st
 
         If Not locked Then
             SettingsToolStripMenuItem.Enabled = st

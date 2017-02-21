@@ -140,7 +140,7 @@
 
 
     Friend Sub Modify_User()
-        mysql = "SELECT * FROM " & filldata & " WHERE User_name ='" & _username & "' and ID = '" & _ID & "'"
+        mysql = "SELECT * FROM " & filldata & " WHERE ID = '" & _ID & "'"
         Dim ds As DataSet = LoadSQL(mysql, filldata)
         With ds.Tables(0).Rows(0)
             .Item("User_name") = _username
@@ -179,11 +179,16 @@
         mysql &= vbCrLf & String.Format(" WHERE UPPER(USER_NAME) =UPPER('" & Code & "')")
         Dim ds As DataSet
 
-        ds = LoadSQL(mysql, filldata)
-        If IsDBNull(ds.Tables(0).Rows(0).Item("passwRd")) Then
-            Return False
-        End If
+        Try
 
+            ds = LoadSQL(mysql, filldata)
+            If IsDBNull(ds.Tables(0).Rows(0).Item("passwRd")) Then
+                Return False
+            End If
+
+        Catch ex As Exception
+
+        End Try
         Return True
     End Function
 
