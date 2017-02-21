@@ -61,7 +61,8 @@
 
         MsgBox("Paper Roll Saved", MsgBoxStyle.Information, "Save")
         clearFields()
-
+        btnsave.Text = "&Save"
+        btnEdit.Text = "&Edit"
     End Sub
 
     Private Sub UpdateS()
@@ -88,6 +89,8 @@
         MsgBox("Paper Roll updated", MsgBoxStyle.Information, "Update")
         clearFields()
         disable()
+        btnsave.Text = "&Save"
+        btnEdit.Text = "&Edit"
     End Sub
 
 
