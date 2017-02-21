@@ -16,6 +16,7 @@
         AdjustmentToolStripMenuItem.Enabled = Not st
         PaperEmptyDeclarationToolStripMenuItem.Enabled = Not st
         InitializePaperRollToolStripMenuItem.Enabled = Not st
+        UserManagementToolStripMenuItem.Enabled = Not st
 
         If Not locked Then
             SettingsToolStripMenuItem.Enabled = st
@@ -343,5 +344,13 @@
 
     Private Sub ProductionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductionToolstrip.Click
         frmQDate.Show()
+    End Sub
+
+    Private Sub UserManagementToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UserManagementToolStripMenuItem.Click
+        CloseForms("frmUseManagement")
+
+        frmUseManagement.TopLevel = False
+        Panel1.Controls.Add(frmUseManagement)
+        frmUseManagement.Show()
     End Sub
 End Class

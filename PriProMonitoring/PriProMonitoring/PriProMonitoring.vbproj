@@ -139,6 +139,13 @@
     <Compile Include="CLASS\production.vb" />
     <Compile Include="CLASS\Reporting.vb" />
     <Compile Include="CLASS\Sales.vb" />
+    <Compile Include="CLASS\Users.vb" />
+    <Compile Include="Forms\frmUseManagement.Designer.vb">
+      <DependentUpon>frmUseManagement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmUseManagement.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MODULE\security.vb" />
     <Compile Include="dev\Dev.Designer.vb">
       <DependentUpon>Dev.vb</DependentUpon>
@@ -428,6 +435,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUnallocatedPapercut.resx">
       <DependentUpon>frmUnallocatedPapercut.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUseManagement.resx">
+      <DependentUpon>frmUseManagement.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.vb</DependentUpon>
