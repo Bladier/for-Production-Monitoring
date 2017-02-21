@@ -4,6 +4,7 @@
     Private mySql As String = String.Empty
 
 #Region "Properties"
+
     Private _CODE As String
     Public Property CODE() As String
         Get
@@ -55,6 +56,7 @@
         End Set
     End Property
 
+  
 #End Region
 
 #Region "Procedures and Functions"
@@ -65,8 +67,8 @@
         With dr
             _CODE = .Item("Code")
             _NAME = .Item("NAME")
-            _USERID = .Item("USERID")
-            _password = .Item("PASSWD")
+            _USERID = IIf(IsDBNull(.Item("UserID")), "", .Item("UserID"))
+            _password = IIf(IsDBNull(.Item("PASSWD")), "", .Item("PASSWD"))
             _GRPType = .Item("GRPTYPE")
         End With
     End Sub
@@ -83,10 +85,16 @@
     End Sub
 
     Public Function LoginUser(ByVal user As String, ByVal password As String) As Boolean
-        mySql = "SELECT  * FROM " & fillData
-        mySql &= vbCrLf & String.Format(" WHERE UPPER(CODE) = UPPER('{0}') AND UPPER(PasswD) = UPPER('{1}')", user, password)
         Dim ds As DataSet
 
+        If IsRequiered_pass(user) Then
+            mySql = "SELECT  * FROM " & fillData
+            mySql &= vbCrLf & String.Format(" WHERE UPPER(CODE) = UPPER('{0}') AND UPPER(PasswD) = UPPER('{1}')", user, password)
+        Else
+            mySql = "SELECT  * FROM " & fillData
+            mySql &= vbCrLf & String.Format(" WHERE UPPER(CODE) = UPPER('{0}') OR UPPER(PasswD) = UPPER('{1}')", user, password)
+
+        End If
         ds = LoadSQLPOS(mySql, fillData)
         If ds.Tables(0).Rows.Count = 0 Then Return False
         For Each dr As DataRow In ds.Tables(0).Rows
@@ -123,9 +131,18 @@
     End Function
 
 
-    'Public Function CheckUserType(ByVal Fname As String) As Boolean
-    '    Dim mysql As String = "SELECT * FROM " & fillData & " WHERE NAME = '" & Fname & "'"
-    '    Dim ds As 
-    'End Function
+    Public Function IsRequiered_pass(ByVal Code As String) As Boolean
+        mySql = "SELECT * FROM " & fillData
+        mySql &= vbCrLf & String.Format(" WHERE LOWER(Code) ='" & Code & "'")
+        Dim ds As DataSet
+
+        ds = LoadSQLPOS(mySql)
+        If IsDBNull(ds.Tables(0).Rows(0).Item("passwd")) Then
+            Return False
+        End If
+
+        Return True
+    End Function
+
 #End Region
 End Class

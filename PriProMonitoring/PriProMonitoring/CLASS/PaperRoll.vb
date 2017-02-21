@@ -167,7 +167,7 @@
             .Item("thickness") = _Thickness
             .Item("spool_diameter") = _SpoolDiameter
             .Item("Total_Length") = _TotalLength
-            .Item("Addedby") = FrmMain.statusUser.Text
+            .Item("Addedby") = CurrentUser
             .Item("Created_at") = Now
             .Item("status") = 0
             .Item("Chamber") = ""
@@ -177,6 +177,25 @@
         database.SaveEntry(ds)
 
     End Sub
+
+    Public Sub Update_roll()
+        Dim mySql As String = String.Format("SELECT * FROM tblpaperRoll WHERE paproll_serial = '{0}'", _PaperRollSErial)
+        Dim ds As DataSet = LoadSQL(mySql, MainTable)
+
+        With ds.Tables(0).Rows(0)
+
+            .Item("thickness") = _Thickness
+            .Item("spool_diameter") = _SpoolDiameter
+            .Item("Total_Length") = _TotalLength
+            .Item("Addedby") = CurrentUser
+            .Item("Updated_At") = Now
+            .Item("Remaining") = _Remaining
+
+        End With
+
+        database.SaveEntry(ds, False)
+    End Sub
+
 
     Friend Sub loadSerial(ByVal serial As String)
         Dim mysql As String = "SELECT * FROM " & MainTable & " WHERE UPPER(PAPROLL_SERIAL) = UPPER('" & serial & "')"

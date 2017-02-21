@@ -9,7 +9,7 @@
         Dim user As String = DreadKnight(txtusername.Text)
         Dim pass As String = DreadKnight(txtpassword.Text)
 
-        Dim loginUser As New ComputerUser
+        Dim loginUser As New Users
         If Not loginUser.LoginUser(user, pass) Then
             wrongLogin += 1
             If wrongLogin >= 3 Then
@@ -25,9 +25,9 @@
 
         ' Success!
 
-        FrmMain.statusUser.Text = loginUser.NAME
-        FrmMain.ToolStripActiveUser.Text = "Welcome, " & loginUser.CODE
-        MsgBox("Welcome " & loginUser.CODE)
+        FrmMain.statusUser.Text = loginUser.Fname
+        FrmMain.ToolStripActiveUser.Text = "Welcome, " & loginUser.username
+        MsgBox("Welcome " & loginUser.username, MsgBoxStyle.Information, "Login")
 
         FrmMain.Show()
         FrmMain.NotYetLogin(False)

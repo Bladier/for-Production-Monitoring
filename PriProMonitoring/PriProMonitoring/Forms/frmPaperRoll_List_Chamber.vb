@@ -14,6 +14,11 @@
             rbChamberB.Checked = True
         End If
 
+        If ModName = "Paper roll Edit" Then
+            btnView.Visible = True
+        Else
+            btnView.Visible = False
+        End If
 
         If txtsearch1.Text <> "" Then
             btnSearch1.PerformClick()
@@ -29,7 +34,7 @@
             CHAMBER = rbChamberC.Text
         End If
 
-        Dim mysql As String = "SELECT P.PAPROLL_ID,P.PAPIDS,M.PAPDESC,P.PAPROLL_SERIAL FROM TBLPAPERROLL P " & _
+        Dim mysql As String = "SELECT P.PAPROLL_ID,P.PAPIDS,M.PAPDESC,P.PAPROLL_SERIAL,P.STATUS FROM TBLPAPERROLL P " & _
                               "INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID = P.PAPIDS where P.STATUS <> '2' " & _
                               "AND M.CHAMBERDESC = '" & CHAMBER & "'"
 
@@ -42,18 +47,21 @@
             lv.SubItems.Add(dr.Item("PAPIDS"))
             lv.SubItems.Add(dr.Item("PAPDESC"))
             lv.SubItems.Add(dr.Item("PAPROLL_SERIAL"))
+
+            If dr.Item("STATUS") = 1 Then
+                lv.BackColor = Color.Red
+            End If
         Next
 
-        CurrentLyUsed()
     End Sub
 
 
     Private Sub loadPaperRoll()
-        Dim mysql As String = "SELECT P.PAPROLL_ID,P.PAPIDS,M.PAPDESC,P.PAPROLL_SERIAL,P.Chamber FROM TBLPAPERROLL P " & _
+        Dim mysql As String = "SELECT P.PAPROLL_ID,P.PAPIDS,M.PAPDESC,P.PAPROLL_SERIAL,P.Chamber,P.STATUS FROM TBLPAPERROLL P " & _
                               "INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID = P.PAPIDS where P.STATUS <> '2'"
 
         Dim ds As DataSet = LoadSQL(mysql, "TBL")
-        Dim count As Integer = ds.Tables(0).Rows.Count
+
 
         LvPaperRollList.Items.Clear()
         For Each dr As DataRow In ds.Tables(0).Rows
@@ -62,9 +70,13 @@
             lv.SubItems.Add(dr.Item("PAPIDS"))
             lv.SubItems.Add(dr.Item("PAPDESC"))
             lv.SubItems.Add(dr.Item("PAPROLL_SERIAL"))
-        Next
 
-        CurrentLyUsed()
+
+            If dr.Item("STATUS") = 1 Then
+                lv.BackColor = Color.Red
+            End If
+
+        Next
     End Sub
 
     Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
@@ -245,7 +257,7 @@
     End Sub
 
     Private Sub loadPaperRollSearch(ByVal papSerial As String)
-        Dim mysql As String = "SELECT P.PAPROLL_ID,P.PAPIDS,M.PAPDESC,P.PAPROLL_SERIAL,M.CHAMBERDESC FROM TBLPAPERROLL P " & _
+        Dim mysql As String = "SELECT P.PAPROLL_ID,P.PAPIDS,M.PAPDESC,P.PAPROLL_SERIAL,M.CHAMBERDESC,P.STATUS FROM TBLPAPERROLL P " & _
                               "INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID = P.PAPIDS " & _
                               "WHERE UPPER(P.PAPROLL_SERIAL) = UPPER('" & papSerial & "') OR UPPER(M.PAPDESC) = UPPER('" & papSerial & "')" & _
                               "and status <> '2'"
@@ -270,29 +282,13 @@
             Else
                 rbChamberC.Checked = True
             End If
-        Next
 
-
-        CurrentLyUsed()
-        Console.WriteLine(count & "paper roll found.")
-    End Sub
-
-    Private Sub CurrentLyUsed()
-
-        For Each itm As ListViewItem In LvPaperRollList.Items
-
-            Dim mysql As String = "SELECT paproll_ID,paproll_serial,chamber,PAPIDS,M.PAPDESC,M.CHAMBERDESC " & _
-                           "FROM TBLPAPERROLL INNER JOIN TBLPAPROLL_MAIN M ON M.PAPID =TBLPAPERROLL.PAPIDS " & _
-                           "WHERE paproll_serial='" & itm.SubItems(3).Text & "' AND STATUS='1'"
-
-            Dim ds As DataSet = LoadSQL(mysql, "tblpaperroll")
-
-            If ds.Tables(0).Rows.Count = 1 Then
-                itm.BackColor = Color.Red
-            Else
-                itm.BackColor = Color.White
+            If dr.Item("Status") = 1 Then
+                lv.BackColor = Color.Red
             End If
         Next
+
+        Console.WriteLine(count & "paper roll found.")
     End Sub
 
     Private Sub CLEARFIELDS()
@@ -316,5 +312,21 @@
         If isEnter(e) Then
             btnSearch1.PerformClick()
         End If
+    End Sub
+
+    Private Sub btnView_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnView.Click
+        If LvPaperRollList.Items.Count = 0 Then Exit Sub
+        If LvPaperRollList.SelectedItems.Count = 0 Then Exit Sub
+
+        Dim idx As Integer = LvPaperRollList.FocusedItem.Text
+
+        Dim selected_paper As New PaperRoll
+        selected_paper.LoadProll(idx)
+
+        frmPaperRoll.seletected_serial = LvPaperRollList.SelectedItems(0).SubItems(3).Text
+
+        frmPaperRoll.LoadPaper_Roll(selected_paper)
+        frmPaperRoll.Show()
+        Me.Close()
     End Sub
 End Class

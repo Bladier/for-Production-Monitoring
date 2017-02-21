@@ -7,7 +7,7 @@
     End Sub
 
     Private Sub LoadUnAllocatedsalesLine()
-        mysql = "SELECT * FROM TBL_PROLINE WHERE PAPROLL_SERIAL = 'Unallocated'"
+        mysql = "SELECT * FROM TBL_PROLINE WHERE PAPROLL_SERIAL = 'Unallocated' AND STATUS = '0'"
 
         Dim ds As DataSet = LoadSQL(mysql, "tbl_proline")
 

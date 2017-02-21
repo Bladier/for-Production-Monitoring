@@ -7,9 +7,8 @@ Public Class frmSettings
     Dim tmplastSalesID As String
     Dim tmpdate As String
 
-
-
     Dim tmpchamber As New Chamber
+    Dim save_all_user As New ComputerUser
 
     Private Sub Disabled()
         Me.MaximumSize = New Size(689, 271)
@@ -58,6 +57,7 @@ Public Class frmSettings
             txtAreaname.Text = GetOptionpPOS("Area Name")
             txtVersion.Text = GetOptionpPOS("Version")
 
+            save_User_from_POS() 'save all user from pos
             LoadIMD() ' lOADING IMD
             ImportPaperRoll() 'Paper roll
             ImportPapercut() 'ImportPapercut
@@ -86,6 +86,7 @@ Public Class frmSettings
         Else
 
             Me.Enabled = False
+            save_User_from_POS()
             LoadIMD()
             UpdatePaperRoll()
             ImportPapercut()
@@ -117,6 +118,31 @@ Public Class frmSettings
             UpdateOptions("DatabasePOS", txtpath.Text)
             UpdateOptions("Locked", "YES")
         End If
+    End Sub
+
+    Private Sub save_User_from_POS()
+        databasePOS.dbNamePOS = txtpath.Text
+
+        Dim save_user_into_db As New Users
+        Dim mysql As String = "SELECT * FROM SYSWORKGROUP"
+        Dim ds As DataSet = LoadSQLPOS(mysql, "SYSWORKGROUP")
+
+        For Each dr As DataRow In ds.Tables(0).Rows
+            If IsDBNull(dr.Item("Name")) Then Exit For
+            With save_user_into_db
+                .username = dr.Item("Code")
+                If IsDBNull(dr.Item("passwd")) Then
+                    .passwd = ""
+                Else
+                    .passwd = dr.Item("passwd")
+                End If
+
+                .Fname = dr.Item("Name")
+                .userType = dr.Item("GRPtype")
+                .status = 1
+                .saveUser()
+            End With
+        Next
     End Sub
 
     Private Sub LoadIMD()

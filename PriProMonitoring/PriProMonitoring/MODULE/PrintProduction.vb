@@ -6,6 +6,7 @@
     Dim mysql As String = String.Empty
 
     Public Sub Production()
+        dbOpen()
         Dim mysql As String = "SELECT * FROM TBLPRO WHERE STATUS = '0'"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPRO")
 
@@ -120,5 +121,6 @@ nextlineTodo:
                 End If
             End If
         Next
+        dbClose()
     End Sub
 End Module

@@ -14,6 +14,8 @@ Module mod_system
 
     Public ModName As String = ""
     Public Remaining_Per_Papercut As Double = 0.0
+    Public BranchCode As String = GetOption("Branch Code")
+
 
     Friend Function DigitOnly(ByVal e As System.Windows.Forms.KeyPressEventArgs, Optional ByVal isWhole As Boolean = False)
         Console.WriteLine("char: " & e.KeyChar & " -" & Char.IsDigit(e.KeyChar))

@@ -4,9 +4,33 @@
     Const value1 As Integer = 40
     Dim PAP As Hashtable
 
+    Dim selected_paper As PaperRoll
+
+    Friend seletected_serial As String
+
+    Dim subTOtal_length As Double = 0.0
+
+    Friend Sub LoadPaper_Roll(ByVal pap As PaperRoll)
+        If pap.PaperRollSErial = "" Then Exit Sub
+
+        selected_paper = pap
+
+        CboPaperRoll.Text = GetpapByID(pap.PAPID)
+        txtSerial.Text = pap.PaperRollSErial
+        txtOuterDiameter.Text = pap.OuterDiameter
+        txtSpoolDiameter.Text = pap.SpoolDiameter
+        txtPaperThickness.Text = pap.Thickness
+
+        disable(false)
+    End Sub
+
 
     Private Sub btnsave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnsave.Click
-        SavePapRoll()
+        If btnsave.Text = "&Save" Then
+            SavePapRoll()
+        Else
+            UpdateS()
+        End If
     End Sub
 
     Private Sub SavePapRoll()
@@ -33,10 +57,66 @@
 
         PaprollSave.SaveRoll()
 
+        savePapLog("Add paper roll")
+
         MsgBox("Paper Roll Saved", MsgBoxStyle.Information, "Save")
         clearFields()
 
     End Sub
+
+    Private Sub UpdateS()
+        If Not isValid() Then Exit Sub
+
+        Dim ans As DialogResult = MsgBox("Do you want to update this paper roll?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
+        If ans = Windows.Forms.DialogResult.No Then Exit Sub
+
+        subTOtal_length = Get_Prints_To_Deduct(seletected_serial)
+        Dim Paproll_Update As New PaperRoll
+        With Paproll_Update
+            .PAPID = gETPAPID(CboPaperRoll.Text)
+            .PaperRollSErial = txtSerial.Text
+            .OuterDiameter = txtOuterDiameter.Text
+            .Thickness = txtPaperThickness.Text
+            .SpoolDiameter = txtSpoolDiameter.Text
+            .TotalLength = CalcuteTotalength(txtOuterDiameter.Text, txtPaperThickness.Text, txtSpoolDiameter.Text)
+            .Remaining = CalcuteTotalength(txtOuterDiameter.Text, txtPaperThickness.Text, txtSpoolDiameter.Text) - subTOtal_length
+        End With
+
+        Paproll_Update.Update_roll()
+        savePapLog("Update paper roll")
+
+        MsgBox("Paper Roll updated", MsgBoxStyle.Information, "Update")
+        clearFields()
+        disable()
+    End Sub
+
+
+    Private Sub savePapLog(ByVal mod_name As String)
+        Dim savelog As New PaperLoadLog
+        Dim seletect_paperRoll As New PaperRoll
+        seletect_paperRoll.loadSerial(txtSerial.Text)
+
+        savelog.PaprollID = seletect_paperRoll.PaprollID
+        savelog.loaded_by = CurrentUser
+        savelog.Remaining = GetRemaining()
+        savelog.Modname = mod_name
+        savelog.SaveRoll()
+    End Sub
+
+    Private Function GetRemaining() As Double
+        Dim value As Double
+        Dim mysql As String = "SELECT * FROM TBLPAPERROLL " & _
+            "WHERE PAPROLL_SERIAL = '" & txtSerial.Text & " '"
+        Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
+
+        value = ds.Tables(0).Rows(0).Item("Remaining")
+
+        If ds.Tables(0).Rows.Count = 0 Then
+            Return 0
+        End If
+
+        Return value
+    End Function
 
     Private Sub clearFields()
         CboPaperRoll.SelectedItem = Nothing
@@ -56,10 +136,25 @@
     End Function
 
     Private Sub frmPaperRoll_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        CboPaperRoll.Focus()
+        txtSearch.Focus()
         lOADPAPROLL()
 
     End Sub
+
+
+    Private Sub disable(Optional ByVal dis As Boolean = True)
+        CboPaperRoll.Enabled = dis
+        txtSerial.Enabled = dis
+        txtOuterDiameter.Enabled = dis
+        txtSpoolDiameter.Enabled = dis
+
+        If dis Then
+            txtPaperThickness.Enabled = Not dis
+        Else
+            txtPaperThickness.Enabled = dis
+        End If
+    End Sub
+
 
     Private Sub lOADPAPROLL()
         Dim mySql As String = "SELECT * FROM TBLPAPROLL_MAIN"
@@ -80,7 +175,7 @@
 
     End Sub
 
-    Private Function GetMagByID(ByVal id As Integer) As String
+    Private Function GetpapByID(ByVal id As Integer) As String
         For Each el As DictionaryEntry In PAP
             If el.Key = id Then
                 Return el.Value
@@ -147,5 +242,58 @@
         End Select
 
         Return MyBase.ProcessCmdKey(msg, keyData)
+    End Function
+
+    Private Sub btnUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
+        If btnsave.Text = "&Save" Then
+            btnsave.Text = "&Update"
+            btnEdit.Text = "&Cancel"
+
+            disable(False)
+            txtPaperThickness.Enabled = True
+        Else
+            Dim ans As DialogResult = MsgBox("Do you want Cancel?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
+            If ans = Windows.Forms.DialogResult.No Then Exit Sub
+            btnEdit.Text = "&Edit"
+            btnsave.Enabled = False
+            btnsave.Text = "&Save"
+            disable()
+            clearFields()
+        End If
+    End Sub
+
+    Private Sub txtSearch_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
+        If isEnter(e) Then btnSearch.PerformClick()
+    End Sub
+
+    Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
+        ModName = "Paper roll Edit"
+
+        frmPaperRoll_List_Chamber.txtsearch1.Text = txtSearch.Text
+        frmPaperRoll_List_Chamber.Show()
+
+
+    End Sub
+
+    Private Sub frmPaperRoll_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
+        ModName = ""
+    End Sub
+
+
+    Private Function Get_Prints_To_Deduct(ByVal ser As String) As Double
+        Dim total As Double = 0.0
+        Dim mysql As String = "SELECT paproll_serial,sum(SubTotal_Length)as Total FROM TBL_PROLINE WHERE PAPROLL_SERIAL = '" & ser & "' " & _
+                              "GROUP BY PAPROLL_SERIAL"
+        Dim ds As DataSet = LoadSQL(mysql, "tbl_proline")
+
+        Try
+            If ds.Tables(0).Rows.Count > 0 Then
+                total = ds.Tables(0).Rows(0).Item("Total") * Meter
+            End If
+        Catch ex As Exception
+            Return total
+        End Try
+
+        Return total
     End Function
 End Class
