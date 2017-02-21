@@ -32,6 +32,8 @@ Partial Class FrmMain
         Me.InitializePaperRollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductionToolstrip = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusDateandTime = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
@@ -57,8 +59,7 @@ Partial Class FrmMain
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMonitor = New System.Windows.Forms.ToolStripButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProductionToolstrip = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UserManagementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -77,7 +78,7 @@ Partial Class FrmMain
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AdjustmentToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.PaperEmptyDeclarationToolStripMenuItem, Me.InitializePaperRollToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AdjustmentToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.PaperEmptyDeclarationToolStripMenuItem, Me.InitializePaperRollToolStripMenuItem, Me.UserManagementToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(41, 20)
         Me.FileToolStripMenuItem.Text = "File"
@@ -118,6 +119,19 @@ Partial Class FrmMain
         Me.AddItemToolStripMenuItem.Name = "AddItemToolStripMenuItem"
         Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
         Me.AddItemToolStripMenuItem.Text = "Add &Item"
+        '
+        'ReportsToolStripMenuItem
+        '
+        Me.ReportsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductionToolstrip})
+        Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
+        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(65, 20)
+        Me.ReportsToolStripMenuItem.Text = "&Reports"
+        '
+        'ProductionToolstrip
+        '
+        Me.ProductionToolstrip.Name = "ProductionToolstrip"
+        Me.ProductionToolstrip.Size = New System.Drawing.Size(138, 22)
+        Me.ProductionToolstrip.Text = "&Production"
         '
         'StatusStrip1
         '
@@ -355,18 +369,11 @@ Partial Class FrmMain
         Me.Panel1.Size = New System.Drawing.Size(1003, 476)
         Me.Panel1.TabIndex = 2
         '
-        'ReportsToolStripMenuItem
+        'UserManagementToolStripMenuItem
         '
-        Me.ReportsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductionToolstrip})
-        Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
-        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(65, 20)
-        Me.ReportsToolStripMenuItem.Text = "&Reports"
-        '
-        'ProductionToolstrip
-        '
-        Me.ProductionToolstrip.Name = "ProductionToolstrip"
-        Me.ProductionToolstrip.Size = New System.Drawing.Size(152, 22)
-        Me.ProductionToolstrip.Text = "&Production"
+        Me.UserManagementToolStripMenuItem.Name = "UserManagementToolStripMenuItem"
+        Me.UserManagementToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
+        Me.UserManagementToolStripMenuItem.Text = "&User Management"
         '
         'FrmMain
         '
@@ -430,4 +437,5 @@ Partial Class FrmMain
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents ReportsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ProductionToolstrip As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents UserManagementToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

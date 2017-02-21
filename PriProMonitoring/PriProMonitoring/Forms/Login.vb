@@ -27,7 +27,7 @@
 
         FrmMain.statusUser.Text = loginUser.Fname
         FrmMain.ToolStripActiveUser.Text = "Welcome, " & loginUser.username
-        MsgBox("Welcome " & loginUser.username)
+        MsgBox("Welcome " & loginUser.username, MsgBoxStyle.Information, "Login")
 
         FrmMain.Show()
         FrmMain.NotYetLogin(False)

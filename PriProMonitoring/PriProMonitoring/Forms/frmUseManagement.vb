@@ -56,7 +56,7 @@
 
     Private Sub disabled_Fields(Optional ByVal ds_F As Boolean = True)
 
-        txtusername.Enabled = Not ds_F
+        txtusername.Enabled = ds_F
         txtFullname.Enabled = Not ds_F
         txtpassword1.Enabled = Not ds_F
         txtpassword2.Enabled = Not ds_F
@@ -127,7 +127,7 @@
 
     Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
         If btnSave.Text = "&Save" Then
-            disabled_Fields(True)
+            disabled_Fields()
             CHKshowpassword.Enabled = True
         Else
             Dim ans As DialogResult = MsgBox("Do you want to cancel?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information, "cancel")
