@@ -39,23 +39,26 @@
 
         Dim mysql As String = "SELECT * FROM TBLPAPERROLL WHERE PAPROLL_SERIAL = '" & txtSerial.Text & "'"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
-        If ds.Tables(0).Rows.Count >= 1 Then MsgBox("Paper Roll Serial Already Existed", MsgBoxStyle.Critical) : Exit Sub
+        If ds.Tables(0).Rows.Count >= 1 Then
+            MsgBox("Paper Roll Serial Already Existed", MsgBoxStyle.Critical) : Exit Sub
+        Else
 
-        Dim ans As DialogResult = MsgBox("Do you want to save this paper roll?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
-        If ans = Windows.Forms.DialogResult.No Then Exit Sub
+            Dim ans As DialogResult = MsgBox("Do you want to save this paper roll?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
+            If ans = Windows.Forms.DialogResult.No Then Exit Sub
 
-        Dim PaprollSave As New PaperRoll
-        With PaprollSave
-            .PAPID = gETPAPID(CboPaperRoll.Text)
-            .PaperRollSErial = txtSerial.Text
-            .OuterDiameter = txtOuterDiameter.Text
-            .Thickness = txtPaperThickness.Text
-            .SpoolDiameter = txtSpoolDiameter.Text
-            .TotalLength = CalcuteTotalength(txtOuterDiameter.Text, txtPaperThickness.Text, txtSpoolDiameter.Text)
-            .Remaining = CalcuteTotalength(txtOuterDiameter.Text, txtPaperThickness.Text, txtSpoolDiameter.Text)
-        End With
+            Dim PaprollSave As New PaperRoll
+            With PaprollSave
+                .PAPID = gETPAPID(CboPaperRoll.Text)
+                .PaperRollSErial = txtSerial.Text
+                .OuterDiameter = txtOuterDiameter.Text
+                .Thickness = txtPaperThickness.Text
+                .SpoolDiameter = txtSpoolDiameter.Text
+                .TotalLength = CalcuteTotalength(txtOuterDiameter.Text, txtPaperThickness.Text, txtSpoolDiameter.Text)
+                .Remaining = CalcuteTotalength(txtOuterDiameter.Text, txtPaperThickness.Text, txtSpoolDiameter.Text)
+            End With
 
-        PaprollSave.SaveRoll()
+            PaprollSave.SaveRoll()
+        End If
 
         savePapLog("Add paper roll")
 

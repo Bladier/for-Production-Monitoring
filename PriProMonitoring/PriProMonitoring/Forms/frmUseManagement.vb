@@ -120,10 +120,6 @@
         If Not Isvalid() Then Exit Sub
         If txtpassword1.Text <> txtpassword2.Text Then MsgBox("Password Not Matched", MsgBoxStyle.Critical, "Error") : Exit Sub
 
-        Dim mysql As String = "SELECT * FROM TBLUSER WHERE PASSWRD ='" & EncryptString(txtpassword1.Text) & "'"
-        Dim ds As DataSet = LoadSQL(mysql, "tbluser")
-        If ds.Tables(0).Rows.Count >= 1 Then MsgBox("Password ALready taken" & vbCrLf & _
-                                                    "make it unique.", MsgBoxStyle.Critical, "Registration") : Exit Sub
 
         Dim ans As DialogResult = MsgBox("Do you want to update?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information, "Update")
         If ans = Windows.Forms.DialogResult.No Then Exit Sub
