@@ -42,6 +42,9 @@
 
         frmAvailablePaperRoll.LvpaperRoll.Items.Clear()
         For Each dr As DataRow In ds.Tables(0).Rows
+            If dr.Item("PAPROLL_SERIAL") = Nothing Then
+                Exit For
+            End If
             Dim lv As ListViewItem = frmAvailablePaperRoll.LvpaperRoll.Items.Add(dr.Item("PROLL_ID"))
             lv.SubItems.Add(dr.Item("PAPID")) 'paper roll main ID
             lv.SubItems.Add(dr.Item("PAPCODE"))
