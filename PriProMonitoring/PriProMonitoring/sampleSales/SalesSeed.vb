@@ -29,7 +29,7 @@
     Private Diameter() As Double = {23.55, 20.35, 23.65, 21.25, 20.25}
     Private thickness() As Double = {0.2, 0.2, 0.2, 0.2, 0.2}
     Private spool() As Double = {8.6, 8.6, 8.5, 8.6, 8.5}
-    Private totalLength() As Double = {192.55, 130.25, 185.25, 150.256}
+    Private totalLength() As Double = {192.55, 130.25, 185.25, 150.256, 150.25}
     Private addedby() As String = {CurrentUser, CurrentUser, CurrentUser, CurrentUser, CurrentUser}
     Private created_at() As Date = {Now, Now, Now, Now, Now}
     Private updated_at() As Date = {Now, Now, Now, Now, Now}
