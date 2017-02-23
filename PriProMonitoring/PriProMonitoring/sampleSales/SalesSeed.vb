@@ -7,6 +7,7 @@
     Private QTY() As Integer = {1, 1, 2, 1, 1}
 
     Sub Populate()
+
         For i As Integer = 0 To Itemcode.Count - 1
 
             Dim tmpSales As New Sales
@@ -29,7 +30,7 @@
     Private thickness() As Double = {0.2, 0.2, 0.2, 0.2, 0.2}
     Private spool() As Double = {8.6, 8.6, 8.5, 8.6, 8.5}
     Private totalLength() As Double = {192.55, 130.25, 185.25, 150.256}
-    Private addedby() As String = {"Ellie Misiona", "Ellie Misiona", "Ellie Misiona", "Ellie Misiona", "Ellie Misiona"}
+    Private addedby() As String = {CurrentUser, CurrentUser, CurrentUser, CurrentUser, CurrentUser}
     Private created_at() As Date = {Now, Now, Now, Now, Now}
     Private updated_at() As Date = {Now, Now, Now, Now, Now}
     Private status1() As String = {0, 0, 0, 0, 0}
@@ -37,6 +38,8 @@
     Private remaining1() As Double = {192.55, 130.25, 185.25, 150.256, 150.25}
 
     Sub AddpaperRolls()
+        CurrentUser = "Ellie Misiona"
+
         For i As Integer = 0 To PAPIDS.Count - 1
 
             Dim tmppap As New PaperRoll
