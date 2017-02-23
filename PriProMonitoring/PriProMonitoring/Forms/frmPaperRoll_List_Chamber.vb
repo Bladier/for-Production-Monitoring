@@ -8,6 +8,7 @@
     Dim CHAMBER As String
 
     Private Sub frmPaperRoll_List_Chamber_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        FrmMain.ToolStripAdjusment.BackColor = Color.Coral
         txtsearch1.Focus()
         If get_Chamber_Num = 1 Then
             rbChamberC.Visible = False

@@ -259,6 +259,7 @@
 
     Private Sub ToolStripProduction_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripChangePaperRoll.Click
 
+
         MagazineStatus = IIf(GetOption("Magazine") = "YES", True, False)
         If Not MagazineStatus Then
             MsgBox("You need to initialize magazine before to begin.", MsgBoxStyle.Exclamation, "Production")
@@ -297,7 +298,6 @@
 
 
     Private Sub ToolStripAddpaperroll_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripAddpaperroll.Click
-
         CloseForms("frmPaperRoll")
 
         frmPaperRoll.TopLevel = False
@@ -323,7 +323,6 @@
 
  
     Private Sub ToolStripAdjusment_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripAdjusment.Click
-
         CloseForms("frmUnallocatedPapercut")
 
         frmUnallocatedPapercut.TopLevel = False
@@ -333,7 +332,6 @@
     End Sub
 
     Private Sub ToolStripMonitor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMonitor.Click
-
         CloseForms("frmMonitoring")
 
         frmMonitoring.TopLevel = False

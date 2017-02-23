@@ -146,6 +146,12 @@
     <Compile Include="Forms\frmUseManagement.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frmVoid.Designer.vb">
+      <DependentUpon>frmVoid.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmVoid.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MODULE\security.vb" />
     <Compile Include="dev\Dev.Designer.vb">
       <DependentUpon>Dev.vb</DependentUpon>
@@ -438,6 +444,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUseManagement.resx">
       <DependentUpon>frmUseManagement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmVoid.resx">
+      <DependentUpon>frmVoid.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.vb</DependentUpon>

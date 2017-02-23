@@ -30,6 +30,7 @@ Partial Class FrmMain
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PaperEmptyDeclarationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InitializePaperRollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UserManagementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -59,7 +60,6 @@ Partial Class FrmMain
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMonitor = New System.Windows.Forms.ToolStripButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.UserManagementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -106,6 +106,12 @@ Partial Class FrmMain
         Me.InitializePaperRollToolStripMenuItem.Name = "InitializePaperRollToolStripMenuItem"
         Me.InitializePaperRollToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
         Me.InitializePaperRollToolStripMenuItem.Text = "&Initialize paper roll"
+        '
+        'UserManagementToolStripMenuItem
+        '
+        Me.UserManagementToolStripMenuItem.Name = "UserManagementToolStripMenuItem"
+        Me.UserManagementToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
+        Me.UserManagementToolStripMenuItem.Text = "&User Management"
         '
         'ItemToolStripMenuItem
         '
@@ -306,6 +312,7 @@ Partial Class FrmMain
         '
         'ToolStripChangePaperRoll
         '
+        Me.ToolStripChangePaperRoll.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ToolStripChangePaperRoll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ToolStripChangePaperRoll.Image = CType(resources.GetObject("ToolStripChangePaperRoll.Image"), System.Drawing.Image)
         Me.ToolStripChangePaperRoll.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -368,12 +375,6 @@ Partial Class FrmMain
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1003, 476)
         Me.Panel1.TabIndex = 2
-        '
-        'UserManagementToolStripMenuItem
-        '
-        Me.UserManagementToolStripMenuItem.Name = "UserManagementToolStripMenuItem"
-        Me.UserManagementToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
-        Me.UserManagementToolStripMenuItem.Text = "&User Management"
         '
         'FrmMain
         '
