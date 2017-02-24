@@ -140,6 +140,12 @@
     <Compile Include="CLASS\Reporting.vb" />
     <Compile Include="CLASS\Sales.vb" />
     <Compile Include="CLASS\Users.vb" />
+    <Compile Include="Forms\frmDailyCounter.Designer.vb">
+      <DependentUpon>frmDailyCounter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDailyCounter.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmUseManagement.Designer.vb">
       <DependentUpon>frmUseManagement.vb</DependentUpon>
     </Compile>
@@ -363,6 +369,9 @@
   <ItemGroup>
     <EmbeddedResource Include="dev\Dev.resx">
       <DependentUpon>Dev.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDailyCounter.resx">
+      <DependentUpon>frmDailyCounter.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLoadingPaper.resx">
       <DependentUpon>frmLoadingPaper.vb</DependentUpon>

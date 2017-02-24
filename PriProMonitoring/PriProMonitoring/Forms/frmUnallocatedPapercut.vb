@@ -3,6 +3,7 @@
     Dim SelectedPaPRoll As PaperRoll
 
     Private Sub frmUnallocatedPapercut_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        FrmMain.ToolStripAdjusment.BackColor = Color.Coral
         LoadUnAllocatedsalesLine()
     End Sub
 
@@ -108,5 +109,9 @@
 
     Private Sub btnCLose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCLose.Click
         Me.Close()
+    End Sub
+
+    Private Sub frmUnallocatedPapercut_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
+        FrmMain.ToolStripAdjusment.BackColor = Color.WhiteSmoke
     End Sub
 End Class

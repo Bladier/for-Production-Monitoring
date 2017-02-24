@@ -59,7 +59,7 @@
         Dim ds As DataSet = LoadSQL(mysql, "ITEM")
 
         If ds.Tables(0).Rows.Count >= 1 Then
-            MsgBox("This item already existed", MsgBoxStyle.Critical, "Item")
+            MsgBox("This item already existed", MsgBoxStyle.Critical, "Item") : Exit Sub
         End If
 
         Dim ans As DialogResult = MsgBox("Do you want to save this item?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)

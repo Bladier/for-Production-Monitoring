@@ -142,6 +142,7 @@
     End Function
 
     Private Sub frmPaperRoll_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        FrmMain.ToolStripAddpaperroll.BackColor = Color.Coral
         txtSearch.Focus()
         lOADPAPROLL()
 
@@ -283,6 +284,7 @@
 
     Private Sub frmPaperRoll_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
         ModName = ""
+        FrmMain.ToolStripAddpaperroll.BackColor = Color.WhiteSmoke
     End Sub
 
 

@@ -40,7 +40,7 @@ Public Class frmMonitoring
         mysql &= vbCrLf & "	PR.PAPERCUT,SUM(PR.QUANTITY)AS TOTAL FROM TBL_PROLINE PR	"
         mysql &= vbCrLf & "	INNER JOIN TBLPAPERROLL R ON R.PAPROLL_SERIAL = PR.PAPROLL_SERIAL	"
         mysql &= vbCrLf & "	INNER JOIN TBLPAPROLL_MAIN P ON P.PAPID=R.PAPIDS	"
-        mysql &= vbCrLf & "	WHERE R.PAPROLL_SERIAL = '" & str & "' "
+        mysql &= vbCrLf & "	WHERE R.PAPROLL_SERIAL = '" & str & "' AND STATUS <> 'V'"
         mysql &= vbCrLf & "	GROUP BY P.PAPCODE,R.PAPROLL_SERIAL,PR.PAPCUT_DESC,PR.PAPCUT_CODE,PR.PAPERCUT	"
 
         Dim ds As DataSet = LoadSQL(mysql, "tblPAPROLL_MAIN")
@@ -201,4 +201,12 @@ Public Class frmMonitoring
     End Function
 
    
+  
+    Private Sub frmMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        FrmMain.ToolStripMonitor.BackColor = Color.Coral
+    End Sub
+
+    Private Sub frmMonitoring_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
+        FrmMain.ToolStripMonitor.BackColor = Color.WhiteSmoke
+    End Sub
 End Class
