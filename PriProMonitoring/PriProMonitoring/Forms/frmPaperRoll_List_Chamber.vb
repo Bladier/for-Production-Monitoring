@@ -8,7 +8,7 @@
     Dim CHAMBER As String
 
     Private Sub frmPaperRoll_List_Chamber_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        FrmMain.ToolStripAdjusment.BackColor = Color.Coral
+        FrmMain.ToolStripChangePaperRoll.BackColor = Color.Coral
         txtsearch1.Focus()
         If get_Chamber_Num = 1 Then
             rbChamberC.Visible = False
@@ -329,5 +329,9 @@
         frmPaperRoll.LoadPaper_Roll(selected_paper)
         frmPaperRoll.Show()
         Me.Close()
+    End Sub
+
+    Private Sub frmPaperRoll_List_Chamber_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
+        FrmMain.ToolStripChangePaperRoll.BackColor = Color.WhiteSmoke
     End Sub
 End Class

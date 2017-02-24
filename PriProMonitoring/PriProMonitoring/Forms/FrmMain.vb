@@ -351,4 +351,14 @@
         Panel1.Controls.Add(frmUseManagement)
         frmUseManagement.Show()
     End Sub
+
+    Private Sub DailyTotalToolCount1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DailyTotalToolCount1.Click
+        DailyTotal = "Daily"
+        frmDailyCounter.Show()
+    End Sub
+
+    Private Sub GrandTotalCountGrandTotal_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GrandTotalCountGrandTotal.Click
+        frmDailyCounter.Show()
+    End Sub
+
 End Class

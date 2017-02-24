@@ -140,16 +140,16 @@
     <Compile Include="CLASS\Reporting.vb" />
     <Compile Include="CLASS\Sales.vb" />
     <Compile Include="CLASS\Users.vb" />
+    <Compile Include="Forms\frmDailyCounter.Designer.vb">
+      <DependentUpon>frmDailyCounter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDailyCounter.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmUseManagement.Designer.vb">
       <DependentUpon>frmUseManagement.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmUseManagement.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmVoid.Designer.vb">
-      <DependentUpon>frmVoid.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmVoid.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MODULE\security.vb" />
@@ -370,6 +370,9 @@
     <EmbeddedResource Include="dev\Dev.resx">
       <DependentUpon>Dev.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDailyCounter.resx">
+      <DependentUpon>frmDailyCounter.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLoadingPaper.resx">
       <DependentUpon>frmLoadingPaper.vb</DependentUpon>
     </EmbeddedResource>
@@ -444,9 +447,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUseManagement.resx">
       <DependentUpon>frmUseManagement.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmVoid.resx">
-      <DependentUpon>frmVoid.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.vb</DependentUpon>

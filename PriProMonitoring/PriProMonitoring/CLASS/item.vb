@@ -137,6 +137,18 @@
             database.SaveEntry(ds, False)
         End If
 
+        mysql = "SELECT * FROM ITEM ORDER BY ITEM_ID DESC ROWS 1"
+        Dim ds1 As DataSet = LoadSQL(mysql, "ITEM")
+
+        _ItemID = ds1.Tables(0).Rows(0).Item("ITEM_ID")
+
+        For Each Item_Lne As ItemLine In itemLines
+            Item_Lne.Item_ID = _ItemID
+            Item_Lne.Save_itemLine()
+        Next
+
+
+
     End Sub
 
     Friend Sub SaveItemLine()

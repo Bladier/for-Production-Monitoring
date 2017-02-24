@@ -60,6 +60,10 @@ Partial Class FrmMain
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMonitor = New System.Windows.Forms.ToolStripButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripViews = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.DailyTotalToolCount1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GrandTotalCountGrandTotal = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -123,7 +127,7 @@ Partial Class FrmMain
         'AddItemToolStripMenuItem
         '
         Me.AddItemToolStripMenuItem.Name = "AddItemToolStripMenuItem"
-        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
+        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.AddItemToolStripMenuItem.Text = "Add &Item"
         '
         'ReportsToolStripMenuItem
@@ -136,7 +140,7 @@ Partial Class FrmMain
         'ProductionToolstrip
         '
         Me.ProductionToolstrip.Name = "ProductionToolstrip"
-        Me.ProductionToolstrip.Size = New System.Drawing.Size(138, 22)
+        Me.ProductionToolstrip.Size = New System.Drawing.Size(152, 22)
         Me.ProductionToolstrip.Text = "&Production"
         '
         'StatusStrip1
@@ -274,7 +278,7 @@ Partial Class FrmMain
         Me.ToolStrip1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStrip1.GripMargin = New System.Windows.Forms.Padding(2, 10, 10, 10)
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLogin, Me.ToolStripSeparator1, Me.ToolStripActiveUser, Me.ToolStripChangePaperRoll, Me.ToolStripSeparator2, Me.ToolStripAddpaperroll, Me.ToolStripSeparator4, Me.ToolStripAdjusment, Me.ToolStripSeparator3, Me.ToolStripMonitor})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLogin, Me.ToolStripSeparator1, Me.ToolStripActiveUser, Me.ToolStripChangePaperRoll, Me.ToolStripSeparator2, Me.ToolStripAddpaperroll, Me.ToolStripSeparator4, Me.ToolStripAdjusment, Me.ToolStripSeparator3, Me.ToolStripMonitor, Me.ToolStripSeparator5, Me.ToolStripViews})
         Me.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
         Me.ToolStrip1.Name = "ToolStrip1"
@@ -376,6 +380,33 @@ Partial Class FrmMain
         Me.Panel1.Size = New System.Drawing.Size(1003, 476)
         Me.Panel1.TabIndex = 2
         '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 50)
+        '
+        'ToolStripViews
+        '
+        Me.ToolStripViews.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DailyTotalToolCount1, Me.GrandTotalCountGrandTotal})
+        Me.ToolStripViews.Image = CType(resources.GetObject("ToolStripViews.Image"), System.Drawing.Image)
+        Me.ToolStripViews.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripViews.Name = "ToolStripViews"
+        Me.ToolStripViews.Size = New System.Drawing.Size(76, 47)
+        Me.ToolStripViews.Text = "Views"
+        Me.ToolStripViews.ToolTipText = "Total"
+        '
+        'DailyTotalToolCount1
+        '
+        Me.DailyTotalToolCount1.Name = "DailyTotalToolCount1"
+        Me.DailyTotalToolCount1.Size = New System.Drawing.Size(152, 22)
+        Me.DailyTotalToolCount1.Text = "&Daily Total"
+        '
+        'GrandTotalCountGrandTotal
+        '
+        Me.GrandTotalCountGrandTotal.Name = "GrandTotalCountGrandTotal"
+        Me.GrandTotalCountGrandTotal.Size = New System.Drawing.Size(152, 22)
+        Me.GrandTotalCountGrandTotal.Text = "&Grand Total"
+        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -439,4 +470,8 @@ Partial Class FrmMain
     Friend WithEvents ReportsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ProductionToolstrip As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents UserManagementToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripViews As System.Windows.Forms.ToolStripDropDownButton
+    Friend WithEvents DailyTotalToolCount1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents GrandTotalCountGrandTotal As System.Windows.Forms.ToolStripMenuItem
 End Class
