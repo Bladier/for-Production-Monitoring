@@ -146,9 +146,33 @@
             Item_Lne.Item_ID = _ItemID
             Item_Lne.Save_itemLine()
         Next
+    End Sub
+
+    Friend Sub Initial_item()
+        mysql = "SELECT * FROM ITEM WHERE Item_ID = " & _ItemID
+        Dim ds As DataSet = LoadSQL(mysql, "Item")
+
+        If ds.Tables(0).Rows.Count <= 0 Then
 
 
+            Dim dsNewRow As DataRow
+            dsNewRow = ds.Tables(0).NewRow
+            With dsNewRow
+                .Item("ItemCode") = _ItemCode
+                .Item("Description") = _Description
+                .Item("Remarks") = _remarks
+            End With
 
+            ds.Tables(0).Rows.Add(dsNewRow)
+            database.SaveEntry(ds)
+        Else
+            With ds.Tables(filldata).Rows(0)
+                .Item("ITemcode") = _ItemCode
+                .Item("Description") = _Description
+                .Item("Remarks") = _remarks
+            End With
+            database.SaveEntry(ds, False)
+        End If
     End Sub
 
     Friend Sub SaveItemLine()

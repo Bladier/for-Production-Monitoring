@@ -164,7 +164,7 @@ Public Class frmSettings
             With itmsave
                 .ItemCode = dr.Item("ITEMNO")
                 .Descrition = dr.Item("ITEMNAME")
-                .SaveItem()
+                .Initial_item()
             End With
 
         Next

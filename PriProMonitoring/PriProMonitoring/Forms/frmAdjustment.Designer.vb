@@ -41,14 +41,13 @@ Partial Class frmAdjustment
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.btnPost = New System.Windows.Forms.Button()
-        Me.rbAdd = New System.Windows.Forms.RadioButton()
-        Me.rbDeduct = New System.Windows.Forms.RadioButton()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtLength = New PriProMonitoring.watermark()
         Me.txtRemarks = New PriProMonitoring.watermark()
+        Me.cboAdjustmentType = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -60,7 +59,7 @@ Partial Class frmAdjustment
         Me.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnSearch.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearch.Location = New System.Drawing.Point(436, 9)
+        Me.btnSearch.Location = New System.Drawing.Point(555, 9)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(99, 27)
         Me.btnSearch.TabIndex = 1
@@ -84,15 +83,15 @@ Partial Class frmAdjustment
         Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.GroupBox1.Location = New System.Drawing.Point(12, 8)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(538, 38)
+        Me.GroupBox1.Size = New System.Drawing.Size(654, 38)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
         'txtSearch
         '
-        Me.txtSearch.Location = New System.Drawing.Point(53, 11)
+        Me.txtSearch.Location = New System.Drawing.Point(55, 11)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(381, 21)
+        Me.txtSearch.Size = New System.Drawing.Size(496, 21)
         Me.txtSearch.TabIndex = 0
         Me.txtSearch.WatermarkColor = System.Drawing.Color.DimGray
         Me.txtSearch.WatermarkText = "Search paper roll serial . . ."
@@ -172,9 +171,9 @@ Partial Class frmAdjustment
         '
         Me.GroupBox3.Controls.Add(Me.btnClose)
         Me.GroupBox3.Controls.Add(Me.btnPost)
-        Me.GroupBox3.Location = New System.Drawing.Point(340, 287)
+        Me.GroupBox3.Location = New System.Drawing.Point(422, 197)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(210, 38)
+        Me.GroupBox3.Size = New System.Drawing.Size(210, 43)
         Me.GroupBox3.TabIndex = 4
         Me.GroupBox3.TabStop = False
         '
@@ -183,7 +182,7 @@ Partial Class frmAdjustment
         Me.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnClose.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnClose.Location = New System.Drawing.Point(108, 9)
+        Me.btnClose.Location = New System.Drawing.Point(109, 11)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(99, 27)
         Me.btnClose.TabIndex = 1
@@ -195,34 +194,12 @@ Partial Class frmAdjustment
         Me.btnPost.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnPost.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnPost.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPost.Location = New System.Drawing.Point(3, 9)
+        Me.btnPost.Location = New System.Drawing.Point(4, 11)
         Me.btnPost.Name = "btnPost"
         Me.btnPost.Size = New System.Drawing.Size(99, 27)
         Me.btnPost.TabIndex = 0
         Me.btnPost.Text = "&Post"
         Me.btnPost.UseVisualStyleBackColor = True
-        '
-        'rbAdd
-        '
-        Me.rbAdd.AutoSize = True
-        Me.rbAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.rbAdd.Location = New System.Drawing.Point(136, 12)
-        Me.rbAdd.Name = "rbAdd"
-        Me.rbAdd.Size = New System.Drawing.Size(46, 19)
-        Me.rbAdd.TabIndex = 0
-        Me.rbAdd.Text = "Add"
-        Me.rbAdd.UseVisualStyleBackColor = True
-        '
-        'rbDeduct
-        '
-        Me.rbDeduct.AutoSize = True
-        Me.rbDeduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.rbDeduct.Location = New System.Drawing.Point(219, 13)
-        Me.rbDeduct.Name = "rbDeduct"
-        Me.rbDeduct.Size = New System.Drawing.Size(64, 19)
-        Me.rbDeduct.TabIndex = 1
-        Me.rbDeduct.Text = "Deduct"
-        Me.rbDeduct.UseVisualStyleBackColor = True
         '
         'Label6
         '
@@ -236,9 +213,8 @@ Partial Class frmAdjustment
         '
         'GroupBox5
         '
+        Me.GroupBox5.Controls.Add(Me.cboAdjustmentType)
         Me.GroupBox5.Controls.Add(Me.Label6)
-        Me.GroupBox5.Controls.Add(Me.rbDeduct)
-        Me.GroupBox5.Controls.Add(Me.rbAdd)
         Me.GroupBox5.Location = New System.Drawing.Point(12, 46)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(328, 38)
@@ -249,7 +225,7 @@ Partial Class frmAdjustment
         '
         Me.Label5.AutoSize = True
         Me.Label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label5.Location = New System.Drawing.Point(4, 263)
+        Me.Label5.Location = New System.Drawing.Point(339, 133)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(58, 15)
         Me.Label5.TabIndex = 7
@@ -259,7 +235,7 @@ Partial Class frmAdjustment
         '
         Me.Label2.AutoSize = True
         Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label2.Location = New System.Drawing.Point(16, 236)
+        Me.Label2.Location = New System.Drawing.Point(344, 96)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(45, 15)
         Me.Label2.TabIndex = 8
@@ -267,7 +243,7 @@ Partial Class frmAdjustment
         '
         'txtLength
         '
-        Me.txtLength.Location = New System.Drawing.Point(63, 233)
+        Me.txtLength.Location = New System.Drawing.Point(395, 93)
         Me.txtLength.Name = "txtLength"
         Me.txtLength.Size = New System.Drawing.Size(271, 21)
         Me.txtLength.TabIndex = 2
@@ -276,7 +252,7 @@ Partial Class frmAdjustment
         '
         'txtRemarks
         '
-        Me.txtRemarks.Location = New System.Drawing.Point(64, 261)
+        Me.txtRemarks.Location = New System.Drawing.Point(397, 130)
         Me.txtRemarks.Multiline = True
         Me.txtRemarks.Name = "txtRemarks"
         Me.txtRemarks.Size = New System.Drawing.Size(269, 64)
@@ -284,12 +260,22 @@ Partial Class frmAdjustment
         Me.txtRemarks.WatermarkColor = System.Drawing.Color.Gray
         Me.txtRemarks.WatermarkText = "Remarks"
         '
+        'cboAdjustmentType
+        '
+        Me.cboAdjustmentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboAdjustmentType.FormattingEnabled = True
+        Me.cboAdjustmentType.Items.AddRange(New Object() {"Add", "Deduct", "Void"})
+        Me.cboAdjustmentType.Location = New System.Drawing.Point(110, 11)
+        Me.cboAdjustmentType.Name = "cboAdjustmentType"
+        Me.cboAdjustmentType.Size = New System.Drawing.Size(211, 23)
+        Me.cboAdjustmentType.TabIndex = 9
+        '
         'frmAdjustment
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(559, 333)
+        Me.ClientSize = New System.Drawing.Size(676, 249)
         Me.Controls.Add(Me.txtLength)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtRemarks)
@@ -331,8 +317,6 @@ Partial Class frmAdjustment
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents btnPost As System.Windows.Forms.Button
     Friend WithEvents btnClose As System.Windows.Forms.Button
-    Friend WithEvents rbAdd As System.Windows.Forms.RadioButton
-    Friend WithEvents rbDeduct As System.Windows.Forms.RadioButton
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
@@ -340,4 +324,5 @@ Partial Class frmAdjustment
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents txtLength As PriProMonitoring.watermark
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents cboAdjustmentType As System.Windows.Forms.ComboBox
 End Class
