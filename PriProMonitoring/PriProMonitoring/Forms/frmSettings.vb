@@ -58,7 +58,9 @@ Public Class frmSettings
             txtVersion.Text = GetOptionpPOS("Version")
 
             save_User_from_POS() 'save all user from pos
-            LoadIMD() ' lOADING IMD
+
+            SalesSeed.Populate_IMD()
+            ' LoadIMD() ' lOADING IMD
             ImportPaperRoll() 'Paper roll
             ImportPapercut() 'ImportPapercut
             GetLastSales() 'Setup sales
