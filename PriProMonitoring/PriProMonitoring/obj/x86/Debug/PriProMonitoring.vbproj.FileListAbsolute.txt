@@ -1,0 +1,14 @@
+C:\Users\Ellie\Documents\for Production Monitoring\PriProMonitoring\PriProMonitoring\obj\x86\Debug\PriProMonitoring.Resources.resources
+C:\Users\Ellie\Documents\for Production Monitoring\PriProMonitoring\PriProMonitoring\obj\x86\Debug\PriProMonitoring.vbproj.GenerateResource.Cache
+C:\Users\Ellie\Documents\for Production Monitoring\PriProMonitoring\PriProMonitoring\bin\Debug\PriProMonitoring.exe
+C:\Users\Ellie\Documents\for Production Monitoring\PriProMonitoring\PriProMonitoring\bin\Debug\PriProMonitoring.pdb
+C:\Users\Ellie\Documents\for Production Monitoring\PriProMonitoring\PriProMonitoring\bin\Debug\PriProMonitoring.xml
+C:\Users\Ellie\Documents\for Production Monitoring\PriProMonitoring\PriProMonitoring\obj\x86\Debug\PriProMonitoring.exe
+C:\Users\Ellie\Documents\for Production Monitoring\PriProMonitoring\PriProMonitoring\obj\x86\Debug\PriProMonitoring.xml
+C:\Users\Ellie\Documents\for Production Monitoring\PriProMonitoring\PriProMonitoring\obj\x86\Debug\PriProMonitoring.pdb
+C:\Users\Ellie\Documents\for Production Monitoring\PriProMonitoring\PriProMonitoring\obj\x86\Debug\PriProMonitoring.FrmMain.resources
+C:\Users\Ellie\Documents\for Production Monitoring\PriProMonitoring\PriProMonitoring\obj\x86\Debug\PriProMonitoring.Login.resources
+C:\Users\Ellie\Documents\for Production Monitoring\PriProMonitoring\PriProMonitoring\obj\x86\Debug\PriProMonitoring.frmLogin.resources
+C:\Users\Ellie\Documents\for Production Monitoring\PriProMonitoring\PriProMonitoring\bin\Debug\DeathCodez.dll
+C:\Users\Ellie\Documents\for Production Monitoring\PriProMonitoring\PriProMonitoring\bin\Debug\eskey.dll
+C:\Users\Ellie\Documents\for Production Monitoring\PriProMonitoring\PriProMonitoring\obj\x86\Debug\PriProMonitoring.vbprojResolveAssemblyReference.cache
