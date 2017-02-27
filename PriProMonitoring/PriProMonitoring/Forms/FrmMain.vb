@@ -340,10 +340,6 @@
 
     End Sub
 
-    Private Sub ProductionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductionToolstrip.Click
-        frmQDate.Show()
-    End Sub
-
     Private Sub UserManagementToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UserManagementToolStripMenuItem.Click
         CloseForms("frmUseManagement")
 
@@ -361,4 +357,13 @@
         frmDailyCounter.Show()
     End Sub
 
+    Private Sub AdjustmentReportToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AdjustmentReportToolStripMenuItem.Click
+        frmQDate.RPTType = frmQDate.ReportType.Adjustment
+        frmQDate.Show()
+    End Sub
+
+    Private Sub ProductionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductionToolstrip.Click
+        frmQDate.RPTType = frmQDate.ReportType.Production
+        frmQDate.Show()
+    End Sub
 End Class

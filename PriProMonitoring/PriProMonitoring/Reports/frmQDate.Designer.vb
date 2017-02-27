@@ -25,6 +25,7 @@ Partial Class frmQDate
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmQDate))
         Me.MonCal = New System.Windows.Forms.MonthCalendar()
         Me.btnGenerate = New System.Windows.Forms.Button()
+        Me.cboReportType = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'MonCal
@@ -32,23 +33,35 @@ Partial Class frmQDate
         Me.MonCal.Location = New System.Drawing.Point(21, 18)
         Me.MonCal.Name = "MonCal"
         Me.MonCal.TabIndex = 0
+        Me.MonCal.TitleBackColor = System.Drawing.SystemColors.ActiveBorder
         '
         'btnGenerate
         '
         Me.btnGenerate.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGenerate.Location = New System.Drawing.Point(77, 188)
+        Me.btnGenerate.Location = New System.Drawing.Point(82, 226)
         Me.btnGenerate.Name = "btnGenerate"
         Me.btnGenerate.Size = New System.Drawing.Size(117, 31)
         Me.btnGenerate.TabIndex = 1
         Me.btnGenerate.Text = "Generate"
         Me.btnGenerate.UseVisualStyleBackColor = True
         '
+        'cboReportType
+        '
+        Me.cboReportType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboReportType.FormattingEnabled = True
+        Me.cboReportType.Items.AddRange(New Object() {"Adjustment Report"})
+        Me.cboReportType.Location = New System.Drawing.Point(21, 192)
+        Me.cboReportType.Name = "cboReportType"
+        Me.cboReportType.Size = New System.Drawing.Size(227, 24)
+        Me.cboReportType.TabIndex = 2
+        '
         'frmQDate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(266, 229)
+        Me.ClientSize = New System.Drawing.Size(266, 269)
+        Me.Controls.Add(Me.cboReportType)
         Me.Controls.Add(Me.btnGenerate)
         Me.Controls.Add(Me.MonCal)
         Me.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -61,4 +74,5 @@ Partial Class frmQDate
     End Sub
     Friend WithEvents MonCal As System.Windows.Forms.MonthCalendar
     Friend WithEvents btnGenerate As System.Windows.Forms.Button
+    Friend WithEvents cboReportType As System.Windows.Forms.ComboBox
 End Class

@@ -3,11 +3,11 @@
 
     Private Sub frmDailyCounter_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If DailyTotal = "Daily" Then
-            DT_Load_PC()
+            DT_Load_PC() 'Daily Total
             DailyTotal = ""
         Else
             Visible_fields()
-            GT_Load_PC()
+            GT_Load_PC() 'Grand Total
             Me.Text = "Grand Total|Count"
         End If
     End Sub
@@ -26,12 +26,10 @@
             For Each dr As DataRow In ds.Tables(0).Rows
 
                 mysql = "SELECT SUM(PL.QUANTITY) AS COUNTER FROM TBL_PROLINE PL " & _
-                        "WHERE PAPCUT_CODE  = '" & dr.Item("Papcut_code") & "' AND PL.CREATED_AT ='" & Now.ToShortDateString & "' " & _
+                        "WHERE PAPCUT_CODE  = '" & dr.Item("Papcut_code") & "' AND PL.CREATED_AT ='" & DateTimePicker1.Text & "' " & _
                         "AND PAPID <> '0'"
                 Dim ds1 As DataSet = LoadSQL(mysql, "tbl_proline")
                 Dim counter As String
-
-                mysql = "SELECT SUM(AL.QUANTITY) AS TOTAL_ADJ FROM TBLAD"
 
                 If IsDBNull(ds1.Tables(0).Rows(0).Item("Counter")) Then
                     counter = ""
@@ -102,34 +100,6 @@
     End Function
 
     Private Sub DateTimePicker1_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DateTimePicker1.ValueChanged
-        mysql = "SELECT * FROM TBLPAPERCUT ORDER BY PAPERCUT_ID"
-        Dim ds As DataSet = LoadSQL(mysql, "tblpapercut")
-
-        Try
-            Console.WriteLine("Paper Cut Total count:" & ds.Tables(0).Rows.Count)
-
-            lvDailyCount.Items.Clear()
-            For Each dr As DataRow In ds.Tables(0).Rows
-
-                mysql = "SELECT SUM(PL.QUANTITY) AS COUNTER FROM TBL_PROLINE PL " & _
-                        "WHERE PAPCUT_CODE  = '" & dr.Item("Papcut_code") & "' " & _
-                        "AND PAPID <> '0' AND CREATED_AT = '" & DateTimePicker1.Text & "'"
-                Dim ds1 As DataSet = LoadSQL(mysql, "tbl_proline")
-                Dim counter As String
-
-                If IsDBNull(ds1.Tables(0).Rows(0).Item("Counter")) Then
-                    counter = ""
-                Else
-                    counter = ds1.Tables(0).Rows(0).Item("Counter")
-                End If
-
-
-                Dim lv As ListViewItem = lvDailyCount.Items.Add(dr.Item("Papercut_ID"))
-                lv.SubItems.Add(dr.Item("Papcut_description"))
-                lv.SubItems.Add(counter)
-            Next
-        Catch ex As Exception
-            Console.WriteLine("No prints in this paper cut.")
-        End Try
+        DT_Load_PC()
     End Sub
 End Class
