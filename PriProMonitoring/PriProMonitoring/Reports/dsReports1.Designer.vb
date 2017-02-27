@@ -27,6 +27,8 @@ Partial Public Class dsReports1
     
     Private tableProduction As ProductionDataTable
     
+    Private tableAdjustment As AdjustmentDataTable
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -59,6 +61,9 @@ Partial Public Class dsReports1
             If (Not (ds.Tables("Production")) Is Nothing) Then
                 MyBase.Tables.Add(New ProductionDataTable(ds.Tables("Production")))
             End If
+            If (Not (ds.Tables("Adjustment")) Is Nothing) Then
+                MyBase.Tables.Add(New AdjustmentDataTable(ds.Tables("Adjustment")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -83,6 +88,16 @@ Partial Public Class dsReports1
     Public ReadOnly Property Production() As ProductionDataTable
         Get
             Return Me.tableProduction
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property Adjustment() As AdjustmentDataTable
+        Get
+            Return Me.tableAdjustment
         End Get
     End Property
     
@@ -156,6 +171,9 @@ Partial Public Class dsReports1
             If (Not (ds.Tables("Production")) Is Nothing) Then
                 MyBase.Tables.Add(New ProductionDataTable(ds.Tables("Production")))
             End If
+            If (Not (ds.Tables("Adjustment")) Is Nothing) Then
+                MyBase.Tables.Add(New AdjustmentDataTable(ds.Tables("Adjustment")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -194,6 +212,12 @@ Partial Public Class dsReports1
                 Me.tableProduction.InitVars
             End If
         End If
+        Me.tableAdjustment = CType(MyBase.Tables("Adjustment"),AdjustmentDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableAdjustment) Is Nothing) Then
+                Me.tableAdjustment.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -206,11 +230,19 @@ Partial Public Class dsReports1
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
         Me.tableProduction = New ProductionDataTable()
         MyBase.Tables.Add(Me.tableProduction)
+        Me.tableAdjustment = New AdjustmentDataTable()
+        MyBase.Tables.Add(Me.tableAdjustment)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Function ShouldSerializeProduction() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Private Function ShouldSerializeAdjustment() As Boolean
         Return false
     End Function
     
@@ -275,6 +307,9 @@ Partial Public Class dsReports1
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Delegate Sub ProductionRowChangeEventHandler(ByVal sender As Object, ByVal e As ProductionRowChangeEvent)
     
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Delegate Sub AdjustmentRowChangeEventHandler(ByVal sender As Object, ByVal e As AdjustmentRowChangeEvent)
+    
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
@@ -316,13 +351,13 @@ Partial Public Class dsReports1
                 Me.Namespace = table.Namespace
             End If
             Me.Prefix = table.Prefix
-
+            Me.MinimumCapacity = table.MinimumCapacity
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
-
+            MyBase.New(info, context)
             Me.InitVars
         End Sub
         
@@ -567,6 +602,427 @@ Partial Public Class dsReports1
     End Class
     
     '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class AdjustmentDataTable
+        Inherits Global.System.Data.TypedTableBase(Of AdjustmentRow)
+        
+        Private columnID As Global.System.Data.DataColumn
+        
+        Private columnPAPROLL_ID As Global.System.Data.DataColumn
+        
+        Private columnPAPROLL_SERIAL As Global.System.Data.DataColumn
+        
+        Private columnREMARKS As Global.System.Data.DataColumn
+        
+        Private columnADJUSTED_BY As Global.System.Data.DataColumn
+        
+        Private columnCREATED_AT As Global.System.Data.DataColumn
+        
+        Private columnT_ADJUSTMENT As Global.System.Data.DataColumn
+        
+        Private columnUOM As Global.System.Data.DataColumn
+        
+        Private columnLENGTH_EXPOSE As Global.System.Data.DataColumn
+        
+        Private columnPAPCUT_ID As Global.System.Data.DataColumn
+        
+        Private columnPAPCUT_DESCRIPTION As Global.System.Data.DataColumn
+        
+        Private columnPAPCUT_CODE As Global.System.Data.DataColumn
+        
+        Private columnQTY As Global.System.Data.DataColumn
+        
+        Private columnADJUSTMENT_TYPE As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "Adjustment"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PAPROLL_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPAPROLL_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PAPROLL_SERIALColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPAPROLL_SERIAL
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property REMARKSColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnREMARKS
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ADJUSTED_BYColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnADJUSTED_BY
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property CREATED_ATColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCREATED_AT
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property T_ADJUSTMENTColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnT_ADJUSTMENT
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property UOMColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUOM
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property LENGTH_EXPOSEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLENGTH_EXPOSE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PAPCUT_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPAPCUT_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PAPCUT_DESCRIPTIONColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPAPCUT_DESCRIPTION
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PAPCUT_CODEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPAPCUT_CODE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property QTYColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnQTY
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ADJUSTMENT_TYPEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnADJUSTMENT_TYPE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As AdjustmentRow
+            Get
+                Return CType(Me.Rows(index),AdjustmentRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event AdjustmentRowChanging As AdjustmentRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event AdjustmentRowChanged As AdjustmentRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event AdjustmentRowDeleting As AdjustmentRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event AdjustmentRowDeleted As AdjustmentRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Sub AddAdjustmentRow(ByVal row As AdjustmentRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Function AddAdjustmentRow(ByVal ID As String, ByVal PAPROLL_ID As String, ByVal PAPROLL_SERIAL As String, ByVal REMARKS As String, ByVal ADJUSTED_BY As String, ByVal CREATED_AT As String, ByVal T_ADJUSTMENT As String, ByVal UOM As String, ByVal LENGTH_EXPOSE As String, ByVal PAPCUT_ID As String, ByVal PAPCUT_DESCRIPTION As String, ByVal PAPCUT_CODE As String, ByVal QTY As String, ByVal ADJUSTMENT_TYPE As String) As AdjustmentRow
+            Dim rowAdjustmentRow As AdjustmentRow = CType(Me.NewRow,AdjustmentRow)
+            Dim columnValuesArray() As Object = New Object() {ID, PAPROLL_ID, PAPROLL_SERIAL, REMARKS, ADJUSTED_BY, CREATED_AT, T_ADJUSTMENT, UOM, LENGTH_EXPOSE, PAPCUT_ID, PAPCUT_DESCRIPTION, PAPCUT_CODE, QTY, ADJUSTMENT_TYPE}
+            rowAdjustmentRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowAdjustmentRow)
+            Return rowAdjustmentRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As AdjustmentDataTable = CType(MyBase.Clone,AdjustmentDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New AdjustmentDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnID = MyBase.Columns("ID")
+            Me.columnPAPROLL_ID = MyBase.Columns("PAPROLL_ID")
+            Me.columnPAPROLL_SERIAL = MyBase.Columns("PAPROLL_SERIAL")
+            Me.columnREMARKS = MyBase.Columns("REMARKS")
+            Me.columnADJUSTED_BY = MyBase.Columns("ADJUSTED_BY")
+            Me.columnCREATED_AT = MyBase.Columns("CREATED_AT")
+            Me.columnT_ADJUSTMENT = MyBase.Columns("T_ADJUSTMENT")
+            Me.columnUOM = MyBase.Columns("UOM")
+            Me.columnLENGTH_EXPOSE = MyBase.Columns("LENGTH_EXPOSE")
+            Me.columnPAPCUT_ID = MyBase.Columns("PAPCUT_ID")
+            Me.columnPAPCUT_DESCRIPTION = MyBase.Columns("PAPCUT_DESCRIPTION")
+            Me.columnPAPCUT_CODE = MyBase.Columns("PAPCUT_CODE")
+            Me.columnQTY = MyBase.Columns("QTY")
+            Me.columnADJUSTMENT_TYPE = MyBase.Columns("ADJUSTMENT_TYPE")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnID = New Global.System.Data.DataColumn("ID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnID)
+            Me.columnPAPROLL_ID = New Global.System.Data.DataColumn("PAPROLL_ID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPAPROLL_ID)
+            Me.columnPAPROLL_SERIAL = New Global.System.Data.DataColumn("PAPROLL_SERIAL", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPAPROLL_SERIAL)
+            Me.columnREMARKS = New Global.System.Data.DataColumn("REMARKS", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnREMARKS)
+            Me.columnADJUSTED_BY = New Global.System.Data.DataColumn("ADJUSTED_BY", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnADJUSTED_BY)
+            Me.columnCREATED_AT = New Global.System.Data.DataColumn("CREATED_AT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCREATED_AT)
+            Me.columnT_ADJUSTMENT = New Global.System.Data.DataColumn("T_ADJUSTMENT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnT_ADJUSTMENT)
+            Me.columnUOM = New Global.System.Data.DataColumn("UOM", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUOM)
+            Me.columnLENGTH_EXPOSE = New Global.System.Data.DataColumn("LENGTH_EXPOSE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLENGTH_EXPOSE)
+            Me.columnPAPCUT_ID = New Global.System.Data.DataColumn("PAPCUT_ID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPAPCUT_ID)
+            Me.columnPAPCUT_DESCRIPTION = New Global.System.Data.DataColumn("PAPCUT_DESCRIPTION", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPAPCUT_DESCRIPTION)
+            Me.columnPAPCUT_CODE = New Global.System.Data.DataColumn("PAPCUT_CODE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPAPCUT_CODE)
+            Me.columnQTY = New Global.System.Data.DataColumn("QTY", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQTY)
+            Me.columnADJUSTMENT_TYPE = New Global.System.Data.DataColumn("ADJUSTMENT_TYPE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnADJUSTMENT_TYPE)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function NewAdjustmentRow() As AdjustmentRow
+            Return CType(Me.NewRow,AdjustmentRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New AdjustmentRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(AdjustmentRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.AdjustmentRowChangedEvent) Is Nothing) Then
+                RaiseEvent AdjustmentRowChanged(Me, New AdjustmentRowChangeEvent(CType(e.Row,AdjustmentRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.AdjustmentRowChangingEvent) Is Nothing) Then
+                RaiseEvent AdjustmentRowChanging(Me, New AdjustmentRowChangeEvent(CType(e.Row,AdjustmentRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.AdjustmentRowDeletedEvent) Is Nothing) Then
+                RaiseEvent AdjustmentRowDeleted(Me, New AdjustmentRowChangeEvent(CType(e.Row,AdjustmentRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.AdjustmentRowDeletingEvent) Is Nothing) Then
+                RaiseEvent AdjustmentRowDeleting(Me, New AdjustmentRowChangeEvent(CType(e.Row,AdjustmentRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub RemoveAdjustmentRow(ByVal row As AdjustmentRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As dsReports1 = New dsReports1()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "AdjustmentDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
     Partial Public Class ProductionRow
@@ -691,6 +1147,400 @@ Partial Public Class dsReports1
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class AdjustmentRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableAdjustment As AdjustmentDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableAdjustment = CType(Me.Table,AdjustmentDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ID() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAdjustment.IDColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ID' in table 'Adjustment' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAdjustment.IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PAPROLL_ID() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAdjustment.PAPROLL_IDColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PAPROLL_ID' in table 'Adjustment' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAdjustment.PAPROLL_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PAPROLL_SERIAL() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAdjustment.PAPROLL_SERIALColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PAPROLL_SERIAL' in table 'Adjustment' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAdjustment.PAPROLL_SERIALColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property REMARKS() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAdjustment.REMARKSColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'REMARKS' in table 'Adjustment' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAdjustment.REMARKSColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ADJUSTED_BY() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAdjustment.ADJUSTED_BYColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ADJUSTED_BY' in table 'Adjustment' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAdjustment.ADJUSTED_BYColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property CREATED_AT() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAdjustment.CREATED_ATColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'CREATED_AT' in table 'Adjustment' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAdjustment.CREATED_ATColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property T_ADJUSTMENT() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAdjustment.T_ADJUSTMENTColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'T_ADJUSTMENT' in table 'Adjustment' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAdjustment.T_ADJUSTMENTColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property UOM() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAdjustment.UOMColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'UOM' in table 'Adjustment' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAdjustment.UOMColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property LENGTH_EXPOSE() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAdjustment.LENGTH_EXPOSEColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LENGTH_EXPOSE' in table 'Adjustment' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAdjustment.LENGTH_EXPOSEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PAPCUT_ID() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAdjustment.PAPCUT_IDColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PAPCUT_ID' in table 'Adjustment' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAdjustment.PAPCUT_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PAPCUT_DESCRIPTION() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAdjustment.PAPCUT_DESCRIPTIONColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PAPCUT_DESCRIPTION' in table 'Adjustment' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAdjustment.PAPCUT_DESCRIPTIONColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PAPCUT_CODE() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAdjustment.PAPCUT_CODEColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PAPCUT_CODE' in table 'Adjustment' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAdjustment.PAPCUT_CODEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property QTY() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAdjustment.QTYColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'QTY' in table 'Adjustment' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAdjustment.QTYColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ADJUSTMENT_TYPE() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAdjustment.ADJUSTMENT_TYPEColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ADJUSTMENT_TYPE' in table 'Adjustment' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAdjustment.ADJUSTMENT_TYPEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsIDNull() As Boolean
+            Return Me.IsNull(Me.tableAdjustment.IDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetIDNull()
+            Me(Me.tableAdjustment.IDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPAPROLL_IDNull() As Boolean
+            Return Me.IsNull(Me.tableAdjustment.PAPROLL_IDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPAPROLL_IDNull()
+            Me(Me.tableAdjustment.PAPROLL_IDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPAPROLL_SERIALNull() As Boolean
+            Return Me.IsNull(Me.tableAdjustment.PAPROLL_SERIALColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPAPROLL_SERIALNull()
+            Me(Me.tableAdjustment.PAPROLL_SERIALColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsREMARKSNull() As Boolean
+            Return Me.IsNull(Me.tableAdjustment.REMARKSColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetREMARKSNull()
+            Me(Me.tableAdjustment.REMARKSColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsADJUSTED_BYNull() As Boolean
+            Return Me.IsNull(Me.tableAdjustment.ADJUSTED_BYColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetADJUSTED_BYNull()
+            Me(Me.tableAdjustment.ADJUSTED_BYColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsCREATED_ATNull() As Boolean
+            Return Me.IsNull(Me.tableAdjustment.CREATED_ATColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetCREATED_ATNull()
+            Me(Me.tableAdjustment.CREATED_ATColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsT_ADJUSTMENTNull() As Boolean
+            Return Me.IsNull(Me.tableAdjustment.T_ADJUSTMENTColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetT_ADJUSTMENTNull()
+            Me(Me.tableAdjustment.T_ADJUSTMENTColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsUOMNull() As Boolean
+            Return Me.IsNull(Me.tableAdjustment.UOMColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetUOMNull()
+            Me(Me.tableAdjustment.UOMColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsLENGTH_EXPOSENull() As Boolean
+            Return Me.IsNull(Me.tableAdjustment.LENGTH_EXPOSEColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetLENGTH_EXPOSENull()
+            Me(Me.tableAdjustment.LENGTH_EXPOSEColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPAPCUT_IDNull() As Boolean
+            Return Me.IsNull(Me.tableAdjustment.PAPCUT_IDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPAPCUT_IDNull()
+            Me(Me.tableAdjustment.PAPCUT_IDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPAPCUT_DESCRIPTIONNull() As Boolean
+            Return Me.IsNull(Me.tableAdjustment.PAPCUT_DESCRIPTIONColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPAPCUT_DESCRIPTIONNull()
+            Me(Me.tableAdjustment.PAPCUT_DESCRIPTIONColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPAPCUT_CODENull() As Boolean
+            Return Me.IsNull(Me.tableAdjustment.PAPCUT_CODEColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPAPCUT_CODENull()
+            Me(Me.tableAdjustment.PAPCUT_CODEColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsQTYNull() As Boolean
+            Return Me.IsNull(Me.tableAdjustment.QTYColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetQTYNull()
+            Me(Me.tableAdjustment.QTYColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsADJUSTMENT_TYPENull() As Boolean
+            Return Me.IsNull(Me.tableAdjustment.ADJUSTMENT_TYPEColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetADJUSTMENT_TYPENull()
+            Me(Me.tableAdjustment.ADJUSTMENT_TYPEColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -712,6 +1562,42 @@ Partial Public Class dsReports1
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property Row() As ProductionRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Class AdjustmentRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As AdjustmentRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New(ByVal row As AdjustmentRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Row() As AdjustmentRow
             Get
                 Return Me.eventRow
             End Get

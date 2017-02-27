@@ -64,8 +64,8 @@
     Private Sub btnPost_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPost.Click
         If lvpapercuts.Items.Count <= 0 Then MsgBox("No paper to adjust", MsgBoxStyle.Information, "Adjustment")
         If txtRemarks.Text = "" Then Exit Sub
-        If rbAdd.Checked = False And rbDeduct.Checked = False Then _
-            MsgBox("Select adjustment type" & vbCrLf & "Either Add or deduct.", MsgBoxStyle.Critical) : Exit Sub
+        If cboAdjustmentType.Text = "" Then _
+            MsgBox("Select adjustment type" & vbCrLf & "Either Add or deduct or Void", MsgBoxStyle.Critical) : cboAdjustmentType.Focus() : Exit Sub
 
         Dim ans As DialogResult = MsgBox("Do you want to save this adjustment?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
         If ans = Windows.Forms.DialogResult.No Then Exit Sub
@@ -115,15 +115,16 @@
                     On Error Resume Next
                 Else
 
-
                     .PaperCut_ID = itm.SubItems(0).Text
                     .PapcutCode = itm.SubItems(6).Text
                     .QTY = itm.SubItems(8).Text
 
-                    If rbAdd.Checked = True Then
-                        .adjustType = rbAdd.Text
+                    If cboAdjustmentType.Text = "Add" Then
+                        .adjustType = cboAdjustmentType.Text
+                    ElseIf cboAdjustmentType.Text = "Deduct" Then
+                        .adjustType = cboAdjustmentType.Text
                     Else
-                        .adjustType = rbDeduct.Text
+                        .adjustType = cboAdjustmentType.Text
                     End If
                 End If
             End With
@@ -139,10 +140,12 @@
 
 
 
-        If rbAdd.Checked = True Then
+        If cboAdjustmentType.Text = "Add" Then
             AddToPaperRoll(tmppapSerial.PaprollID, TotalAdj) 'add
-        Else
+        ElseIf cboAdjustmentType.Text = "Deduct" Then
             DeductToPaperRoll(tmppapSerial.PaprollID, tmptotal) 'Deduct
+        Else
+            AddToPaperRoll(tmppapSerial.PaprollID, TotalAdj) 'Void
         End If
 
         MsgBox("Successfully saved.", MsgBoxStyle.Information, "Adjustment")
@@ -155,10 +158,12 @@
         savelog.loaded_by = CurrentUser
         savelog.Remaining = remainings
 
-        If rbAdd.Checked = True Then
-            savelog.Modname = "Adjustment|" & rbAdd.Text
+        If cboAdjustmentType.Text = "Add" Then
+            savelog.Modname = "Adjustment|" & cboAdjustmentType.Text
+        ElseIf cboAdjustmentType.Text = "Deduct" Then
+            savelog.Modname = "Adjustment|" & cboAdjustmentType.Text
         Else
-            savelog.Modname = "Adjustment|" & rbDeduct.Text
+            savelog.Modname = "Adjustment|" & cboAdjustmentType.Text
         End If
 
         savelog.SaveRoll()

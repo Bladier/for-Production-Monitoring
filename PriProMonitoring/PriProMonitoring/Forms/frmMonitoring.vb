@@ -40,7 +40,7 @@ Public Class frmMonitoring
         mysql &= vbCrLf & "	PR.PAPERCUT,SUM(PR.QUANTITY)AS TOTAL FROM TBL_PROLINE PR	"
         mysql &= vbCrLf & "	INNER JOIN TBLPAPERROLL R ON R.PAPROLL_SERIAL = PR.PAPROLL_SERIAL	"
         mysql &= vbCrLf & "	INNER JOIN TBLPAPROLL_MAIN P ON P.PAPID=R.PAPIDS	"
-        mysql &= vbCrLf & "	WHERE R.PAPROLL_SERIAL = '" & str & "' AND STATUS <> 'V'"
+        mysql &= vbCrLf & "	WHERE R.PAPROLL_SERIAL = '" & str & "' "
         mysql &= vbCrLf & "	GROUP BY P.PAPCODE,R.PAPROLL_SERIAL,PR.PAPCUT_DESC,PR.PAPCUT_CODE,PR.PAPERCUT	"
 
         Dim ds As DataSet = LoadSQL(mysql, "tblPAPROLL_MAIN")

@@ -468,6 +468,9 @@
     <EmbeddedResource Include="Reports\prtProduction.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptAdjustment.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="sampleSales\frmSeed.resx">
       <DependentUpon>frmSeed.vb</DependentUpon>
     </EmbeddedResource>

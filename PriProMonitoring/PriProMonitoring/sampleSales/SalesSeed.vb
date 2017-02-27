@@ -60,4 +60,29 @@
             End With
         Next
     End Sub
+
+
+    Private Itemcode_master() As String = {"DIW 00128", "DIW 00784", "DIW 00120", "DIW 00122", "DIS 00028", _
+                                            "DIS 00027", "DIS 00026", "DIS 00025", "DIW 00131", "DIW 00785", "DIW 00126", _
+                                           "DIW 00129", "DIP 00071", "DIP 00067", "DIP 00062", "DIS 00063", "DIS 00062", "DIS 00061", _
+                                           "DIP 00065"}
+    Private ItemName() As String = {"4R DIGITAL WALK-IN", "CUTE SIZE DIGITAL WALK-IN", "8X12 DIGITAL WALK-IN", "8X10 DIGITAL WALK-IN", "DIGITAL STUDIO ID COMBO 4  2PC", _
+                                    "DIGITAL STUDIO ID COMBO 3  4PC", "DIGITAL STUDIO ID COMBO 2  6PC", "DIGITAL STUDIO ID COMBO 1 4PCS", _
+                                    "2UPS DIGITAL WALK-IN", "WALLET SIZE DIGITAL WALK-IN", "5R DIGITAL WALK-IN", "3R DIGITAL WALK-IN", _
+                                    "2UPS DIGITAL PHOTOGRAPHER", "3R DIGITAL PHOTOGRAPHER", "5R DIGITAL PHOTOGRAPHER", "PORTRAIT PERFECT 3", _
+                                    "PORTRAIT PERFECT 2", "PORTRAIT PERFECT 1", "4R DIGITAL PHOTOGRAPHER"}
+   
+
+    Sub Populate_IMD()
+
+        For i As Integer = 0 To Itemcode_master.Count - 1
+
+            Dim tmpSales As New item
+            With tmpSales
+                .ItemCode = Itemcode_master(i)
+                .Descrition = ItemName(i)
+                .Initial_item()
+            End With
+        Next
+    End Sub
 End Module
