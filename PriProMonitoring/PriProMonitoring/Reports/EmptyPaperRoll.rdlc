@@ -544,7 +544,7 @@
         <DataSetName>dsEmptyPapRoll</DataSetName>
         <Top>0.05556in</Top>
         <Height>0.75in</Height>
-        <Width>6.66333in</Width>
+        <Width>6.66334in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -588,7 +588,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!TOTAL_LENGTH.Value</Value>
+                    <Value>=First(Fields!TOTAL_LENGTH.Value, "dsEmptyPapRoll")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -784,7 +784,7 @@
         </Style>
       </Rectangle>
       <Line Name="Line1">
-        <Top>2.4375in</Top>
+        <Top>4.1493in</Top>
         <Height>0in</Height>
         <Width>6.66333in</Width>
         <ZIndex>2</ZIndex>
@@ -822,7 +822,6 @@
             </Paragraphs>
             <rd:DefaultName>Textbox23</rd:DefaultName>
             <Top>0.125in</Top>
-            <Left>0in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
             <Style>
@@ -851,7 +850,6 @@
             </Paragraphs>
             <rd:DefaultName>Textbox23</rd:DefaultName>
             <Top>0.52604in</Top>
-            <Left>0in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
             <ZIndex>1</ZIndex>
@@ -902,7 +900,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!EMULSION.Value &amp; " inch"</Value>
+                    <Value>=Fields!EMULSION.Value</Value>
                     <Style>
                       <Format>f2</Format>
                     </Style>
@@ -934,7 +932,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!ADVANCE.Value &amp; " inch"</Value>
+                    <Value>=Fields!ADVANCE.Value</Value>
                     <Style>
                       <Format>f2</Format>
                     </Style>
@@ -966,7 +964,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!LASTOUT.Value &amp; " inch"</Value>
+                    <Value>=Fields!LASTOUT.Value</Value>
                     <Style>
                       <Format>f2</Format>
                     </Style>
@@ -1000,12 +998,45 @@
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
+            <Style>Solid</Style>
+          </Border>
+          <TopBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </TopBorder>
+          <BottomBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
+          <LeftBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </LeftBorder>
+          <RightBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </RightBorder>
+        </Style>
+      </Rectangle>
+      <Subreport Name="Adjustment">
+        <ReportName>Adjustment</ReportName>
+        <Top>2.42708in</Top>
+        <Left>0.11458in</Left>
+        <Height>1.45833in</Height>
+        <Width>6.41334in</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
             <Style>None</Style>
           </Border>
         </Style>
-      </Rectangle>
+      </Subreport>
     </ReportItems>
-    <Height>2.5in</Height>
+    <Height>4.16666in</Height>
     <Style />
   </Body>
   <ReportParameters>
@@ -1018,7 +1049,7 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
-  <Width>6.66333in</Width>
+  <Width>6.66334in</Width>
   <Page>
     <PageHeader>
       <Height>1.02792in</Height>
@@ -1032,7 +1063,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>="Date Ended: " &amp; Fields!UPDATED_AT.Value</Value>
+                  <Value />
                   <Style>
                     <FontWeight>Bold</FontWeight>
                     <Format>MMM dd, yyyy</Format>
@@ -1099,7 +1130,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Paper Roll Prodoction Report</Value>
+                  <Value>Paper Roll Production Report</Value>
                   <Style>
                     <FontStyle>Normal</FontStyle>
                     <FontSize>11pt</FontSize>
@@ -1179,7 +1210,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Paper Roll Prodoction Report</Value>
+                  <Value>Paper Roll Production Report</Value>
                   <Style>
                     <FontStyle>Italic</FontStyle>
                     <FontSize>9pt</FontSize>

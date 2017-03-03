@@ -1,11 +1,15 @@
 ﻿Partial Class dsReports1
-    Partial Class EmptyPaperRollDataTable
+    Partial Class AdjustmentsDataTable
 
-        Private Sub EmptyPaperRollDataTable_ColumnChanging(ByVal sender As System.Object, ByVal e As System.Data.DataColumnChangeEventArgs) Handles Me.ColumnChanging
-          
+        Private Sub AdjustmentsDataTable_ColumnChanging(ByVal sender As System.Object, ByVal e As System.Data.DataColumnChangeEventArgs) Handles Me.ColumnChanging
+            If (e.Column.ColumnName = Me.PAPROLL_SERIALColumn.ColumnName) Then
+                'Add user code here
+            End If
 
         End Sub
 
     End Class
+
+   
 
 End Class
