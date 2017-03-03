@@ -3,6 +3,7 @@
     Enum ReportType As Integer
         Adjustment = 0
         Production = 1
+        PaperRollEmpty = 2
     End Enum
 
     Friend RPTType As ReportType = ReportType.Adjustment
@@ -13,6 +14,8 @@
                 Adjustment_report()
             Case ReportType.Production
                 production_report()
+            Case ReportType.PaperRollEmpty
+                production_report_End_paper_roll()
         End Select
     End Sub
 
@@ -23,10 +26,13 @@
             Select Case cboReportType.Text
                 Case "Adjustment Report"
                     RPTType = ReportType.Adjustment
+                Case "Empty Paper Roll"
+                    RPTType = ReportType.PaperRollEmpty
             End Select
         End If
 
         Generate()
+
     End Sub
 
     Private Sub production_report()
@@ -73,20 +79,24 @@
     End Sub
 
     Private Sub production_report_End_paper_roll()
-        Dim fillData As String = "dsProduction1"
-        Dim mySql As String = "SELECT P.PAPROLL_SERIAL,SUM(PR.QUANTITY)AS P_total,PR.PAPCUT_DESC, "
-        mySql &= "PR.CREATED_AT FROM TBL_PROLINE PR"
-        mySql &= "  LEFT JOIN TBLPAPERROLL P ON P.PAPROLL_ID = PR.PAPID "
-        mySql &= String.Format("WHERE PR.CREATED_AT = '{0}' ", MonCal.SelectionStart.ToShortDateString)
-        mySql &= "AND P.PAPROLL_SERIAL <> '' "
-        mySql &= " GROUP BY P.PAPROLL_SERIAL,PR.PAPCUT_DESC,PR.CREATED_AT "
+        Dim fillData As String = "dsEmptyPapRoll"
+        Dim mySql As String = "SELECT P.PAPROLL_ID,P.PAPROLL_SERIAL,PL.PAPCUT_DESC, "
+        mySql &= "SUM(PL.QUANTITY), P.TOTAL_LENGTH,P.REMAINING,"
+        mySql &= "  P.REMAINING / P.TOTAL_LENGTH as remainings,Updated_at,PLE.EMULSION, "
+        mySql &= " PLE.ADVANCE,PLE.LASTOUT "
+        mySql &= "FROM TBLPAPERROLL P INNER JOIN TBL_PROLINE PL	"
+        mySql &= "ON PL.PAPROLL_SERIAL = P.PAPROLL_SERIAL "
+        mySql &= "INNER JOIN TBLPAPER_LISTEMPTY PLE ON PLE.PAPROLL_ID = P.PAPROLL_ID "
+        mySql &= " WHERE P.STATUS='2' "
+        mySql &= "GROUP BY P.PAPROLL_ID,P.PAPROLL_SERIAL,PL.PAPCUT_DESC, "
+        mySql &= "P.TOTAL_LENGTH,Remaining,P.Updated_at,PLE.EMULSION,PLE.ADVANCE,PLE.LASTOUT "
+
 
         Dim rptPara As New Dictionary(Of String, String)
-        rptPara.Add("txtMonthOf", "Date: " & MonCal.SelectionStart.ToLongDateString)
         rptPara.Add("BranchName", BranchCode)
         rptPara.Add("txtUsername", CurrentUser)
 
-        frmReport.ReportInit(mySql, fillData, "Reports\prtAdjustment.rdlc", rptPara)
+        frmReport.ReportInit(mySql, fillData, "Reports\EmptyPaperRoll.rdlc", rptPara)
         frmReport.Show()
     End Sub
 

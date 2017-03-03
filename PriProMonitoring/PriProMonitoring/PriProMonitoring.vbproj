@@ -340,6 +340,9 @@
       <DependentUpon>dsReports1.xsd</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Reports\dsReports1.vb">
+      <DependentUpon>dsReports1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\frmQDate.Designer.vb">
       <DependentUpon>frmQDate.vb</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -456,6 +459,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EmptyPaperRoll.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmQDate.resx">
       <DependentUpon>frmQDate.vb</DependentUpon>

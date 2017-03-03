@@ -122,10 +122,11 @@ nextToExit:
         Dim ds As DataSet = LoadSQLPOS(mysql, "POSITEM")
 
 
-        If ds.Tables(0).Rows.Count = 0 Then
+        If ds Is Nothing Then
             ID = {"", ""}
             Return ID
         End If
+
 
         Dim tmpdate As Date = ds.Tables(0).Rows(0).Item("DATESTAMP")
 
