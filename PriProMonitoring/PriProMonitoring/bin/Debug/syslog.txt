@@ -3221,3 +3221,401 @@ At line 2, column 2
    at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
    at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
    at PriProMonitoring.database.LoadSQL(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\database.vb:line 158
+[03/02/2017 10:33:21] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/02/2017 10:47:08] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/02/2017 10:47:45] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/02/2017 10:49:06] REPORT - Microsoft.Reporting.WinForms.LocalProcessingException: An error occurred during local report processing. ---> Microsoft.Reporting.DefinitionInvalidException: The definition of the report 'Reports\prtProduction.rdlc' is invalid. ---> Microsoft.ReportingServices.ReportProcessing.ReportProcessingException: An unexpected error occurred in Report Processing. ---> System.UnauthorizedAccessException: Access to the path 'C:\Users\MISGWAPOHON\AppData\Local\Temp\expression_host_4dcc66d45adf422b8c0438efb6da6c84.dll' is denied.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalDelete(String path, Boolean checkHost)
+   at System.IO.File.Delete(String path)
+   at Microsoft.ReportingServices.RdlExpressions.ExprHostCompiler.InternalCompile(Report report, AppDomain compilationTempAppDomain, Boolean refusePermissions)
+   at Microsoft.ReportingServices.RdlExpressions.ExprHostCompiler.<>c__DisplayClass1.<Compile>b__0()
+   at Microsoft.ReportingServices.Diagnostics.RevertImpersonationContext.<>c__DisplayClass1.<Run>b__0(Object state)
+   at System.Security.SecurityContext.Run(SecurityContext securityContext, ContextCallback callback, Object state)
+   at Microsoft.ReportingServices.Diagnostics.RevertImpersonationContext.Run(ContextBody callback)
+   at Microsoft.ReportingServices.RdlExpressions.ExprHostCompiler.Compile(Report report, AppDomain compilationTempAppDomain, Boolean refusePermissions)
+   at Microsoft.ReportingServices.ReportPublishing.ReportPublishing.Phase3(ICatalogItemContext reportContext, ParameterInfoCollection& parameters, AppDomain compilationTempAppDomain, Boolean generateExpressionHostWithRefusedPermissions, Dictionary`2& groupingExprCountAtScope)
+   at Microsoft.ReportingServices.ReportPublishing.ReportPublishing.CreateIntermediateFormat(ICatalogItemContext reportContext, Byte[] definition, IChunkFactory createChunkCallback, CheckSharedDataSource checkDataSourceCallback, ResolveTemporaryDataSource resolveTemporaryDataSourceCallback, DataSourceInfoCollection originalDataSources, PublishingErrorContext errorContext, AppDomain compilationTempAppDomain, Boolean generateExpressionHostWithRefusedPermissions, IDataProtection dataProtection, String& description, String& language, ParameterInfoCollection& parameters, DataSourceInfoCollection& dataSources, UserLocationFlags& userReferenceLocation, ArrayList& dataSetsName, Boolean& hasExternalImages, Boolean& hasHyperlinks)
+   at Microsoft.ReportingServices.ReportProcessing.ReportProcessing.CompileOdpReport(ICatalogItemContext reportContext, Byte[] reportDefinition, IChunkFactory createChunkCallback, CheckSharedDataSource checkDataSourceCallback, ResolveTemporaryDataSource resolveTemporaryDataSourceCallback, DataSourceInfoCollection originalDataSources, PublishingErrorContext errorContext, AppDomain compilationTempAppDomain, Boolean generateExpressionHostWithRefusedPermissions, IDataProtection dataProtection, String& reportDescription, String& reportLanguage, ParameterInfoCollection& parameters, DataSourceInfoCollection& dataSources, UserLocationFlags& userReferenceLocation, ArrayList& dataSetsName, Boolean& hasExternalImages, Boolean& hasHyperlinks)
+   at Microsoft.ReportingServices.ReportProcessing.ReportProcessing.CreateIntermediateFormat(ICatalogItemContext reportContext, Byte[] reportDefinition, IChunkFactory createChunkFactory, CheckSharedDataSource checkDataSourceCallback, ResolveTemporaryDataSource resolveTemporaryDataSourceCallback, DataSourceInfoCollection originalDataSources, AppDomain compilationTempAppDomain, Boolean generateExpressionHostWithRefusedPermissions, ReportProcessingFlags processingFlags, IDataProtection dataProtection)
+   --- End of inner exception stack trace ---
+   at Microsoft.ReportingServices.ReportProcessing.ReportProcessing.CreateIntermediateFormat(ICatalogItemContext reportContext, Byte[] reportDefinition, IChunkFactory createChunkFactory, CheckSharedDataSource checkDataSourceCallback, ResolveTemporaryDataSource resolveTemporaryDataSourceCallback, DataSourceInfoCollection originalDataSources, AppDomain compilationTempAppDomain, Boolean generateExpressionHostWithRefusedPermissions, ReportProcessingFlags processingFlags, IDataProtection dataProtection)
+   at Microsoft.Reporting.ReportCompiler.CompileReport(ICatalogItemContext context, Byte[] reportDefinition, Boolean generateExpressionHostWithRefusedPermissions, ControlSnapshot& snapshot)
+   --- End of inner exception stack trace ---
+   at Microsoft.Reporting.ReportCompiler.CompileReport(ICatalogItemContext context, Byte[] reportDefinition, Boolean generateExpressionHostWithRefusedPermissions, ControlSnapshot& snapshot)
+   at Microsoft.Reporting.PreviewStore.StoredReport.EnsureCompiled(CatalogItemContextBase itemContext)
+   at Microsoft.Reporting.PreviewStore.GetCompiledReport(CatalogItemContextBase context, Boolean rebuild, Byte[]& reportDefinition, ControlSnapshot& snapshot)
+   at Microsoft.Reporting.LocalService.GetCompiledReport(CatalogItemContextBase itemContext, Boolean rebuild, ControlSnapshot& snapshot)
+   at Microsoft.Reporting.WinForms.LocalReport.EnsureExecutionSession()
+   --- End of inner exception stack trace ---
+   at Microsoft.Reporting.WinForms.LocalReport.EnsureExecutionSession()
+   at Microsoft.Reporting.WinForms.LocalReport.SetParameters(IEnumerable`1 parameters)
+   at PriProMonitoring.frmReport.ReportInit(String mySql, String dsName, String rptUrl, Dictionary`2 addPara, Boolean hasUser) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\Reports\frmReport.vb:line 87
+[03/02/2017 10:49:25] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/02/2017 11:53:24] LoadSQL - System.Data.Odbc.OdbcException (0x80131937): ERROR [HY000] [ODBC Firebird Driver][Firebird]Dynamic SQL Error
+SQL error code = -104
+Invalid expression in the select list (not contained in either an aggregate function or the GROUP BY clause)
+   at System.Data.Odbc.OdbcConnection.HandleError(OdbcHandle hrHandle, RetCode retcode)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader, Object[] methodArguments, SQL_API odbcApiMethod)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader)
+   at System.Data.Odbc.OdbcCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Odbc.OdbcCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.database.LoadSQL(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\database.vb:line 158
+[03/02/2017 11:54:09] REPORT - Microsoft.Reporting.WinForms.LocalProcessingException: An error occurred during local report processing. ---> System.ApplicationException: The report definition for report 'C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\bin\Debug\Reports\EmptyPaperRoll.rdlc' has not been specified ---> System.IO.FileNotFoundException: Could not find file 'C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\bin\Debug\Reports\EmptyPaperRoll.rdlc'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at Microsoft.ReportingServices.StandalonePreviewStore.GetReportDefinition(ReportID reportId)
+   at Microsoft.Reporting.PreviewStore.GetCompiledReport(CatalogItemContextBase context, Boolean rebuild, Byte[]& reportDefinition, ControlSnapshot& snapshot)
+   --- End of inner exception stack trace ---
+   at Microsoft.Reporting.PreviewStore.GetCompiledReport(CatalogItemContextBase context, Boolean rebuild, Byte[]& reportDefinition, ControlSnapshot& snapshot)
+   at Microsoft.Reporting.LocalService.GetCompiledReport(CatalogItemContextBase itemContext, Boolean rebuild, ControlSnapshot& snapshot)
+   at Microsoft.Reporting.WinForms.LocalReport.EnsureExecutionSession()
+   --- End of inner exception stack trace ---
+   at Microsoft.Reporting.WinForms.LocalReport.EnsureExecutionSession()
+   at Microsoft.Reporting.WinForms.LocalReport.SetParameters(IEnumerable`1 parameters)
+   at PriProMonitoring.frmReport.ReportInit(String mySql, String dsName, String rptUrl, Dictionary`2 addPara, Boolean hasUser) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\Reports\frmReport.vb:line 87
+[03/02/2017 11:59:10] REPORT - Microsoft.Reporting.WinForms.LocalProcessingException: An error occurred during local report processing. ---> Microsoft.Reporting.DefinitionInvalidException: The definition of the report 'Reports\EmptyPaperRoll.rdlc' is invalid. ---> Microsoft.ReportingServices.ReportProcessing.ReportProcessingException: An unexpected error occurred in Report Processing. ---> System.UnauthorizedAccessException: Access to the path 'C:\Users\MISGWAPOHON\AppData\Local\Temp\expression_host_31627da7a5984479bc884e0004b2aa29.dll' is denied.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalDelete(String path, Boolean checkHost)
+   at System.IO.File.Delete(String path)
+   at Microsoft.ReportingServices.RdlExpressions.ExprHostCompiler.InternalCompile(Report report, AppDomain compilationTempAppDomain, Boolean refusePermissions)
+   at Microsoft.ReportingServices.RdlExpressions.ExprHostCompiler.<>c__DisplayClass1.<Compile>b__0()
+   at Microsoft.ReportingServices.Diagnostics.RevertImpersonationContext.<>c__DisplayClass1.<Run>b__0(Object state)
+   at System.Security.SecurityContext.Run(SecurityContext securityContext, ContextCallback callback, Object state)
+   at Microsoft.ReportingServices.Diagnostics.RevertImpersonationContext.Run(ContextBody callback)
+   at Microsoft.ReportingServices.RdlExpressions.ExprHostCompiler.Compile(Report report, AppDomain compilationTempAppDomain, Boolean refusePermissions)
+   at Microsoft.ReportingServices.ReportPublishing.ReportPublishing.Phase3(ICatalogItemContext reportContext, ParameterInfoCollection& parameters, AppDomain compilationTempAppDomain, Boolean generateExpressionHostWithRefusedPermissions, Dictionary`2& groupingExprCountAtScope)
+   at Microsoft.ReportingServices.ReportPublishing.ReportPublishing.CreateIntermediateFormat(ICatalogItemContext reportContext, Byte[] definition, IChunkFactory createChunkCallback, CheckSharedDataSource checkDataSourceCallback, ResolveTemporaryDataSource resolveTemporaryDataSourceCallback, DataSourceInfoCollection originalDataSources, PublishingErrorContext errorContext, AppDomain compilationTempAppDomain, Boolean generateExpressionHostWithRefusedPermissions, IDataProtection dataProtection, String& description, String& language, ParameterInfoCollection& parameters, DataSourceInfoCollection& dataSources, UserLocationFlags& userReferenceLocation, ArrayList& dataSetsName, Boolean& hasExternalImages, Boolean& hasHyperlinks)
+   at Microsoft.ReportingServices.ReportProcessing.ReportProcessing.CompileOdpReport(ICatalogItemContext reportContext, Byte[] reportDefinition, IChunkFactory createChunkCallback, CheckSharedDataSource checkDataSourceCallback, ResolveTemporaryDataSource resolveTemporaryDataSourceCallback, DataSourceInfoCollection originalDataSources, PublishingErrorContext errorContext, AppDomain compilationTempAppDomain, Boolean generateExpressionHostWithRefusedPermissions, IDataProtection dataProtection, String& reportDescription, String& reportLanguage, ParameterInfoCollection& parameters, DataSourceInfoCollection& dataSources, UserLocationFlags& userReferenceLocation, ArrayList& dataSetsName, Boolean& hasExternalImages, Boolean& hasHyperlinks)
+   at Microsoft.ReportingServices.ReportProcessing.ReportProcessing.CreateIntermediateFormat(ICatalogItemContext reportContext, Byte[] reportDefinition, IChunkFactory createChunkFactory, CheckSharedDataSource checkDataSourceCallback, ResolveTemporaryDataSource resolveTemporaryDataSourceCallback, DataSourceInfoCollection originalDataSources, AppDomain compilationTempAppDomain, Boolean generateExpressionHostWithRefusedPermissions, ReportProcessingFlags processingFlags, IDataProtection dataProtection)
+   --- End of inner exception stack trace ---
+   at Microsoft.ReportingServices.ReportProcessing.ReportProcessing.CreateIntermediateFormat(ICatalogItemContext reportContext, Byte[] reportDefinition, IChunkFactory createChunkFactory, CheckSharedDataSource checkDataSourceCallback, ResolveTemporaryDataSource resolveTemporaryDataSourceCallback, DataSourceInfoCollection originalDataSources, AppDomain compilationTempAppDomain, Boolean generateExpressionHostWithRefusedPermissions, ReportProcessingFlags processingFlags, IDataProtection dataProtection)
+   at Microsoft.Reporting.ReportCompiler.CompileReport(ICatalogItemContext context, Byte[] reportDefinition, Boolean generateExpressionHostWithRefusedPermissions, ControlSnapshot& snapshot)
+   --- End of inner exception stack trace ---
+   at Microsoft.Reporting.ReportCompiler.CompileReport(ICatalogItemContext context, Byte[] reportDefinition, Boolean generateExpressionHostWithRefusedPermissions, ControlSnapshot& snapshot)
+   at Microsoft.Reporting.PreviewStore.StoredReport.EnsureCompiled(CatalogItemContextBase itemContext)
+   at Microsoft.Reporting.PreviewStore.GetCompiledReport(CatalogItemContextBase context, Boolean rebuild, Byte[]& reportDefinition, ControlSnapshot& snapshot)
+   at Microsoft.Reporting.LocalService.GetCompiledReport(CatalogItemContextBase itemContext, Boolean rebuild, ControlSnapshot& snapshot)
+   at Microsoft.Reporting.WinForms.LocalReport.EnsureExecutionSession()
+   --- End of inner exception stack trace ---
+   at Microsoft.Reporting.WinForms.LocalReport.EnsureExecutionSession()
+   at Microsoft.Reporting.WinForms.LocalReport.SetParameters(IEnumerable`1 parameters)
+   at PriProMonitoring.frmReport.ReportInit(String mySql, String dsName, String rptUrl, Dictionary`2 addPara, Boolean hasUser) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\Reports\frmReport.vb:line 87
+[03/02/2017 12:07:07] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/02/2017 13:17:58] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/02/2017 13:23:45] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/02/2017 13:29:47] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/02/2017 13:59:14] LoadSQL - System.Data.Odbc.OdbcException (0x80131937): ERROR [HY000] [ODBC Firebird Driver][Firebird]Dynamic SQL Error
+SQL error code = -104
+Invalid expression in the select list (not contained in either an aggregate function or the GROUP BY clause)
+   at System.Data.Odbc.OdbcConnection.HandleError(OdbcHandle hrHandle, RetCode retcode)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader, Object[] methodArguments, SQL_API odbcApiMethod)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader)
+   at System.Data.Odbc.OdbcCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Odbc.OdbcCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.database.LoadSQL(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\database.vb:line 158
+[03/02/2017 14:11:03] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/02/2017 14:47:54] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/05/2017 08:09:38] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/05/2017 08:13:16] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/05/2017 08:17:14] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/05/2017 08:17:15] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/05/2017 08:17:17] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/05/2017 08:18:09] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/05/2017 08:18:13] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/05/2017 08:18:14] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/05/2017 08:19:08] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/05/2017 08:19:31] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/05/2017 08:20:59] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/05/2017 08:22:57] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/05/2017 08:28:40] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/05/2017 08:42:01] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/05/2017 08:45:49] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/05/2017 08:49:44] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/05/2017 09:06:06] LoadSQL - System.Data.Odbc.OdbcException (0x80131937): ERROR [42S02] [ODBC Firebird Driver][Firebird]Dynamic SQL Error
+SQL error code = -204
+Table unknown
+POSITEM
+At line 1, column 59
+   at System.Data.Odbc.OdbcConnection.HandleError(OdbcHandle hrHandle, RetCode retcode)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader, Object[] methodArguments, SQL_API odbcApiMethod)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader)
+   at System.Data.Odbc.OdbcCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Odbc.OdbcCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/03/2017 11:13:11] ERROR [08004] [ODBC Firebird Driver]File Database is not found
+[03/03/2017 11:13:11] User: SYSDBA
+[03/03/2017 11:13:11] Database: PRIPRO.FDB
+[03/03/2017 11:13:13] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/03/2017 11:13:14] ERROR [08004] [ODBC Firebird Driver]File Database is not found
+[03/03/2017 11:13:14] User: SYSDBA
+[03/03/2017 11:13:14] Database: PRIPRO.FDB
+[03/03/2017 11:13:16] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.databasePOS.LoadSQLPOS(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\databasePOS.vb:line 158
+[03/03/2017 11:13:19] ERROR [08004] [ODBC Firebird Driver]File Database is not found
+[03/03/2017 11:13:19] User: SYSDBA
+[03/03/2017 11:13:19] Database: PRIPRO.FDB

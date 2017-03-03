@@ -29,6 +29,8 @@ Partial Public Class dsReports1
     
     Private tableAdjustment As AdjustmentDataTable
     
+    Private tableEmptyPaperRoll As EmptyPaperRollDataTable
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -64,6 +66,9 @@ Partial Public Class dsReports1
             If (Not (ds.Tables("Adjustment")) Is Nothing) Then
                 MyBase.Tables.Add(New AdjustmentDataTable(ds.Tables("Adjustment")))
             End If
+            If (Not (ds.Tables("EmptyPaperRoll")) Is Nothing) Then
+                MyBase.Tables.Add(New EmptyPaperRollDataTable(ds.Tables("EmptyPaperRoll")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -98,6 +103,16 @@ Partial Public Class dsReports1
     Public ReadOnly Property Adjustment() As AdjustmentDataTable
         Get
             Return Me.tableAdjustment
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property EmptyPaperRoll() As EmptyPaperRollDataTable
+        Get
+            Return Me.tableEmptyPaperRoll
         End Get
     End Property
     
@@ -174,6 +189,9 @@ Partial Public Class dsReports1
             If (Not (ds.Tables("Adjustment")) Is Nothing) Then
                 MyBase.Tables.Add(New AdjustmentDataTable(ds.Tables("Adjustment")))
             End If
+            If (Not (ds.Tables("EmptyPaperRoll")) Is Nothing) Then
+                MyBase.Tables.Add(New EmptyPaperRollDataTable(ds.Tables("EmptyPaperRoll")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -218,6 +236,12 @@ Partial Public Class dsReports1
                 Me.tableAdjustment.InitVars
             End If
         End If
+        Me.tableEmptyPaperRoll = CType(MyBase.Tables("EmptyPaperRoll"),EmptyPaperRollDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableEmptyPaperRoll) Is Nothing) Then
+                Me.tableEmptyPaperRoll.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -232,6 +256,8 @@ Partial Public Class dsReports1
         MyBase.Tables.Add(Me.tableProduction)
         Me.tableAdjustment = New AdjustmentDataTable()
         MyBase.Tables.Add(Me.tableAdjustment)
+        Me.tableEmptyPaperRoll = New EmptyPaperRollDataTable()
+        MyBase.Tables.Add(Me.tableEmptyPaperRoll)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -243,6 +269,12 @@ Partial Public Class dsReports1
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Function ShouldSerializeAdjustment() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Private Function ShouldSerializeEmptyPaperRoll() As Boolean
         Return false
     End Function
     
@@ -309,6 +341,9 @@ Partial Public Class dsReports1
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Delegate Sub AdjustmentRowChangeEventHandler(ByVal sender As Object, ByVal e As AdjustmentRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Delegate Sub EmptyPaperRollRowChangeEventHandler(ByVal sender As Object, ByVal e As EmptyPaperRollRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -1023,6 +1058,388 @@ Partial Public Class dsReports1
     End Class
     
     '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class EmptyPaperRollDataTable
+        Inherits Global.System.Data.TypedTableBase(Of EmptyPaperRollRow)
+        
+        Private columnPapRoll_ID As Global.System.Data.DataColumn
+        
+        Private columnPAPROLL_SERIAL As Global.System.Data.DataColumn
+        
+        Private columnPAPCUT_DESC As Global.System.Data.DataColumn
+        
+        Private columnSUM As Global.System.Data.DataColumn
+        
+        Private columnTOTAL_LENGTH As Global.System.Data.DataColumn
+        
+        Private columnREMAINING As Global.System.Data.DataColumn
+        
+        Private columnREMAININGS As Global.System.Data.DataColumn
+        
+        Private columnUPDATED_AT As Global.System.Data.DataColumn
+        
+        Private columnEMULSION As Global.System.Data.DataColumn
+        
+        Private columnADVANCE As Global.System.Data.DataColumn
+        
+        Private columnLASTOUT As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "EmptyPaperRoll"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PapRoll_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPapRoll_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PAPROLL_SERIALColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPAPROLL_SERIAL
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PAPCUT_DESCColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPAPCUT_DESC
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property SUMColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSUM
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TOTAL_LENGTHColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTOTAL_LENGTH
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property REMAININGColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnREMAINING
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property REMAININGSColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnREMAININGS
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property UPDATED_ATColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUPDATED_AT
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property EMULSIONColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEMULSION
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ADVANCEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnADVANCE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property LASTOUTColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLASTOUT
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As EmptyPaperRollRow
+            Get
+                Return CType(Me.Rows(index),EmptyPaperRollRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event EmptyPaperRollRowChanging As EmptyPaperRollRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event EmptyPaperRollRowChanged As EmptyPaperRollRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event EmptyPaperRollRowDeleting As EmptyPaperRollRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event EmptyPaperRollRowDeleted As EmptyPaperRollRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Sub AddEmptyPaperRollRow(ByVal row As EmptyPaperRollRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Function AddEmptyPaperRollRow(ByVal PapRoll_ID As String, ByVal PAPROLL_SERIAL As String, ByVal PAPCUT_DESC As String, ByVal SUM As String, ByVal TOTAL_LENGTH As String, ByVal REMAINING As String, ByVal REMAININGS As String, ByVal UPDATED_AT As String, ByVal EMULSION As String, ByVal ADVANCE As String, ByVal LASTOUT As String) As EmptyPaperRollRow
+            Dim rowEmptyPaperRollRow As EmptyPaperRollRow = CType(Me.NewRow,EmptyPaperRollRow)
+            Dim columnValuesArray() As Object = New Object() {PapRoll_ID, PAPROLL_SERIAL, PAPCUT_DESC, SUM, TOTAL_LENGTH, REMAINING, REMAININGS, UPDATED_AT, EMULSION, ADVANCE, LASTOUT}
+            rowEmptyPaperRollRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowEmptyPaperRollRow)
+            Return rowEmptyPaperRollRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As EmptyPaperRollDataTable = CType(MyBase.Clone,EmptyPaperRollDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New EmptyPaperRollDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnPapRoll_ID = MyBase.Columns("PapRoll_ID")
+            Me.columnPAPROLL_SERIAL = MyBase.Columns("PAPROLL_SERIAL")
+            Me.columnPAPCUT_DESC = MyBase.Columns("PAPCUT_DESC")
+            Me.columnSUM = MyBase.Columns("SUM")
+            Me.columnTOTAL_LENGTH = MyBase.Columns("TOTAL_LENGTH")
+            Me.columnREMAINING = MyBase.Columns("REMAINING")
+            Me.columnREMAININGS = MyBase.Columns("REMAININGS")
+            Me.columnUPDATED_AT = MyBase.Columns("UPDATED_AT")
+            Me.columnEMULSION = MyBase.Columns("EMULSION")
+            Me.columnADVANCE = MyBase.Columns("ADVANCE")
+            Me.columnLASTOUT = MyBase.Columns("LASTOUT")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnPapRoll_ID = New Global.System.Data.DataColumn("PapRoll_ID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPapRoll_ID)
+            Me.columnPAPROLL_SERIAL = New Global.System.Data.DataColumn("PAPROLL_SERIAL", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPAPROLL_SERIAL)
+            Me.columnPAPCUT_DESC = New Global.System.Data.DataColumn("PAPCUT_DESC", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPAPCUT_DESC)
+            Me.columnSUM = New Global.System.Data.DataColumn("SUM", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSUM)
+            Me.columnTOTAL_LENGTH = New Global.System.Data.DataColumn("TOTAL_LENGTH", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTOTAL_LENGTH)
+            Me.columnREMAINING = New Global.System.Data.DataColumn("REMAINING", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnREMAINING)
+            Me.columnREMAININGS = New Global.System.Data.DataColumn("REMAININGS", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnREMAININGS)
+            Me.columnUPDATED_AT = New Global.System.Data.DataColumn("UPDATED_AT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUPDATED_AT)
+            Me.columnEMULSION = New Global.System.Data.DataColumn("EMULSION", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEMULSION)
+            Me.columnADVANCE = New Global.System.Data.DataColumn("ADVANCE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnADVANCE)
+            Me.columnLASTOUT = New Global.System.Data.DataColumn("LASTOUT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLASTOUT)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function NewEmptyPaperRollRow() As EmptyPaperRollRow
+            Return CType(Me.NewRow,EmptyPaperRollRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New EmptyPaperRollRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(EmptyPaperRollRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.EmptyPaperRollRowChangedEvent) Is Nothing) Then
+                RaiseEvent EmptyPaperRollRowChanged(Me, New EmptyPaperRollRowChangeEvent(CType(e.Row,EmptyPaperRollRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.EmptyPaperRollRowChangingEvent) Is Nothing) Then
+                RaiseEvent EmptyPaperRollRowChanging(Me, New EmptyPaperRollRowChangeEvent(CType(e.Row,EmptyPaperRollRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.EmptyPaperRollRowDeletedEvent) Is Nothing) Then
+                RaiseEvent EmptyPaperRollRowDeleted(Me, New EmptyPaperRollRowChangeEvent(CType(e.Row,EmptyPaperRollRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.EmptyPaperRollRowDeletingEvent) Is Nothing) Then
+                RaiseEvent EmptyPaperRollRowDeleting(Me, New EmptyPaperRollRowChangeEvent(CType(e.Row,EmptyPaperRollRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub RemoveEmptyPaperRollRow(ByVal row As EmptyPaperRollRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As dsReports1 = New dsReports1()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "EmptyPaperRollDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
     Partial Public Class ProductionRow
@@ -1541,6 +1958,319 @@ Partial Public Class dsReports1
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class EmptyPaperRollRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableEmptyPaperRoll As EmptyPaperRollDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableEmptyPaperRoll = CType(Me.Table,EmptyPaperRollDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PapRoll_ID() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmptyPaperRoll.PapRoll_IDColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PapRoll_ID' in table 'EmptyPaperRoll' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmptyPaperRoll.PapRoll_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PAPROLL_SERIAL() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmptyPaperRoll.PAPROLL_SERIALColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PAPROLL_SERIAL' in table 'EmptyPaperRoll' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmptyPaperRoll.PAPROLL_SERIALColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PAPCUT_DESC() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmptyPaperRoll.PAPCUT_DESCColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PAPCUT_DESC' in table 'EmptyPaperRoll' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmptyPaperRoll.PAPCUT_DESCColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property SUM() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmptyPaperRoll.SUMColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SUM' in table 'EmptyPaperRoll' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmptyPaperRoll.SUMColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property TOTAL_LENGTH() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmptyPaperRoll.TOTAL_LENGTHColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'TOTAL_LENGTH' in table 'EmptyPaperRoll' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmptyPaperRoll.TOTAL_LENGTHColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property REMAINING() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmptyPaperRoll.REMAININGColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'REMAINING' in table 'EmptyPaperRoll' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmptyPaperRoll.REMAININGColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property REMAININGS() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmptyPaperRoll.REMAININGSColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'REMAININGS' in table 'EmptyPaperRoll' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmptyPaperRoll.REMAININGSColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property UPDATED_AT() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmptyPaperRoll.UPDATED_ATColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'UPDATED_AT' in table 'EmptyPaperRoll' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmptyPaperRoll.UPDATED_ATColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property EMULSION() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmptyPaperRoll.EMULSIONColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EMULSION' in table 'EmptyPaperRoll' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmptyPaperRoll.EMULSIONColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ADVANCE() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmptyPaperRoll.ADVANCEColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ADVANCE' in table 'EmptyPaperRoll' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmptyPaperRoll.ADVANCEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property LASTOUT() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmptyPaperRoll.LASTOUTColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LASTOUT' in table 'EmptyPaperRoll' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmptyPaperRoll.LASTOUTColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPapRoll_IDNull() As Boolean
+            Return Me.IsNull(Me.tableEmptyPaperRoll.PapRoll_IDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPapRoll_IDNull()
+            Me(Me.tableEmptyPaperRoll.PapRoll_IDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPAPROLL_SERIALNull() As Boolean
+            Return Me.IsNull(Me.tableEmptyPaperRoll.PAPROLL_SERIALColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPAPROLL_SERIALNull()
+            Me(Me.tableEmptyPaperRoll.PAPROLL_SERIALColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPAPCUT_DESCNull() As Boolean
+            Return Me.IsNull(Me.tableEmptyPaperRoll.PAPCUT_DESCColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPAPCUT_DESCNull()
+            Me(Me.tableEmptyPaperRoll.PAPCUT_DESCColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsSUMNull() As Boolean
+            Return Me.IsNull(Me.tableEmptyPaperRoll.SUMColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetSUMNull()
+            Me(Me.tableEmptyPaperRoll.SUMColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsTOTAL_LENGTHNull() As Boolean
+            Return Me.IsNull(Me.tableEmptyPaperRoll.TOTAL_LENGTHColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetTOTAL_LENGTHNull()
+            Me(Me.tableEmptyPaperRoll.TOTAL_LENGTHColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsREMAININGNull() As Boolean
+            Return Me.IsNull(Me.tableEmptyPaperRoll.REMAININGColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetREMAININGNull()
+            Me(Me.tableEmptyPaperRoll.REMAININGColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsREMAININGSNull() As Boolean
+            Return Me.IsNull(Me.tableEmptyPaperRoll.REMAININGSColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetREMAININGSNull()
+            Me(Me.tableEmptyPaperRoll.REMAININGSColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsUPDATED_ATNull() As Boolean
+            Return Me.IsNull(Me.tableEmptyPaperRoll.UPDATED_ATColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetUPDATED_ATNull()
+            Me(Me.tableEmptyPaperRoll.UPDATED_ATColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsEMULSIONNull() As Boolean
+            Return Me.IsNull(Me.tableEmptyPaperRoll.EMULSIONColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetEMULSIONNull()
+            Me(Me.tableEmptyPaperRoll.EMULSIONColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsADVANCENull() As Boolean
+            Return Me.IsNull(Me.tableEmptyPaperRoll.ADVANCEColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetADVANCENull()
+            Me(Me.tableEmptyPaperRoll.ADVANCEColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsLASTOUTNull() As Boolean
+            Return Me.IsNull(Me.tableEmptyPaperRoll.LASTOUTColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetLASTOUTNull()
+            Me(Me.tableEmptyPaperRoll.LASTOUTColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -1598,6 +2328,42 @@ Partial Public Class dsReports1
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property Row() As AdjustmentRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Class EmptyPaperRollRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As EmptyPaperRollRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New(ByVal row As EmptyPaperRollRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Row() As EmptyPaperRollRow
             Get
                 Return Me.eventRow
             End Get

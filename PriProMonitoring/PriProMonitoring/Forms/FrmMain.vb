@@ -366,4 +366,9 @@
         frmQDate.RPTType = frmQDate.ReportType.Production
         frmQDate.Show()
     End Sub
+
+    Private Sub EmptyPaperRollReportToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EmptyPaperRollReportToolStripMenuItem.Click
+        frmQDate.RPTType = frmQDate.ReportType.PaperRollEmpty
+        frmQDate.Show()
+    End Sub
 End Class
