@@ -49,7 +49,7 @@ Partial Class frmQDate
         '
         Me.cboReportType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboReportType.FormattingEnabled = True
-        Me.cboReportType.Items.AddRange(New Object() {"Adjustment Report", "Empty Paper Roll"})
+        Me.cboReportType.Items.AddRange(New Object() {"Adjustment Report"})
         Me.cboReportType.Location = New System.Drawing.Point(21, 192)
         Me.cboReportType.Name = "cboReportType"
         Me.cboReportType.Size = New System.Drawing.Size(227, 24)
