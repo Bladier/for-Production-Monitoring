@@ -32,6 +32,7 @@
         ToolStripAddpaperroll.Enabled = Not st
         ToolStripAdjusment.Enabled = Not st
         ToolStripMonitor.Enabled = Not st
+        ToolStripViews.Enabled = Not st
 
         If Not st Then
             ToolStripLogin.Text = "&Log Out"
@@ -45,7 +46,8 @@
 
         'reports
         ProductionToolstrip.Enabled = Not st
-
+        AdjustmentReportToolStripMenuItem.Enabled = Not st
+        EmptyPaperRollReportToolStripMenuItem.Enabled = Not st
     End Sub
 
     Private Sub LoginToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)

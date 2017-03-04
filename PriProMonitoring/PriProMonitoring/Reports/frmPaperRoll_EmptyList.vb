@@ -8,7 +8,7 @@
         Dim ds As DataSet
 
         If txtSearch.Text = "" Then
-            Dim mysql As String = "SELECT PAPROLL_ID,PAPROLL_SERIAL FROM TBLPAPERROLL where STATUS = '2'"
+            Dim mysql As String = "SELECT FIRST 100 PAPROLL_ID,PAPROLL_SERIAL FROM TBLPAPERROLL where STATUS = '2'"
             ds = LoadSQL(mysql, "TBLPAPERROLL")
         Else
             Dim mysql As String = "SELECT PAPROLL_ID,PAPROLL_SERIAL FROM TBLPAPERROLL where STATUS = '2' " & _
@@ -31,6 +31,10 @@
     End Sub
 
     Private Sub btnGenerate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGenerate.Click
+        If txtSearch.Text = "" Then MsgBox("Do selected paper roll" & vbCrLf & "Please paper roll in the list.", _
+                                            MsgBoxStyle.Information, "Information") : Exit Sub
+        If lvPapList.Items.Count = 0 Then Exit Sub
+
         production_report_End_paper_roll()
     End Sub
 
@@ -56,17 +60,24 @@
         rptSQL.Add(fillData, mySql)
 
         fillData = "dsAdj"
-        mySql = " SELECT AD.PAPROLL_SERIAL,AD.REMARKS,AD.ADJUSTED_BY, AD.CREATED_AT,"
-        mySql &= vbCrLf & " (AD.TOTAL_ADJUSTMENT)* 39.3701 AS T_ADJUSTMENT,"
-        mySql &= vbCrLf & " AD.LENGTH_EXPOSE,PC.PAPCUT_DESCRIPTION,"
-        mySql &= vbCrLf & " SUM(ADL.QUANTITY) AS QTY,ADL.ADJUSTMENT_TYPE"
-        mySql &= vbCrLf & "  FROM TBLADJUSTMENT AD"
-        mySql &= vbCrLf & " INNER JOIN TBLADJUSTMENT_LINE ADL ON ADL.ADJUSTMENT_ID = AD.ADJUSTMENTID"
-        mySql &= vbCrLf & " INNER JOIN TBLPAPERCUT PC ON PC.PAPERCUT_ID = ADL.PAPERCUT_ID"
-        mySql &= vbCrLf & "  WHERE UPPER(AD.PAPROLL_SERIAL) = UPPER('" & txtSearch.Text & "')"
-        mySql &= vbCrLf & "  GROUP BY AD.PAPROLL_SERIAL,AD.REMARKS,AD.ADJUSTED_BY, AD.CREATED_AT,T_ADJUSTMENT,"
-        mySql &= vbCrLf & "  AD.LENGTH_EXPOSE,PC.PAPCUT_DESCRIPTION,ADL.ADJUSTMENT_TYPE"
-        ' rptSQL.Add(fillData, mySql)
+        'mySql = " SELECT AD.PAPROLL_SERIAL,AD.REMARKS,AD.ADJUSTED_BY, AD.CREATED_AT,"
+        'mySql &= vbCrLf & " (AD.TOTAL_ADJUSTMENT)* 39.3701 AS T_ADJUSTMENT,"
+        'mySql &= vbCrLf & " AD.LENGTH_EXPOSE,PC.PAPCUT_DESCRIPTION,"
+        'mySql &= vbCrLf & " SUM(ADL.QUANTITY) AS QTY,ADL.ADJUSTMENT_TYPE"
+        'mySql &= vbCrLf & "  FROM TBLADJUSTMENT AD"
+        'mySql &= vbCrLf & " INNER JOIN TBLADJUSTMENT_LINE ADL ON ADL.ADJUSTMENT_ID = AD.ADJUSTMENTID"
+        'mySql &= vbCrLf & " INNER JOIN TBLPAPERCUT PC ON PC.PAPERCUT_ID = ADL.PAPERCUT_ID"
+        'mySql &= vbCrLf & "  WHERE UPPER(AD.PAPROLL_SERIAL) = UPPER('" & txtSearch.Text & "')"
+        'mySql &= vbCrLf & "  GROUP BY AD.PAPROLL_SERIAL,AD.REMARKS,AD.ADJUSTED_BY, AD.CREATED_AT,T_ADJUSTMENT,"
+        'mySql &= vbCrLf & "  AD.LENGTH_EXPOSE,PC.PAPCUT_DESCRIPTION,ADL.ADJUSTMENT_TYPE"
+        mySql = "SELECT AD.PAPROLL_SERIAL,AD.REMARKS,AD.ADJUSTED_BY,AD.CREATED_AT,"
+        mySql &= " AD.TOTAL_ADJUSTMENT as T_ADJUSTMENT,AD.LENGTH_EXPOSE,PC.PAPCUT_DESCRIPTION,"
+        mySql &= " ADL.QUANTITY as QTY,ADL.ADJUSTMENT_TYPE"
+        mySql &= " FROM TBLADJUSTMENT AD"
+        mySql &= " INNER JOIN TBLADJUSTMENT_LINE ADL ON ADL.ADJUSTMENT_ID = AD.ADJUSTMENTID"
+        mySql &= " INNER JOIN TBLPAPERCUT PC ON PC.PAPERCUT_ID = ADL.PAPERCUT_ID"
+        mySql &= " WHERE UPPER(AD.PAPROLL_SERIAL) = UPPER('" & txtSearch.Text & "')"
+        mySql &= " ORDER BY CREATED_AT ASC"
         subReportSQL.Add(fillData, mySql)
 
         Dim rptPara As New Dictionary(Of String, String)
@@ -76,6 +87,10 @@
         frmReport.MultiDbSetReport(rptSQL, "Reports\EmptyPaperRoll.rdlc", rptPara, 1, subReportSQL)
         frmReport.Show()
 
+    End Sub
 
+   
+    Private Sub lvPapList_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lvPapList.Click
+        txtSearch.Text = lvPapList.SelectedItems(0).SubItems(1).Text
     End Sub
 End Class
