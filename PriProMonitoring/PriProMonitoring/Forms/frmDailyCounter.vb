@@ -5,6 +5,7 @@
         If DailyTotal = "Daily" Then
             DT_Load_PC() 'Daily Total
             DailyTotal = ""
+            txtTotal.Text = Daily_Total()
         Else
             Visible_fields()
             GT_Load_PC() 'Grand Total
@@ -86,6 +87,8 @@
         DateTimePicker1.Visible = False
         Label1.Visible = False
         lvDailyCount.Dock = DockStyle.Fill
+        Label2.Visible = False
+        txtTotal.Visible = False
     End Sub
 
     Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
@@ -101,5 +104,22 @@
 
     Private Sub DateTimePicker1_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DateTimePicker1.ValueChanged
         DT_Load_PC()
+        txtTotal.Text = Daily_Total()
     End Sub
+
+    ''' <summary>
+    ''' This Function Calculate Daily Total ALL prints in the machine
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Private Function Daily_Total() As Integer
+        Dim Count As Double = 0.0
+        Dim Total As Integer
+        For Each lv As ListViewItem In lvDailyCount.Items
+            Count = Val(lv.SubItems(2).Text)
+            Total += Count
+        Next
+
+        Return Total
+    End Function
 End Class
