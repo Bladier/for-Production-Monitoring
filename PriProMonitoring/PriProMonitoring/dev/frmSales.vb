@@ -125,14 +125,14 @@ nextToExit:
         If ds.Tables(0).Rows.Count = 0 Then
             ID = {"", ""}
             Return ID
+        Else
+
+            Dim tmpdate As Date = ds.Tables(0).Rows(0).Item("DATESTAMP")
+
+            Console.WriteLine(ds.Tables(0).Rows(0).Item("ID"))
+
+            ID = {ds.Tables(0).Rows(0).Item("ID"), tmpdate}
         End If
-
-
-        Dim tmpdate As Date = ds.Tables(0).Rows(0).Item("DATESTAMP")
-
-        Console.WriteLine(ds.Tables(0).Rows(0).Item("ID"))
-
-        ID = {ds.Tables(0).Rows(0).Item("ID"), tmpdate}
 
         Return ID
     End Function
