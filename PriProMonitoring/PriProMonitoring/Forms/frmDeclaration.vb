@@ -64,6 +64,7 @@
 
                 DeductToPaperRoll(itm.SubItems(0).Text, tmpTotal) ' Deduct to paper roll
             End With
+            savePapLog("Paper roll Empty", itm.SubItems(0).Text)
         Next
 
         MsgBox("Posted.", MsgBoxStyle.Information, "Post")
@@ -72,6 +73,34 @@
         frmDeclaration_Load(sender, e)
         clearFields()
     End Sub
+
+
+    Private Sub savePapLog(ByVal mod_name As String, ByVal pap_roll As String)
+        Dim savelog As New PaperLoadLog
+        Dim seletect_paperRoll As New PaperRoll
+        seletect_paperRoll.loadSerial(pap_roll)
+
+        savelog.PaprollID = seletect_paperRoll.PaprollID
+        savelog.loaded_by = CurrentUser
+        savelog.Remaining = GetRemaining(pap_roll)
+        savelog.Modname = mod_name
+        savelog.SaveRoll()
+    End Sub
+
+    Private Function GetRemaining(ByVal pap_roll As String) As Double
+        Dim value As Double
+        Dim mysql As String = "SELECT * FROM TBLPAPERROLL " & _
+            "WHERE PAPROLL_SERIAL = '" & pap_roll & " '"
+        Dim ds As DataSet = LoadSQL(mysql, "TBLPAPERROLL")
+
+        value = ds.Tables(0).Rows(0).Item("Remaining")
+
+        If ds.Tables(0).Rows.Count = 0 Then
+            Return 0
+        End If
+
+        Return value
+    End Function
 
     Private Sub clearFields()
         ModName = ""

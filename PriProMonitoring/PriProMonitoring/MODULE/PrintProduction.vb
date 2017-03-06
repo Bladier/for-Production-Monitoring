@@ -9,7 +9,7 @@
         dbOpen()
         Dim mysql As String = "SELECT * FROM TBLPRO WHERE STATUS = '0'"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPRO")
-
+        
         Dim COUNTMAX As Integer = ds.Tables(0).Rows.Count
 
         If COUNTMAX = 0 Then GoTo nextlineTodo

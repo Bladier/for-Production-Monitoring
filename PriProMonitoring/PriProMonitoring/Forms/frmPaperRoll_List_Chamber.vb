@@ -191,14 +191,11 @@
                "ON P.PAPIDS =PM.PAPID WHERE P.PAPROLL_ID ='" & id & "' AND STATUS = '1'"
         ds = LoadSQL(mysql, "TBLPAPERROLL")
 
-
-        If ds.Tables(0).Rows.Count > 0 Then
-            MsgBox("This paper roll currently loaded.", MsgBoxStyle.Information, "Load")
-            Return True
-        End If
-
         Try
-            If ds.Tables(0).Rows.Count = 0 Then
+            If ds.Tables(0).Rows.Count > 0 Then
+                MsgBox("This paper roll currently loaded.", MsgBoxStyle.Information, "Load")
+                Return True
+            Else
                 Return False
             End If
         Catch ex As Exception
@@ -303,7 +300,7 @@
             Case Keys.Escape
                 btnClose.PerformClick()
             Case Else
-                'Do Nothing
+                'Yes It's Nothing
         End Select
 
         Return MyBase.ProcessCmdKey(msg, keyData)
