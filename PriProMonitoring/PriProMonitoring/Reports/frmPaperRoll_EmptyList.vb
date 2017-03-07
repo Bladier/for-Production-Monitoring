@@ -35,11 +35,12 @@
                                             MsgBoxStyle.Information, "Information") : Exit Sub
         If lvPapList.Items.Count = 0 Then Exit Sub
 
+
         production_report_End_paper_roll()
     End Sub
 
     Private Sub production_report_End_paper_roll()
-
+        Dim BranchCode1 As String = GetOption("Branch Code")
         Dim fillData As String, rptSQL As New Dictionary(Of String, String)
         Dim mysql As String, subReportSQL As New Dictionary(Of String, String)
 
@@ -75,7 +76,7 @@
         subReportSQL.Add(fillData, mySql)
 
         Dim rptPara As New Dictionary(Of String, String)
-        rptPara.Add("BranchName", BranchCode)
+        rptPara.Add("BranchName", BranchCode1)
         rptPara.Add("txtUsername", CurrentUser)
 
         frmReport.MultiDbSetReport(rptSQL, "Reports\EmptyPaperRoll.rdlc", rptPara, 1, subReportSQL)
