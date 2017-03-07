@@ -1,4 +1,5 @@
 ﻿Public Class frmQDate
+    Dim BranchCode1 As String = ""
     Dim PapSErial As String = ""
     Enum ReportType As Integer
         Adjustment = 0
@@ -19,6 +20,7 @@
     Private Sub btnGenerate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGenerate.Click
         If cboReportType.Text = "" And cboReportType.Visible Then Exit Sub
 
+        BranchCode1 = GetOption("Branch Code")
         If cboReportType.Visible Then
             Select Case cboReportType.Text
                 Case "Adjustment Report"
@@ -27,7 +29,6 @@
         End If
 
         Generate()
-
     End Sub
 
     Private Sub production_report()
@@ -41,7 +42,7 @@
 
         Dim rptPara As New Dictionary(Of String, String)
         rptPara.Add("txtMonthOf", "Date: " & MonCal.SelectionStart.ToLongDateString)
-        rptPara.Add("BranchName", BranchCode)
+        rptPara.Add("BranchName", BranchCode1)
         rptPara.Add("txtUsername", CurrentUser)
 
         frmReport.ReportInit(mySql, fillData, "Reports\prtProduction.rdlc", rptPara)
@@ -49,6 +50,7 @@
     End Sub
 
     Private Sub Adjustment_report()
+
         Dim start_Date As Date = GetFirstDate(MonCal.SelectionStart)
         Dim End_Date As Date = GetLastDate(MonCal.SelectionStart)
         Dim fillData As String = "dsAdjustment"
@@ -66,7 +68,7 @@
 
         Dim rptPara As New Dictionary(Of String, String)
         rptPara.Add("txtMonthOf", "Date: " & MonCal.SelectionStart.ToLongDateString)
-        rptPara.Add("BranchName", BranchCode)
+        rptPara.Add("BranchName", BranchCode1)
         rptPara.Add("txtUsername", CurrentUser)
 
         frmReport.ReportInit(mySql, fillData, "Reports\rptAdjustment.rdlc", rptPara)

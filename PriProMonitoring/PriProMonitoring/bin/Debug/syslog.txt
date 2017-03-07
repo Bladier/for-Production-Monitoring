@@ -3696,3 +3696,45 @@ At line 1, column 234
    at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
    at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
    at PriProMonitoring.database.LoadSQL(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\database.vb:line 158
+[03/06/2017 16:47:49] LoadSQL - System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Data.Odbc.OdbcDataReader.Close(Boolean disposing)
+   at System.Data.Odbc.OdbcDataReader.Dispose(Boolean disposing)
+   at System.Data.Common.DbDataReader.Dispose()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.database.LoadSQL(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\database.vb:line 158
+[03/06/2017 16:50:54] LoadSQL - System.InvalidOperationException: ExecuteReader requires an open and available Connection. The connection's current state is closed.
+   at System.Data.Odbc.OdbcConnection.SetStateExecuting(String method, OdbcTransaction transaction)
+   at System.Data.Odbc.OdbcCommand.ValidateConnectionAndTransaction(String method)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader, Object[] methodArguments, SQL_API odbcApiMethod)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader)
+   at System.Data.Odbc.OdbcCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Odbc.OdbcCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.database.LoadSQL(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\database.vb:line 158
+[03/07/2017 09:43:21] LoadSQL - System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Data.Odbc.OdbcDataReader.Close(Boolean disposing)
+   at System.Data.Odbc.OdbcDataReader.Dispose(Boolean disposing)
+   at System.Data.Common.DbDataReader.Dispose()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.database.LoadSQL(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\database.vb:line 158
+[03/07/2017 14:03:28] LoadSQL - System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Data.Odbc.OdbcDataReader.internalGetInt64(Int32 i)
+   at System.Data.Odbc.OdbcDataReader.GetValue(Int32 i, TypeMap typemap)
+   at System.Data.Odbc.OdbcDataReader.GetValue(Int32 i)
+   at System.Data.Odbc.OdbcDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.database.LoadSQL(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\database.vb:line 158
