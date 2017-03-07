@@ -122,7 +122,7 @@ nextToExit:
         Dim ds As DataSet = LoadSQLPOS(mysql, "POSITEM")
 
 
-        If ds.Tables(0).Rows.Count = 0 Then
+        If ds.Tables(0).Rows.Count <= 0 Then
             ID = {"", ""}
             Return ID
         Else
