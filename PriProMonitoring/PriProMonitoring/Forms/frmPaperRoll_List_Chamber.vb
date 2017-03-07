@@ -331,4 +331,11 @@
     Private Sub frmPaperRoll_List_Chamber_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
         FrmMain.ToolStripChangePaperRoll.BackColor = Color.WhiteSmoke
     End Sub
+
+    Private Sub LvPaperRollList_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles LvPaperRollList.DoubleClick
+        If ModName = "Paper roll Edit" Then
+            btnView.PerformClick() : Exit Sub
+        End If
+        btnSelect.PerformClick()
+    End Sub
 End Class

@@ -3724,3 +3724,17 @@ At line 1, column 234
    at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
    at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
    at PriProMonitoring.database.LoadSQL(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\database.vb:line 158
+[03/07/2017 14:03:28] LoadSQL - System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Data.Odbc.OdbcDataReader.internalGetInt64(Int32 i)
+   at System.Data.Odbc.OdbcDataReader.GetValue(Int32 i, TypeMap typemap)
+   at System.Data.Odbc.OdbcDataReader.GetValue(Int32 i)
+   at System.Data.Odbc.OdbcDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at PriProMonitoring.database.LoadSQL(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\GitHub\for-Production-Monitoring\PriProMonitoring\PriProMonitoring\MODULE\database.vb:line 158

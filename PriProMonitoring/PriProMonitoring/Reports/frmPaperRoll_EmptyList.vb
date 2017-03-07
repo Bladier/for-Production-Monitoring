@@ -50,7 +50,7 @@
         mySql &= "  P.REMAINING / P.TOTAL_LENGTH as remainings,Updated_at "
         mySql &= "FROM TBLPAPERROLL P INNER JOIN TBL_PROLINE PL	"
         mySql &= "ON PL.PAPROLL_SERIAL = P.PAPROLL_SERIAL "
-        mySql &= " WHERE P.STATUS='2' AND UPPER(P.PAPROLL_SERIAL) = UPPER('" & txtSearch.Text & "')"
+        mysql &= " WHERE P.STATUS='2' AND UPPER(P.PAPROLL_SERIAL) = UPPER('" & Get_Pap_serial() & "')"
         mySql &= " GROUP BY P.PAPROLL_ID,P.PAPROLL_SERIAL,PL.PAPCUT_DESC, "
         mySql &= "P.TOTAL_LENGTH,Remaining,P.Updated_at "
         rptSQL.Add(fillData, mySql)
@@ -60,7 +60,7 @@
         mySql &= " PLE.UOM,PLE.CREATED_AT,PLE.DECLAREDBY"
         mySql &= " FROM TBLPAPERROLL P"
         mySql &= " INNER JOIN TBLPAPER_LISTEMPTY PLE ON PLE.PAPROLL_ID = P.PAPROLL_ID"
-        mySql &= String.Format(" WHERE P.PAPROLL_SERIAL = '{0}'", txtSearch.Text)
+        mysql &= String.Format(" WHERE P.PAPROLL_SERIAL = '{0}'", Get_Pap_serial())
         rptSQL.Add(fillData, mySql)
 
         'Sub Report
@@ -71,7 +71,7 @@
         mySql &= " FROM TBLADJUSTMENT AD"
         mySql &= " INNER JOIN TBLADJUSTMENT_LINE ADL ON ADL.ADJUSTMENT_ID = AD.ADJUSTMENTID"
         mySql &= " INNER JOIN TBLPAPERCUT PC ON PC.PAPERCUT_ID = ADL.PAPERCUT_ID"
-        mySql &= " WHERE UPPER(AD.PAPROLL_SERIAL) = UPPER('" & txtSearch.Text & "')"
+        mysql &= " WHERE UPPER(AD.PAPROLL_SERIAL) = UPPER('" & Get_Pap_serial() & "')"
         mySql &= " ORDER BY CREATED_AT ASC"
         subReportSQL.Add(fillData, mySql)
 
@@ -91,4 +91,9 @@
     Private Sub txtSearch_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
         If isEnter(e) Then btnSearch.PerformClick()
     End Sub
+
+    Private Function Get_Pap_serial() As String
+        Dim pap_serial As String = txtSearch.Text
+        Return pap_serial
+    End Function
 End Class
