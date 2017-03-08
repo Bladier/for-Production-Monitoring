@@ -31,7 +31,7 @@
     End Sub
 
     Private Sub btnGenerate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGenerate.Click
-        If txtSearch.Text = "" Then MsgBox("Do selected paper roll" & vbCrLf & "Please select one in the list.", _
+        If txtSearch.Text = "" Then MsgBox("No selected paper roll" & vbCrLf & "Please select one in the list.", _
                                             MsgBoxStyle.Information, "Information") : Exit Sub
         If lvPapList.Items.Count = 0 Then Exit Sub
 
@@ -52,7 +52,7 @@
         mySql &= "ON PL.PAPROLL_SERIAL = P.PAPROLL_SERIAL "
         mysql &= " WHERE P.STATUS='2' AND UPPER(P.PAPROLL_SERIAL) = UPPER('" & Get_Pap_serial() & "')"
         mySql &= " GROUP BY P.PAPROLL_ID,P.PAPROLL_SERIAL,PL.PAPCUT_DESC, "
-        mySql &= "P.TOTAL_LENGTH,Remaining,P.Updated_at "
+        mysql &= "P.TOTAL_LENGTH,Remaining,P.Updated_at "
         rptSQL.Add(fillData, mySql)
 
         fillData = "dsE_A_L"
@@ -72,7 +72,7 @@
         mySql &= " INNER JOIN TBLADJUSTMENT_LINE ADL ON ADL.ADJUSTMENT_ID = AD.ADJUSTMENTID"
         mySql &= " INNER JOIN TBLPAPERCUT PC ON PC.PAPERCUT_ID = ADL.PAPERCUT_ID"
         mysql &= " WHERE UPPER(AD.PAPROLL_SERIAL) = UPPER('" & Get_Pap_serial() & "')"
-        mySql &= " ORDER BY CREATED_AT ASC"
+        mysql &= " ORDER BY CREATED_AT ASC"
         subReportSQL.Add(fillData, mySql)
 
         Dim rptPara As New Dictionary(Of String, String)
