@@ -340,6 +340,15 @@
       <DependentUpon>dsReports1.xsd</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Reports\dsReports1.vb">
+      <DependentUpon>dsReports1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\frmPaperRoll_EmptyList.Designer.vb">
+      <DependentUpon>frmPaperRoll_EmptyList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\frmPaperRoll_EmptyList.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reports\frmQDate.Designer.vb">
       <DependentUpon>frmQDate.vb</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -457,6 +466,15 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Adjustment.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EmptyPaperRoll.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\frmPaperRoll_EmptyList.resx">
+      <DependentUpon>frmPaperRoll_EmptyList.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmQDate.resx">
       <DependentUpon>frmQDate.vb</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -466,6 +484,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\prtProduction.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptAdjustment.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="sampleSales\frmSeed.resx">
@@ -523,6 +544,7 @@
     <Content Include="Raw\1.jpg" />
     <Content Include="Raw\23.jpg" />
     <Content Include="Raw\Login.jpg" />
+    <Content Include="Raw\set.iss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\sampleSales\" />

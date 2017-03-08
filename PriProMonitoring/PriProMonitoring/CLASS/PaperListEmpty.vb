@@ -164,6 +164,8 @@
         Dim mysql As String = "SELECT * FROM TBLPAPERROLL WHERE STATUS <> 2 AND STATUS <> 1 ORDER BY PAPROLL_ID "
         Dim ds As DataSet = LoadSQL(mysql, "tblpaperroll")
 
+        If ds.Tables(0).Rows.Count = 0 Then Return Nothing
+
         For Each dr As DataRow In ds.Tables(0).Rows
             serial.Add(dr.Item("PapRoll_serial"))
         Next

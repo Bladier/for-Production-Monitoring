@@ -144,7 +144,6 @@
 
 
     Public Sub LoadByRow(ByVal dr As DataRow)
-        Dim mySql As String, ds As New DataSet
         With dr
             _PAPID = .Item("PAPID")
             _PAPERCODE = .Item("PAPCODE")

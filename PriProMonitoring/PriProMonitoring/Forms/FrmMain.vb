@@ -32,6 +32,7 @@
         ToolStripAddpaperroll.Enabled = Not st
         ToolStripAdjusment.Enabled = Not st
         ToolStripMonitor.Enabled = Not st
+        ToolStripViews.Enabled = Not st
 
         If Not st Then
             ToolStripLogin.Text = "&Log Out"
@@ -45,7 +46,8 @@
 
         'reports
         ProductionToolstrip.Enabled = Not st
-
+        AdjustmentReportToolStripMenuItem.Enabled = Not st
+        EmptyPaperRollReportToolStripMenuItem.Enabled = Not st
     End Sub
 
     Private Sub LoginToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -340,10 +342,6 @@
 
     End Sub
 
-    Private Sub ProductionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductionToolstrip.Click
-        frmQDate.Show()
-    End Sub
-
     Private Sub UserManagementToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UserManagementToolStripMenuItem.Click
         CloseForms("frmUseManagement")
 
@@ -361,4 +359,17 @@
         frmDailyCounter.Show()
     End Sub
 
+    Private Sub AdjustmentReportToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AdjustmentReportToolStripMenuItem.Click
+        frmQDate.RPTType = frmQDate.ReportType.Adjustment
+        frmQDate.Show()
+    End Sub
+
+    Private Sub ProductionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductionToolstrip.Click
+        frmQDate.RPTType = frmQDate.ReportType.Production
+        frmQDate.Show()
+    End Sub
+
+    Private Sub EmptyPaperRollReportToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EmptyPaperRollReportToolStripMenuItem.Click
+        frmPaperRoll_EmptyList.Show()
+    End Sub
 End Class

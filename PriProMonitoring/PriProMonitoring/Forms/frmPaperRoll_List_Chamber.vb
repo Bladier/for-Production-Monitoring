@@ -191,14 +191,11 @@
                "ON P.PAPIDS =PM.PAPID WHERE P.PAPROLL_ID ='" & id & "' AND STATUS = '1'"
         ds = LoadSQL(mysql, "TBLPAPERROLL")
 
-
-        If ds.Tables(0).Rows.Count > 0 Then
-            MsgBox("This paper roll currently loaded.", MsgBoxStyle.Information, "Load")
-            Return True
-        End If
-
         Try
-            If ds.Tables(0).Rows.Count = 0 Then
+            If ds.Tables(0).Rows.Count > 0 Then
+                MsgBox("This paper roll currently loaded.", MsgBoxStyle.Information, "Load")
+                Return True
+            Else
                 Return False
             End If
         Catch ex As Exception
@@ -303,7 +300,7 @@
             Case Keys.Escape
                 btnClose.PerformClick()
             Case Else
-                'Do Nothing
+                'Yes It's Nothing
         End Select
 
         Return MyBase.ProcessCmdKey(msg, keyData)
@@ -333,5 +330,12 @@
 
     Private Sub frmPaperRoll_List_Chamber_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
         FrmMain.ToolStripChangePaperRoll.BackColor = Color.WhiteSmoke
+    End Sub
+
+    Private Sub LvPaperRollList_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles LvPaperRollList.DoubleClick
+        If ModName = "Paper roll Edit" Then
+            btnView.PerformClick() : Exit Sub
+        End If
+        btnSelect.PerformClick()
     End Sub
 End Class

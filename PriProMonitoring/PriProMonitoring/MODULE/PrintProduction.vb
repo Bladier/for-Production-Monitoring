@@ -6,10 +6,9 @@
     Dim mysql As String = String.Empty
 
     Public Sub Production()
-        dbOpen()
         Dim mysql As String = "SELECT * FROM TBLPRO WHERE STATUS = '0'"
         Dim ds As DataSet = LoadSQL(mysql, "TBLPRO")
-
+        
         Dim COUNTMAX As Integer = ds.Tables(0).Rows.Count
 
         If COUNTMAX = 0 Then GoTo nextlineTodo
@@ -66,7 +65,7 @@ nextlineTodo:
                    " WHERE PAPCUT_CODE = '" & dr.Item("PAPCUT_CODE") & "'"
 
             Dim ds1 As DataSet = LoadSQL(mysql, "TBLPROLLANDPCUTS")
-
+           
             If ds1.Tables(0).Rows.Count > 1 Then
 
                 For Each drPC As DataRow In ds1.Tables(0).Rows
@@ -121,6 +120,6 @@ nextlineTodo:
                 End If
             End If
         Next
-        dbClose()
+
     End Sub
 End Module

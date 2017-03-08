@@ -29,10 +29,10 @@ Friend Module databasePOS
             conPOS.Open()
         Catch ex As Exception
             conPOS.Dispose()
-            'MsgBox(language(0) + vbCrLf + ex.Message.ToString, vbCritical, "Connecting Error")
-            'Log_Report(ex.Message.ToString)
-            'Log_Report(String.Format("User: {0}", fbUser))
-            'Log_Report(String.Format("Database: {0}", dbName))
+            MsgBox(language(0) + vbCrLf + ex.Message.ToString, vbCritical, "Connecting Error")
+            Log_Report(ex.Message.ToString)
+            Log_Report(String.Format("User: {0}", fbUser))
+            Log_Report(String.Format("Database: {0}", dbName))
             Exit Sub
         End Try
     End Sub
@@ -107,7 +107,7 @@ Friend Module databasePOS
         conPOS = New OdbcConnection(conStr)
 
         Dim cmd As OdbcCommand
-        cmd = New OdbcCommand(sql, con)
+        cmd = New OdbcCommand(sql, conPOS)
 
         Try
             conPOS.Open()
@@ -163,7 +163,7 @@ Friend Module databasePOS
             ds = Nothing
         End Try
 
-        dbClose()
+        dbClosePOS()
 
         Return ds
     End Function
@@ -189,7 +189,7 @@ Friend Module databasePOS
 
         ReaderConPOS = New OdbcConnection(conStr)
         Try
-            ReaderCon.Open() 'open the database.
+            ReaderConPOS.Open() 'open the database.
         Catch ex As Exception
             ReaderConPOS.Dispose()
             MsgBox(language(0) + vbCrLf + ex.Message.ToString, vbCritical, "Connecting Error")
