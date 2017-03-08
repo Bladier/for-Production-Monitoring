@@ -36,6 +36,7 @@ Partial Class FrmMain
         Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductionToolstrip = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdjustmentReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EmptyPaperRollReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusDateandTime = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
@@ -65,7 +66,6 @@ Partial Class FrmMain
         Me.DailyTotalToolCount1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.GrandTotalCountGrandTotal = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.EmptyPaperRollReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -129,7 +129,7 @@ Partial Class FrmMain
         'AddItemToolStripMenuItem
         '
         Me.AddItemToolStripMenuItem.Name = "AddItemToolStripMenuItem"
-        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
+        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.AddItemToolStripMenuItem.Text = "Add &Item"
         '
         'ReportsToolStripMenuItem
@@ -150,6 +150,12 @@ Partial Class FrmMain
         Me.AdjustmentReportToolStripMenuItem.Name = "AdjustmentReportToolStripMenuItem"
         Me.AdjustmentReportToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
         Me.AdjustmentReportToolStripMenuItem.Text = "&Adjustment Report"
+        '
+        'EmptyPaperRollReportToolStripMenuItem
+        '
+        Me.EmptyPaperRollReportToolStripMenuItem.Name = "EmptyPaperRollReportToolStripMenuItem"
+        Me.EmptyPaperRollReportToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
+        Me.EmptyPaperRollReportToolStripMenuItem.Text = "&Empty Paper Roll Report"
         '
         'StatusStrip1
         '
@@ -414,12 +420,6 @@ Partial Class FrmMain
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1003, 476)
         Me.Panel1.TabIndex = 2
-        '
-        'EmptyPaperRollReportToolStripMenuItem
-        '
-        Me.EmptyPaperRollReportToolStripMenuItem.Name = "EmptyPaperRollReportToolStripMenuItem"
-        Me.EmptyPaperRollReportToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
-        Me.EmptyPaperRollReportToolStripMenuItem.Text = "&Empty Paper Roll Report"
         '
         'FrmMain
         '

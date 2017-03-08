@@ -544,6 +544,7 @@
     <Content Include="Raw\1.jpg" />
     <Content Include="Raw\23.jpg" />
     <Content Include="Raw\Login.jpg" />
+    <Content Include="Raw\set.iss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\sampleSales\" />

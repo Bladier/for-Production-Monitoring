@@ -97,6 +97,7 @@ Partial Class frmDailyCounter
         Me.txtTotal.ReadOnly = True
         Me.txtTotal.Size = New System.Drawing.Size(276, 22)
         Me.txtTotal.TabIndex = 4
+        Me.txtTotal.TabStop = False
         Me.txtTotal.WatermarkColor = System.Drawing.Color.Gray
         Me.txtTotal.WatermarkText = "Total"
         '
