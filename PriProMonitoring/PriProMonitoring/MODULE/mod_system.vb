@@ -1,7 +1,6 @@
 ﻿Imports Microsoft.Office.Interop
 Module mod_system
   
-    Public SysTitle As String = "Printer Production Monitoring System"
     Public DEV_MODE As Boolean = False
     Public PROTOTYPE As Boolean = False
     Friend DBVERSION As String = ""
@@ -9,6 +8,8 @@ Module mod_system
     Public CurrentDate As Date = Now
     Public POSuser As New ComputerUser
     Public CurrentUser As String = POSuser.NAME
+    Public Current_UTYPE As String = POSuser.GRPType
+    Public  Super_Admin As String ="MIS"
     Public Meter As Double = 0.0254 ' 1 inch = 0.0254
     Public OneMeter As Double = 39.3701 ' 1 meter
 

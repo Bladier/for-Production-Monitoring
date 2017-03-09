@@ -101,6 +101,7 @@
             LoadUserByRow(dr)
         Next
         CurrentUser = _NAME
+        Current_UTYPE = _GRPType
         Return True
     End Function
 
