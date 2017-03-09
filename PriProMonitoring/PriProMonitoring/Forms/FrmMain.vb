@@ -217,6 +217,11 @@
 
 
     Private Sub SettingsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SettingsToolStripMenuItem.Click
+        If Current_UTYPE <> Super_Admin Then
+            MsgBox("You DON'T have access in this module" & vbCrLf & "Please Contact the administrator!" _
+                   , MsgBoxStyle.Exclamation, "Security")
+            Exit Sub
+        End If
         Me.Enabled = False
         frmSettings.Show()
     End Sub
@@ -264,7 +269,7 @@
 
         MagazineStatus = IIf(GetOption("Magazine") = "YES", True, False)
         If Not MagazineStatus Then
-            MsgBox("You need to initialize magazine before to begin.", MsgBoxStyle.Exclamation, "Production")
+            MsgBox("You need to initialize paper roll before to begin.", MsgBoxStyle.Exclamation, "Paper roll")
             Me.Refresh()
             Exit Sub
         End If

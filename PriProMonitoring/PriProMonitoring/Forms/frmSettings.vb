@@ -140,7 +140,12 @@ Public Class frmSettings
                 End If
 
                 .Fname = dr.Item("Name")
-                .userType = dr.Item("GRPtype")
+
+                If .username = "MIS" Then
+                    .userType = "Admin"
+                Else
+                    .userType = dr.Item("GRPtype")
+                End If
                 .status = 1
                 .saveUser()
             End With
