@@ -1,7 +1,6 @@
 ﻿Imports Microsoft.Office.Interop
 Module mod_system
   
-    Public SysTitle As String = "Printer Production Monitoring System"
     Public DEV_MODE As Boolean = False
     Public PROTOTYPE As Boolean = False
     Friend DBVERSION As String = ""
